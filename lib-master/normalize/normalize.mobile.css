@@ -1,0 +1,66 @@
+body {
+    font-family: "PingHei", STHeitiSC-Light, "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    color      : #000;
+}
+.ie body,
+.windows body {
+    font-family: "微软雅黑", Arial;
+}
+.oldie body {
+    font-family: \5B8B\4F53, Arial;
+}
+blockquote,
+body,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+input,
+li,
+ol,
+p,
+pre,
+textarea,
+ul {
+    padding: 0;
+    margin : 0;
+}
+img {
+    border: none;
+}
+ol,
+ul {
+    list-style: none;
+}
+html {
+    line-height: 1.15;
+}
+a {
+    text-decoration: none;
+}
+/*.clearfix:after {
+    content : '';
+    display : block;
+    clear   : both;
+    width   : 100%;
+    overflow: hidden;
+    height  : 0;
+}*/
+/*.left {
+    float: left;
+}
+.right {
+    float: right;
+}*/
+.hide {
+    display: none;
+}
