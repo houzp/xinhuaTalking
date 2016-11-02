@@ -2,7 +2,7 @@
 # @Date:   2016-05-31-08:41:37
 # @Email:  st_sister@iCloud.com
 # @Last modified by:   SuperWoods
-# @Last modified time: 2016-09-27-04:48:37
+# @Last modified time: 2016-11-02-03:28:10
 # @License: MIT
 #
 # .PHONY: clean
@@ -33,8 +33,8 @@ js:
 
 .PHONY: server
 server:
-	gulp autowatch-jade &
-	browser-sync start --server --files='*.html, bundle, css, js, img'
+	# gulp autowatch-jade &
+	browser-sync start --server --files='*.html, bundle, css, js, img, images, fonts'
 
 # -------------------------------------------------------------------------- all
 
