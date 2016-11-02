@@ -1,3 +1,5 @@
+![project.logo.png](project/project.logo.png)
+
 # Xinhua Talking
 
 新华访谈
