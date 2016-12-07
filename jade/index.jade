@@ -1,0 +1,33 @@
+- const title = '人物访谈-新华网'
+doctype
+html
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+        meta(name="renderer" content="webkit")
+        title #{title}
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="apple-mobile-web-app-title" content="#{title}")
+        link(rel="apple-touch-icon-precomposed" href="index-assets/logo.wechat.png")
+        include mod-mobile-head
+        script(src="bundle/browser.min.js" id="BROWSER_NOJUMP")
+        link(rel="stylesheet" href="bundle/index.min.css")
+
+    body
+        include mod-pc-top-nav
+        .all
+            img(src="index-assets/logo.wechat.png" width="300" height="300").hide
+            include mod-banner
+            .part#part
+                include mod-part-pc-main
+                include mod-part-pc-sidebar
+            #dialog-video.hide(title="")
+
+        script(src="lib/jq.js")
+
+        script(src="bundle/isAboveIE9.swiper.min.js")
+        script(src="bundle/isAboveIE9.jquery.parallax.min.js")
+
+        script(src="bundle/jquery-ui.min.js")
+        script(src="bundle/index.min.js")
+        script(src="bundle/footer.min.js")

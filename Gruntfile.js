@@ -6,8 +6,8 @@
  * @Email:  st_sister@iCloud.com
  * @Date:   2016-07-13-01:46:45
  *
- * @Last modified by:   SuperWoods
- * @Last modified time: 2016-07-14-09:47:35
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-02-12:38:02
  */
 
 module.exports = function (grunt) {
@@ -128,12 +128,11 @@ module.exports = function (grunt) {
             buildIndexAllJS: {
                 files: {
                     'bundle/index.all.js': [ // bundle js
-                        'js/jquery.browser.min.js',
-                        'js/idangerous.swiper.min.js',
-                        'js/TweenMax.min.js',
-                        'js/jquery.jplayer.min.js',
+                        'bundle/isAboveIE9.swiper.min.js',
+                        'bundle/isAboveIE9.jquery.parallax.min.js',
+                        'bundle/jquery-ui.min.js',
                         'bundle/index.min.js',
-                        // 'bundle/nav_footer.min.js',
+                        'bundle/footer.min.js',
                     ],
                 }
             }
@@ -143,8 +142,8 @@ module.exports = function (grunt) {
             execute: {
                 files: {
                     'bundle/index.min.css': ['bundle/index.min.css'],
-                    'bundle/content.min.css': ['bundle/content.min.css'],
-                    'bundle/mobile.min.css': ['bundle/mobile.min.css'],
+                    // 'bundle/homepage.min.css': ['bundle/homepage.min.css'],
+                    // 'bundle/idangerous.swiper.css': ['bundle/idangerous.swiper.css'],
                 }
             }
         },
@@ -159,12 +158,31 @@ module.exports = function (grunt) {
             execute: {
                 files: {
                     'bundle/index.min.js': ['bundle/index.min.js'],
-                    'bundle/nav_footer.min.js': ['bundle/nav_footer.min.js'],
-                    'bundle/mobile.min.js': ['bundle/mobile.min.js'],
-                    'bundle/device.min.js': ['bundle/device.min.js'],
-                    'bundle/banner.homepage.min.js': ['bundle/banner.homepage.min.js'],
+                    'bundle/footer.min.js': ['bundle/footer.min.js'],
+                    'bundle/isAboveIE9.swiper.min.js': ['bundle/isAboveIE9.swiper.min.js'],
+                    'bundle/isAboveIE9.jquery.parallax.min.js': ['bundle/isAboveIE9.jquery.parallax.min.js'],
+                    // 'bundle/footer.min.js': ['bundle/footer.min.js'],
+                    // 'bundle/jquery.parallax.min.js': ['bundle/jquery.parallax.min.js'],
+                    // 'bundle/mask.min.js': ['bundle/mask.min.js'],
+                    // 'bundle/mod-ani.min.js': ['bundle/mod-ani.min.js'],
+                    // 'bundle/nav.min.js': ['bundle/nav.min.js'],
                 }
-            }
+            },
+            indexAll: {
+                files: {
+                    'bundle/index.all.min.js': ['bundle/index.all.js']
+                }
+            },
+            // history_info1: {
+            //     files: {
+            //         'jade/history_info1.data.js': ['tool/history_info2/dist/history_info1.data.js']
+            //     }
+            // },
+            // history_info2: {
+            //     files: {
+            //         'jade/history_info2.data.js': ['tool/history_info2/dist/history_info2.data.js']
+            //     }
+            // },
         },
     });
 
@@ -177,15 +195,20 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
     // grunt.registerTask('html', ['copy', 'useminPrepare', 'usemin']);
+    // grunt css
+    grunt.registerTask('css', [
+        'cssmin', // css: cssmin
+        'concat:cssAddBanner', // cssAddBanner
+    ]);
 
     // default
     grunt.registerTask('default', [
         // 'clean:dist',          //  dist: clean
-        // 'concat:js',           //    js: concat
-        'uglify', //        uglify
+        'concat:buildIndexAllJS', //    js: concat
+        'uglify:indexAll', //        uglify
         'cssmin', //   css: cssmin
         'concat:cssAddBanner', //        cssAddBanner
-        'concat:buildIndexAllJS', //        buildIndexAllJS
+        // 'concat:buildIndexAllJS', //        buildIndexAllJS
         // 'copy:html',           //  html: copy
         // 'useminPrepare',       //        useminPrepare
         // 'usemin',              //        usemin
@@ -194,15 +217,10 @@ module.exports = function (grunt) {
         // 'copy:cases',          // cases: copy
     ]);
 
-    // buildIndexAllJS
-    grunt.registerTask('buildIndexAllJS', [
-        'concat:buildIndexAllJS', //        buildIndexAllJS
-    ]);
+    // // grunt buildIndexAllJS
+    // grunt.registerTask('buildIndexAllJS', [
+    //     'concat:buildIndexAllJS', //        buildIndexAllJS
+    // ]);
 
-    // css
-    grunt.registerTask('css', [
-        'cssmin', // css: cssmin
-        'concat:cssAddBanner', // cssAddBanner
-    ]);
 
 };

@@ -8,7 +8,7 @@
  *          2016-07-11-15.04
  *
  * @(demo)Last modified by:   SuperWoods
- * @(demo)Last modified time: 2016-08-29-05:16:14
+ * @(demo)Last modified time: 2016-09-28-09:36:26
  */
 
 (() => {
@@ -51,7 +51,18 @@
 
     // 是否开启跳转
     const BROWSER_NOJUMP = document.getElementById('BROWSER_NOJUMP');
-    const isJUMP = BROWSER_NOJUMP === null; // 默认：开启
+    // 添加 BROWSER_NOJUMP， 如果 window.BROWSER_NOJUMP = true; 则关闭跳转
+    const isJUMP = BROWSER_NOJUMP === null && !window.BROWSER_NOJUMP;
+    let JUMPTO_URL = 'mobile';
+
+    console.log('window.BROWSER_JUMPTO:', window.BROWSER_JUMPTO);
+
+    if (isJUMP && window.BROWSER_JUMPTO) {
+        JUMPTO_URL = window.BROWSER_JUMPTO;
+    }
+
+    console.log('JUMPTO_URL:', JUMPTO_URL);
+
     console.log('isJUMP:', isJUMP);
 
     // tag: html
@@ -116,19 +127,39 @@
     if (isJUMP) {
 
         let mobileHref;
-        const isMobilePage = href.lastIndexOf('mobile') > 0;
+
+        console.log('JUMPTO_URL2:', JUMPTO_URL);
+
+        const isMobilePage = href.lastIndexOf(JUMPTO_URL) > 0;
 
         console.log('isMobile', isMobilePage);
 
         if (UA === null || UA === '' || isPCMod) {
             console.log('isPCMod');
         } else {
-            // 处理 mobleHref
-            if (href.lastIndexOf('index') > 0) {
-                mobileHref = href.replace('index', d.mobile);
-            } else {
-                mobileHref = `${href}mobile.htm`;
+            // 处理 mobileHref
+            // 处理 .html 和 .htm
+            let endName = '';
+            if (JUMPTO_URL.lastIndexOf('.html') !== -1) {
+                JUMPTO_URL = JUMPTO_URL.replace('.html', '');
+                endName = 'l';
+            } else if (JUMPTO_URL.lastIndexOf('.htm') !== -1) {
+                JUMPTO_URL = JUMPTO_URL.replace('.htm', '');
             }
+
+            if (href.lastIndexOf('index') !== -1) {
+                if (href.lastIndexOf('.html') !== -1) {
+                    mobileHref = href.replace('index.html', JUMPTO_URL + '.html');
+                } else if (href.lastIndexOf('.htm') !== -1) {
+                    mobileHref = href.replace('index.htm', JUMPTO_URL + '.htm');
+                } else {
+                    mobileHref = href.replace('index', JUMPTO_URL);
+                }
+            } else {
+                mobileHref = `${href}${JUMPTO_URL}.htm${endName}`;
+            }
+            // 此时得到正确的 mobileHref
+            console.log('mobileHref:', mobileHref);
 
             // 判断 pad 或 phone
             if (isMiPad || isMiBrowser || isIPad) {
@@ -203,11 +234,20 @@
     if (browser === '') {
         browser = 'unknown';
     }
+
+    // 验证 HTML.className 是否为空, 如果不为空则添加 ' ' 用来分割后面的 className
+    console.log('HTML.className.length:', HTML.className.length);
+
+    if (HTML.className.length > 0) {
+        HTML.className = HTML.className.trim(); // 去除前后冗余空格
+        HTML.className += ' ';
+    }
+
     // 如果是ie 或者高版本ie（edge or ie11）
     if (isMsie || !isMsie && isTrident) {
-        HTML.className = `${b.ie} ${browser}`;
+        HTML.className += `${b.ie} ${browser}`;
     } else {
-        HTML.className = browser;
+        HTML.className += browser;
     }
 
     if (device === '') {
@@ -223,7 +263,6 @@
         version: version,
         UA: UA,
     };
-
 
     console.log('--- browser.js well done!');
 })();
