@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-16-16:59:38
+* @Last modified time: 2016-12-16-17:23:14
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -15,6 +15,7 @@ $(() => {
 
     const main = new Swiper('#main', {
         // loop: true,
+        hashnav: true,
         direction: 'vertical',
         keyboardControl: true,
         mousewheelControl: true,
@@ -26,8 +27,8 @@ $(() => {
         // autoplay: 5000, //可选选项，自动滑动
         pagination: '#scenes-1 .swiper-pagination',
         prevButton: '#scenes-1 .swiper-button-prev',
-        nextButton: '#scenes-1.swiper-button-next',
-        paginationClickable: true,
+        nextButton: '#scenes-1 .swiper-button-next',
+        // paginationClickable: true,
 
     });
 
@@ -36,7 +37,7 @@ $(() => {
         pagination: '#scenes-2 .swiper-pagination',
         prevButton: '#scenes-2 .swiper-button-prev',
         nextButton: '#scenes-2 .swiper-button-next',
-        paginationClickable: true,
+        // paginationClickable: true,
 
     });
 
@@ -45,7 +46,7 @@ $(() => {
         pagination: '#scenes-3 .swiper-pagination',
         prevButton: '#scenes-3 .swiper-button-prev',
         nextButton: '#scenes-3 .swiper-button-next',
-        paginationClickable: true,
+        // paginationClickable: true,
 
     });
 
