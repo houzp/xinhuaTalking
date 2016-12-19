@@ -13,38 +13,58 @@ html
         link(rel="stylesheet" href="bundle/index.min.css")
 
     body
-        include mod-top-nav
-        .nav
-            .logo
-            .btn
+
+        #cover.cover
+
+        #nav.nav
+            .part
+                .logo
+                    img(src="index-assets/bottom-nav-logo.png" height="37")
                 .btn
-                    .icon-1
-                    | 三个字
-                .btn
-                    .icon-2
-                    | 三个字
+                    .btn
+                        .icon-1
+                        | 三个字
+                    .btn
+                        .icon-2
+                        | 三个字
 
         .swiper-container.main#main
-            .swiper-wrapper
-                .swiper-slide.main-slide
+            .swiper-wrapper                    
+                .swiper-slide.main-slide(data-hash="1")
+                    include mod-top-nav
                     .swiper-container.scenes-1#scenes-1
                         .swiper-wrapper
                             .swiper-slide slider1
                             .swiper-slide slider2
                             .swiper-slide slider3
+                            .swiper-slide slider4
+                            .swiper-slide slider5
                         .swiper-pagination
                         .swiper-button-prev
                         .swiper-button-next
-                .swiper-slide.main-slide
+                .swiper-slide.main-slide(data-hash="2")
                     .swiper-container#scenes-2
                         .swiper-wrapper
-                            .swiper-slide
                             .swiper-slide slider2
                         .swiper-pagination
                         .swiper-button-prev
                         .swiper-button-next
-                .swiper-slide.main-slide
-                    .swiper-container#scenes-2
+                .swiper-slide.main-slide(data-hash="3")
+                    .swiper-container#scenes-3
+                        .swiper-wrapper
+                            .swiper-slide 
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="4")
+                    .swiper-container#scenes-4
+                        .swiper-wrapper
+                            .swiper-slide
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="5")
+                    .swiper-container#scenes-5
                         .swiper-wrapper
                             .swiper-slide
                                 #footer
@@ -55,6 +75,8 @@ html
 
         script(src="lib/jq.js")
         script(src="bundle/swiper-3.4.0.jquery.min.js")
+        script(src="bundle/TweenMax.min.js")
+
         //- script(src="bundle/isAboveIE9.jquery.parallax.min.js")
 
         //- script(src="bundle/jquery-ui.min.js")
