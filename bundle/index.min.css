@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-16-17:16:54
+* @Last modified time: 2016-12-19-19:57:19
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -76,6 +76,10 @@ body {
     align-items            : center;*/
 }
 
+.scenes-1 {
+    padding-top: 69px;
+}
+
 .ie-tip {
     text-align : center;
     width      : 100%;
@@ -142,6 +146,15 @@ a:hover {
     bottom          : 0;
     left            : 0;
     color           : #FFF;
+    /*transition        : all 2s;
+    -moz-transition   : all 2s;
+    -webkit-transition: all 2s;
+    -o-transition     : all 2s;*/
+}
+
+.position-top {
+    bottom: auto;
+    top   : 0;
 }
 
 .logo {}
@@ -152,6 +165,7 @@ a:hover {
 
 .icon-1 {}
 /* scenes-1 */
+.cover,
 .scenes-1 {
     background-image   : url("../index-assets/bg.jpg");
     background-position: center;

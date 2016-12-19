@@ -13,8 +13,10 @@ html
         link(rel="stylesheet" href="bundle/index.min.css")
 
     body
-        include mod-top-nav
-        .nav
+
+        #cover.cover
+
+        #nav.nav
             .part
                 .logo
                     img(src="index-assets/bottom-nav-logo.png" height="37")
@@ -27,8 +29,9 @@ html
                         | 三个字
 
         .swiper-container.main#main
-            .swiper-wrapper
+            .swiper-wrapper                    
                 .swiper-slide.main-slide(data-hash="1")
+                    include mod-top-nav
                     .swiper-container.scenes-1#scenes-1
                         .swiper-wrapper
                             .swiper-slide slider1
@@ -47,7 +50,21 @@ html
                         .swiper-button-prev
                         .swiper-button-next
                 .swiper-slide.main-slide(data-hash="3")
-                    .swiper-container#scenes-2
+                    .swiper-container#scenes-3
+                        .swiper-wrapper
+                            .swiper-slide 
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="4")
+                    .swiper-container#scenes-4
+                        .swiper-wrapper
+                            .swiper-slide
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="5")
+                    .swiper-container#scenes-5
                         .swiper-wrapper
                             .swiper-slide
                                 #footer
