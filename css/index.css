@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-19-19:57:19
+* @Last modified time: 2016-12-19-21:38:07
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -26,6 +26,10 @@ body {
     color     : #000;
     margin    : 0;
     padding   : 0;
+}
+
+.overflow-hidden {
+    overflow: hidden;
 }
 /* part */
 .part {
@@ -129,7 +133,7 @@ a:hover {
     background-color: #1080f2;
     position        : absolute;
     z-index         : 99;
-    bottom          : 0;
+    /*bottom          : auto;*/
     left            : 0;
     color           : #FFF;
     /*transition        : all 2s;
@@ -137,12 +141,10 @@ a:hover {
     -webkit-transition: all 2s;
     -o-transition     : all 2s;*/
 }
-
-.position-top {
-    bottom: auto;
-    top   : 0;
-}
-
+/*.position-bottom {
+    bottom: 0;
+    top   : auto;
+}*/
 .logo {}
 
 .btn {}
@@ -157,4 +159,26 @@ a:hover {
     background-position: center;
     background-repeat  : no-repeat;
     background-size    : cover;
+}
+
+.cover {
+    background-color: #FFF;
+    width           : 100%;
+    height          : 100%;
+    position        : absolute;
+    z-index         : 999;
+}
+
+.cover:before {
+    content          : '';
+    display          : block;
+    background-image : url("../index-assets/cover-logo.png");
+    background-repeat: no-repeat;
+    width            : 330px;
+    height           : 142px;
+    position         : absolute;
+    top              : 50%;
+    left             : 50%;
+    margin-left      : -165px;
+    margin-top       : -71px;
 }
