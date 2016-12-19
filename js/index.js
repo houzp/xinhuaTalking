@@ -4,22 +4,17 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-19-20:25:06
+* @Last modified time: 2016-12-19-20:32:30
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 
 $(() => {
 
-    // $('#cover').html(`<div id="indexcover_hype_container" style="margin:auto;position:relative;width:100%;height:100%;overflow:hidden;z-index:9999;" aria-live="polite">
-    //     <script type="text/javascript" charset="utf-8" src="index-cover.hyperesources/indexcover_hype_generated_script.js?22734"></script>
-    // </div>`)
-
     const $window = $(window);
     const $body = $('body');
 
     const xinhuaTalking = {
-        $nav: $('#nav'),
         activeIndex: 0,
         init: function () {
             const _this = this;
@@ -35,9 +30,7 @@ $(() => {
                         // .addClass('position-top')
                         .animate({
                             bottom: _this.size.height - 69,
-                        }, 400, function () {
-
-                        });
+                        }, 400);
                 }
             });
 
@@ -45,6 +38,12 @@ $(() => {
             _this.scenes[1] = _this.scenes(1);
             _this.scenes[2] = _this.scenes(2);
             _this.scenes[3] = _this.scenes(3);
+        },
+        getCover: function () {
+            this.$cover = $('#cover');
+        },
+        getNav: function () {
+            this.$nav = $('#nav');
         },
         getSize: function () {
             return {
@@ -54,6 +53,8 @@ $(() => {
         },
         scenes_main: function () {
             const _this = this;
+
+            _this.getNav();
 
             _this.main = new Swiper('#main', {
                 // loop: true,
@@ -80,9 +81,7 @@ $(() => {
                             // .addClass('position-top')
                             .animate({
                                 bottom: _this.size.height - 69,
-                            }, 400, function () {
-
-                            });
+                            }, 400);
                     }
                 }
             });
