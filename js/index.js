@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-19-22:13:57
+* @Last modified time: 2016-12-19-22:51:26
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -22,53 +22,57 @@ $(() => {
         timeout: null,
         init: function () {
             const _this = this;
-            _this.size = _this.getSize();
+            // getSize
+            _this.getSize();
+
             // cover
             _this.coverInit();
 
             // nav
             $window.on('resize', () => {
-                _this.size = _this.getSize();
-                _this.setNavStatus(_this.activeIndex);
+                _this.getSize();
+                _this.navStatus(_this.activeIndex);
             });
+
             _this.navHeight = this.$nav.height();
-            _this.setNavPos((_this.size.height - _this.navHeight), 0);
+            _this.navPos((_this.size.height - _this.navHeight), 0);
 
             // swiper
-            _this.scenes_main = _this.scenes_main();
+            _this.scenesMain = _this.scenesMain();
             _this.scenes[1] = _this.scenes(1);
             _this.scenes[2] = _this.scenes(2);
             _this.scenes[3] = _this.scenes(3);
         },
         getSize: function () {
-            return {
+            this.size = {
                 height: $window.height(),
                 width: $window.width(),
-            }
+            };
+            return this.size;
         },
-        setNavPos: function (num, time) {
-            this.$nav
-                .stop(false, true)
-                .animate({
-                    top: num,
-                }, time);
+        navPos: function (num, time) {
+            TweenMax.to(this.$nav, time, {
+                top: num
+            });
             // return this.$nav;
         },
-        setNavStatus: function (activeIndex) {
+        navStatus: function (activeIndex) {
             if (activeIndex < 1) {
-                this.setNavPos((this.size.height - 69), 400);
+                this.navPos((this.size.height - this.navHeight), 0.4);
             } else {
-                this.setNavPos(0, 400);
+                this.navPos(0, 0.4);
             }
         },
         coverInit: function (time) {
+            console.log(this.$cover.length);
+            if (this.$cover.length) {
+                this.coverClear();
+                this.coverTimeout();
+                this.coverClick();
+            }
+        },
+        coverClick: function () {
             const _this = this;
-            var time = time || 2000;
-            _this.coverClear();
-            _this.timeout = setTimeout(function () {
-                _this.coverHide();
-            }, time);
-
             _this.$cover.on('click', () => {
                 TweenMax.killAll();
                 _this.coverHide();
@@ -80,24 +84,21 @@ $(() => {
             clearTimeout(this.timeout);
             this.timeout = null;
         },
+        coverTimeout: function (time) {
+            const _this = this;
+            _this.timeout = setTimeout(function () {
+                _this.coverHide();
+            }, (time || 2000));
+        },
         coverHide: function () {
-
             console.log('coverHide');
-
             const _this = this;
             const time = 4;
             $body.addClass('overflow-hidden');
-            // scale
-            TweenMax.fromTo(_this.$cover, time, {
-                css: {
-                    scale: 1,
-                }
-            }, {
-                css: {
-                    scale: 10,
-                },
-                repeat: 0,
-                yoyo: false,
+            // anis
+            TweenMax.to(_this.$cover, time, {
+                scale: 12,
+                opacity: 0,
                 ease: Power1.easeIn,
                 onStart: function () {
                     _this.$cover.off('click');
@@ -106,23 +107,10 @@ $(() => {
                     _this.$cover.remove();
                     $body.removeClass('overflow-hidden');
                     console.log('remove');
-                },
-            });
-            // opacity
-            TweenMax.fromTo(_this.$cover, time, {
-                css: {
-                    opacity: 1,
                 }
-            }, {
-                css: {
-                    opacity: 0,
-                },
-                repeat: 0,
-                yoyo: false,
-                ease: Power1.easeIn,
             });
         },
-        scenes_main: function () {
+        scenesMain: function () {
             const _this = this;
             return new Swiper('#main', {
                 // loop: true,
@@ -135,7 +123,7 @@ $(() => {
                 onSlideChangeStart: function (swiper) {
                     _this.activeIndex = swiper.activeIndex;
                     // console.log(swiper.activeIndex);
-                    _this.setNavStatus(_this.activeIndex);
+                    _this.navStatus(_this.activeIndex);
                 }
             });
         },
@@ -151,4 +139,6 @@ $(() => {
     };
 
     xinhuaTalking.init();
+
+    return xinhuaTalking;
 });
