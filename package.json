@@ -1,6 +1,6 @@
 {
-    "name": "xinhua_talking",
-    "version": "0.0.1",
+    "name": "xinhua-talking",
+    "version": "0.0.10",
     "description": "Xinhua Talking",
     "main": "index.js",
     "scripts": {
@@ -10,7 +10,7 @@
         "type": "git",
         "url": "git+https://github.com/xinhuaRadioLAB/xinhuaTalking.git"
     },
-    "author": "SuperWoods",
+    "author": "SuperMoo",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/xinhuaRadioLAB/xinhuaTalking/issues"

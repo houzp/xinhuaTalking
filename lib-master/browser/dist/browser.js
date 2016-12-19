@@ -10,7 +10,7 @@
  *          2016-07-11-15.04
  *
  * @(demo)Last modified by:   SuperWoods
- * @(demo)Last modified time: 2016-09-16-08:39:56
+ * @(demo)Last modified time: 2016-09-28-09:36:26
  */
 
 (function () {
@@ -234,11 +234,20 @@
     if (browser === '') {
         browser = 'unknown';
     }
+
+    // 验证 HTML.className 是否为空, 如果不为空则添加 ' ' 用来分割后面的 className
+    console.log('HTML.className.length:', HTML.className.length);
+
+    if (HTML.className.length > 0) {
+        HTML.className = HTML.className.trim(); // 去除前后冗余空格
+        HTML.className += ' ';
+    }
+
     // 如果是ie 或者高版本ie（edge or ie11）
     if (isMsie || !isMsie && isTrident) {
-        HTML.className = b.ie + ' ' + browser;
+        HTML.className += b.ie + ' ' + browser;
     } else {
-        HTML.className = browser;
+        HTML.className += browser;
     }
 
     if (device === '') {

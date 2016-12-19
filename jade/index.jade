@@ -1,0 +1,82 @@
+- const title = '人物访谈-新华网'
+doctype
+html
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+        meta(name="renderer" content="webkit")
+        title #{title}
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="apple-mobile-web-app-title" content="#{title}")
+        link(rel="apple-touch-icon-precomposed" href="index-assets/logo.wechat.png")
+        script(src="bundle/browser.min.js" id="BROWSER_NOJUMP")
+        link(rel="stylesheet" href="bundle/index.min.css")
+
+    body
+        //- #cover.cover
+        #nav.nav
+            .part
+                .logo
+                    img(src="index-assets/bottom-nav-logo.png" height="37")
+                .btn
+                    .btn
+                        .icon-1
+                        | 三个字
+                    .btn
+                        .icon-2
+                        | 三个字
+
+        .swiper-container.main#main
+            .swiper-wrapper                    
+                .swiper-slide.main-slide(data-hash="1")
+                    include mod-top-nav
+                    .swiper-container.scenes-1#scenes-1
+                        .swiper-wrapper
+                            .swiper-slide slider1
+                            .swiper-slide slider2
+                            .swiper-slide slider3
+                            .swiper-slide slider4
+                            .swiper-slide slider5
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="2")
+                    .swiper-container#scenes-2
+                        .swiper-wrapper
+                            .swiper-slide slider2
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="3")
+                    .swiper-container#scenes-3
+                        .swiper-wrapper
+                            .swiper-slide 
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="4")
+                    .swiper-container#scenes-4
+                        .swiper-wrapper
+                            .swiper-slide
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+                .swiper-slide.main-slide(data-hash="5")
+                    .swiper-container#scenes-5
+                        .swiper-wrapper
+                            .swiper-slide
+                                #footer
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+
+
+        script(src="lib/jq.js")
+        script(src="bundle/swiper-3.4.0.jquery.min.js")
+        script(src="bundle/TweenMax.min.js")
+
+        //- script(src="bundle/isAboveIE9.jquery.parallax.min.js")
+
+        //- script(src="bundle/jquery-ui.min.js")
+        script(src="bundle/index.min.js")
+        script(src="bundle/footer.min.js")

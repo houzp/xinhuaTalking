@@ -1,13 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html class="hi ok haha">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit">
     <meta content="width=device-width,initial-scale=1" name="viewport">
-    <title>pc</title>
-    <script src="dist/browser.min.js"></script>
+    <title>browser.js_pc</title>
+    <!-- browser.js 自定义配置：必须放在browser.js之前 -->
+    <script>
+        // window.BROWSER_NOJUMP = true; // 关闭跳转
+        // window.BROWSER_NOJUMP = false; // 开启跳转
+        // window.BROWSER_JUMPTO = 'test'; // 跳转到 test.htm
+        // window.BROWSER_JUMPTO = 'test.html'; // 跳转至 test.html
+        // 不做任何设置时，移动设备使用默认设置，自动跳转至 mobile.htm
+    </script>
+    <script src="dist/browser.js"></script>
     <!-- <script src="dist/browser.js" id="BROWSER_NOJUMP" name="BROWSER_JUMP_PAD"></script> -->
     <link rel="stylesheet" href="demo/demo.css">
 

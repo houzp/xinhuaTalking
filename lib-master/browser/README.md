@@ -24,7 +24,14 @@ hash 开关功能直接使用 hash 即可开启，页面地址栏尾部添加 `#
 
 2. `name="BROWSER_JUMP_PAD"` 开启pad设备跳转，pad设备将自动跳转至 `/pad.htm`。
 
-下面是一个使用扩展参数的demo：
+
+关闭跳转的demo **[推荐]**：
+
+```html
+<script src="../browser.min.js" id="BROWSER_NOJUMP"></script>
+```
+
+另一个demo，`name="BROWSER_JUMP_PAD"`无效，因为前面已经设置了 `id="BROWSER_NOJUMP"`：
 
 ```html
 <script src="../browser.min.js" id="BROWSER_NOJUMP" name="BROWSER_JUMP_PAD"></script>
@@ -68,7 +75,7 @@ _**browser.js**_ 通过javascript对象 **`navigator.userAgent`** 实现判断�
 
 ## _**Bugs**_
 
-由于目前我们缺少android、小米、windows phone等终端设备，所以这些设备的识别可靠性有待后续验证。
+由于目前我们缺少android、小米、windows phone等终端设备，所以这些设备的识别可靠性有待后续验证。如果您发现了一些bug，您可以 e-mail 我：_**st_sister@iCloud.com**_ 非常感谢您的反馈！
 
 --------------------------------------------------------------------------------
 
