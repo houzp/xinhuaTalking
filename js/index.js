@@ -4,67 +4,22 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-19-22:51:26
+* @Last modified time: 2016-12-20-15:52:52
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 
 $(() => {
-
+    // 必要的全局对象
     const $window = $(window);
     const $body = $('body');
 
-    const xinhuaTalking = {
-        activeIndex: 0,
-        $nav: $('#nav'),
+    // cover
+    const cover = {
         $cover: $('#cover'),
-        navHeight: 67,
         timeout: null,
         init: function () {
-            const _this = this;
-            // getSize
-            _this.getSize();
-
-            // cover
-            _this.coverInit();
-
-            // nav
-            $window.on('resize', () => {
-                _this.getSize();
-                _this.navStatus(_this.activeIndex);
-            });
-
-            _this.navHeight = this.$nav.height();
-            _this.navPos((_this.size.height - _this.navHeight), 0);
-
-            // swiper
-            _this.scenesMain = _this.scenesMain();
-            _this.scenes[1] = _this.scenes(1);
-            _this.scenes[2] = _this.scenes(2);
-            _this.scenes[3] = _this.scenes(3);
-        },
-        getSize: function () {
-            this.size = {
-                height: $window.height(),
-                width: $window.width(),
-            };
-            return this.size;
-        },
-        navPos: function (num, time) {
-            TweenMax.to(this.$nav, time, {
-                top: num
-            });
-            // return this.$nav;
-        },
-        navStatus: function (activeIndex) {
-            if (activeIndex < 1) {
-                this.navPos((this.size.height - this.navHeight), 0.4);
-            } else {
-                this.navPos(0, 0.4);
-            }
-        },
-        coverInit: function (time) {
-            console.log(this.$cover.length);
+            console.log('cover mod:', this.$cover.length);
             if (this.$cover.length) {
                 this.coverClear();
                 this.coverTimeout();
@@ -84,11 +39,11 @@ $(() => {
             clearTimeout(this.timeout);
             this.timeout = null;
         },
-        coverTimeout: function (time) {
+        coverTimeout: function () {
             const _this = this;
-            _this.timeout = setTimeout(function () {
+            _this.timeout = setTimeout(() => {
                 _this.coverHide();
-            }, (time || 2000));
+            }, 2000);
         },
         coverHide: function () {
             console.log('coverHide');
@@ -109,36 +64,92 @@ $(() => {
                     console.log('remove');
                 }
             });
+        }
+    };
+
+    const xinhuaTalking = {
+        $nav: $('#nav'),
+        navHeight: 67,
+        activeIndex: 0,
+        init: function () {
+            const _this = this;
+
+            // getSize
+            _this.getSize();
+
+            // nav
+            _this.navHeight = this.$nav.height();
+            $window.on('resize', () => {
+                if (_this.activeIndex < 1) {
+                    _this.getSize();
+                }
+                _this.navStatus(_this.activeIndex);
+            });
+
+            // swiper
+            _this.scenesMain = _this.scenesMain(1000);
+            _this.scenes[1] = _this.scenes(1);
+            // _this.scenes[2] = _this.scenes(2);
+            // _this.scenes[3] = _this.scenes(3);
         },
-        scenesMain: function () {
+        getSize: function () {
+            this.size = {
+                height: $window.height(),
+                width: $window.width(),
+            };
+        },
+        navPos: function (num, time, callback) {
+            TweenMax.to(this.$nav, time, {
+                top: num,
+                bottom: 'auto',
+                onComplete: callback || null
+            });
+        },
+        navStatus: function (activeIndex) {
+            const _this = this;
+            if (activeIndex < 1) {
+                _this.navPos((_this.size.height - _this.navHeight), 0.6, function () {
+                    _this.$nav.removeClass('isTop');
+                });
+            } else {
+                _this.navPos(0, 0.6, function () {
+                    _this.$nav.addClass('isTop');
+                });
+            }
+        },
+        scenesMain: function (time) {
             const _this = this;
             return new Swiper('#main', {
-                // loop: true,
-                hashnav: true,
+                speed: time || 800,
+                // hashnav: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
-                // direction: 'vertical',
-                // mousewheelForceToAxis: true,
-                onSlideChangeStart: function (swiper) {
+                // onSlideChangeStart
+                onTransitionStart: function (swiper) {
+                    console.log(swiper.activeIndex);
                     _this.activeIndex = swiper.activeIndex;
-                    // console.log(swiper.activeIndex);
-                    _this.navStatus(_this.activeIndex);
+                    _this.navStatus(swiper.activeIndex);
                 }
             });
         },
         scenes: function (num) {
             return new Swiper(`#scenes-${num}`, {
                 // autoplay: 5000, //可选选项，自动滑动
+                loop: true,
+                parallax: true,
                 pagination: `#scenes-${num} .swiper-pagination`,
                 prevButton: `#scenes-${num} .swiper-button-prev`,
                 nextButton: `#scenes-${num} .swiper-button-next`,
-                // paginationClickable: true,
+                paginationClickable: true,
+                speed: 2000,
             });
         },
     };
 
+    // cover
+    cover.init();
+    // xinhuaTalking
     xinhuaTalking.init();
 
-    return xinhuaTalking;
 });

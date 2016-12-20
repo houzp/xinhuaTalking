@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-19-22:49:38
+* @Last modified time: 2016-12-20-19:47:11
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -34,12 +34,30 @@ html {
 }
 
 body {
-    background: #FFF;
+    /*font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif;*/
+    font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
     /*font-family: Helvetica Neue, Helvetica, Arial, sans-serif;*/
-    /*font-size  : 14px;*/
-    color     : #000;
-    margin    : 0;
-    padding   : 0;
+    background : #FFF;
+    color      : #000;
+    margin     : 0;
+    padding    : 0;
+}
+/*.ie body,
+.windows body {
+    font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
+}*/
+.oldie body {
+    font-family: \5B8B\4F53, Arial;
+}
+
+.clearfix:after,
+.scenes-1-title-top:after {
+    content : '';
+    display : inline-block;
+    width   : 100%;
+    clear   : both;
+    overflow: hidden;
+    height  : 0;
 }
 
 .overflow-hidden {
@@ -59,29 +77,6 @@ body {
 .swiper-container {
     width : 100%;
     height: 100%;
-}
-
-.main-slide {
-    text-align: center;
-    font-size : 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    /*display                : -webkit-box;
-    display                : -ms-flexbox;
-    display                : -webkit-flex;
-    display                : flex;
-    -webkit-box-pack       : center;
-    -ms-flex-pack          : center;
-    -webkit-justify-content: center;
-    justify-content        : center;
-    -webkit-box-align      : center;
-    -ms-flex-align         : center;
-    -webkit-align-items    : center;
-    align-items            : center;*/
-}
-
-.scenes-1 {
-    padding-top: 69px;
 }
 
 .ie-tip {
@@ -140,14 +135,15 @@ a:hover {
 .top-nav a {
     margin-right: 23px;
 }
-
+/* nav */
 .nav {
     width           : 100%;
     height          : 67px;
     background-color: #1080f2;
     position        : absolute;
     z-index         : 99;
-    /*bottom          : auto;*/
+    top             : auto;
+    bottom          : 0;
     left            : 0;
     color           : #FFF;
     /*transition        : all 2s;
@@ -155,20 +151,38 @@ a:hover {
     -webkit-transition: all 2s;
     -o-transition     : all 2s;*/
 }
-/*.position-bottom {
-    bottom: 0;
-    top   : auto;
-}*/
+
+.isTop {
+    top   : 0;
+    bottom: auto;
+}
+
 .logo {}
 
-.btn {}
-
-.btn {}
+.btn-box {}
 
 .icon-1 {}
-/* scenes-1 */
-.cover,
-.scenes-1 {
+/* main-slide */
+.main-slide {
+    text-align: left;
+    font-size : 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    /*display                : -webkit-box;
+        display                : -ms-flexbox;
+        display                : -webkit-flex;
+        display                : flex;
+        -webkit-box-pack       : center;
+        -ms-flex-pack          : center;
+        -webkit-justify-content: center;
+        justify-content        : center;
+        -webkit-box-align      : center;
+        -ms-flex-align         : center;
+        -webkit-align-items    : center;
+        align-items            : center;*/
+}
+/* cover */
+.cover {
     background-image   : url("../index-assets/bg.jpg");
     background-position: center;
     background-repeat  : no-repeat;
@@ -196,3 +210,311 @@ a:hover {
     margin-left      : -165px;
     margin-top       : -71px;
 }
+/* swiper-slide-part */
+.swiper-slide-part {
+    width   : 1200px;
+    height  : 100%;
+    margin  : 0 auto;
+    position: relative;
+}
+/* scenes-1 */
+.scenes-1 {
+    background: none;
+}
+/*.scenes-1-bg {
+    width            : 160%;
+    height           : 100%;
+    background-repeat: repeat-x;
+    position         : absolute;
+    z-index          : 99;
+    top              : 0;
+    left             : -30%;
+}*/
+.parallax-bg {
+    position               : absolute;
+    left                   : 0;
+    top                    : 0;
+    width                  : 130%;
+    height                 : 100%;
+    background-image       : url("../index-assets/bg.jpg");
+    background-size        : cover;
+    background-position    : center;
+}
+
+.scenes-1 .swiper-slide {
+    overflow: hidden;
+}
+
+.scenes-1-logo {
+    position           : absolute;
+    top                : 160px;
+    left               : -9px;
+    width              : 169px;
+    height             : 82px;
+    background-image   : url("../index-assets/scenes-1-logo.png");
+    background-repeat  : no-repeat;
+    background-position: center;
+}
+
+.scenes-1-content,
+.scenes-1-title-1,
+.scenes-1-title-4,
+.scenes-1-title-top {
+    position: absolute;
+    width   : 550px;
+}
+
+.scenes-1-title-top {
+    top   : 293px;
+    left  : 0;
+    height: 70px;
+}
+
+.scenes-1-title-2 {
+    float      : left;
+    font-size  : 60px;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+.scenes-1-title-3 {
+    float      : left;
+    margin-left: 20px;
+    font-size  : 16px;
+    line-height: 30px;
+}
+
+.scenes-1-title-1 {
+    top        : 375px;
+    left       : 0;
+    line-height: 56px;
+    font-size  : 40px;
+    font-weight: bold;
+}
+
+.scenes-1-title-4 {
+    top        : 490px;
+    left       : 0;
+    text-align : right;
+    line-height: 68px;
+    font-size  : 30px;
+    color      : #666;
+}
+
+.scenes-1-content {
+    top : 570px;
+    left: 0;
+}
+
+.scenes-1-absract {
+    line-height  : 30px;
+    font-size    : 16px;
+    color        : #666;
+    margin-bottom: 40px;
+    padding-left : 24px;
+    position     : relative;
+    overflow     : hidden;
+}
+
+.scenes-1-absract:before {
+    content   : '';
+    overflow  : hidden;
+    background: #0099ff;
+    width     : 3px;
+    position  : absolute;
+    top       : 8px;
+    left      : 0;
+    bottom    : 6px;
+}
+/* ani-btn */
+.ani-btn {
+    display    : inline-block;
+    border     : #0099ff 1px solid;
+    padding    : 0 60px 0 20px;
+    line-height: 40px;
+    font-size  : 18px;
+    color      : #1080f2;
+    position   : relative;
+    cursor     : pointer;
+    overflow   : hidden;
+    float      : left;
+    clear      : both;
+}
+
+.ani-btn.active,
+.ani-btn:hover {
+    color: #FFF;
+}
+
+.ani-btn .t {
+    position: relative;
+    z-index : 2;
+}
+
+.ani-btn .b {
+    height          : 100%;
+    width           : 0;
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    z-index         : 1;
+    background-color: #0099ff;
+    -webkit-transition:all 1s;
+    transition      : all 1s;
+}
+
+.ani-btn.active .b,
+.ani-btn:hover .b {
+    width: 100%;
+}
+
+.ani-btn.active:after,
+.ani-btn:after {
+    content            : '';
+    display            : block;
+    width              : 40px;
+    height             : 40px;
+    background-repeat  : no-repeat;
+    background-position: center;
+    overflow           : hidden;
+    right              : 0;
+    top                : 50%;
+    margin-top         : -20px;
+    position           : absolute;
+    z-index            : 3;
+    -webkit-transition:all 1s;
+    transition         : all 1s;
+    border-left        : #0099ff 1px solid;
+    background-image   : url("../index-assets/scenes-1-btn-1-bg.png");
+    background-color   : transparent;
+}
+
+.ani-btn.active:after,
+.ani-btn:hover:after {
+    background-image: url("../index-assets/scenes-1-btn-1-active-bg.png");
+    background-color: #439ffd;
+    border-left     : #439ffd 1px solid;
+}
+/* ani-btn-2 */
+.ani-btn-2 {
+    display      : inline-block;
+    border       : #0099ff 1px solid;
+    padding      : 0 60px 0 20px;
+    line-height  : 40px;
+    font-size    : 18px;
+    color        : #1080f2;
+    position     : relative;
+    cursor       : pointer;
+    overflow     : hidden;
+    float        : left;
+    clear        : both;
+    margin-bottom: 9px;
+}
+
+.ani-btn-2,
+.ani-btn-2:after {
+    -webkit-transition:all 2s;
+    transition: all 2s;
+}
+
+.ani-btn-2.active,
+.ani-btn-2:hover {
+    color: #FFF;
+}
+
+.ani-btn-2 .t {
+    position: relative;
+    z-index : 2;
+}
+
+.ani-btn-2 .b {
+    height          : 40px;
+    margin-top      : -20px;
+    width           : 40px;
+    position        : absolute;
+    top             : 50%;
+    right           : 0;
+    background-color: #0099ff;
+    border-radius   : 100%;
+    z-index         : 1;
+    /*opacity         : 0;*/
+    -webkit-transform       : scale(0);
+            transform       : scale(0);
+    -webkit-transition:-webkit-transform 2s;
+    transition:-webkit-transform 2s;
+    transition:transform 2s;
+    transition      : transform 2s, -webkit-transform 2s;
+}
+
+.ani-btn-2.active .b,
+.ani-btn-2:hover .b {
+    /*opacity   : 1;*/
+    -webkit-transform: scale(16);
+            transform: scale(16);
+}
+
+.ani-btn-2.active:after,
+.ani-btn-2:after {
+    content            : '';
+    display            : block;
+    width              : 40px;
+    height             : 40px;
+    background-repeat  : no-repeat;
+    background-position: center;
+    overflow           : hidden;
+    right              : 0;
+    top                : 50%;
+    margin-top         : -20px;
+    position           : absolute;
+    z-index            : 3;
+    border-left        : #0099ff 1px solid;
+    background-image   : url("../index-assets/scenes-1-btn-1-bg.png");
+    background-color   : transparent;
+}
+
+.ani-btn-2.active:after,
+.ani-btn-2:hover:after {
+    background-image: url("../index-assets/scenes-1-btn-1-active-bg.png");
+    background-color: #439ffd;
+    border-left     : #439ffd 1px solid;
+}
+
+.scenes-1-btn-1 {}
+
+.scenes-1-btn-2 {}
+
+.scenes-1-tool {
+    position: relative;
+}
+
+.scenes-1-qrcode {
+    position: absolute;
+    right   : 0;
+    top     : 0;
+    width   : 108px;
+    height  : 108px;
+    float   : right;
+}
+
+.scenes-1-pic {
+    position: absolute;
+    bottom  : 67px;
+    left    : 50%;
+}
+/*.scenes-1-pic img {
+    width : auto;
+    height: 100%;
+}*/
+.scenes-1 .swiper-pagination {
+    position: absolute;
+    /*z-index         : 99;*/
+    /*background-color: red;*/
+    bottom  : 107px;
+    height  : 20px;
+}
+
+.scenes-1 .swiper-button-prev {}
+
+.scenes-1 .swiper-button-next {}
+
+t {}

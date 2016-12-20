@@ -18,7 +18,7 @@ html
             .part
                 .logo
                     img(src="index-assets/bottom-nav-logo.png" height="37")
-                .btn
+                .btn-box
                     .btn
                         .icon-1
                         | 三个字
@@ -31,38 +31,60 @@ html
                 .swiper-slide.main-slide(data-hash="1")
                     include mod-top-nav
                     .swiper-container.scenes-1#scenes-1
+                        .parallax-bg(data-swiper-parallax="-23%")
                         .swiper-wrapper
-                            .swiper-slide slider1
-                            .swiper-slide slider2
-                            .swiper-slide slider3
-                            .swiper-slide slider4
-                            .swiper-slide slider5
+                            - for (var i=0, j=5; i<j; i++) {
+                                .swiper-slide
+                                    .swiper-slide-part
+                                        .scenes-1-logo(data-swiper-parallax="300")
+                                        .scenes-1-title-top(data-swiper-parallax="200")
+                                            .scenes-1-title-2 尹卓尹卓
+                                            .scenes-1-title-3 北京佳合建科集团董事长<br>北京定荣家科技有限公司创始人
+                                        .scenes-1-title-1(data-swiper-parallax="-100") 军改，实现强军梦的正确打开方式正确打开方式
+                                        .scenes-1-title-4(data-swiper-parallax="100") ——军改一年间系列访谈
+                                        .scenes-1-content
+                                            .scenes-1-absract(data-swiper-parallax="200") #{i} 2015年11月26日，中共中央总书记、国家主席、中央军委主席习近平在中央军委改革工作会议上强调要“全面实施改革强军战略,坚定不移走中国特色强军之路”。
+                                            .scenes-1-tool
+                                                .scenes-1-btn-1.ani-btn-2.active(data-swiper-parallax="300")
+                                                    .t 进入访谈
+                                                    .b
+                                                .scenes-1-btn-2.ani-btn-2(data-swiper-parallax="300")
+                                                    .t 军改一周年系列访谈
+                                                    .b
+                                                .scenes-1-btn-2.ani-btn(data-swiper-parallax="300")
+                                                    .t 军改一周年系列访谈
+                                                    .b
+                                                .scenes-1-qrcode(data-swiper-parallax="400")
+                                                    img(src="index-assets/demo-qrcode.jpg")
+                                        .scenes-1-pic(data-swiper-parallax="-500")
+                                            img(src="index-assets/demo-pic.png")
+                            - }
                         .swiper-pagination
                         .swiper-button-prev
                         .swiper-button-next
                 .swiper-slide.main-slide(data-hash="2")
-                    .swiper-container#scenes-2
+                    .swiper-container.scenes-2#scenes-2
                         .swiper-wrapper
                             .swiper-slide slider2
                         .swiper-pagination
                         .swiper-button-prev
                         .swiper-button-next
                 .swiper-slide.main-slide(data-hash="3")
-                    .swiper-container#scenes-3
+                    .swiper-container.scenes-3#scenes-3
                         .swiper-wrapper
                             .swiper-slide 
                         .swiper-pagination
                         .swiper-button-prev
                         .swiper-button-next
                 .swiper-slide.main-slide(data-hash="4")
-                    .swiper-container#scenes-4
+                    .swiper-container.scenes-4#scenes-4
                         .swiper-wrapper
                             .swiper-slide
                         .swiper-pagination
                         .swiper-button-prev
                         .swiper-button-next
                 .swiper-slide.main-slide(data-hash="5")
-                    .swiper-container#scenes-5
+                    .swiper-container.scenes-5#scenes-5
                         .swiper-wrapper
                             .swiper-slide
                                 #footer
