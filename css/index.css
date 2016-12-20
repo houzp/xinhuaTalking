@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-19-22:49:38
+* @Last modified time: 2016-12-20-13:50:43
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -45,29 +45,6 @@ body {
 .swiper-container {
     width : 100%;
     height: 100%;
-}
-
-.main-slide {
-    text-align: center;
-    font-size : 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    /*display                : -webkit-box;
-    display                : -ms-flexbox;
-    display                : -webkit-flex;
-    display                : flex;
-    -webkit-box-pack       : center;
-    -ms-flex-pack          : center;
-    -webkit-justify-content: center;
-    justify-content        : center;
-    -webkit-box-align      : center;
-    -ms-flex-align         : center;
-    -webkit-align-items    : center;
-    align-items            : center;*/
-}
-
-.scenes-1 {
-    padding-top: 69px;
 }
 
 .ie-tip {
@@ -126,14 +103,15 @@ a:hover {
 .top-nav a {
     margin-right: 23px;
 }
-
+/* nav */
 .nav {
     width           : 100%;
     height          : 67px;
     background-color: #1080f2;
     position        : absolute;
     z-index         : 99;
-    /*bottom          : auto;*/
+    top             : auto;
+    bottom          : 0;
     left            : 0;
     color           : #FFF;
     /*transition        : all 2s;
@@ -141,10 +119,12 @@ a:hover {
     -webkit-transition: all 2s;
     -o-transition     : all 2s;*/
 }
-/*.position-bottom {
-    bottom: 0;
-    top   : auto;
-}*/
+
+.isTop {
+    top   : 0;
+    bottom: auto;
+}
+
 .logo {}
 
 .btn {}
@@ -152,7 +132,26 @@ a:hover {
 .btn {}
 
 .icon-1 {}
-/* scenes-1 */
+/* main-slide */
+.main-slide {
+    text-align: left;
+    font-size : 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    /*display                : -webkit-box;
+        display                : -ms-flexbox;
+        display                : -webkit-flex;
+        display                : flex;
+        -webkit-box-pack       : center;
+        -ms-flex-pack          : center;
+        -webkit-justify-content: center;
+        justify-content        : center;
+        -webkit-box-align      : center;
+        -ms-flex-align         : center;
+        -webkit-align-items    : center;
+        align-items            : center;*/
+}
+/* cover */
 .cover,
 .scenes-1 {
     background-image   : url("../index-assets/bg.jpg");
@@ -182,3 +181,57 @@ a:hover {
     margin-left      : -165px;
     margin-top       : -71px;
 }
+/* swiper-slide-part */
+.swiper-slide-part {
+    width   : 1200px;
+    height  : 100%;
+    margin  : 0 auto;
+    position: relative;
+}
+/* scenes-1 */
+.scenes-1 {}
+
+.scenes-1 .swiper-slide {
+    overflow: hidden;
+}
+
+.scenes-1-logo {}
+
+.scenes-1-title-1 {}
+
+.scenes-1-title-2 {}
+
+.scenes-1-title-3 {}
+
+.scenes-1-title-4 {}
+
+.scenes-1-absract {}
+
+.scenes-1-btn-1 {}
+
+.scenes-1-btn-2 {}
+
+.scenes-1-qrcode {}
+
+.scenes-1-pic {
+    position: absolute;
+    bottom  : 67px;
+    left    : 50%;
+}
+
+.scenes-1-pic img {
+    width : auto;
+    height: 100%;
+}
+
+.scenes-1 .swiper-pagination {
+    position: absolute;
+    /*z-index         : 99;*/
+    /*background-color: red;*/
+    bottom  : 107px;
+    height  : 20px;
+}
+
+.scenes-1 .swiper-button-prev {}
+
+.scenes-1 .swiper-button-next {}

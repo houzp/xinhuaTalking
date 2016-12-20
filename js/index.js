@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-19-22:51:26
+* @Last modified time: 2016-12-20-13:58:07
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -17,7 +17,6 @@ $(() => {
     const xinhuaTalking = {
         activeIndex: 0,
         $nav: $('#nav'),
-        $cover: $('#cover'),
         navHeight: 67,
         timeout: null,
         init: function () {
@@ -30,18 +29,18 @@ $(() => {
 
             // nav
             $window.on('resize', () => {
-                _this.getSize();
+                if (_this.activeIndex < 1) {
+                    _this.getSize();
+                }
                 _this.navStatus(_this.activeIndex);
             });
-
             _this.navHeight = this.$nav.height();
-            _this.navPos((_this.size.height - _this.navHeight), 0);
 
             // swiper
-            _this.scenesMain = _this.scenesMain();
+            _this.scenesMain = _this.scenesMain(1000);
             _this.scenes[1] = _this.scenes(1);
-            _this.scenes[2] = _this.scenes(2);
-            _this.scenes[3] = _this.scenes(3);
+            // _this.scenes[2] = _this.scenes(2);
+            // _this.scenes[3] = _this.scenes(3);
         },
         getSize: function () {
             this.size = {
@@ -50,80 +49,91 @@ $(() => {
             };
             return this.size;
         },
-        navPos: function (num, time) {
+        navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
-                top: num
+                top: num,
+                bottom: 'auto',
+                onComplete: callback || null
             });
-            // return this.$nav;
         },
         navStatus: function (activeIndex) {
+            const _this = this;
             if (activeIndex < 1) {
-                this.navPos((this.size.height - this.navHeight), 0.4);
+                _this.navPos((_this.size.height - _this.navHeight), 0.6, function () {
+                    _this.$nav.removeClass('isTop');
+                });
             } else {
-                this.navPos(0, 0.4);
+                _this.navPos(0, 0.6, function () {
+                    _this.$nav.addClass('isTop');
+                });
             }
         },
         coverInit: function (time) {
-            console.log(this.$cover.length);
-            if (this.$cover.length) {
-                this.coverClear();
-                this.coverTimeout();
-                this.coverClick();
+            const _this = this;
+            _this.$cover = $('#cover');
+            _this.coverClick = function () {
+                _this.$cover.on('click', () => {
+                    TweenMax.killAll();
+                    _this.coverHide();
+                    _this.coverClear();
+                    console.log('click', _this.timeout);
+                });
+            };
+            _this.coverClear = function () {
+                clearTimeout(this.timeout);
+                this.timeout = null;
+            };
+            _this.coverTimeout = function (time) {
+                // const _this = this;
+                _this.timeout = setTimeout(function () {
+                    _this.coverHide();
+                }, (time || 2000));
+            };
+            _this.coverHide = function () {
+                console.log('coverHide');
+                // const _this = this;
+                const time = 4;
+                $body.addClass('overflow-hidden');
+                // anis
+                TweenMax.to(_this.$cover, time, {
+                    scale: 12,
+                    opacity: 0,
+                    ease: Power1.easeIn,
+                    onStart: function () {
+                        _this.$cover.off('click');
+                    },
+                    onComplete: function () {
+                        _this.$cover.remove();
+                        $body.removeClass('overflow-hidden');
+                        console.log('remove');
+                    }
+                });
+            };
+            // console.log(this.$cover.length);
+            // init
+            if (_this.$cover.length) {
+                _this.coverClear();
+                _this.coverTimeout();
+                _this.coverClick();
             }
         },
-        coverClick: function () {
-            const _this = this;
-            _this.$cover.on('click', () => {
-                TweenMax.killAll();
-                _this.coverHide();
-                _this.coverClear();
-                console.log('click', _this.timeout);
-            });
-        },
-        coverClear: function () {
-            clearTimeout(this.timeout);
-            this.timeout = null;
-        },
-        coverTimeout: function (time) {
-            const _this = this;
-            _this.timeout = setTimeout(function () {
-                _this.coverHide();
-            }, (time || 2000));
-        },
-        coverHide: function () {
-            console.log('coverHide');
-            const _this = this;
-            const time = 4;
-            $body.addClass('overflow-hidden');
-            // anis
-            TweenMax.to(_this.$cover, time, {
-                scale: 12,
-                opacity: 0,
-                ease: Power1.easeIn,
-                onStart: function () {
-                    _this.$cover.off('click');
-                },
-                onComplete: function () {
-                    _this.$cover.remove();
-                    $body.removeClass('overflow-hidden');
-                    console.log('remove');
-                }
-            });
-        },
-        scenesMain: function () {
+        scenesMain: function (time) {
             const _this = this;
             return new Swiper('#main', {
                 // loop: true,
+                speed: time || 800,
                 hashnav: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
-                // direction: 'vertical',
-                // mousewheelForceToAxis: true,
-                onSlideChangeStart: function (swiper) {
+                // freeMode: true, // 不能用无法有效控制nav
+                // freeModeSticky: true, // 不能用无法有效控制nav
+                // onSlideChangeStart
+                // onSlideChangeEnd
+                onTransitionStart: function (swiper) {
+                    console.log(swiper.activeIndex);
                     _this.activeIndex = swiper.activeIndex;
-                    // console.log(swiper.activeIndex);
-                    _this.navStatus(_this.activeIndex);
+                    _this.navStatus(swiper.activeIndex);
                 }
             });
         },
@@ -133,7 +143,7 @@ $(() => {
                 pagination: `#scenes-${num} .swiper-pagination`,
                 prevButton: `#scenes-${num} .swiper-button-prev`,
                 nextButton: `#scenes-${num} .swiper-button-next`,
-                // paginationClickable: true,
+                paginationClickable: true,
             });
         },
     };
