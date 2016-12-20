@@ -4,37 +4,87 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-20-13:58:07
+* @Last modified time: 2016-12-20-15:52:52
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 
 $(() => {
-
+    // 必要的全局对象
     const $window = $(window);
     const $body = $('body');
 
-    const xinhuaTalking = {
-        activeIndex: 0,
-        $nav: $('#nav'),
-        navHeight: 67,
+    // cover
+    const cover = {
+        $cover: $('#cover'),
         timeout: null,
         init: function () {
+            console.log('cover mod:', this.$cover.length);
+            if (this.$cover.length) {
+                this.coverClear();
+                this.coverTimeout();
+                this.coverClick();
+            }
+        },
+        coverClick: function () {
             const _this = this;
+            _this.$cover.on('click', () => {
+                TweenMax.killAll();
+                _this.coverHide();
+                _this.coverClear();
+                console.log('click', _this.timeout);
+            });
+        },
+        coverClear: function () {
+            clearTimeout(this.timeout);
+            this.timeout = null;
+        },
+        coverTimeout: function () {
+            const _this = this;
+            _this.timeout = setTimeout(() => {
+                _this.coverHide();
+            }, 2000);
+        },
+        coverHide: function () {
+            console.log('coverHide');
+            const _this = this;
+            const time = 4;
+            $body.addClass('overflow-hidden');
+            // anis
+            TweenMax.to(_this.$cover, time, {
+                scale: 12,
+                opacity: 0,
+                ease: Power1.easeIn,
+                onStart: function () {
+                    _this.$cover.off('click');
+                },
+                onComplete: function () {
+                    _this.$cover.remove();
+                    $body.removeClass('overflow-hidden');
+                    console.log('remove');
+                }
+            });
+        }
+    };
+
+    const xinhuaTalking = {
+        $nav: $('#nav'),
+        navHeight: 67,
+        activeIndex: 0,
+        init: function () {
+            const _this = this;
+
             // getSize
             _this.getSize();
 
-            // cover
-            _this.coverInit();
-
             // nav
+            _this.navHeight = this.$nav.height();
             $window.on('resize', () => {
                 if (_this.activeIndex < 1) {
                     _this.getSize();
                 }
                 _this.navStatus(_this.activeIndex);
             });
-            _this.navHeight = this.$nav.height();
 
             // swiper
             _this.scenesMain = _this.scenesMain(1000);
@@ -47,7 +97,6 @@ $(() => {
                 height: $window.height(),
                 width: $window.width(),
             };
-            return this.size;
         },
         navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
@@ -68,68 +117,15 @@ $(() => {
                 });
             }
         },
-        coverInit: function (time) {
-            const _this = this;
-            _this.$cover = $('#cover');
-            _this.coverClick = function () {
-                _this.$cover.on('click', () => {
-                    TweenMax.killAll();
-                    _this.coverHide();
-                    _this.coverClear();
-                    console.log('click', _this.timeout);
-                });
-            };
-            _this.coverClear = function () {
-                clearTimeout(this.timeout);
-                this.timeout = null;
-            };
-            _this.coverTimeout = function (time) {
-                // const _this = this;
-                _this.timeout = setTimeout(function () {
-                    _this.coverHide();
-                }, (time || 2000));
-            };
-            _this.coverHide = function () {
-                console.log('coverHide');
-                // const _this = this;
-                const time = 4;
-                $body.addClass('overflow-hidden');
-                // anis
-                TweenMax.to(_this.$cover, time, {
-                    scale: 12,
-                    opacity: 0,
-                    ease: Power1.easeIn,
-                    onStart: function () {
-                        _this.$cover.off('click');
-                    },
-                    onComplete: function () {
-                        _this.$cover.remove();
-                        $body.removeClass('overflow-hidden');
-                        console.log('remove');
-                    }
-                });
-            };
-            // console.log(this.$cover.length);
-            // init
-            if (_this.$cover.length) {
-                _this.coverClear();
-                _this.coverTimeout();
-                _this.coverClick();
-            }
-        },
         scenesMain: function (time) {
             const _this = this;
             return new Swiper('#main', {
-                // loop: true,
                 speed: time || 800,
-                hashnav: true,
+                // hashnav: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
-                // freeMode: true, // 不能用无法有效控制nav
-                // freeModeSticky: true, // 不能用无法有效控制nav
                 // onSlideChangeStart
-                // onSlideChangeEnd
                 onTransitionStart: function (swiper) {
                     console.log(swiper.activeIndex);
                     _this.activeIndex = swiper.activeIndex;
@@ -140,15 +136,20 @@ $(() => {
         scenes: function (num) {
             return new Swiper(`#scenes-${num}`, {
                 // autoplay: 5000, //可选选项，自动滑动
+                loop: true,
+                parallax: true,
                 pagination: `#scenes-${num} .swiper-pagination`,
                 prevButton: `#scenes-${num} .swiper-button-prev`,
                 nextButton: `#scenes-${num} .swiper-button-next`,
                 paginationClickable: true,
+                speed: 2000,
             });
         },
     };
 
+    // cover
+    cover.init();
+    // xinhuaTalking
     xinhuaTalking.init();
 
-    return xinhuaTalking;
 });
