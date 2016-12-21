@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-17:52:00
+* @Last modified time: 2016-12-21-18:50:07
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -97,57 +97,6 @@ $(() => {
         }
     };
 
-    const zoom = () => {
-        const $scenes1 = $('#scenes-1');
-        const tags = [{
-            tag: '.scenes-1-logo',
-        }, {
-            tag: '.scenes-1-title-top',
-        }, {
-            tag: '.scenes-1-title-1',
-        }, {
-            tag: '.scenes-1-title-4',
-        }, {
-            tag: '.scenes-1-content',
-        }, {
-            tag: '.scenes-1-pic',
-            type: 'height'
-        }];
-        const ratio = (num) => num * $(window).height() / 1080;
-        const set = (opt) => {
-            // tags[i].tag, tags[i].type, tags[i].num
-            let css = {
-                top: ratio(opt.num),
-            };
-            if (opt.type && opt.type === 'height') {
-                css = {
-                    height: ratio(opt.num),
-                };
-            }
-            opt.$tag.css(css);
-        };
-        const init = () => {
-            for (let i = 0, j = tags.length; i < j; i++) {
-                if (!tags[i].num) {
-                    tags[i].tag = $(tags[i].tag);
-                    console.log(tags[i].type !== 'height');
-                    if (tags[i].type !== 'height') {
-                        tags[i].num = tags[i].tag.offset().top;
-                    } else {
-                        tags[i].num = tags[i].tag.height();
-                    }
-                }
-                set(tags[i]);
-            }
-        };
-        init();
-        $window.on('resize', function () {
-            init();
-        });
-    };
-
-    zoom();
-
     const xinhuaTalking = {
         $nav: $('#nav'),
         navHeight: 67,
@@ -168,7 +117,11 @@ $(() => {
             });
 
             // swiper
-            _this.scenesMain = _this.scenesMain(1000);
+            _this.scenesMain = _this.scenesMain(1000, {
+                onInit: function () {
+                    _this.zoom();
+                },
+            });
             _this.scenes[1] = _this.scenes(1);
             // _this.scenes[2] = _this.scenes(2);
             // _this.scenes[3] = _this.scenes(3);
@@ -178,6 +131,52 @@ $(() => {
                 height: $window.height(),
                 width: $window.width(),
             };
+        },
+        zoom: function () {
+            const $scenes1 = $('#scenes-1');
+            const tags = [{
+                tag: '.scenes-1-logo',
+            }, {
+                tag: '.scenes-1-title-top',
+            }, {
+                tag: '.scenes-1-title-1',
+            }, {
+                tag: '.scenes-1-title-4',
+            }, {
+                tag: '.scenes-1-content',
+            }, {
+                tag: '.scenes-1-pic',
+                type: 'height'
+            }];
+            const ratio = (num) => Math.round(num * $(window).height() / 1080);
+            const set = (opt) => {
+                let css = {
+                    top: ratio(opt.num),
+                };
+                if (!opt.num) {
+                    opt.tag = $(opt.tag);
+                    if (opt.type !== 'height') {
+                        opt.num = opt.tag.offset().top;
+                    } else {
+                        opt.num = opt.tag.outerHeight();
+                    }
+                }
+                if (opt.type === 'height') {
+                    css = {
+                        height: ratio(opt.num),
+                    };
+                }
+                opt.tag.css(css);
+            };
+            const init = () => {
+                for (let i = 0, j = tags.length; i < j; i++) {
+                    set(tags[i]);
+                }
+            };
+            init();
+            $window.on('resize', function () {
+                init();
+            });
         },
         navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
@@ -198,7 +197,7 @@ $(() => {
                 });
             }
         },
-        scenesMain: function (time) {
+        scenesMain: function (time, callback) {
             const _this = this;
             return new Swiper('#main', {
                 speed: time || 800,
@@ -211,7 +210,8 @@ $(() => {
                     console.log(swiper.activeIndex);
                     _this.activeIndex = swiper.activeIndex;
                     _this.navStatus(swiper.activeIndex);
-                }
+                },
+                onInit: callback.onInit,
             });
         },
         scenes: function (num) {
