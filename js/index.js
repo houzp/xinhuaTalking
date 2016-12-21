@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-21:01:02
+* @Last modified time: 2016-12-21-23:38:37
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -20,6 +20,11 @@ $(() => {
         '../xinhuaTalking/index-assets/cover-logo.png',
         '../xinhuaTalking/index-assets/scenes-1-btn-1-active-bg.png',
         '../xinhuaTalking/index-assets/scenes-1-btn-1-bg.png',
+        '../xinhuaTalking/index-assets/demo-pic-0.png',
+        '../xinhuaTalking/index-assets/demo-pic-1.png',
+        '../xinhuaTalking/index-assets/demo-pic-2.png',
+        '../xinhuaTalking/index-assets/demo-pic-3.png',
+        '../xinhuaTalking/index-assets/demo-pic-4.png',
     ];
 
     const loader = new resLoader({
@@ -118,7 +123,13 @@ $(() => {
             });
 
             // swiper
-            _this.scenesMain = _this.scenesMain(1000);
+            _this.scenesMain = _this.scenesMain(1000, {
+                onSlideChangeStart: function (swiper) {
+                    console.log(swiper.activeIndex);
+                    _this.activeIndex = swiper.activeIndex;
+                    _this.navStatus(swiper.activeIndex);
+                }
+            });
             _this.scenes[1] = _this.scenes(1, {
                 onInit: function (swiper) {
                     _this.zoom();
@@ -128,8 +139,6 @@ $(() => {
                 //     _this.qrcode(swiper.activeIndex);
                 // }
             });
-            // _this.scenes[2] = _this.scenes(2);
-            // _this.scenes[3] = _this.scenes(3);
         },
         getSize: function () {
             this.size = {
@@ -144,7 +153,7 @@ $(() => {
                 $e.qrcode({
                     correctLevel: 1,
                     // background: "#999",
-                    foreground: "#666", //"#0099ff"
+                    foreground: "#333", //"#0099ff"
                     width: 108,
                     height: 108,
                     text: $.trim($e.find('.scenes-1-qrcode-url').text())
@@ -162,9 +171,6 @@ $(() => {
                 tag: '.scenes-1-title-4',
             }, {
                 tag: '.scenes-1-content',
-            }, {
-                tag: '.scenes-1-pic',
-                type: 'height'
             }];
             const ratio = (num) => Math.round(num * this.size.height / 1080);
             const set = (opt) => {
@@ -183,7 +189,6 @@ $(() => {
                 for (let i = 0, j = tags.length; i < j; i++) {
                     if (!tags[i].num) {
                         tags[i].tag = this.$scenes1.find(tags[i].tag);
-                        console.log(tags[i].tag);
                         if (tags[i].type !== 'height') {
                             tags[i].num = tags[i].tag.offset().top;
                         } else {
@@ -193,10 +198,10 @@ $(() => {
                     set(tags[i]);
                 }
             };
-            init();
             $window.on('resize', function () {
                 init();
             });
+            init();
         },
         navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
@@ -217,7 +222,7 @@ $(() => {
                 });
             }
         },
-        scenesMain: function (time) {
+        scenesMain: function (time, callback) {
             const _this = this;
             return new Swiper('#main', {
                 speed: time || 800,
@@ -226,11 +231,9 @@ $(() => {
                 keyboardControl: true,
                 mousewheelControl: true,
                 // onSlideChangeStart
-                onTransitionStart: function (swiper) {
-                    console.log(swiper.activeIndex);
-                    _this.activeIndex = swiper.activeIndex;
-                    _this.navStatus(swiper.activeIndex);
-                }
+                onInit: callback.onInit,
+                onSlideChangeStart: callback.onSlideChangeStart,
+                // mousewheelEventsTarged: '#nav',
             });
         },
         scenes: function (num, callback) {
