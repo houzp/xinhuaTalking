@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-12:54:15
+* @Last modified time: 2016-12-21-14:14:52
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -105,7 +105,10 @@ $(() => {
         init: function () {
 
         },
-        set: function () {
+        setPos: function () {
+
+        },
+        setSize: function () {
 
         },
         reset: function () {

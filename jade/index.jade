@@ -31,11 +31,11 @@ html
                 .swiper-slide.main-slide(data-hash="1")
                     include mod-top-nav
                     .swiper-container.scenes-1#scenes-1
-                        .parallax-bg(data-swiper-parallax="-23%")
+                        .scenes-1-parallax-bg(data-swiper-parallax="-23%")
                         .swiper-wrapper
                             - for (var i=0, j=5; i<j; i++) {
                                 .swiper-slide
-                                    .swiper-slide-part
+                                    .part_swiper-slide
                                         .scenes-1-logo(data-swiper-parallax="300")
                                         .scenes-1-title-top(data-swiper-parallax="200")
                                             .scenes-1-title-2 尹卓尹卓
@@ -94,9 +94,9 @@ html
 
 
         script(src="lib/jq.js")
-        script(src="bundle/resLoader.min.js")
-        script(src="bundle/swiper-3.4.0.jquery.min.js")
-        script(src="bundle/TweenMax.min.js")
+        script(src="lib/resLoader/resLoader.min.js")
+        script(src="lib/Swiper-3.4.1/dist/js/swiper.jquery.min.js")
+        script(src="lib/gsap/TweenMax.min.js")
 
         //- script(src="bundle/isAboveIE9.jquery.parallax.min.js")
 
