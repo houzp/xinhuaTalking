@@ -51,11 +51,12 @@ html
                                                 .scenes-1-btn-2.ani-btn-2(data-swiper-parallax="300")
                                                     .t 军改一周年系列访谈
                                                     .b
-                                                .scenes-1-btn-2.ani-btn(data-swiper-parallax="300")
-                                                    .t 军改一周年系列访谈
-                                                    .b
+                                                //- .scenes-1-btn-2.ani-btn(data-swiper-parallax="300")
+                                                //-     .t 军改一周年系列访谈
+                                                //-     .b
                                                 .scenes-1-qrcode(data-swiper-parallax="400")
-                                                    img(src="index-assets/demo-qrcode.jpg")
+                                                    .scenes-1-qrcode-url https://cjmm.github.io/##{i}
+                                                    //- img(src="index-assets/demo-qrcode.jpg")
                                         .scenes-1-pic(data-swiper-parallax="-500")
                                             img(src="index-assets/demo-pic.png" height="100%")
                             - }
@@ -96,6 +97,7 @@ html
         script(src="lib/jq.js")
         script(src="lib/resLoader/resLoader.min.js")
         script(src="lib/Swiper-3.4.1/dist/js/swiper.jquery.min.js")
+        script(src="lib/jquery.qrcode/jquery.qrcode.min.js")
         script(src="lib/gsap/TweenMax.min.js")
 
         //- script(src="bundle/isAboveIE9.jquery.parallax.min.js")

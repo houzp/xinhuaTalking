@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-18:50:07
+* @Last modified time: 2016-12-21-20:44:57
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -99,6 +99,7 @@ $(() => {
 
     const xinhuaTalking = {
         $nav: $('#nav'),
+        $scenes1: $('#scenes-1'),
         navHeight: 67,
         activeIndex: 0,
         init: function () {
@@ -117,12 +118,16 @@ $(() => {
             });
 
             // swiper
-            _this.scenesMain = _this.scenesMain(1000, {
-                onInit: function () {
+            _this.scenesMain = _this.scenesMain(1000);
+            _this.scenes[1] = _this.scenes(1, {
+                onInit: function (swiper) {
                     _this.zoom();
+                    _this.qrcode(swiper.activeIndex);
                 },
+                // onSlideChangeStart: function (swiper) {
+                //     _this.qrcode(swiper.activeIndex);
+                // }
             });
-            _this.scenes[1] = _this.scenes(1);
             // _this.scenes[2] = _this.scenes(2);
             // _this.scenes[3] = _this.scenes(3);
         },
@@ -132,8 +137,21 @@ $(() => {
                 width: $window.width(),
             };
         },
+        qrcode: function (num) {
+            const qrcodes = this.$scenes1.find('.scenes-1-qrcode');
+            qrcodes.each(function (i, e) {
+                const $e = $(e);
+                $e.qrcode({
+                    // correctLevel: 1,
+                    // background: "#ffffff",
+                    foreground: "#666",
+                    width: 108,
+                    height: 108,
+                    text: $.trim($e.find('.scenes-1-qrcode-url').text())
+                });
+            });
+        },
         zoom: function () {
-            const $scenes1 = $('#scenes-1');
             const tags = [{
                 tag: '.scenes-1-logo',
             }, {
@@ -148,19 +166,11 @@ $(() => {
                 tag: '.scenes-1-pic',
                 type: 'height'
             }];
-            const ratio = (num) => Math.round(num * $(window).height() / 1080);
+            const ratio = (num) => Math.round(num * this.size.height / 1080);
             const set = (opt) => {
                 let css = {
                     top: ratio(opt.num),
                 };
-                if (!opt.num) {
-                    opt.tag = $(opt.tag);
-                    if (opt.type !== 'height') {
-                        opt.num = opt.tag.offset().top;
-                    } else {
-                        opt.num = opt.tag.outerHeight();
-                    }
-                }
                 if (opt.type === 'height') {
                     css = {
                         height: ratio(opt.num),
@@ -169,7 +179,17 @@ $(() => {
                 opt.tag.css(css);
             };
             const init = () => {
+                this.getSize();
                 for (let i = 0, j = tags.length; i < j; i++) {
+                    if (!tags[i].num) {
+                        tags[i].tag = this.$scenes1.find(tags[i].tag);
+                        console.log(tags[i].tag);
+                        if (tags[i].type !== 'height') {
+                            tags[i].num = tags[i].tag.offset().top;
+                        } else {
+                            tags[i].num = tags[i].tag.outerHeight();
+                        }
+                    }
                     set(tags[i]);
                 }
             };
@@ -197,7 +217,7 @@ $(() => {
                 });
             }
         },
-        scenesMain: function (time, callback) {
+        scenesMain: function (time) {
             const _this = this;
             return new Swiper('#main', {
                 speed: time || 800,
@@ -210,11 +230,10 @@ $(() => {
                     console.log(swiper.activeIndex);
                     _this.activeIndex = swiper.activeIndex;
                     _this.navStatus(swiper.activeIndex);
-                },
-                onInit: callback.onInit,
+                }
             });
         },
-        scenes: function (num) {
+        scenes: function (num, callback) {
             return new Swiper(`#scenes-${num}`, {
                 // autoplay: 5000, //可选选项，自动滑动
                 loop: true,
@@ -224,6 +243,8 @@ $(() => {
                 nextButton: `#scenes-${num} .swiper-button-next`,
                 paginationClickable: true,
                 speed: 2000,
+                onInit: callback.onInit,
+                onSlideChangeStart: callback.onSlideChangeStart,
             });
         },
     };
