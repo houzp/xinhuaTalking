@@ -1,15 +1,15 @@
 /**
- * Copyright (c) Xinhuanet Inc. All rights reserved.
- *
- * @License: MIT
- * @Author: SuperWoods
- * @Email:  st_sister@iCloud.com
- * @Date:   2016-09-14-09:33:33
- *
- * @(demo)Last modified by:   SuperWoods
- * @(demo)Last modified time: 2016-09-21-04:45:26
- */
-/* is windows */
-.windows body {
-    font-family: "微软雅黑";
+* @Author: St. <SuperWoods>
+* @Date:   2016-12-21-14:10:02
+* @Email:  st_sister@iCloud.com
+* @Filename: fonts.css
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-21-14:10:46
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
+body {
+    /*font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif;*/
+    font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
+    /*font-family: Helvetica Neue, Helvetica, Arial, sans-serif;*/
 }

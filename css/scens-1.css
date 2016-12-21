@@ -1,0 +1,147 @@
+/**
+* @Author: St. <SuperWoods>
+* @Date:   2016-12-21-14:13:16
+* @Email:  st_sister@iCloud.com
+* @Filename: scens-1.css
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-21-14:13:20
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
+/* scenes-1 */
+.scenes-1 {
+    /*background: none;*/
+}
+
+.scenes-1-parallax-bg {
+    position               : absolute;
+    left                   : 0;
+    top                    : 0;
+    width                  : 130%;
+    height                 : 100%;
+    background-image       : url("../index-assets/bg.jpg");
+    -webkit-background-size: cover;
+    background-size        : cover;
+    background-position    : center;
+}
+
+.scenes-1 .swiper-slide {
+    overflow: hidden;
+}
+
+.scenes-1-logo {
+    position           : absolute;
+    top                : 160px;
+    left               : -9px;
+    width              : 169px;
+    height             : 82px;
+    background-image   : url("../index-assets/scenes-1-logo.png");
+    background-repeat  : no-repeat;
+    background-position: center;
+}
+
+.scenes-1-content,
+.scenes-1-title-1,
+.scenes-1-title-4,
+.scenes-1-title-top {
+    position: absolute;
+    width   : 550px;
+}
+
+.scenes-1-title-top {
+    top   : 293px;
+    left  : 0;
+    height: 70px;
+}
+
+.scenes-1-title-2 {
+    float      : left;
+    font-size  : 60px;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+.scenes-1-title-3 {
+    float      : left;
+    margin-left: 20px;
+    font-size  : 16px;
+    line-height: 30px;
+}
+
+.scenes-1-title-1 {
+    top        : 375px;
+    left       : 0;
+    line-height: 56px;
+    font-size  : 40px;
+    font-weight: bold;
+}
+
+.scenes-1-title-4 {
+    top        : 490px;
+    left       : 0;
+    text-align : right;
+    line-height: 68px;
+    font-size  : 30px;
+    color      : #666;
+}
+
+.scenes-1-content {
+    top : 570px;
+    left: 0;
+}
+
+.scenes-1-absract {
+    line-height  : 30px;
+    font-size    : 16px;
+    color        : #666;
+    margin-bottom: 40px;
+    padding-left : 24px;
+    position     : relative;
+    overflow     : hidden;
+}
+
+.scenes-1-absract:before {
+    content   : '';
+    overflow  : hidden;
+    background: #0099ff;
+    width     : 3px;
+    position  : absolute;
+    top       : 8px;
+    left      : 0;
+    bottom    : 6px;
+}
+
+.scenes-1-btn-1 {}
+
+.scenes-1-btn-2 {}
+
+.scenes-1-tool {
+    position: relative;
+}
+
+.scenes-1-qrcode {
+    position: absolute;
+    right   : 0;
+    top     : 0;
+    width   : 108px;
+    height  : 108px;
+    float   : right;
+}
+
+.scenes-1-pic {
+    position: absolute;
+    bottom  : 67px;
+    left    : 50%;
+}
+
+.scenes-1 .swiper-pagination {
+    position: absolute;
+    /*z-index         : 99;*/
+    /*background-color: red;*/
+    bottom  : 107px;
+    height  : 20px;
+}
+
+.scenes-1 .swiper-button-prev {}
+
+.scenes-1 .swiper-button-next {}
