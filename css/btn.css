@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:05:56
+* @Last modified time: 2016-12-21-22:50:20
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -151,4 +151,28 @@
     background-image: url("../index-assets/scenes-1-btn-1-active-bg.png");
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
+}
+/* ani-btn-3 */
+.scenes-1-pic-btn {
+    position           : absolute;
+    top                : 50%;
+    left               : 50%;
+    width              : 130px;
+    margin-left        : -65px;
+    height             : 130px;
+    margin-left        : -65px;
+    border-radius      : 100%;
+    box-shadow         : 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index            : 2;
+    cursor             : pointer;
+    background-color   : transparent;
+    background-repeat  : no-repeat;
+    background-position: center;
+    overflow           : hidden;
+    background-image   : url("../index-assets/icon-play.png");
+    transition         : all 1s;
+}
+
+.scenes-1-pic-btn:hover {
+    background-image: url("../index-assets/icon-play-active.png");
 }

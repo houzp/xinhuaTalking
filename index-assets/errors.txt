@@ -1,0 +1,5 @@
+[12/21/2016, 9:52:57 PM] layer "demo-pic-4.png": Duplicate path: demo-pic-4.png
+[12/21/2016, 9:52:57 PM] layer "demo-pic-3.png": Duplicate path: demo-pic-3.png
+[12/21/2016, 9:52:57 PM] layer "demo-pic-2.png": Duplicate path: demo-pic-2.png
+[12/21/2016, 9:52:57 PM] layer "demo-pic-1.png": Duplicate path: demo-pic-1.png
+[12/21/2016, 11:01:45 PM] layer "bg.jpg 拷贝": Expected end of input but "\u62F7" found.

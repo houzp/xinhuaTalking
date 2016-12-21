@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:29:30
+* @Last modified time: 2016-12-21-23:38:37
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -20,6 +20,11 @@ $(() => {
         '../xinhuaTalking/index-assets/cover-logo.png',
         '../xinhuaTalking/index-assets/scenes-1-btn-1-active-bg.png',
         '../xinhuaTalking/index-assets/scenes-1-btn-1-bg.png',
+        '../xinhuaTalking/index-assets/demo-pic-0.png',
+        '../xinhuaTalking/index-assets/demo-pic-1.png',
+        '../xinhuaTalking/index-assets/demo-pic-2.png',
+        '../xinhuaTalking/index-assets/demo-pic-3.png',
+        '../xinhuaTalking/index-assets/demo-pic-4.png',
     ];
 
     const loader = new resLoader({
@@ -35,11 +40,6 @@ $(() => {
             // $('.progresstext .total').text(total);
         },
         onComplete: function (total) {
-            // alert('加载完毕:'+total+'个资源');
-            // loadingMask.off();
-
-            // zoom
-            zoom.init();
             // cover
             cover.init();
             // xinhuaTalking
@@ -88,7 +88,8 @@ $(() => {
             TweenMax.to(_this.$cover, time, {
                 scale: 12,
                 opacity: 0,
-                ease: Power1.easeIn,
+                ease: Power4.easeInOut,
+                // ease: SlowMo.ease.config(0.7, 0.7, false),
                 onStart: function () {
                     _this.$cover.off('click');
                 },
@@ -101,26 +102,11 @@ $(() => {
         }
     };
 
-    const zoom = {
-        init: function () {
-
-        },
-        setPos: function () {
-
-        },
-        setSize: function () {
-
-        },
-        reset: function () {
-
-        },
-    };
-
     const xinhuaTalking = {
         $nav: $('#nav'),
+        $scenes1: $('#scenes-1'),
         navHeight: 67,
         activeIndex: 0,
-        $window: ($window) ? $window : $(window),
         init: function () {
             const _this = this;
 
@@ -137,16 +123,85 @@ $(() => {
             });
 
             // swiper
-            _this.scenesMain = _this.scenesMain(1000);
-            _this.scenes[1] = _this.scenes(1);
-            // _this.scenes[2] = _this.scenes(2);
-            // _this.scenes[3] = _this.scenes(3);
+            _this.scenesMain = _this.scenesMain(1000, {
+                onSlideChangeStart: function (swiper) {
+                    console.log(swiper.activeIndex);
+                    _this.activeIndex = swiper.activeIndex;
+                    _this.navStatus(swiper.activeIndex);
+                }
+            });
+            _this.scenes[1] = _this.scenes(1, {
+                onInit: function (swiper) {
+                    _this.zoom();
+                    _this.qrcode();
+                },
+                // onSlideChangeStart: function (swiper) {
+                //     _this.qrcode(swiper.activeIndex);
+                // }
+            });
         },
         getSize: function () {
             this.size = {
                 height: $window.height(),
                 width: $window.width(),
             };
+        },
+        qrcode: function () {
+            const qrcodes = this.$scenes1.find('.scenes-1-qrcode');
+            qrcodes.each(function (i, e) {
+                const $e = $(e);
+                $e.qrcode({
+                    correctLevel: 1,
+                    // background: "#999",
+                    foreground: "#333", //"#0099ff"
+                    width: 108,
+                    height: 108,
+                    text: $.trim($e.find('.scenes-1-qrcode-url').text())
+                });
+            });
+        },
+        zoom: function () {
+            const tags = [{
+                tag: '.scenes-1-logo',
+            }, {
+                tag: '.scenes-1-title-top',
+            }, {
+                tag: '.scenes-1-title-1',
+            }, {
+                tag: '.scenes-1-title-4',
+            }, {
+                tag: '.scenes-1-content',
+            }];
+            const ratio = (num) => Math.round(num * this.size.height / 1080);
+            const set = (opt) => {
+                let css = {
+                    top: ratio(opt.num),
+                };
+                if (opt.type === 'height') {
+                    css = {
+                        height: ratio(opt.num),
+                    };
+                }
+                opt.tag.css(css);
+            };
+            const init = () => {
+                this.getSize();
+                for (let i = 0, j = tags.length; i < j; i++) {
+                    if (!tags[i].num) {
+                        tags[i].tag = this.$scenes1.find(tags[i].tag);
+                        if (tags[i].type !== 'height') {
+                            tags[i].num = tags[i].tag.offset().top;
+                        } else {
+                            tags[i].num = tags[i].tag.outerHeight();
+                        }
+                    }
+                    set(tags[i]);
+                }
+            };
+            $window.on('resize', function () {
+                init();
+            });
+            init();
         },
         navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
@@ -167,7 +222,7 @@ $(() => {
                 });
             }
         },
-        scenesMain: function (time) {
+        scenesMain: function (time, callback) {
             const _this = this;
             return new Swiper('#main', {
                 speed: time || 800,
@@ -176,14 +231,12 @@ $(() => {
                 keyboardControl: true,
                 mousewheelControl: true,
                 // onSlideChangeStart
-                onTransitionStart: function (swiper) {
-                    console.log(swiper.activeIndex);
-                    _this.activeIndex = swiper.activeIndex;
-                    _this.navStatus(swiper.activeIndex);
-                }
+                onInit: callback.onInit,
+                onSlideChangeStart: callback.onSlideChangeStart,
+                // mousewheelEventsTarged: '#nav',
             });
         },
-        scenes: function (num) {
+        scenes: function (num, callback) {
             return new Swiper(`#scenes-${num}`, {
                 // autoplay: 5000, //可选选项，自动滑动
                 loop: true,
@@ -193,6 +246,8 @@ $(() => {
                 nextButton: `#scenes-${num} .swiper-button-next`,
                 paginationClickable: true,
                 speed: 2000,
+                onInit: callback.onInit,
+                onSlideChangeStart: callback.onSlideChangeStart,
             });
         },
     };

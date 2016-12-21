@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:26:42
+* @Last modified time: 2016-12-21-23:29:23
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -97,7 +97,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:05:56
+* @Last modified time: 2016-12-21-22:50:20
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -245,13 +245,37 @@ body {
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
 }
+/* ani-btn-3 */
+.scenes-1-pic-btn {
+    position           : absolute;
+    top                : 50%;
+    left               : 50%;
+    width              : 130px;
+    margin-left        : -65px;
+    height             : 130px;
+    margin-left        : -65px;
+    border-radius      : 100%;
+    box-shadow         : 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index            : 2;
+    cursor             : pointer;
+    background-color   : transparent;
+    background-repeat  : no-repeat;
+    background-position: center;
+    overflow           : hidden;
+    background-image   : url("../index-assets/icon-play.png");
+    transition         : all 1s;
+}
+
+.scenes-1-pic-btn:hover {
+    background-image: url("../index-assets/icon-play-active.png");
+}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-14:07:24
 * @Email:  st_sister@iCloud.com
 * @Filename: footer.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:07:25
+* @Last modified time: 2016-12-21-23:18:56
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -264,9 +288,14 @@ body {
 }
 
 .footer {
-    text-align: center;
-    margin-top: 60px;
-    padding   : 20px 0;
+    position   : absolute;
+    bottom     : 0;
+    width      : 1200px;
+    left       : 50%;
+    margin-left: -600px;
+    text-align : center;
+    /*margin-top : 60px;*/
+    padding    : 20px 0;
 }
 /**
 * @Author: St. <SuperWoods>
@@ -373,25 +402,25 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:13:20
+* @Last modified time: 2016-12-21-23:32:51
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
 /* scenes-1 */
-.scenes-1 {
-    /*background: none;*/
-}
-
+.scenes-1,
 .scenes-1-parallax-bg {
-    position               : absolute;
-    left                   : 0;
-    top                    : 0;
-    width                  : 130%;
-    height                 : 100%;
     background-image       : url("../index-assets/bg.jpg");
     -webkit-background-size: cover;
     background-size        : cover;
     background-position    : center;
+}
+
+.scenes-1-parallax-bg {
+    position: absolute;
+    left    : 0;
+    top     : 0;
+    width   : 130%;
+    height  : 100%;
 }
 
 .scenes-1 .swiper-slide {
@@ -497,23 +526,95 @@ body {
     float   : right;
 }
 
+.scenes-1-qrcode-url {
+    display: none;
+}
+
 .scenes-1-pic {
     position: absolute;
-    bottom  : 67px;
+    bottom  : 0;
     left    : 50%;
+    height  : 100%;
+    width   : 620px;
+    cursor  : pointer;
+}
+
+.scenes-1-pic img {
+    position: absolute;
+    bottom  : 0;
+    left    : 0;
+    /*width   : auto;*/
+    height  : 85%;
+    z-index : 1;
 }
 
 .scenes-1 .swiper-pagination {
-    position: absolute;
+    /*position        : absolute;*/
     /*z-index         : 99;*/
     /*background-color: red;*/
-    bottom  : 107px;
-    height  : 20px;
+    bottom     : 107px;
+    height     : 20px;
+    text-align : left;
+    width      : 230px;
+    left       : 50%;
+    margin-left: -597px;
+}
+
+.scenes-1 .swiper-pagination-bullet {
+    width           : 8px;
+    height          : 8px;
+    border-radius   : 0;
+    margin          : 0 28px 0 0 !important;
+    border          : transparent 1px solid;
+    position        : relative !important;
+    background-color: #0099ff !important;
+    opacity         : 1;
+}
+
+.scenes-1 .swiper-pagination-bullet:after {
+    content      : '';
+    position     : absolute;
+    top          : 50%;
+    left         : 50%;
+    width        : 18px;
+    margin-left  : -10px;
+    height       : 18px;
+    margin-top   : -10px;
+    border-radius: 0;
+    border       : #0099ff 1px solid;
+    display      : none;
+}
+
+.scenes-1 .swiper-pagination-bullet-active {
+    border-color: #1080f2 !important;
+}
+
+.scenes-1 .swiper-pagination-bullet-active:after {
+    display: block;
 }
 
 .scenes-1 .swiper-button-prev {}
 
 .scenes-1 .swiper-button-next {}
+/**
+* @Author: St. <SuperWoods>
+* @Date:   2016-12-21-23:20:04
+* @Email:  st_sister@iCloud.com
+* @Filename: scens-2.css
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-21-23:29:43
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
+/* scenes-2 */
+.scenes-2 {
+    width                  : 100%;
+    height                 : 100%;
+    background-image       : url("../index-assets/bg-scenes-2.jpg");
+    -webkit-background-size: cover;
+    background-size        : cover;
+    background-position    : center;
+}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-09:31:14
@@ -549,8 +650,8 @@ body {
     width : 100%;
     height: 100%;
 }
-/* main-slide */
-.main-slide {
+/* scenes-slide */
+.scenes-slide {
     text-align: left;
     font-size : 18px;
     background: #fff;

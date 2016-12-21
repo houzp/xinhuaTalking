@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: footer.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:07:25
+* @Last modified time: 2016-12-21-23:18:56
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -17,7 +17,12 @@
 }
 
 .footer {
-    text-align: center;
-    margin-top: 60px;
-    padding   : 20px 0;
+    position   : absolute;
+    bottom     : 0;
+    width      : 1200px;
+    left       : 50%;
+    margin-left: -600px;
+    text-align : center;
+    /*margin-top : 60px;*/
+    padding    : 20px 0;
 }
