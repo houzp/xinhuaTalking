@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:13:40
+* @Last modified time: 2016-12-21-14:26:42
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -337,7 +337,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: cover.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:08:08
+* @Last modified time: 2016-12-21-14:27:37
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -347,14 +347,11 @@ body {
     background-position: center;
     background-repeat  : no-repeat;
     background-size    : cover;
-}
-
-.cover {
-    background-color: #FFF;
-    width           : 100%;
-    height          : 100%;
-    position        : absolute;
-    z-index         : 999;
+    background-color   : #FFF;
+    width              : 100%;
+    height             : 100%;
+    position           : absolute;
+    z-index            : 9999;
 }
 
 .cover:before {
@@ -517,6 +514,36 @@ body {
 .scenes-1 .swiper-button-prev {}
 
 .scenes-1 .swiper-button-next {}
+/**
+* @Author: St. <SuperWoods>
+* @Date:   2016-12-21-09:31:14
+* @Email:  st_sister@iCloud.com
+* @Filename: hacks.css
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-21-14:11:11
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
+/*.ie body,
+.windows body {
+    font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
+}*/
+.ie-tip {
+    text-align : center;
+    width      : 100%;
+    margin     : 0 auto;
+    height     : 60px;
+    line-height: 60px;
+    border-top : #CCC 1px solid;
+}
+/* is windows */
+.windows body {
+    font-family: "微软雅黑";
+}
+
+.oldie body {
+    font-family: \5B8B\4F53, Arial;
+}
 /* reset swiper */
 .swiper-container {
     width : 100%;
@@ -551,34 +578,4 @@ body {
 /* swiper-slide-part */
 .part_swiper-slide {
     height: 100%;
-}
-/**
-* @Author: St. <SuperWoods>
-* @Date:   2016-12-21-09:31:14
-* @Email:  st_sister@iCloud.com
-* @Filename: hacks.css
-* @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:11:11
-* @License: MIT
-* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
-*/
-/*.ie body,
-.windows body {
-    font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
-}*/
-.ie-tip {
-    text-align : center;
-    width      : 100%;
-    margin     : 0 auto;
-    height     : 60px;
-    line-height: 60px;
-    border-top : #CCC 1px solid;
-}
-/* is windows */
-.windows body {
-    font-family: "微软雅黑";
-}
-
-.oldie body {
-    font-family: \5B8B\4F53, Arial;
 }

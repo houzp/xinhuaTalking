@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:20:48
+* @Last modified time: 2016-12-21-14:28:22
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -16,8 +16,8 @@ $(() => {
 
     // loader
     const resources = [ // 需要预加载的资源
-        '../xinhuaTalking/index-assets/bg.jpg',
-        '../xinhuaTalking/index-assets/cover-logo.png',
+        // '../xinhuaTalking/index-assets/bg.jpg',
+        // '../xinhuaTalking/index-assets/cover-logo.png',
         '../xinhuaTalking/index-assets/scenes-1-btn-1-active-bg.png',
         '../xinhuaTalking/index-assets/scenes-1-btn-1-bg.png',
     ];
@@ -77,7 +77,7 @@ $(() => {
             const _this = this;
             _this.timeout = setTimeout(() => {
                 _this.coverHide();
-            }, 2000);
+            }, 200);
         },
         coverHide: function () {
             console.log('coverHide');

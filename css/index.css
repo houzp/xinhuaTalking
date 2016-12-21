@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:13:40
+* @Last modified time: 2016-12-21-14:26:42
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -17,6 +17,7 @@
 @import "../css/nav.css";
 @import "../css/cover.css";
 @import "../css/scens-1.css";
+@import "../css/hacks.css";
 /* reset swiper */
 .swiper-container {
     width : 100%;
@@ -52,4 +53,3 @@
 .part_swiper-slide {
     height: 100%;
 }
-@import "../css/hacks.css";
