@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-16:24:04
+* @Last modified time: 2016-12-21-20:56:50
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -126,6 +126,10 @@
     width   : 108px;
     height  : 108px;
     float   : right;
+}
+
+.scenes-1-qrcode-url {
+    display: none;
 }
 
 .scenes-1-pic {

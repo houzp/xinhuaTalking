@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-20:44:57
+* @Last modified time: 2016-12-21-21:01:02
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -122,7 +122,7 @@ $(() => {
             _this.scenes[1] = _this.scenes(1, {
                 onInit: function (swiper) {
                     _this.zoom();
-                    _this.qrcode(swiper.activeIndex);
+                    _this.qrcode();
                 },
                 // onSlideChangeStart: function (swiper) {
                 //     _this.qrcode(swiper.activeIndex);
@@ -137,14 +137,14 @@ $(() => {
                 width: $window.width(),
             };
         },
-        qrcode: function (num) {
+        qrcode: function () {
             const qrcodes = this.$scenes1.find('.scenes-1-qrcode');
             qrcodes.each(function (i, e) {
                 const $e = $(e);
                 $e.qrcode({
-                    // correctLevel: 1,
-                    // background: "#ffffff",
-                    foreground: "#666",
+                    correctLevel: 1,
+                    // background: "#999",
+                    foreground: "#666", //"#0099ff"
                     width: 108,
                     height: 108,
                     text: $.trim($e.find('.scenes-1-qrcode-url').text())
