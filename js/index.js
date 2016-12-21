@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-17:48:42
+* @Last modified time: 2016-12-21-17:52:00
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -114,36 +114,36 @@ $(() => {
             type: 'height'
         }];
         const ratio = (num) => num * $(window).height() / 1080;
-        const set = ($tag, type, num) => {
+        const set = (opt) => {
+            // tags[i].tag, tags[i].type, tags[i].num
             let css = {
-                top: ratio(num),
+                top: ratio(opt.num),
             };
-            if (type && type === 'height') {
+            if (opt.type && opt.type === 'height') {
                 css = {
-                    height: ratio(num),
+                    height: ratio(opt.num),
                 };
             }
-            $tag.css(css);
+            opt.$tag.css(css);
         };
         const init = () => {
             for (let i = 0, j = tags.length; i < j; i++) {
                 if (!tags[i].num) {
                     tags[i].tag = $(tags[i].tag);
+                    console.log(tags[i].type !== 'height');
                     if (tags[i].type !== 'height') {
                         tags[i].num = tags[i].tag.offset().top;
                     } else {
                         tags[i].num = tags[i].tag.height();
                     }
                 }
-                set(tags[i].tag, tags[i].type, tags[i].num);
+                set(tags[i]);
             }
         };
         init();
         $window.on('resize', function () {
             init();
         });
-
-        console.log(tags);
     };
 
     zoom();
