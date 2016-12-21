@@ -373,7 +373,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:13:20
+* @Last modified time: 2016-12-21-16:24:04
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -499,8 +499,13 @@ body {
 
 .scenes-1-pic {
     position: absolute;
-    bottom  : 67px;
+    bottom  : 0;
     left    : 50%;
+}
+
+.scenes-1-pic img {
+    width : auto;
+    height: 100%;
 }
 
 .scenes-1 .swiper-pagination {

@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:29:30
+* @Last modified time: 2016-12-21-17:48:42
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -35,11 +35,6 @@ $(() => {
             // $('.progresstext .total').text(total);
         },
         onComplete: function (total) {
-            // alert('加载完毕:'+total+'个资源');
-            // loadingMask.off();
-
-            // zoom
-            zoom.init();
             // cover
             cover.init();
             // xinhuaTalking
@@ -88,7 +83,8 @@ $(() => {
             TweenMax.to(_this.$cover, time, {
                 scale: 12,
                 opacity: 0,
-                ease: Power1.easeIn,
+                ease: Power4.easeInOut,
+                // ease: SlowMo.ease.config(0.7, 0.7, false),
                 onStart: function () {
                     _this.$cover.off('click');
                 },
@@ -101,26 +97,61 @@ $(() => {
         }
     };
 
-    const zoom = {
-        init: function () {
+    const zoom = () => {
+        const $scenes1 = $('#scenes-1');
+        const tags = [{
+            tag: '.scenes-1-logo',
+        }, {
+            tag: '.scenes-1-title-top',
+        }, {
+            tag: '.scenes-1-title-1',
+        }, {
+            tag: '.scenes-1-title-4',
+        }, {
+            tag: '.scenes-1-content',
+        }, {
+            tag: '.scenes-1-pic',
+            type: 'height'
+        }];
+        const ratio = (num) => num * $(window).height() / 1080;
+        const set = ($tag, type, num) => {
+            let css = {
+                top: ratio(num),
+            };
+            if (type && type === 'height') {
+                css = {
+                    height: ratio(num),
+                };
+            }
+            $tag.css(css);
+        };
+        const init = () => {
+            for (let i = 0, j = tags.length; i < j; i++) {
+                if (!tags[i].num) {
+                    tags[i].tag = $(tags[i].tag);
+                    if (tags[i].type !== 'height') {
+                        tags[i].num = tags[i].tag.offset().top;
+                    } else {
+                        tags[i].num = tags[i].tag.height();
+                    }
+                }
+                set(tags[i].tag, tags[i].type, tags[i].num);
+            }
+        };
+        init();
+        $window.on('resize', function () {
+            init();
+        });
 
-        },
-        setPos: function () {
-
-        },
-        setSize: function () {
-
-        },
-        reset: function () {
-
-        },
+        console.log(tags);
     };
+
+    zoom();
 
     const xinhuaTalking = {
         $nav: $('#nav'),
         navHeight: 67,
         activeIndex: 0,
-        $window: ($window) ? $window : $(window),
         init: function () {
             const _this = this;
 
