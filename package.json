@@ -1,6 +1,6 @@
 {
     "name": "xinhua-talking",
-    "version": "0.0.10",
+    "version": "0.0.16",
     "description": "Xinhua Talking",
     "main": "index.js",
     "scripts": {

@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-20-15:52:52
+* @Last modified time: 2016-12-21-12:54:15
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -13,6 +13,40 @@ $(() => {
     // 必要的全局对象
     const $window = $(window);
     const $body = $('body');
+
+    // loader
+    const resources = [ // 需要预加载的资源
+        '../index-assets/bg.jpg',
+        '../index-assets/cover-logo.png',
+        '../index-assets/scenes-1-btn-1-active-bg.png',
+        '../index-assets/scenes-1-btn-1-bg.png',
+    ];
+
+    const loader = new resLoader({
+        resources: resources,
+        onStart: function (total) {
+            // console.log('start:' + total);
+        },
+        onProgress: function (current, total) {
+            // console.log(current + '/' + total);
+            // var percent = current / total * 100;
+            // $('.progressbar').css('width', percent + '%');
+            // $('.progresstext .current').text(current);
+            // $('.progresstext .total').text(total);
+        },
+        onComplete: function (total) {
+            // alert('加载完毕:'+total+'个资源');
+            // loadingMask.off();
+
+            // zoom
+            zoom.init();
+            // cover
+            cover.init();
+            // xinhuaTalking
+            xinhuaTalking.init();
+        }
+    });
+
 
     // cover
     const cover = {
@@ -67,10 +101,23 @@ $(() => {
         }
     };
 
+    const zoom = {
+        init: function () {
+
+        },
+        set: function () {
+
+        },
+        reset: function () {
+
+        },
+    };
+
     const xinhuaTalking = {
         $nav: $('#nav'),
         navHeight: 67,
         activeIndex: 0,
+        $window: ($window) ? $window : $(window),
         init: function () {
             const _this = this;
 
@@ -109,11 +156,11 @@ $(() => {
             const _this = this;
             if (activeIndex < 1) {
                 _this.navPos((_this.size.height - _this.navHeight), 0.6, function () {
-                    _this.$nav.removeClass('isTop');
+                    _this.$nav.removeClass('nav-isTop');
                 });
             } else {
                 _this.navPos(0, 0.6, function () {
-                    _this.$nav.addClass('isTop');
+                    _this.$nav.addClass('nav-isTop');
                 });
             }
         },
@@ -147,9 +194,7 @@ $(() => {
         },
     };
 
-    // cover
-    cover.init();
-    // xinhuaTalking
-    xinhuaTalking.init();
+    // 读取开始
+    loader.start();
 
 });
