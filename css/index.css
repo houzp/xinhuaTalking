@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-23:29:23
+* @Last modified time: 2016-12-21-23:48:06
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -26,9 +26,9 @@
 }
 /* scenes-slide */
 .scenes-slide {
-    text-align: left;
-    font-size : 18px;
-    background: #fff;
+    text-align      : left;
+    font-size       : 18px;
+    background-color: #fff;
     /* Center slide text vertically */
     /*display                : -webkit-box;
         display                : -ms-flexbox;
