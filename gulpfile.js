@@ -28,7 +28,7 @@ var config = {
             baseDir: "./"
         }
     },
-    "autoprefixer_conf": ["chrome 30", "Firefox < 20", "ios_saf 8", "safari 8", 'Android >= 2.3'],
+    "autoprefixer_conf": ["chrome 30", "Firefox < 20", "ios_saf 8", "safari 8", 'Android >= 2.3', 'IE 9', 'IE 10'],
     "htmlmin_conf": {
         removeComments: true, //清除HTML注释
         collapseWhitespace: false, //压缩HTML

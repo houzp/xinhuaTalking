@@ -70,5 +70,9 @@
         "gulp-rev": "^7.1.2",
         "gulp-sourcemaps": "^1.6.0",
         "gulp-uglify": "^2.0.0"
-    }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ]
 }

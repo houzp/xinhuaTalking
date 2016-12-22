@@ -21,10 +21,10 @@ html
                 .nav-btn-box
                     .nav-btn
                         .nav-icon-1
-                        | 三个字
+                            a(href="#1") 三个字
                     .nav-btn
                         .nav-icon-2
-                        | 三个字
+                            a(href="#2") 三个字
 
         .swiper-container.main#main
             .swiper-wrapper                    
@@ -36,8 +36,8 @@ html
                             - for (var i=0, j=5; i<j; i++) {
                                 .swiper-slide
                                     .part_swiper-slide
-                                        .scenes-1-logo(data-swiper-parallax="300")
-                                        .scenes-1-title-top(data-swiper-parallax="200")
+                                        .scenes-1-logo(data-swiper-parallax="200%")
+                                        .scenes-1-title-top(data-swiper-parallax="-200")
                                             .scenes-1-title-2 尹卓尹卓
                                             .scenes-1-title-3 北京佳合建科集团董事长<br>北京定荣家科技有限公司创始人
                                         .scenes-1-title-1(data-swiper-parallax="-100") 军改，实现强军梦的正确打开方式正确打开方式
@@ -56,14 +56,17 @@ html
                                                 //-     .b
                                                 .scenes-1-qrcode(data-swiper-parallax="400")
                                                     .scenes-1-qrcode-url https://cjmm.github.io/##{i}
-                                        .scenes-1-pic(data-swiper-parallax="-500")
+                                        .scenes-1-pic
                                             a(href="#")
-                                                .scenes-1-pic-btn
-                                                img(src="index-assets/demo-pic-#{i}.png")
+                                                .scenes-1-pic-btn(data-swiper-parallax="-200")
+                                                img(src="index-assets/demo-pic-#{i}.png" data-swiper-parallax="-500")
                             - }
                         .swiper-pagination
                         .swiper-button-prev
+                            .swiper-button-content aaa
                         .swiper-button-next
+                            .swiper-button-content
+
                 .swiper-slide.scenes-slide.scenes-2(data-hash="2")
                     .swiper-container#scenes-2
                         .swiper-wrapper
