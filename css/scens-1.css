@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-18:20:13
+* @Last modified time: 2016-12-22-19:19:18
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -147,7 +147,14 @@
 .scenes-1-pic:hover {
     transform: translateX(-30px);
 }
+/*.scenes-1-pic .ani-pic-btn {
+    transition: all 1s;
+    opacity   : 0;
+}
 
+.scenes-1-pic:hover .ani-pic-btn {
+    opacity: 1;
+}*/
 .scenes-1-pic img {
     position: absolute;
     bottom  : 0;

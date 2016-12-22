@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-16:05:56
+* @Last modified time: 2016-12-22-21:44:06
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -106,9 +106,12 @@ $(() => {
         $nav: $('#nav'),
         $scenes1: $('#scenes-1'),
         navHeight: 67,
-        activeIndex: 0,
+        scenesMain_realIndex: 0,
+        aaSwiperIndex: 0,
         init: function () {
             const _this = this;
+            // getData
+            _this.getData();
 
             // getSize
             _this.getSize();
@@ -116,10 +119,10 @@ $(() => {
             // nav
             _this.navHeight = this.$nav.height();
             $window.on('resize', () => {
-                if (_this.activeIndex < 1) {
+                if (_this.scenesMain_realIndex < 1) {
                     _this.getSize();
                 }
-                _this.navStatus(_this.activeIndex);
+                _this.navStatus(_this.scenesMain_realIndex);
             });
 
             // swiper
@@ -132,9 +135,9 @@ $(() => {
                 // onSlideChangeStart
                 // onInit: callback.onInit,
                 onSlideChangeStart: function (swiper) {
-                    console.log(swiper.activeIndex);
-                    _this.activeIndex = swiper.activeIndex;
-                    _this.navStatus(swiper.activeIndex);
+                    console.log(swiper.realIndex);
+                    _this.scenesMain_realIndex = swiper.realIndex;
+                    _this.navStatus(swiper.realIndex);
                 },
                 // mousewheelEventsTarged: '#nav',
             });
@@ -152,10 +155,54 @@ $(() => {
                     _this.zoom();
                     _this.qrcode();
                 },
-                // onSlideChangeStart: function (swiper) {
-                //     _this.qrcode(swiper.activeIndex);
-                // }
+                onSlideChangeStart: function (swiper) {
+                    // console.log('s1', swiper.realIndex);
+                    $('.swiper-button-content').fadeOut();
+                    _this.setBtnPrev(swiper.realIndex);
+                    _this.setBtnNext(swiper.realIndex);
+                    // _this.setButtonPrev(swiper.realIndex);
+                    // _this.setButtonNext(swiper.realIndex);
+                },
+                onSlideChangeEnd: function (swiper) {
+                    // console.log(swiper.realIndex);
+                    $('.swiper-button-content').fadeIn();
+                },
             });
+        },
+        getData: function () {
+            const _this = this;
+            _this.data = new Array();
+            _this.$scenes1
+                .find('.swiper-slide')
+                .each(function (i, e) {
+                    const $e = $(e);
+                    _this.data.push({
+                        title: $.trim($e.find('.scenes-1-title-1').text()),
+                        img: $e.find('.scenes-1-pic img').attr('src')
+                    });
+                });
+        },
+        setBtnPrev: function (num) {
+            const _this = this;
+            // console.log('setBtnPrev', num);
+            num = num - 1;
+            if (num < 0) {
+                num = _this.data.length - 1;
+            }
+            // console.log('setBtnPrev', p);
+            $('#prev-img').attr('src', _this.data[num].img)
+            $('#prev-t').text(_this.data[num].title);
+        },
+        setBtnNext: function (num) {
+            const _this = this;
+            num = num + 1;
+            // console.log('setBtnNext', p);
+            if (num >= _this.data.length) {
+                num = 0;
+            }
+            // console.log('setBtnNext', num);
+            $('#next-img').attr('src', _this.data[num].img)
+            $('#next-t').text(_this.data[num].title);
         },
         getSize: function () {
             this.size = {
@@ -227,9 +274,9 @@ $(() => {
                 onComplete: callback || null
             });
         },
-        navStatus: function (activeIndex) {
+        navStatus: function (scenesMain_realIndex) {
             const _this = this;
-            if (activeIndex < 1) {
+            if (scenesMain_realIndex < 1) {
                 _this.navPos((_this.size.height - _this.navHeight), 0.6, function () {
                     _this.$nav.removeClass('nav-isTop');
                 });

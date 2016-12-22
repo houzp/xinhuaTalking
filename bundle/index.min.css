@@ -657,7 +657,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-19:08:35
+* @Last modified time: 2016-12-22-19:14:40
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -805,8 +805,8 @@ body {
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
 }
-/* ani-btn-3 */
-.scenes-1-pic-btn {
+/* ani-pic-btn */
+.ani-pic-btn {
     position           : absolute;
     top                : 50%;
     left               : 50%;
@@ -826,7 +826,7 @@ body {
     transition         : all 1s;
 }
 
-.scenes-1-pic-btn:hover {
+.ani-pic-btn:hover {
     background-image: url("../index-assets/icon-play-active.png");
 }
 /* .scenes-1 .swiper-button-prev */
@@ -1207,7 +1207,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-18:20:13
+* @Last modified time: 2016-12-22-19:19:18
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1350,7 +1350,14 @@ body {
 .scenes-1-pic:hover {
     transform: translateX(-30px);
 }
+/*.scenes-1-pic .ani-pic-btn {
+    transition: all 1s;
+    opacity   : 0;
+}
 
+.scenes-1-pic:hover .ani-pic-btn {
+    opacity: 1;
+}*/
 .scenes-1-pic img {
     position: absolute;
     bottom  : 0;
