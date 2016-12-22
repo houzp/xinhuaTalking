@@ -4,13 +4,13 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-23:48:06
+* @Last modified time: 2016-12-22-15:39:37
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
 /*@import "../css/jquery-ui.min.css";*/
-@import "../lib/Swiper-3.4.1/dist/css/swiper.min.css";
 @import "../css/normalize.css";
+@import "../lib/Swiper-3.4.1/dist/css/swiper.css";
 @import "../css/fonts.css";
 @import "../css/btn.css";
 @import "../css/footer.css";

@@ -4,28 +4,29 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-23:32:51
+* @Last modified time: 2016-12-22-19:19:18
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
 /* scenes-1 */
 .scenes-1,
 .scenes-1-parallax-bg {
-    background-image       : url("../index-assets/bg.jpg");
-    -webkit-background-size: cover;
-    background-size        : cover;
-    background-position    : center;
+    background-image   : url("../index-assets/bg.jpg");
+    background-size    : cover;
+    background-repeat  : repeat;
+    background-position: center;
 }
 
 .scenes-1-parallax-bg {
     position: absolute;
     left    : 0;
     top     : 0;
-    width   : 130%;
+    width   : 140%;
     height  : 100%;
 }
 
-.scenes-1 .swiper-slide {
+.scenes-1 .swiper-slide-next,
+.scenes-1 .swiper-slide-prev {
     overflow: hidden;
 }
 
@@ -133,19 +134,31 @@
 }
 
 .scenes-1-pic {
-    position: absolute;
-    bottom  : 0;
-    left    : 50%;
-    height  : 100%;
-    width   : 620px;
-    cursor  : pointer;
+    position  : absolute;
+    bottom    : 0;
+    left      : 50%;
+    height    : 100%;
+    width     : 620px;
+    cursor    : pointer;
+    transition: all 1s;
+    transform : translateX(0);
 }
 
+.scenes-1-pic:hover {
+    transform: translateX(-30px);
+}
+/*.scenes-1-pic .ani-pic-btn {
+    transition: all 1s;
+    opacity   : 0;
+}
+
+.scenes-1-pic:hover .ani-pic-btn {
+    opacity: 1;
+}*/
 .scenes-1-pic img {
     position: absolute;
     bottom  : 0;
     left    : 0;
-    /*width   : auto;*/
     height  : 85%;
     z-index : 1;
 }
@@ -153,7 +166,6 @@
 .scenes-1 .swiper-pagination {
     /*position        : absolute;*/
     /*z-index         : 99;*/
-    /*background-color: red;*/
     bottom     : 107px;
     height     : 20px;
     text-align : left;
@@ -194,7 +206,3 @@
 .scenes-1 .swiper-pagination-bullet-active:after {
     display: block;
 }
-
-.scenes-1 .swiper-button-prev {}
-
-.scenes-1 .swiper-button-next {}
