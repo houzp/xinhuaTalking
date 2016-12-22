@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-14:39:48
+* @Last modified time: 2016-12-22-19:08:35
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -176,3 +176,248 @@
 .scenes-1-pic-btn:hover {
     background-image: url("../index-assets/icon-play-active.png");
 }
+/* .scenes-1 .swiper-button-prev */
+.scenes-1 .swiper-button-prev {
+    height          : 118px;
+    margin-top      : -59px;
+    left            : 0;
+    background-size : auto;
+    width           : 118px;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: none;
+    cursor          : pointer;
+    overflow        : hidden;
+    transition      : width 2s;
+}
+
+.scenes-1 .swiper-button-prev:hover {
+    width           : 435px;
+    background-color: transparent;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content {
+    position  : absolute;
+    width     : 336px;
+    height    : 102px;
+    top       : 50%;
+    right     : 8px;
+    left      : auto;
+    margin-top: -51px;
+    z-index   : 4;
+    transform : translateX(-200px);
+    transition: transform 1s;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .p,
+.scenes-1 .swiper-button-prev .swiper-button-content .t {
+    position: absolute;
+    top     : 50%;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .p {
+    width     : 102px;
+    height    : 102px;
+    overflow  : hidden;
+    margin-top: -51px;
+    left      : auto;
+    right     : 0;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .p img {
+    width : 102px;
+    height: auto;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .t {
+    width      : 224px;
+    left       : 0;
+    right      : auto;
+    color      : #FFF;
+    font-size  : 20px;
+    line-height: 36px;
+    font-weight: normal;
+    margin-top : -36px;
+}
+
+.scenes-1 .swiper-button-prev .icon,
+.scenes-1 .swiper-button-prev .icon:after {
+    display            : block;
+    width              : 118px;
+    height             : 118px;
+    background-position: 39px center;
+    background-repeat  : no-repeat;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -59px;
+    left               : 0;
+    right              : auto;
+}
+
+.scenes-1 .swiper-button-prev .icon {
+    transition      : all .5s;
+    background-image: url("../index-assets/icon-prev.png");
+    z-index         : 3;
+    transform       : translateX(0);
+}
+
+.scenes-1 .swiper-button-prev .icon:after {
+    content         : '';
+    margin-left     : 118px;
+    background-image: url("../index-assets/icon-prev-active.png");
+}
+
+.scenes-1 .swiper-button-prev .b {
+    transition      : transform 2s;
+    width           : 118px;
+    height          : 118px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -59px;
+    left            : 0;
+    margin-left     : -118px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 2;
+}
+
+.scenes-1 .swiper-button-prev:hover .swiper-button-content {
+    transform: translateX(0);
+}
+
+.scenes-1 .swiper-button-prev:hover .b {
+    transform: scale(10);
+}
+
+.scenes-1 .swiper-button-prev:hover .icon {
+    transform: translateX(-128px);
+}
+
+.scenes-1 .swiper-button-prev:active .icon {
+    transform: translateX(-138px);
+}
+/*.scenes-1 .swiper-button-next */
+.scenes-1 .swiper-button-next {
+    height          : 118px;
+    margin-top      : -59px;
+    left            : auto;
+    right           : 0;
+    background-size : auto;
+    width           : 118px;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: none;
+    cursor          : pointer;
+    overflow        : hidden;
+    transition      : width 2s;
+}
+
+.scenes-1 .swiper-button-next:hover {
+    width           : 435px;
+    background-color: transparent;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content {
+    position  : absolute;
+    width     : 336px;
+    height    : 102px;
+    top       : 50%;
+    right     : auto;
+    left      : 8px;
+    margin-top: -51px;
+    z-index   : 4;
+    transform : translateX(360px);
+    transition: transform 1s;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .p,
+.scenes-1 .swiper-button-next .swiper-button-content .t {
+    position: absolute;
+    top     : 50%;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .p {
+    width     : 102px;
+    height    : 102px;
+    overflow  : hidden;
+    margin-top: -51px;
+    left      : 0;
+    right     : auto;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .p img {
+    width : 102px;
+    height: auto;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .t {
+    width      : 224px;
+    left       : auto;
+    right      : 0;
+    color      : #FFF;
+    font-size  : 20px;
+    line-height: 36px;
+    font-weight: normal;
+    margin-top : -36px;
+}
+
+.scenes-1 .swiper-button-next .icon,
+.scenes-1 .swiper-button-next .icon:after {
+    display            : block;
+    width              : 118px;
+    height             : 118px;
+    background-position: 45px center;
+    background-repeat  : no-repeat;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -59px;
+    left               : auto;
+    right              : 0;
+}
+
+.scenes-1 .swiper-button-next .icon {
+    transition      : all .5s;
+    background-image: url("../index-assets/icon-next.png");
+    z-index         : 3;
+    transform       : translateX(0);
+}
+
+.scenes-1 .swiper-button-next .icon:after {
+    right           : 118px;
+    content         : '';
+    margin-left     : 118px;
+    background-image: url("../index-assets/icon-next-active.png");
+}
+
+.scenes-1 .swiper-button-next .b {
+    transition      : transform 2s;
+    width           : 118px;
+    height          : 118px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -59px;
+    left            : auto;
+    right           : 0;
+    margin-left     : auto;
+    margin-right    : -118px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 2;
+}
+
+.scenes-1 .swiper-button-next:hover .swiper-button-content {
+    transform: translateX(0);
+}
+
+.scenes-1 .swiper-button-next:hover .b {
+    transform: scale(10);
+}
+
+.scenes-1 .swiper-button-next:hover .icon {
+    transform: translateX(128px);
+}
+
+.scenes-1 .swiper-button-next:active .icon {
+    transform: translateX(138px);
+}
+/*.scenes-1 .swiper-button-next {}*/

@@ -657,7 +657,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-14:39:48
+* @Last modified time: 2016-12-22-19:08:35
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -829,6 +829,251 @@ body {
 .scenes-1-pic-btn:hover {
     background-image: url("../index-assets/icon-play-active.png");
 }
+/* .scenes-1 .swiper-button-prev */
+.scenes-1 .swiper-button-prev {
+    height          : 118px;
+    margin-top      : -59px;
+    left            : 0;
+    background-size : auto;
+    width           : 118px;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: none;
+    cursor          : pointer;
+    overflow        : hidden;
+    transition      : width 2s;
+}
+
+.scenes-1 .swiper-button-prev:hover {
+    width           : 435px;
+    background-color: transparent;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content {
+    position  : absolute;
+    width     : 336px;
+    height    : 102px;
+    top       : 50%;
+    right     : 8px;
+    left      : auto;
+    margin-top: -51px;
+    z-index   : 4;
+    transform : translateX(-200px);
+    transition: transform 1s;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .p,
+.scenes-1 .swiper-button-prev .swiper-button-content .t {
+    position: absolute;
+    top     : 50%;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .p {
+    width     : 102px;
+    height    : 102px;
+    overflow  : hidden;
+    margin-top: -51px;
+    left      : auto;
+    right     : 0;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .p img {
+    width : 102px;
+    height: auto;
+}
+
+.scenes-1 .swiper-button-prev .swiper-button-content .t {
+    width      : 224px;
+    left       : 0;
+    right      : auto;
+    color      : #FFF;
+    font-size  : 20px;
+    line-height: 36px;
+    font-weight: normal;
+    margin-top : -36px;
+}
+
+.scenes-1 .swiper-button-prev .icon,
+.scenes-1 .swiper-button-prev .icon:after {
+    display            : block;
+    width              : 118px;
+    height             : 118px;
+    background-position: 39px center;
+    background-repeat  : no-repeat;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -59px;
+    left               : 0;
+    right              : auto;
+}
+
+.scenes-1 .swiper-button-prev .icon {
+    transition      : all .5s;
+    background-image: url("../index-assets/icon-prev.png");
+    z-index         : 3;
+    transform       : translateX(0);
+}
+
+.scenes-1 .swiper-button-prev .icon:after {
+    content         : '';
+    margin-left     : 118px;
+    background-image: url("../index-assets/icon-prev-active.png");
+}
+
+.scenes-1 .swiper-button-prev .b {
+    transition      : transform 2s;
+    width           : 118px;
+    height          : 118px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -59px;
+    left            : 0;
+    margin-left     : -118px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 2;
+}
+
+.scenes-1 .swiper-button-prev:hover .swiper-button-content {
+    transform: translateX(0);
+}
+
+.scenes-1 .swiper-button-prev:hover .b {
+    transform: scale(10);
+}
+
+.scenes-1 .swiper-button-prev:hover .icon {
+    transform: translateX(-128px);
+}
+
+.scenes-1 .swiper-button-prev:active .icon {
+    transform: translateX(-138px);
+}
+/*.scenes-1 .swiper-button-next */
+.scenes-1 .swiper-button-next {
+    height          : 118px;
+    margin-top      : -59px;
+    left            : auto;
+    right           : 0;
+    background-size : auto;
+    width           : 118px;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: none;
+    cursor          : pointer;
+    overflow        : hidden;
+    transition      : width 2s;
+}
+
+.scenes-1 .swiper-button-next:hover {
+    width           : 435px;
+    background-color: transparent;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content {
+    position  : absolute;
+    width     : 336px;
+    height    : 102px;
+    top       : 50%;
+    right     : auto;
+    left      : 8px;
+    margin-top: -51px;
+    z-index   : 4;
+    transform : translateX(360px);
+    transition: transform 1s;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .p,
+.scenes-1 .swiper-button-next .swiper-button-content .t {
+    position: absolute;
+    top     : 50%;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .p {
+    width     : 102px;
+    height    : 102px;
+    overflow  : hidden;
+    margin-top: -51px;
+    left      : 0;
+    right     : auto;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .p img {
+    width : 102px;
+    height: auto;
+}
+
+.scenes-1 .swiper-button-next .swiper-button-content .t {
+    width      : 224px;
+    left       : auto;
+    right      : 0;
+    color      : #FFF;
+    font-size  : 20px;
+    line-height: 36px;
+    font-weight: normal;
+    margin-top : -36px;
+}
+
+.scenes-1 .swiper-button-next .icon,
+.scenes-1 .swiper-button-next .icon:after {
+    display            : block;
+    width              : 118px;
+    height             : 118px;
+    background-position: 45px center;
+    background-repeat  : no-repeat;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -59px;
+    left               : auto;
+    right              : 0;
+}
+
+.scenes-1 .swiper-button-next .icon {
+    transition      : all .5s;
+    background-image: url("../index-assets/icon-next.png");
+    z-index         : 3;
+    transform       : translateX(0);
+}
+
+.scenes-1 .swiper-button-next .icon:after {
+    right           : 118px;
+    content         : '';
+    margin-left     : 118px;
+    background-image: url("../index-assets/icon-next-active.png");
+}
+
+.scenes-1 .swiper-button-next .b {
+    transition      : transform 2s;
+    width           : 118px;
+    height          : 118px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -59px;
+    left            : auto;
+    right           : 0;
+    margin-left     : auto;
+    margin-right    : -118px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 2;
+}
+
+.scenes-1 .swiper-button-next:hover .swiper-button-content {
+    transform: translateX(0);
+}
+
+.scenes-1 .swiper-button-next:hover .b {
+    transform: scale(10);
+}
+
+.scenes-1 .swiper-button-next:hover .icon {
+    transform: translateX(128px);
+}
+
+.scenes-1 .swiper-button-next:active .icon {
+    transform: translateX(138px);
+}
+/*.scenes-1 .swiper-button-next {}*/
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-14:07:24
@@ -962,7 +1207,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-16:09:32
+* @Last modified time: 2016-12-22-18:20:13
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -970,7 +1215,7 @@ body {
 .scenes-1,
 .scenes-1-parallax-bg {
     background-image   : url("../index-assets/bg.jpg");
-    /*background-size    : 100% auto;*/
+    background-size    : cover;
     background-repeat  : repeat;
     background-position: center;
 }
@@ -979,11 +1224,12 @@ body {
     position: absolute;
     left    : 0;
     top     : 0;
-    width   : 200%;
+    width   : 140%;
     height  : 100%;
 }
 
-.scenes-1 .swiper-slide-next {
+.scenes-1 .swiper-slide-next,
+.scenes-1 .swiper-slide-prev {
     overflow: hidden;
 }
 
@@ -1091,33 +1337,31 @@ body {
 }
 
 .scenes-1-pic {
-    position: absolute;
-    bottom  : 0;
-    left    : 50%;
-    height  : 100%;
-    width   : 620px;
-    cursor  : pointer;
-}
-
-.scenes-1-pic img {
     position  : absolute;
     bottom    : 0;
-    left      : 0;
-    /*width   : auto;*/
-    height    : 85%;
-    z-index   : 1;
-    transition: transform 1.5s;
+    left      : 50%;
+    height    : 100%;
+    width     : 620px;
+    cursor    : pointer;
+    transition: all 1s;
     transform : translateX(0);
 }
 
-.scenes-1-pic:hover img {
+.scenes-1-pic:hover {
     transform: translateX(-30px);
+}
+
+.scenes-1-pic img {
+    position: absolute;
+    bottom  : 0;
+    left    : 0;
+    height  : 85%;
+    z-index : 1;
 }
 
 .scenes-1 .swiper-pagination {
     /*position        : absolute;*/
     /*z-index         : 99;*/
-    /*background-color: red;*/
     bottom     : 107px;
     height     : 20px;
     text-align : left;
@@ -1158,63 +1402,6 @@ body {
 .scenes-1 .swiper-pagination-bullet-active:after {
     display: block;
 }
-
-.scenes-1 .swiper-button-prev {
-    height             : 118px;
-    margin-top         : -59px;
-    left               : 0;
-    background-size    : auto;
-    transition         : transform .5s, background-position .5s;
-    width              : 118px;
-    transform          : translateX(0);
-    background-color   : rgba(0, 0, 0, 0.1);
-    background-image   : url("../index-assets/icon-prev.png");
-    background-position: 39px center;
-    cursor             : pointer;
-    /*overflow           : hidden;*/
-}
-
-.scenes-1 .swiper-button-prev:before {
-    content            : '';
-    width              : 118px;
-    height             : 118px;
-    background-image   : url("../index-assets/icon-prev-active.png");
-    background-position: 39px center;
-    background-repeat  : no-repeat;
-    position           : absolute;
-    z-index            : 2;
-    transform          : translateX(118px);
-}
-
-.scenes-1 .swiper-button-prev:hover {
-    width           : 553px;
-    transform       : translateX(-118px);
-    background-color: transparent;
-    /*background-image   : url("../index-assets/icon-prev-active.png");*/
-    /*background-position: 157px center;*/
-}
-
-.scenes-1 .swiper-button-prev:active {
-    transform: translateX(-128px);
-}
-
-.scenes-1 .swiper-button-prev .swiper-button-content {
-    width              : 118px;
-    height             : 118px;
-    background-color   : #1080f2;
-    border-radius      : 100%;
-    background-position: 39px center;
-    background-repeat  : no-repeat;
-    transition         : transform 1s;
-    transform          : translateX(118px) scale(0);
-}
-/*.scenes-1 .swiper-button-prev:hover .swiper-button-content {
-    transform: translateX(118px);
-}*/
-/*.scenes-1 .swiper-button-prev:active .swiper-button-content {
-    background-position: 29px center;
-}*/
-.scenes-1 .swiper-button-next {}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-23:20:04
