@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-21:44:06
+* @Last modified time: 2016-12-23-16:56:20
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -110,8 +110,8 @@ $(() => {
         aaSwiperIndex: 0,
         init: function () {
             const _this = this;
-            // getData
-            _this.getData();
+            // getSwiperData
+            _this.getSwiperData();
 
             // getSize
             _this.getSize();
@@ -156,20 +156,26 @@ $(() => {
                     _this.qrcode();
                 },
                 onSlideChangeStart: function (swiper) {
-                    // console.log('s1', swiper.realIndex);
-                    $('.swiper-button-content').fadeOut();
-                    _this.setBtnPrev(swiper.realIndex);
-                    _this.setBtnNext(swiper.realIndex);
-                    // _this.setButtonPrev(swiper.realIndex);
-                    // _this.setButtonNext(swiper.realIndex);
+                    let num = [
+                        swiper.realIndex - 1,
+                        swiper.realIndex + 1
+                    ];
+                    if (num[0] < 0) {
+                        num[0] = _this.data.length - 1;
+                    }
+                    if (num[1] >= _this.data.length) {
+                        num[1] = 0;
+                    }
+                    _this.setSwiperButton(swiper.prevButton, num[0]);
+                    _this.setSwiperButton(swiper.nextButton, num[1]);
                 },
-                onSlideChangeEnd: function (swiper) {
-                    // console.log(swiper.realIndex);
-                    $('.swiper-button-content').fadeIn();
-                },
+                // onSlideChangeEnd: function (swiper) {
+                //     // console.log(swiper.realIndex);
+                //     // $('.swiper-button-content').show();
+                // },
             });
         },
-        getData: function () {
+        getSwiperData: function () {
             const _this = this;
             _this.data = new Array();
             _this.$scenes1
@@ -182,27 +188,22 @@ $(() => {
                     });
                 });
         },
-        setBtnPrev: function (num) {
+        setSwiperButton: function ($tag, num) {
+            // console.log($tag, num);
             const _this = this;
-            // console.log('setBtnPrev', num);
-            num = num - 1;
-            if (num < 0) {
-                num = _this.data.length - 1;
-            }
-            // console.log('setBtnPrev', p);
-            $('#prev-img').attr('src', _this.data[num].img)
-            $('#prev-t').text(_this.data[num].title);
-        },
-        setBtnNext: function (num) {
-            const _this = this;
-            num = num + 1;
-            // console.log('setBtnNext', p);
-            if (num >= _this.data.length) {
-                num = 0;
-            }
-            // console.log('setBtnNext', num);
-            $('#next-img').attr('src', _this.data[num].img)
-            $('#next-t').text(_this.data[num].title);
+            $tag
+                .stop(true, false)
+                .hide('800')
+                .html(`
+                    <div class="swiper-button-content">
+                        <div class="p">
+                            <img src="${_this.data[num].img}" width="102" height="auto">
+                        </div>
+                        <div class="t">${_this.data[num].title}</div>
+                    </div>
+                    <div class="icon"></div>
+                    <div class="b"></div>`)
+                .show('800');
         },
         getSize: function () {
             this.size = {
