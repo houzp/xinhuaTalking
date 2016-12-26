@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-19:19:18
+* @Last modified time: 2016-12-26-16:36:19
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -39,14 +39,16 @@
     background-image   : url("../index-assets/scenes-1-logo.png");
     background-repeat  : no-repeat;
     background-position: center;
+    transition         : all .5s;
 }
 
 .scenes-1-content,
 .scenes-1-title-1,
 .scenes-1-title-4,
 .scenes-1-title-top {
-    position: absolute;
-    width   : 550px;
+    position  : absolute;
+    width     : 550px;
+    transition: all .5s;
 }
 
 .scenes-1-title-top {
@@ -111,11 +113,9 @@
     left      : 0;
     bottom    : 6px;
 }
+/*.scenes-1-btn-1 {}
 
-.scenes-1-btn-1 {}
-
-.scenes-1-btn-2 {}
-
+.scenes-1-btn-2 {}*/
 .scenes-1-tool {
     position: relative;
 }

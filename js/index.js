@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-23-16:56:20
+* @Last modified time: 2016-12-26-17:27:59
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -41,7 +41,9 @@ $(() => {
         },
         onComplete: function (total) {
             // cover
+
             cover.init();
+
             // xinhuaTalking
             xinhuaTalking.init();
         }
@@ -52,12 +54,16 @@ $(() => {
     const cover = {
         $cover: $('#cover'),
         timeout: null,
-        init: function () {
+        init: function (_switch) {
+
             console.log('cover mod:', this.$cover.length);
-            if (this.$cover.length) {
+
+            if (this.$cover.length && _switch !== 0 && window.location.hash.lastIndexOf('no-cover') < 0) {
                 this.coverClear();
                 this.coverTimeout();
                 this.coverClick();
+            } else {
+                this.$cover.remove();
             }
         },
         coverClick: function () {
@@ -104,76 +110,102 @@ $(() => {
 
     const xinhuaTalking = {
         $nav: $('#nav'),
-        $scenes1: $('#scenes-1'),
         navHeight: 67,
         scenesMain_realIndex: 0,
-        aaSwiperIndex: 0,
+        $scenes1: $('#scenes-1'),
+        scenes1: null,
         init: function () {
             const _this = this;
-            // getSwiperData
-            _this.getSwiperData();
-
-            // getSize
-            _this.getSize();
-
-            // nav
-            _this.navHeight = this.$nav.height();
-            $window.on('resize', () => {
-                if (_this.scenesMain_realIndex < 1) {
-                    _this.getSize();
-                }
-                _this.navStatus(_this.scenesMain_realIndex);
-            });
-
             // swiper
             _this.scenesMain = new Swiper('#main', {
+                lazyLoading: true,
                 speed: 1000,
                 hashnav: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
                 // onSlideChangeStart
-                // onInit: callback.onInit,
+                onInit: function (swiper) {
+                    // getSwiperData
+                    _this.getSwiperData();
+                    // getSize
+                    _this.getSize();
+                    // nav
+                    _this.navHeight = _this.$nav.height();
+
+                    $window.on('resize', () => {
+                        if (_this.scenesMain_realIndex < 1) {
+                            _this.getSize();
+                        }
+                        _this.navStatus(_this.scenesMain_realIndex);
+                    });
+                    // scenes_1_init
+                    _this.scenes1_init();
+                },
                 onSlideChangeStart: function (swiper) {
                     console.log(swiper.realIndex);
                     _this.scenesMain_realIndex = swiper.realIndex;
                     _this.navStatus(swiper.realIndex);
                 },
-                // mousewheelEventsTarged: '#nav',
-            });
-
-            _this.scenes_1 = new Swiper(`#scenes-1`, {
-                autoplay: 8000, //可选选项，自动滑动
-                loop: true,
-                parallax: true,
-                pagination: `#scenes-1 .swiper-pagination`,
-                prevButton: `#scenes-1 .swiper-button-prev`,
-                nextButton: `#scenes-1 .swiper-button-next`,
-                paginationClickable: true,
-                speed: 3000,
-                onInit: function (swiper) {
-                    _this.zoom();
-                    _this.qrcode();
+                onSlideChangeEnd: function (swiper) {
+                    // scenes_1_init
+                    _this.scenes1_init();
                 },
-                onSlideChangeStart: function (swiper) {
-                    let num = [
-                        swiper.realIndex - 1,
-                        swiper.realIndex + 1
-                    ];
-                    if (num[0] < 0) {
-                        num[0] = _this.data.length - 1;
-                    }
-                    if (num[1] >= _this.data.length) {
-                        num[1] = 0;
-                    }
-                    _this.setSwiperButton(swiper.prevButton, num[0]);
-                    _this.setSwiperButton(swiper.nextButton, num[1]);
-                },
-                // onSlideChangeEnd: function (swiper) {
-                //     // console.log(swiper.realIndex);
-                //     // $('.swiper-button-content').show();
-                // },
             });
+        },
+        scenes1_init: function () {
+            const _this = this;
+            if (_this.scenesMain_realIndex === 0) {
+                _this.zoom();
+                if (_this.scenes1 === null) {
+                    console.log('scenes_1_init start');
+                    _this.scenes1 = new Swiper('#scenes-1', {
+                        lazyLoading: true,
+                        autoplay: 8000,
+                        loop: true,
+                        parallax: true,
+                        pagination: '#scenes-1 .swiper-pagination',
+                        prevButton: '#scenes-1 .swiper-button-prev',
+                        nextButton: '#scenes-1 .swiper-button-next',
+                        paginationClickable: true,
+                        speed: 3000,
+                        onInit: function (swiper) {
+                            _this.qrcode();
+                            const activeBtn = swiper.nextButton;
+                            activeBtn
+                                .addClass('active')
+                                .on('mouseout', function () {
+                                    activeBtn.removeClass('active');
+                                });
+                        },
+                        onSlideChangeStart: function (swiper) {
+                            let num = [
+                                swiper.realIndex - 1,
+                                swiper.realIndex + 1
+                            ];
+                            if (num[0] < 0) {
+                                num[0] = _this.data.length - 1;
+                            }
+                            if (num[1] >= _this.data.length) {
+                                num[1] = 0;
+                            }
+                            _this.setSwiperButton(swiper.prevButton, num[0]);
+                            _this.setSwiperButton(swiper.nextButton, num[1]);
+                        },
+                        // onSlideChangeEnd: function (swiper) {
+                        //     $('.setSwiperButtonOn').addClass('active');
+                        //     // console.log(swiper.realIndex);
+                        //     // $('.swiper-button-content').show();
+                        // },
+                    });
+                } else {
+                    _this.scenes1.unlockSwipes();
+                }
+            } else {
+                if (_this.scenes1 !== null) {
+                    _this.scenes1.lockSwipes();
+                }
+            }
         },
         getSwiperData: function () {
             const _this = this;
@@ -189,12 +221,8 @@ $(() => {
                 });
         },
         setSwiperButton: function ($tag, num) {
-            // console.log($tag, num);
             const _this = this;
-            $tag
-                .stop(true, false)
-                .hide('800')
-                .html(`
+            $tag.html(`
                     <div class="swiper-button-content">
                         <div class="p">
                             <img src="${_this.data[num].img}" width="102" height="auto">
@@ -202,8 +230,7 @@ $(() => {
                         <div class="t">${_this.data[num].title}</div>
                     </div>
                     <div class="icon"></div>
-                    <div class="b"></div>`)
-                .show('800');
+                    <div class="b"></div>`);
         },
         getSize: function () {
             this.size = {
@@ -225,48 +252,57 @@ $(() => {
                 });
             });
         },
-        zoom: function () {
-            const tags = [{
-                tag: '.scenes-1-logo',
-            }, {
-                tag: '.scenes-1-title-top',
-            }, {
-                tag: '.scenes-1-title-1',
-            }, {
-                tag: '.scenes-1-title-4',
-            }, {
-                tag: '.scenes-1-content',
-            }];
-            const ratio = (num) => Math.round(num * this.size.height / 1080);
-            const set = (opt) => {
-                let css = {
-                    top: ratio(opt.num),
+        zoomTags: [{
+            tag: '.scenes-1-logo',
+        }, {
+            tag: '.scenes-1-title-top',
+        }, {
+            tag: '.scenes-1-title-1',
+        }, {
+            tag: '.scenes-1-title-4',
+        }, {
+            tag: '.scenes-1-content',
+        }],
+        zoomResize: null,
+        zoomRatio: function (num) {
+            return Math.round(num * this.size.height / 1080);
+        },
+        zoomSet: function (opt) {
+            const _this = this;
+            let css = {
+                top: _this.zoomRatio(opt.num),
+            };
+            if (opt.type === 'height') {
+                css = {
+                    height: _this.zoomRatio(opt.num),
                 };
-                if (opt.type === 'height') {
-                    css = {
-                        height: ratio(opt.num),
-                    };
-                }
-                opt.tag.css(css);
-            };
-            const init = () => {
-                this.getSize();
-                for (let i = 0, j = tags.length; i < j; i++) {
-                    if (!tags[i].num) {
-                        tags[i].tag = this.$scenes1.find(tags[i].tag);
-                        if (tags[i].type !== 'height') {
-                            tags[i].num = tags[i].tag.offset().top;
-                        } else {
-                            tags[i].num = tags[i].tag.outerHeight();
-                        }
+            }
+            opt.tag.css(css);
+        },
+        zoomSets: function () {
+            console.log('zoomSets');
+            this.getSize();
+            for (let i = 0, j = this.zoomTags.length; i < j; i++) {
+                if (!this.zoomTags[i].num) {
+                    this.zoomTags[i].tag = this.$scenes1.find(this.zoomTags[i].tag);
+                    if (this.zoomTags[i].type !== 'height') {
+                        this.zoomTags[i].num = this.zoomTags[i].tag.offset().top;
+                    } else {
+                        this.zoomTags[i].num = this.zoomTags[i].tag.outerHeight();
                     }
-                    set(tags[i]);
                 }
-            };
-            $window.on('resize', function () {
-                init();
-            });
-            init();
+                this.zoomSet(this.zoomTags[i]);
+            }
+        },
+        zoom: function () {
+            console.log('zoom');
+            const _this = this;
+            if (_this.zoomResize === null) {
+                _this.zoomResize = $window.on('resize', function () {
+                    _this.zoomSets();
+                });
+            }
+            _this.zoomSets();
         },
         navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
