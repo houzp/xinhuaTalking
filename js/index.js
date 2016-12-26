@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-16:47:02
+* @Last modified time: 2016-12-26-17:05:11
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -252,6 +252,18 @@ $(() => {
                 });
             });
         },
+        zoomTags: [{
+            tag: '.scenes-1-logo',
+        }, {
+            tag: '.scenes-1-title-top',
+        }, {
+            tag: '.scenes-1-title-1',
+        }, {
+            tag: '.scenes-1-title-4',
+        }, {
+            tag: '.scenes-1-content',
+        }],
+        zoomResize: null,
         zoomRatio: function (num) {
             return Math.round(num * this.size.height / 1080);
         },
@@ -267,36 +279,30 @@ $(() => {
             }
             opt.tag.css(css);
         },
-        zoom: function () {
-            const tags = [{
-                tag: '.scenes-1-logo',
-            }, {
-                tag: '.scenes-1-title-top',
-            }, {
-                tag: '.scenes-1-title-1',
-            }, {
-                tag: '.scenes-1-title-4',
-            }, {
-                tag: '.scenes-1-content',
-            }];
-            const init = () => {
-                this.getSize();
-                for (let i = 0, j = tags.length; i < j; i++) {
-                    if (!tags[i].num) {
-                        tags[i].tag = this.$scenes1.find(tags[i].tag);
-                        if (tags[i].type !== 'height') {
-                            tags[i].num = tags[i].tag.offset().top;
-                        } else {
-                            tags[i].num = tags[i].tag.outerHeight();
-                        }
+        zoomSets: function () {
+            console.log('zoomSets');
+            this.getSize();
+            for (let i = 0, j = this.zoomTags.length; i < j; i++) {
+                if (!this.zoomTags[i].num) {
+                    this.zoomTags[i].tag = this.$scenes1.find(this.zoomTags[i].tag);
+                    if (this.zoomTags[i].type !== 'height') {
+                        this.zoomTags[i].num = this.zoomTags[i].tag.offset().top;
+                    } else {
+                        this.zoomTags[i].num = this.zoomTags[i].tag.outerHeight();
                     }
-                    this.zoomSet(tags[i]);
                 }
-            };
-            $window.on('resize', function () {
-                init();
-            });
-            init();
+                this.zoomSet(this.zoomTags[i]);
+            }
+        },
+        zoom: function () {
+            console.log('zoom');
+            const _this = this;
+            if (_this.zoomResize === null) {
+                _this.zoomResize = $window.on('resize', function () {
+                    _this.zoomSets();
+                });
+            }
+            _this.zoomSets();
         },
         navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
