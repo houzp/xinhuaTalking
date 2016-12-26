@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-15:13:51
+* @Last modified time: 2016-12-26-16:47:02
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -110,82 +110,102 @@ $(() => {
 
     const xinhuaTalking = {
         $nav: $('#nav'),
-        $scenes1: $('#scenes-1'),
         navHeight: 67,
         scenesMain_realIndex: 0,
-        aaSwiperIndex: 0,
+        $scenes1: $('#scenes-1'),
+        scenes1: null,
         init: function () {
             const _this = this;
-            // getSwiperData
-            _this.getSwiperData();
-
-            // getSize
-            _this.getSize();
-
-            // nav
-            _this.navHeight = this.$nav.height();
-            $window.on('resize', () => {
-                if (_this.scenesMain_realIndex < 1) {
-                    _this.getSize();
-                }
-                _this.navStatus(_this.scenesMain_realIndex);
-            });
-
             // swiper
             _this.scenesMain = new Swiper('#main', {
+                lazyLoading: true,
                 speed: 1000,
                 hashnav: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
                 // onSlideChangeStart
-                // onInit: callback.onInit,
+                onInit: function (swiper) {
+                    // getSwiperData
+                    _this.getSwiperData();
+                    // getSize
+                    _this.getSize();
+                    // nav
+                    _this.navHeight = _this.$nav.height();
+
+                    $window.on('resize', () => {
+                        if (_this.scenesMain_realIndex < 1) {
+                            _this.getSize();
+                        }
+                        _this.navStatus(_this.scenesMain_realIndex);
+                    });
+                    // scenes_1_init
+                    _this.scenes1_init();
+                },
                 onSlideChangeStart: function (swiper) {
                     console.log(swiper.realIndex);
                     _this.scenesMain_realIndex = swiper.realIndex;
                     _this.navStatus(swiper.realIndex);
                 },
-                // mousewheelEventsTarged: '#nav',
-            });
-
-            _this.scenes_1 = new Swiper(`#scenes-1`, {
-                autoplay: 8000, //可选选项，自动滑动
-                loop: true,
-                parallax: true,
-                pagination: `#scenes-1 .swiper-pagination`,
-                prevButton: `#scenes-1 .swiper-button-prev`,
-                nextButton: `#scenes-1 .swiper-button-next`,
-                paginationClickable: true,
-                speed: 3000,
-                onInit: function (swiper) {
-                    // console.log('scenes_1:', swiper.realIndex);
-                    // if (swiper.realIndex === 0) {
-                    _this.zoom();
-                    // }
-                    _this.qrcode();
-                },
-                onSlideChangeStart: function (swiper) {
-                    let num = [
-                        swiper.realIndex - 1,
-                        swiper.realIndex + 1
-                    ];
-                    if (num[0] < 0) {
-                        num[0] = _this.data.length - 1;
-                    }
-                    if (num[1] >= _this.data.length) {
-                        num[1] = 0;
-                    }
-                    _this.setSwiperButton(swiper.prevButton, num[0]);
-                    _this.setSwiperButton(swiper.nextButton, num[1]);
-
-                    $('.setSwiperButtonOn').removeClass('active');
-                },
                 onSlideChangeEnd: function (swiper) {
-                    $('.setSwiperButtonOn').addClass('active');
-                    // console.log(swiper.realIndex);
-                    // $('.swiper-button-content').show();
+                    // scenes_1_init
+                    _this.scenes1_init();
                 },
             });
+        },
+        scenes1_init: function () {
+            const _this = this;
+            if (_this.scenesMain_realIndex === 0) {
+                _this.zoom();
+                if (_this.scenes1 === null) {
+                    console.log('scenes_1_init start');
+                    _this.scenes1 = new Swiper('#scenes-1', {
+                        lazyLoading: true,
+                        autoplay: 8000,
+                        loop: true,
+                        parallax: true,
+                        pagination: '#scenes-1 .swiper-pagination',
+                        prevButton: '#scenes-1 .swiper-button-prev',
+                        nextButton: '#scenes-1 .swiper-button-next',
+                        paginationClickable: true,
+                        speed: 3000,
+                        onInit: function (swiper) {
+                            _this.qrcode();
+                            const activeBtn = swiper.nextButton;
+                            activeBtn
+                                .addClass('active')
+                                .on('mouseout', function () {
+                                    activeBtn.removeClass('active');
+                                });
+                        },
+                        onSlideChangeStart: function (swiper) {
+                            let num = [
+                                swiper.realIndex - 1,
+                                swiper.realIndex + 1
+                            ];
+                            if (num[0] < 0) {
+                                num[0] = _this.data.length - 1;
+                            }
+                            if (num[1] >= _this.data.length) {
+                                num[1] = 0;
+                            }
+                            _this.setSwiperButton(swiper.prevButton, num[0]);
+                            _this.setSwiperButton(swiper.nextButton, num[1]);
+                        },
+                        // onSlideChangeEnd: function (swiper) {
+                        //     $('.setSwiperButtonOn').addClass('active');
+                        //     // console.log(swiper.realIndex);
+                        //     // $('.swiper-button-content').show();
+                        // },
+                    });
+                } else {
+                    _this.scenes1.unlockSwipes();
+                }
+            } else {
+                if (_this.scenes1 !== null) {
+                    _this.scenes1.lockSwipes();
+                }
+            }
         },
         getSwiperData: function () {
             const _this = this;
@@ -201,7 +221,6 @@ $(() => {
                 });
         },
         setSwiperButton: function ($tag, num) {
-            // console.log($tag, num);
             const _this = this;
             $tag.html(`
                     <div class="swiper-button-content">
@@ -212,12 +231,6 @@ $(() => {
                     </div>
                     <div class="icon"></div>
                     <div class="b"></div>`);
-
-            $tag.hover(function () {
-                $tag.addClass('setSwiperButtonOn active');
-            }, function () {
-                $tag.removeClass('setSwiperButtonOn active')
-            });
         },
         getSize: function () {
             this.size = {

@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-15:09:05
+* @Last modified time: 2016-12-26-15:27:23
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -190,11 +190,6 @@
     transition      : width 2s;
 }
 
-.scenes-1 .swiper-button-prev:hover {
-    width           : 435px;
-    background-color: transparent;
-}
-
 .scenes-1 .swiper-button-prev .swiper-button-content {
     position  : absolute;
     width     : 336px;
@@ -281,6 +276,11 @@
     z-index         : 2;
 }
 
+.scenes-1 .swiper-button-prev:hover {
+    width           : 435px;
+    background-color: transparent;
+}
+
 .scenes-1 .swiper-button-prev:hover .swiper-button-content {
     transform: translateX(0);
 }
@@ -293,7 +293,7 @@
     transform: translateX(-128px);
 }
 
-.scenes-1 .swiper-button-prev:active .icon {
+.scenes-1 .swiper-button-prev:hover:active .icon {
     transform: translateX(-138px);
 }
 /*.scenes-1 .swiper-button-next */
@@ -309,11 +309,6 @@
     cursor          : pointer;
     overflow        : hidden;
     transition      : width 2s;
-}
-
-.scenes-1 .swiper-button-next.active {
-    width           : 435px;
-    background-color: transparent;
 }
 
 .scenes-1 .swiper-button-next .swiper-button-content {
@@ -405,18 +400,27 @@
     z-index         : 2;
 }
 
-.scenes-1 .swiper-button-next.active .swiper-button-content {
+.scenes-1 .swiper-button-next.active,
+.scenes-1 .swiper-button-next:hover {
+    width           : 435px;
+    background-color: transparent;
+}
+
+.scenes-1 .swiper-button-next.active .swiper-button-content,
+.scenes-1 .swiper-button-next:hover .swiper-button-content {
     transform: translateX(0);
 }
 
-.scenes-1 .swiper-button-next.active .b {
+.scenes-1 .swiper-button-next.active .b,
+.scenes-1 .swiper-button-next:hover .b {
     transform: scale(10);
 }
 
-.scenes-1 .swiper-button-next.active .icon {
+.scenes-1 .swiper-button-next.active .icon,
+.scenes-1 .swiper-button-next:hover .icon {
     transform: translateX(128px);
 }
 
-.scenes-1 .swiper-button-next.active:active .icon {
+.scenes-1 .swiper-button-next:hover:active .icon {
     transform: translateX(138px);
 }
