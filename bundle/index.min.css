@@ -657,7 +657,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-19:14:40
+* @Last modified time: 2016-12-26-15:09:05
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -964,7 +964,7 @@ body {
     transition      : width 2s;
 }
 
-.scenes-1 .swiper-button-next:hover {
+.scenes-1 .swiper-button-next.active {
     width           : 435px;
     background-color: transparent;
 }
@@ -1058,22 +1058,21 @@ body {
     z-index         : 2;
 }
 
-.scenes-1 .swiper-button-next:hover .swiper-button-content {
+.scenes-1 .swiper-button-next.active .swiper-button-content {
     transform: translateX(0);
 }
 
-.scenes-1 .swiper-button-next:hover .b {
+.scenes-1 .swiper-button-next.active .b {
     transform: scale(10);
 }
 
-.scenes-1 .swiper-button-next:hover .icon {
+.scenes-1 .swiper-button-next.active .icon {
     transform: translateX(128px);
 }
 
-.scenes-1 .swiper-button-next:active .icon {
+.scenes-1 .swiper-button-next.active:active .icon {
     transform: translateX(138px);
 }
-/*.scenes-1 .swiper-button-next {}*/
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-14:07:24

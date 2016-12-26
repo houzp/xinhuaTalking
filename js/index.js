@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-23-16:56:20
+* @Last modified time: 2016-12-26-15:13:51
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -41,7 +41,9 @@ $(() => {
         },
         onComplete: function (total) {
             // cover
+
             cover.init();
+
             // xinhuaTalking
             xinhuaTalking.init();
         }
@@ -52,12 +54,16 @@ $(() => {
     const cover = {
         $cover: $('#cover'),
         timeout: null,
-        init: function () {
+        init: function (_switch) {
+
             console.log('cover mod:', this.$cover.length);
-            if (this.$cover.length) {
+
+            if (this.$cover.length && _switch !== 0 && window.location.hash.lastIndexOf('no-cover') < 0) {
                 this.coverClear();
                 this.coverTimeout();
                 this.coverClick();
+            } else {
+                this.$cover.remove();
             }
         },
         coverClick: function () {
@@ -152,7 +158,10 @@ $(() => {
                 paginationClickable: true,
                 speed: 3000,
                 onInit: function (swiper) {
+                    // console.log('scenes_1:', swiper.realIndex);
+                    // if (swiper.realIndex === 0) {
                     _this.zoom();
+                    // }
                     _this.qrcode();
                 },
                 onSlideChangeStart: function (swiper) {
@@ -168,11 +177,14 @@ $(() => {
                     }
                     _this.setSwiperButton(swiper.prevButton, num[0]);
                     _this.setSwiperButton(swiper.nextButton, num[1]);
+
+                    $('.setSwiperButtonOn').removeClass('active');
                 },
-                // onSlideChangeEnd: function (swiper) {
-                //     // console.log(swiper.realIndex);
-                //     // $('.swiper-button-content').show();
-                // },
+                onSlideChangeEnd: function (swiper) {
+                    $('.setSwiperButtonOn').addClass('active');
+                    // console.log(swiper.realIndex);
+                    // $('.swiper-button-content').show();
+                },
             });
         },
         getSwiperData: function () {
@@ -191,10 +203,7 @@ $(() => {
         setSwiperButton: function ($tag, num) {
             // console.log($tag, num);
             const _this = this;
-            $tag
-                .stop(true, false)
-                .hide('800')
-                .html(`
+            $tag.html(`
                     <div class="swiper-button-content">
                         <div class="p">
                             <img src="${_this.data[num].img}" width="102" height="auto">
@@ -202,8 +211,13 @@ $(() => {
                         <div class="t">${_this.data[num].title}</div>
                     </div>
                     <div class="icon"></div>
-                    <div class="b"></div>`)
-                .show('800');
+                    <div class="b"></div>`);
+
+            $tag.hover(function () {
+                $tag.addClass('setSwiperButtonOn active');
+            }, function () {
+                $tag.removeClass('setSwiperButtonOn active')
+            });
         },
         getSize: function () {
             this.size = {
@@ -225,6 +239,21 @@ $(() => {
                 });
             });
         },
+        zoomRatio: function (num) {
+            return Math.round(num * this.size.height / 1080);
+        },
+        zoomSet: function (opt) {
+            const _this = this;
+            let css = {
+                top: _this.zoomRatio(opt.num),
+            };
+            if (opt.type === 'height') {
+                css = {
+                    height: _this.zoomRatio(opt.num),
+                };
+            }
+            opt.tag.css(css);
+        },
         zoom: function () {
             const tags = [{
                 tag: '.scenes-1-logo',
@@ -237,18 +266,6 @@ $(() => {
             }, {
                 tag: '.scenes-1-content',
             }];
-            const ratio = (num) => Math.round(num * this.size.height / 1080);
-            const set = (opt) => {
-                let css = {
-                    top: ratio(opt.num),
-                };
-                if (opt.type === 'height') {
-                    css = {
-                        height: ratio(opt.num),
-                    };
-                }
-                opt.tag.css(css);
-            };
             const init = () => {
                 this.getSize();
                 for (let i = 0, j = tags.length; i < j; i++) {
@@ -260,7 +277,7 @@ $(() => {
                             tags[i].num = tags[i].tag.outerHeight();
                         }
                     }
-                    set(tags[i]);
+                    this.zoomSet(tags[i]);
                 }
             };
             $window.on('resize', function () {
