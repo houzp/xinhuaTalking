@@ -1,10 +1,10 @@
 /**
  * @Author: St. <SuperMoo>
- * @Date:   2016-11-29-11:15:57
+ * @Date:   2016-12-27-20:31:24
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
-* @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-27-20:15:47
+* @Last modified by:   SuperMoo
+* @Last modified time: 2016-12-27-20:35:20
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -12,8 +12,8 @@
 $(() => {
     // 必要的全局对象
     const XHT = window.XHT;
-    const $window = $(window);
-    const $body = $('body');
+    const $window = window.$window = $(window);
+    const $body = window.$body = $('body');
     const cover = XHT.cover; // cover 组件
     const zoom = XHT.zoom;
 
@@ -49,8 +49,6 @@ $(() => {
             xinhuaTalking.init();
         }
     });
-
-
 
     const xinhuaTalking = {
         $nav: $('#nav'),
@@ -136,7 +134,7 @@ $(() => {
                         prevButton: '#scenes-1 .swiper-button-prev',
                         nextButton: '#scenes-1 .swiper-button-next',
                         paginationClickable: true,
-                        speed: 3000,
+                        speed: 2000,
                         onInit: function (swiper) {
                             _this.qrcode();
                             const activeBtn = swiper.nextButton;
