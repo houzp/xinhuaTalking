@@ -1,18 +1,23 @@
 /**
  * @Author: St. <SuperMoo>
- * @Date:   2016-11-29-11:15:57
+ * @Date:   2016-12-27-20:31:24
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
-* @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-17:27:59
+* @Last modified by:   SuperMoo
+* @Last modified time: 2016-12-27-20:40:07
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 
 $(() => {
     // 必要的全局对象
-    const $window = $(window);
-    const $body = $('body');
+    const XHT = window.XHT;
+    const $window = window.$window = $(window);
+    const $body = window.$body = $('body');
+    const cover = XHT.cover; // cover 组件
+    const zoom = XHT.zoom;
+
+    let scens1 = null;
 
     // loader
     const resources = [ // 需要预加载的资源
@@ -40,73 +45,10 @@ $(() => {
             // $('.progresstext .total').text(total);
         },
         onComplete: function (total) {
-            // cover
-
-            cover.init();
-
             // xinhuaTalking
             xinhuaTalking.init();
         }
     });
-
-
-    // cover
-    const cover = {
-        $cover: $('#cover'),
-        timeout: null,
-        init: function (_switch) {
-
-            console.log('cover mod:', this.$cover.length);
-
-            if (this.$cover.length && _switch !== 0 && window.location.hash.lastIndexOf('no-cover') < 0) {
-                this.coverClear();
-                this.coverTimeout();
-                this.coverClick();
-            } else {
-                this.$cover.remove();
-            }
-        },
-        coverClick: function () {
-            const _this = this;
-            _this.$cover.on('click', () => {
-                TweenMax.killAll();
-                _this.coverHide();
-                _this.coverClear();
-                console.log('click', _this.timeout);
-            });
-        },
-        coverClear: function () {
-            clearTimeout(this.timeout);
-            this.timeout = null;
-        },
-        coverTimeout: function () {
-            const _this = this;
-            _this.timeout = setTimeout(() => {
-                _this.coverHide();
-            }, 200);
-        },
-        coverHide: function () {
-            console.log('coverHide');
-            const _this = this;
-            const time = 4;
-            $body.addClass('overflow-hidden');
-            // anis
-            TweenMax.to(_this.$cover, time, {
-                scale: 12,
-                opacity: 0,
-                ease: Power4.easeInOut,
-                // ease: SlowMo.ease.config(0.7, 0.7, false),
-                onStart: function () {
-                    _this.$cover.off('click');
-                },
-                onComplete: function () {
-                    _this.$cover.remove();
-                    $body.removeClass('overflow-hidden');
-                    console.log('remove');
-                }
-            });
-        }
-    };
 
     const xinhuaTalking = {
         $nav: $('#nav'),
@@ -116,6 +58,15 @@ $(() => {
         scenes1: null,
         init: function () {
             const _this = this;
+
+            new cover({
+                // tag: $('#cover1'), //主目标
+                // isOff: 1, //开关
+                // hashKey: 'no-cover', //不显示封面的hash关键字
+                // aniTime: 4, // TweenMax动画时间
+                // delay: 2000, //
+            });
+
             // swiper
             _this.scenesMain = new Swiper('#main', {
                 lazyLoading: true,
@@ -156,7 +107,22 @@ $(() => {
         scenes1_init: function () {
             const _this = this;
             if (_this.scenesMain_realIndex === 0) {
-                _this.zoom();
+
+                new zoom({
+                    id: _this.$scenes1,
+                    array: [{
+                        tag: '.scenes-1-logo',
+                    }, {
+                        tag: '.scenes-1-title-top',
+                    }, {
+                        tag: '.scenes-1-title-1',
+                    }, {
+                        tag: '.scenes-1-title-4',
+                    }, {
+                        tag: '.scenes-1-content',
+                    }],
+                });
+
                 if (_this.scenes1 === null) {
                     console.log('scenes_1_init start');
                     _this.scenes1 = new Swiper('#scenes-1', {
@@ -168,14 +134,19 @@ $(() => {
                         prevButton: '#scenes-1 .swiper-button-prev',
                         nextButton: '#scenes-1 .swiper-button-next',
                         paginationClickable: true,
-                        speed: 3000,
+                        speed: 2000,
                         onInit: function (swiper) {
                             _this.qrcode();
-                            const activeBtn = swiper.nextButton;
-                            activeBtn
+
+                            swiper.nextButton
                                 .addClass('active')
                                 .on('mouseout', function () {
-                                    activeBtn.removeClass('active');
+                                    swiper.nextButton.removeClass('active');
+                                });
+
+                            swiper.prevButton
+                                .on('mouseout mouseover', function () {
+                                    swiper.nextButton.removeClass('active');
                                 });
                         },
                         onSlideChangeStart: function (swiper) {
@@ -251,58 +222,6 @@ $(() => {
                     text: $.trim($e.find('.scenes-1-qrcode-url').text())
                 });
             });
-        },
-        zoomTags: [{
-            tag: '.scenes-1-logo',
-        }, {
-            tag: '.scenes-1-title-top',
-        }, {
-            tag: '.scenes-1-title-1',
-        }, {
-            tag: '.scenes-1-title-4',
-        }, {
-            tag: '.scenes-1-content',
-        }],
-        zoomResize: null,
-        zoomRatio: function (num) {
-            return Math.round(num * this.size.height / 1080);
-        },
-        zoomSet: function (opt) {
-            const _this = this;
-            let css = {
-                top: _this.zoomRatio(opt.num),
-            };
-            if (opt.type === 'height') {
-                css = {
-                    height: _this.zoomRatio(opt.num),
-                };
-            }
-            opt.tag.css(css);
-        },
-        zoomSets: function () {
-            console.log('zoomSets');
-            this.getSize();
-            for (let i = 0, j = this.zoomTags.length; i < j; i++) {
-                if (!this.zoomTags[i].num) {
-                    this.zoomTags[i].tag = this.$scenes1.find(this.zoomTags[i].tag);
-                    if (this.zoomTags[i].type !== 'height') {
-                        this.zoomTags[i].num = this.zoomTags[i].tag.offset().top;
-                    } else {
-                        this.zoomTags[i].num = this.zoomTags[i].tag.outerHeight();
-                    }
-                }
-                this.zoomSet(this.zoomTags[i]);
-            }
-        },
-        zoom: function () {
-            console.log('zoom');
-            const _this = this;
-            if (_this.zoomResize === null) {
-                _this.zoomResize = $window.on('resize', function () {
-                    _this.zoomSets();
-                });
-            }
-            _this.zoomSets();
         },
         navPos: function (num, time, callback) {
             TweenMax.to(this.$nav, time, {
