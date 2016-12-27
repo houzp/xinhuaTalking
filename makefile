@@ -2,7 +2,7 @@
 # @Date:   2016-05-31-08:41:37
 # @Email:  st_sister@iCloud.com
 # @Last modified by:   SuperWoods
-# @Last modified time: 2016-12-22-16:04:11
+# @Last modified time: 2016-12-27-19:41:27
 # @License: MIT
 #
 # .PHONY: clean
@@ -31,6 +31,8 @@ css:
 .PHONY: js
 js:
 	mkdir -p bundle
+	babel --watch js/cover.js --out-file bundle/cover.min.js &
+	babel --watch js/zoom.js --out-file bundle/zoom.min.js &
 	babel --watch js/index.js --out-file bundle/index.min.js &
 	babel --watch js/footer.js --out-file bundle/footer.min.js
 
