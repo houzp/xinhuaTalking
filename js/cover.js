@@ -3,14 +3,14 @@
  * @Date:   2016-12-27-16:16:06
  * @Email:  st_sister@iCloud.com
  * @Filename: cover.js
-* @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-27-18:10:08
+* @Last modified by:   SuperMoo
+* @Last modified time: 2016-12-27-20:47:19
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 
 // cover
-(function ($, window) {
+(function () {
     const cover = function (opts) {
         this.defaults = {
             tag: $('#cover'), //主目标
@@ -99,4 +99,4 @@
 
     const XHT = window.XHT = window.XHT || {};
     XHT.cover = cover;
-})($, window);
+})();
