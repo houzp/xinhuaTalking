@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperMoo
-* @Last modified time: 2016-12-27-20:35:20
+* @Last modified time: 2016-12-27-20:40:07
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -137,11 +137,16 @@ $(() => {
                         speed: 2000,
                         onInit: function (swiper) {
                             _this.qrcode();
-                            const activeBtn = swiper.nextButton;
-                            activeBtn
+
+                            swiper.nextButton
                                 .addClass('active')
                                 .on('mouseout', function () {
-                                    activeBtn.removeClass('active');
+                                    swiper.nextButton.removeClass('active');
+                                });
+
+                            swiper.prevButton
+                                .on('mouseout mouseover', function () {
+                                    swiper.nextButton.removeClass('active');
                                 });
                         },
                         onSlideChangeStart: function (swiper) {
