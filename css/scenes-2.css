@@ -4,10 +4,16 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-22:16:50
+* @Last modified time: 2016-12-28-23:30:06
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
+.test {
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    background-color: #FFF;
+}
 /* scenes-2 */
 .scenes-2 {
     width                  : 100%;
@@ -35,10 +41,19 @@
 }*/
 .scenes-2 .item,
 .scenes-2 .mask,
-.scenes-2 .scenes-pic,
-.scenes-2 .scenes-pic img {
+.scenes-2 .scenes-pic {
     width : 170px;
     height: 170px;
+}
+
+.scenes-2 .scenes-pic {
+    background-color: #FFF;
+}
+
+.scenes-2 .scenes-pic img {
+    width : auto;
+    height: 100%;
+    margin: 0 auto;
 }
 
 .scenes-2 .item {

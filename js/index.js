@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-23:23:37
+* @Last modified time: 2016-12-28-23:46:34
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -151,7 +151,7 @@ $(() => {
                 scenesSwiper = new Swiper('#scenes-2', {
                     lazyLoading: true,
                     effect: 'fade',
-                    // autoplay: 8000,
+                    autoplay: 8000,
                     // loop: true, // 因为背景透明无法使用loop
                     prevButton: '#scenes-2 .swiper-button-prev',
                     nextButton: '#scenes-2 .swiper-button-next',
@@ -167,7 +167,7 @@ $(() => {
                         $scenes2_items.on('mouseover', function () {
                             const $this = $(this);
                             TweenMax.to($this, 0.2, {
-                                scale: 1.2,
+                                scale: 1.25,
                                 'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
                                 onStart: function () {
                                     $this.css({
@@ -220,9 +220,11 @@ $(() => {
                 //     scenes2_ani(scenesSwiper.activeIndex, 'show');
                 // });
             } else {
+                scenesSwiper.unlockSwipes();
                 scenes2_ani(scenesSwiper.activeIndex, 'show', 1);
             }
         } else {
+            scenesSwiper.lockSwipes();
             scenes2_hide($scenes2_items, 0, 0);
         }
     };
@@ -271,12 +273,13 @@ $(() => {
                     console.log(swiper.realIndex);
                     _this.scenesMain_realIndex = swiper.realIndex;
                     _this.navStatus(swiper.realIndex);
+
+                    scenes2_init(swiper.realIndex);
                 },
                 onSlideChangeEnd: function (swiper) {
                     // scenes_1_init
                     _this.scenes1_init();
                     // scenes2_init
-                    scenes2_init(swiper.realIndex);
                 },
             });
         },
