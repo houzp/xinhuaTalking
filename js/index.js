@@ -3,8 +3,8 @@
  * @Date:   2016-11-29-11:15:57
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
-* @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-17:27:59
+* @Last modified by:   SuperMoo
+* @Last modified time: 2016-12-28-10:03:04
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -41,7 +41,6 @@ $(() => {
         },
         onComplete: function (total) {
             // cover
-
             cover.init();
 
             // xinhuaTalking
