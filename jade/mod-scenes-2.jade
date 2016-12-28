@@ -1,0 +1,20 @@
+.swiper-container.scenes-2-container#scenes-2
+    //- .scenes-logo(data-swiper-parallax="200%")
+    //- .parallax-bg(data-swiper-parallax="-23%")
+    .swiper-wrapper
+        - for (var i=0, j=28*2 + 9; i<j; i++) {
+            .swiper-slide
+                a(href="#")
+                    .scenes-title-1 #{i}军改，实现强军梦的正确打开方式正确打开方式
+                    .scenes-title-2 尹卓尹卓
+                    .scenes-title-3 北京佳合建科集团董事长<br>北京定荣家科技有限公司创始人
+                    .scenes-pic #{i}
+                        //- img(src="index-assets/demo-a-s2.png" data-swiper-parallax="-500")
+        - }
+    //- .swiper-pagination
+    .swiper-button-prev
+        .icon
+        .b
+    .swiper-button-next
+        .icon
+        .b

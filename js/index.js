@@ -3,8 +3,8 @@
  * @Date:   2016-11-29-11:15:57
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
-* @Last modified by:   SuperMoo
-* @Last modified time: 2016-12-28-10:03:04
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-28-17:03:36
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -107,6 +107,172 @@ $(() => {
         }
     };
 
+    const $scenes2 = $('#scenes-2');
+    let scenes2 = null;
+    const scenes2Add = function () {
+        const slides = $scenes2.find('.swiper-slide');
+        const len = slides.length;
+        console.log(slides.length);
+        // const b = function (num) {
+        //     // let b = '';
+        //     // for (let i = 0, j = num; i < j; i++) {
+        //     //     b += blank;
+        //     // }
+        //     return '<div class="swiper-slide" style="background:red;">b</div>';
+        // }
+        // const blank = '<div class="swiper-slide" style="background:red;">b</div>';
+        const addBlank = function (num) {
+            if (len > num) {
+                slides.eq(num).before('<div class="swiper-slide" style="background:red;">b</div>');
+            }
+        }
+        const addBlank2 = function (num) {
+            if (len > num) {
+                slides.eq(num).after('<div class="swiper-slide" style="background:red;">b</div>');
+            }
+        }
+
+        for (let i = 0, j = 6; i < j; i + 3) {
+            addBlank(i);
+        }
+
+
+
+
+        // addBlank(8);
+        // addBlank(11);
+        // addBlank(14);
+        // addBlank(17);
+        // addBlank(20);
+
+
+
+        //
+        // addBlank2(3);
+        // addBlank2(3);
+        // addBlank2(3);
+        //
+        // addBlank2(49);
+        // addBlank2(49);
+        // addBlank2(49);
+        // addBlank2(49);
+        // addBlank2(49);
+        //
+        // addBlank2(51);
+        // addBlank2(51);
+        // addBlank2(51);
+        // addBlank2(51);
+        // addBlank2(51);
+
+
+        // addBlank(4);
+        // addBlank(4);
+        // addBlank(4);
+
+
+
+
+        // test2
+        // var s = $('#scenes-2').find('.swiper-slide');
+        // for (let i = 0, j = s.length; i < j; i++) {
+        //     s.eq(i).append(`<br><div style="color:green;">${i}</div>`);
+        // }
+
+
+        //
+        // addBlank(21);
+        // addBlank(25);
+        // addBlank(29);
+
+        // slides.eq(0).before(blank);
+        // slides.eq(3).before(blank);
+        // slides.eq(6).before(blank);
+        //
+        //
+        // if (slides.length > 12) {
+        //     slides.eq(12).before(blank);
+        // }
+        // if (slides.length > 15) {
+        //     slides.eq(15).before(blank);
+        // }
+        // if (slides.length > 12) {
+        //     slides.eq(12).before(blank);
+        // }
+
+
+        // if (slides.length > 21) {
+        // slides.eq(21).after(addBlanks(5));
+        // }
+    };
+
+    const scenes2_init = function (num) {
+
+        console.log(num, num === 1);
+
+        if (num === 1) {
+            // _this.zoom();
+            console.log(scenes2, scenes2 === null);
+
+            if (scenes2 === null) {
+                console.log('scenes2_init start');
+
+                scenes2Add();
+
+                scenes2 = new Swiper('#scenes-2', {
+                    // lazyLoading: true,
+                    // autoplay: 8000,
+                    // loop: true,
+                    // parallax: true,
+                    // pagination: '#scenes-2 .swiper-pagination',
+                    prevButton: '#scenes-2 .swiper-button-prev',
+                    nextButton: '#scenes-2 .swiper-button-next',
+                    // paginationClickable: true,
+                    speed: 2000,
+                    slidesPerView: 7, //'auto'
+                    slidesPerColumn: 4,
+                    spaceBetween: 1,
+                    slidesPerGroup: 7,
+                    // slidesPerColumnFill: 'row',
+
+                    onInit: function (swiper) {
+                        // _this.qrcode();
+                        // const activeBtn = swiper.nextButton;
+                        // activeBtn
+                        //     .addClass('active')
+                        //     .on('mouseout', function () {
+                        //         activeBtn.removeClass('active');
+                        //     });
+                    },
+                    onSlideChangeStart: function (swiper) {
+                        // let num = [
+                        //     swiper.realIndex - 1,
+                        //     swiper.realIndex + 1
+                        // ];
+                        // if (num[0] < 0) {
+                        //     num[0] = _this.data.length - 1;
+                        // }
+                        // if (num[1] >= _this.data.length) {
+                        //     num[1] = 0;
+                        // }
+                        // _this.setSwiperButton(swiper.prevButton, num[0]);
+                        // _this.setSwiperButton(swiper.nextButton, num[1]);
+                    },
+                    // onSlideChangeEnd: function (swiper) {
+                    //     $('.setSwiperButtonOn').addClass('active');
+                    //     // console.log(swiper.realIndex);
+                    //     // $('.swiper-button-content').show();
+                    // },
+                });
+            } else {
+                scenes2.unlockSwipes();
+            }
+        } else {
+            if (scenes2 !== null) {
+                scenes2.lockSwipes();
+            }
+        }
+    };
+
     const xinhuaTalking = {
         $nav: $('#nav'),
         navHeight: 67,
@@ -140,6 +306,12 @@ $(() => {
                     });
                     // scenes_1_init
                     _this.scenes1_init();
+                    // scenes2_init
+                    scenes2_init(swiper.realIndex);
+
+                    // only for test
+                    swiper.slideTo(1);
+                    swiper.lockSwipes();
                 },
                 onSlideChangeStart: function (swiper) {
                     console.log(swiper.realIndex);
@@ -149,6 +321,8 @@ $(() => {
                 onSlideChangeEnd: function (swiper) {
                     // scenes_1_init
                     _this.scenes1_init();
+                    // scenes2_init
+                    scenes2_init(swiper.realIndex);
                 },
             });
         },

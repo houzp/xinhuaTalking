@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-15:39:37
+* @Last modified time: 2016-12-28-14:24:06
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1204,6 +1204,42 @@ body {
     margin-left      : -165px;
     margin-top       : -71px;
 }
+/* reset swiper */
+.swiper-container {
+    width : 100%;
+    height: 100%;
+}
+/* scenes-slide */
+.scenes-slide {
+    text-align      : left;
+    font-size       : 18px;
+    background-color: #fff;
+    /* Center slide text vertically */
+    /*display                : -webkit-box;
+        display                : -ms-flexbox;
+        display                : -webkit-flex;
+        display                : flex;
+        -webkit-box-pack       : center;
+        -ms-flex-pack          : center;
+        -webkit-justify-content: center;
+        justify-content        : center;
+        -webkit-box-align      : center;
+        -ms-flex-align         : center;
+        -webkit-align-items    : center;
+        align-items            : center;*/
+}
+/* part */
+.part,
+.part_swiper-slide {
+    width   : 1200px;
+    margin  : 0 auto;
+    position: relative;
+}
+/* swiper-slide-part */
+.part_swiper-slide {
+    height: 100%;
+}
+/* scenes */
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-14:13:16
@@ -1418,7 +1454,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-23:47:30
+* @Last modified time: 2016-12-28-16:36:59
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1431,6 +1467,61 @@ body {
     background-size        : cover;
     background-position    : center;
 }
+
+.scenes-2-container {
+    width : 1196px;
+    height: 683px;
+    margin: 150px auto 0;
+    /*overflow: hidden;*/
+    border: red 1px solid;
+}
+
+.scenes-2 .scenes-pic,
+.scenes-2 .scenes-pic img,
+.scenes-2 .swiper-slide {
+    width : 170px;
+    height: 170px;
+}
+
+.scenes-2 .swiper-slide {}
+
+.scenes-2 .scenes-logo {}
+
+.scenes-2 .parallax-bg {}
+
+.scenes-2 .scenes-title-1,
+.scenes-2 .scenes-title-2,
+.scenes-2 .scenes-title-3 {
+    display: none;
+}
+
+.scenes-2 .scenes-title-1 {}
+
+.scenes-2 .scenes-title-2 {}
+
+.scenes-2 .scenes-title-3 {}
+/*.scenes-2 .scenes-pic,
+.scenes-2 .scenes-pic img {
+    width : 100%;
+    height: 100%;
+}*/
+.scenes-2 .scenes-pic {}
+
+.scenes-2 .scenes-pic img {}
+
+.scenes-2 .swiper-pagination {}
+
+.scenes-2 .swiper-button-prev {}
+
+.scenes-2 .icon {}
+
+.scenes-2 .b {}
+
+.scenes-2 .swiper-button-next {}
+
+.scenes-2 .icon {}
+
+.scenes-2 .b {}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-09:31:14
@@ -1460,39 +1551,4 @@ body {
 
 .oldie body {
     font-family: \5B8B\4F53, Arial;
-}
-/* reset swiper */
-.swiper-container {
-    width : 100%;
-    height: 100%;
-}
-/* scenes-slide */
-.scenes-slide {
-    text-align      : left;
-    font-size       : 18px;
-    background-color: #fff;
-    /* Center slide text vertically */
-    /*display                : -webkit-box;
-        display                : -ms-flexbox;
-        display                : -webkit-flex;
-        display                : flex;
-        -webkit-box-pack       : center;
-        -ms-flex-pack          : center;
-        -webkit-justify-content: center;
-        justify-content        : center;
-        -webkit-box-align      : center;
-        -ms-flex-align         : center;
-        -webkit-align-items    : center;
-        align-items            : center;*/
-}
-/* part */
-.part,
-.part_swiper-slide {
-    width   : 1200px;
-    margin  : 0 auto;
-    position: relative;
-}
-/* swiper-slide-part */
-.part_swiper-slide {
-    height: 100%;
 }
