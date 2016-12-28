@@ -1,0 +1,30 @@
+/**
+* @Author: St. <SuperWoods>
+* @Date:   2016-12-21-09:31:14
+* @Email:  st_sister@iCloud.com
+* @Filename: hacks.css
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-21-14:11:11
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
+/*.ie body,
+.windows body {
+    font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
+}*/
+.ie-tip {
+    text-align : center;
+    width      : 100%;
+    margin     : 0 auto;
+    height     : 60px;
+    line-height: 60px;
+    border-top : #CCC 1px solid;
+}
+/* is windows */
+.windows body {
+    font-family: "微软雅黑";
+}
+
+.oldie body {
+    font-family: \5B8B\4F53, Arial;
+}
