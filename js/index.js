@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-17:03:36
+* @Last modified time: 2016-12-28-23:23:37
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -108,168 +108,122 @@ $(() => {
     };
 
     const $scenes2 = $('#scenes-2');
-    let scenes2 = null;
-    const scenes2Add = function () {
-        const slides = $scenes2.find('.swiper-slide');
-        const len = slides.length;
-        console.log(slides.length);
-        // const b = function (num) {
-        //     // let b = '';
-        //     // for (let i = 0, j = num; i < j; i++) {
-        //     //     b += blank;
-        //     // }
-        //     return '<div class="swiper-slide" style="background:red;">b</div>';
-        // }
-        // const blank = '<div class="swiper-slide" style="background:red;">b</div>';
-        const addBlank = function (num) {
-            if (len > num) {
-                slides.eq(num).before('<div class="swiper-slide" style="background:red;">b</div>');
-            }
+    const $scenes2_slide = $scenes2.find('.swiper-slide');
+    const scenes2_slide_len = $scenes2_slide.length;
+    const $scenes2_items = $scenes2.find('.item');
+    let scenesSwiper = null;
+    const scenes2_ani = function (num, toggle) {
+        console.log('scenes2_ani:', num, toggle);
+        if (toggle === 'show') {
+            $scenes2_slide
+                .eq(num)
+                .find('.item')
+                .each(function (i, e) {
+                    TweenMax.to($(e), 0.4, {
+                        x: 0,
+                        opacity: 1,
+                        delay: i * 0.1
+                    });
+                });
+        } else if (toggle === 'hide') {
+            $scenes2_slide
+                .eq(num)
+                .find('.item')
+                .each(function (i, e) {
+                    scenes2_hide($(e), 0.4, i * 0.08);
+                });
         }
-        const addBlank2 = function (num) {
-            if (len > num) {
-                slides.eq(num).after('<div class="swiper-slide" style="background:red;">b</div>');
-            }
-        }
+    };
 
-        for (let i = 0, j = 6; i < j; i + 3) {
-            addBlank(i);
-        }
-
-
-
-
-        // addBlank(8);
-        // addBlank(11);
-        // addBlank(14);
-        // addBlank(17);
-        // addBlank(20);
-
-
-
-        //
-        // addBlank2(3);
-        // addBlank2(3);
-        // addBlank2(3);
-        //
-        // addBlank2(49);
-        // addBlank2(49);
-        // addBlank2(49);
-        // addBlank2(49);
-        // addBlank2(49);
-        //
-        // addBlank2(51);
-        // addBlank2(51);
-        // addBlank2(51);
-        // addBlank2(51);
-        // addBlank2(51);
-
-
-        // addBlank(4);
-        // addBlank(4);
-        // addBlank(4);
-
-
-
-
-        // test2
-        // var s = $('#scenes-2').find('.swiper-slide');
-        // for (let i = 0, j = s.length; i < j; i++) {
-        //     s.eq(i).append(`<br><div style="color:green;">${i}</div>`);
-        // }
-
-
-        //
-        // addBlank(21);
-        // addBlank(25);
-        // addBlank(29);
-
-        // slides.eq(0).before(blank);
-        // slides.eq(3).before(blank);
-        // slides.eq(6).before(blank);
-        //
-        //
-        // if (slides.length > 12) {
-        //     slides.eq(12).before(blank);
-        // }
-        // if (slides.length > 15) {
-        //     slides.eq(15).before(blank);
-        // }
-        // if (slides.length > 12) {
-        //     slides.eq(12).before(blank);
-        // }
-
-
-        // if (slides.length > 21) {
-        // slides.eq(21).after(addBlanks(5));
-        // }
+    const scenes2_hide = function (tag, time, delay) {
+        TweenMax.to(tag, time, {
+            x: 30,
+            opacity: 0,
+            delay: delay
+        });
     };
 
     const scenes2_init = function (num) {
-
         console.log(num, num === 1);
 
         if (num === 1) {
-            // _this.zoom();
-            console.log(scenes2, scenes2 === null);
-
-            if (scenes2 === null) {
-                console.log('scenes2_init start');
-
-                scenes2Add();
-
-                scenes2 = new Swiper('#scenes-2', {
-                    // lazyLoading: true,
+            if (scenesSwiper === null) {
+                scenesSwiper = new Swiper('#scenes-2', {
+                    lazyLoading: true,
+                    effect: 'fade',
                     // autoplay: 8000,
-                    // loop: true,
-                    // parallax: true,
-                    // pagination: '#scenes-2 .swiper-pagination',
+                    // loop: true, // 因为背景透明无法使用loop
                     prevButton: '#scenes-2 .swiper-button-prev',
                     nextButton: '#scenes-2 .swiper-button-next',
-                    // paginationClickable: true,
-                    speed: 2000,
-                    slidesPerView: 7, //'auto'
-                    slidesPerColumn: 4,
-                    spaceBetween: 1,
-                    slidesPerGroup: 7,
-                    // slidesPerColumnFill: 'row',
-
+                    paginationClickable: true,
+                    speed: 1800,
+                    spaceBetween: 80,
                     onInit: function (swiper) {
-                        // _this.qrcode();
-                        // const activeBtn = swiper.nextButton;
-                        // activeBtn
-                        //     .addClass('active')
-                        //     .on('mouseout', function () {
-                        //         activeBtn.removeClass('active');
-                        //     });
+                        scenes2_hide($scenes2_items, 0, 0);
+                        scenes2_ani(swiper.activeIndex, 'show', 1);
+                        // $scenes2_slide.eq(swiper.realIndex).css({
+                        //     overflow: 'visibliy'
+                        // });
+                        $scenes2_items.on('mouseover', function () {
+                            const $this = $(this);
+                            TweenMax.to($this, 0.2, {
+                                scale: 1.2,
+                                'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
+                                onStart: function () {
+                                    $this.css({
+                                        'z-index': 2,
+                                    });
+                                    // $this.find('img').css({
+                                    //     width: '-=1px',
+                                    //     height: '-=1px',
+                                    //     'border': '1px #FFF solid',
+                                    // });
+                                    TweenMax.to($this.find('.mask'), 0.8, {
+                                        opacity: 0,
+                                    });
+                                },
+                            });
+                        });
+                        $scenes2_items.on('mouseout', function () {
+                            const $this = $(this);
+                            const time = 1.2;
+                            TweenMax.to($this, time, {
+                                scale: 1,
+                                'box-shadow': 'none',
+                                onStart: function () {
+                                    TweenMax.to($this.find('.mask'), time, {
+                                        opacity: 1,
+                                    });
+                                    $this.css({
+                                        'z-index': 1,
+                                    });
+                                    // $this.find('img').css({
+                                    //     width: '100%',
+                                    //     height: '100%',
+                                    //     'border': 'none',
+                                    // });
+                                },
+                            });
+                        });
                     },
                     onSlideChangeStart: function (swiper) {
-                        // let num = [
-                        //     swiper.realIndex - 1,
-                        //     swiper.realIndex + 1
-                        // ];
-                        // if (num[0] < 0) {
-                        //     num[0] = _this.data.length - 1;
-                        // }
-                        // if (num[1] >= _this.data.length) {
-                        //     num[1] = 0;
-                        // }
-                        // _this.setSwiperButton(swiper.prevButton, num[0]);
-                        // _this.setSwiperButton(swiper.nextButton, num[1]);
+                        scenes2_ani(swiper.activeIndex, 'show');
+                        scenes2_ani(swiper.previousIndex, 'hide');
                     },
-                    // onSlideChangeEnd: function (swiper) {
-                    //     $('.setSwiperButtonOn').addClass('active');
-                    //     // console.log(swiper.realIndex);
-                    //     // $('.swiper-button-content').show();
-                    // },
                 });
+                // scenesSwiper.prevButton.on('click', function () {
+                //     scenes2_ani(scenesSwiper.activeIndex, 'show');
+                //     scenes2_ani(scenesSwiper.previousIndex, 'hide');
+                // });
+                // scenesSwiper.nextButton.on('click', function () {
+                //     scenes2_ani(scenesSwiper.previousIndex, 'hide');
+                //     scenes2_ani(scenesSwiper.activeIndex, 'show');
+                // });
             } else {
-                scenes2.unlockSwipes();
+                scenes2_ani(scenesSwiper.activeIndex, 'show', 1);
             }
         } else {
-            if (scenes2 !== null) {
-                scenes2.lockSwipes();
-            }
+            scenes2_hide($scenes2_items, 0, 0);
         }
     };
 
@@ -310,8 +264,8 @@ $(() => {
                     scenes2_init(swiper.realIndex);
 
                     // only for test
-                    swiper.slideTo(1);
-                    swiper.lockSwipes();
+                    // swiper.slideTo(1);
+                    // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function (swiper) {
                     console.log(swiper.realIndex);
