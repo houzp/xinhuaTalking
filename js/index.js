@@ -3,8 +3,8 @@
  * @Date:   2016-11-29-11:15:57
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
-* @Last modified by:   SuperMoo
-* @Last modified time: 2016-12-28-10:03:04
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-28-23:46:34
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -107,6 +107,128 @@ $(() => {
         }
     };
 
+    const $scenes2 = $('#scenes-2');
+    const $scenes2_slide = $scenes2.find('.swiper-slide');
+    const scenes2_slide_len = $scenes2_slide.length;
+    const $scenes2_items = $scenes2.find('.item');
+    let scenesSwiper = null;
+    const scenes2_ani = function (num, toggle) {
+        console.log('scenes2_ani:', num, toggle);
+        if (toggle === 'show') {
+            $scenes2_slide
+                .eq(num)
+                .find('.item')
+                .each(function (i, e) {
+                    TweenMax.to($(e), 0.4, {
+                        x: 0,
+                        opacity: 1,
+                        delay: i * 0.1
+                    });
+                });
+        } else if (toggle === 'hide') {
+            $scenes2_slide
+                .eq(num)
+                .find('.item')
+                .each(function (i, e) {
+                    scenes2_hide($(e), 0.4, i * 0.08);
+                });
+        }
+    };
+
+    const scenes2_hide = function (tag, time, delay) {
+        TweenMax.to(tag, time, {
+            x: 30,
+            opacity: 0,
+            delay: delay
+        });
+    };
+
+    const scenes2_init = function (num) {
+        console.log(num, num === 1);
+
+        if (num === 1) {
+            if (scenesSwiper === null) {
+                scenesSwiper = new Swiper('#scenes-2', {
+                    lazyLoading: true,
+                    effect: 'fade',
+                    autoplay: 8000,
+                    // loop: true, // 因为背景透明无法使用loop
+                    prevButton: '#scenes-2 .swiper-button-prev',
+                    nextButton: '#scenes-2 .swiper-button-next',
+                    paginationClickable: true,
+                    speed: 1800,
+                    spaceBetween: 80,
+                    onInit: function (swiper) {
+                        scenes2_hide($scenes2_items, 0, 0);
+                        scenes2_ani(swiper.activeIndex, 'show', 1);
+                        // $scenes2_slide.eq(swiper.realIndex).css({
+                        //     overflow: 'visibliy'
+                        // });
+                        $scenes2_items.on('mouseover', function () {
+                            const $this = $(this);
+                            TweenMax.to($this, 0.2, {
+                                scale: 1.25,
+                                'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
+                                onStart: function () {
+                                    $this.css({
+                                        'z-index': 2,
+                                    });
+                                    // $this.find('img').css({
+                                    //     width: '-=1px',
+                                    //     height: '-=1px',
+                                    //     'border': '1px #FFF solid',
+                                    // });
+                                    TweenMax.to($this.find('.mask'), 0.8, {
+                                        opacity: 0,
+                                    });
+                                },
+                            });
+                        });
+                        $scenes2_items.on('mouseout', function () {
+                            const $this = $(this);
+                            const time = 1.2;
+                            TweenMax.to($this, time, {
+                                scale: 1,
+                                'box-shadow': 'none',
+                                onStart: function () {
+                                    TweenMax.to($this.find('.mask'), time, {
+                                        opacity: 1,
+                                    });
+                                    $this.css({
+                                        'z-index': 1,
+                                    });
+                                    // $this.find('img').css({
+                                    //     width: '100%',
+                                    //     height: '100%',
+                                    //     'border': 'none',
+                                    // });
+                                },
+                            });
+                        });
+                    },
+                    onSlideChangeStart: function (swiper) {
+                        scenes2_ani(swiper.activeIndex, 'show');
+                        scenes2_ani(swiper.previousIndex, 'hide');
+                    },
+                });
+                // scenesSwiper.prevButton.on('click', function () {
+                //     scenes2_ani(scenesSwiper.activeIndex, 'show');
+                //     scenes2_ani(scenesSwiper.previousIndex, 'hide');
+                // });
+                // scenesSwiper.nextButton.on('click', function () {
+                //     scenes2_ani(scenesSwiper.previousIndex, 'hide');
+                //     scenes2_ani(scenesSwiper.activeIndex, 'show');
+                // });
+            } else {
+                scenesSwiper.unlockSwipes();
+                scenes2_ani(scenesSwiper.activeIndex, 'show', 1);
+            }
+        } else {
+            scenesSwiper.lockSwipes();
+            scenes2_hide($scenes2_items, 0, 0);
+        }
+    };
+
     const xinhuaTalking = {
         $nav: $('#nav'),
         navHeight: 67,
@@ -140,15 +262,24 @@ $(() => {
                     });
                     // scenes_1_init
                     _this.scenes1_init();
+                    // scenes2_init
+                    scenes2_init(swiper.realIndex);
+
+                    // only for test
+                    // swiper.slideTo(1);
+                    // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function (swiper) {
                     console.log(swiper.realIndex);
                     _this.scenesMain_realIndex = swiper.realIndex;
                     _this.navStatus(swiper.realIndex);
+
+                    scenes2_init(swiper.realIndex);
                 },
                 onSlideChangeEnd: function (swiper) {
                     // scenes_1_init
                     _this.scenes1_init();
+                    // scenes2_init
                 },
             });
         },
