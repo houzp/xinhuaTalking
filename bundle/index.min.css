@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-14:24:06
+* @Last modified time: 2016-12-29-16:53:48
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -642,7 +642,7 @@ button.swiper-pagination-bullet {
 * @Email:  st_sister@iCloud.com
 * @Filename: fonts.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:10:46
+* @Last modified time: 2016-12-29-17:40:15
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -650,6 +650,56 @@ body {
     /*font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif;*/
     font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
     /*font-family: Helvetica Neue, Helvetica, Arial, sans-serif;*/
+}
+
+.title-1 {
+    line-height: 56px;
+    font-size  : 40px;
+    font-weight: bold;
+}
+
+.title-2 {
+    /*float      : left;*/
+    font-size  : 60px;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+.title-3 {
+    /*float      : left;*/
+    margin-left: 20px;
+    font-size  : 16px;
+    line-height: 30px;
+}
+
+.title-4 {
+    /*top        : 490px;*/
+    /*left       : 0;*/
+    text-align : right;
+    line-height: 68px;
+    font-size  : 30px;
+    color      : #666;
+}
+
+.abs {
+    line-height: 30px;
+    font-size  : 16px;
+    color      : #666;
+    /*margin-bottom: 40px;*/
+    /*padding-left : 24px;*/
+    /*position     : relative;*/
+    /*overflow     : hidden;*/
+}
+
+.top-text {
+    line-height: 3.3vh;
+    font-size  : 2.2vh;
+    color      : #333;
+}
+
+.nav-btn .t {
+    line-height: 67px;
+    color      : #FFF;
 }
 /**
 * @Author: St. <SuperWoods>
@@ -1111,7 +1161,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: nav.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:09:08
+* @Last modified time: 2016-12-29-17:54:56
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1139,10 +1189,16 @@ body {
     margin-right: 23px;
 }
 /* nav */
+.nav,
+.nav-btn,
+.nav-btn .t,
+.nav-btn-box {
+    height: 66px;
+}
+
 .nav {
     overflow        : hidden;
     width           : 100%;
-    height          : 67px;
     background-color: #1080f2;
     position        : absolute;
     z-index         : 99;
@@ -1161,20 +1217,87 @@ body {
     bottom: auto;
 }
 
-.nav-logo {}
+.nav-logo,
+.nav-logo img {
+    height: 37px;
+}
 
-.nav-btn {}
+.nav-logo {
+    position  : absolute;
+    z-index   : 2;
+    top       : 50%;
+    margin-top: -15.5px;
+    left      : 0;
+}
 
-.nav-btn-box {}
+.nav-btn-box {
+    margin-left: 133px;
+    position   : relative;
+    width      : 1000px;
+    /*background-color: red;*/
+}
 
-.nav-icon-1 {}
+.nav-line {
+    height          : 4px;
+    width           : 47px;
+    margin-left     : 42px;
+    position        : absolute;
+    bottom          : 0;
+    overflow        : hidden;
+    background-color: #FFF;
+    z-index         : 2;
+}
+
+.nav-btn {
+    position    : relative;
+    /*background-color: green;*/
+    width       : 100px;
+    float       : left;
+    margin-right: 20px;
+    z-index     : 1;
+}
+
+.nav-btn .t {
+    position  : absolute;
+    top       : 50%;
+    left      : 42px;
+    margin-top: -33px;
+    /*background-color: pink;*/
+}
+
+.nav-icon {
+    background-position: center;
+    background-repeat  : no-repeat;
+    width              : 42px;
+    height             : 67px;
+}
+
+.nav-icon-1 {
+    background-image: url("../index-assets/bottom-nav-icon-1.png");
+}
+
+.nav-icon-2 {
+    background-image: url("../index-assets/bottom-nav-icon-2.png");
+}
+
+.nav-icon-3 {
+    background-image: url("../index-assets/bottom-nav-icon-3.png");
+}
+
+.nav-icon-4 {
+    background-image: url("../index-assets/bottom-nav-icon-4.png");
+}
+
+.nav-icon-5 {
+    background-image: url("../index-assets/bottom-nav-icon-5.png");
+}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-14:08:07
 * @Email:  st_sister@iCloud.com
 * @Filename: cover.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:27:37
+* @Last modified time: 2016-12-29-17:01:57
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1188,6 +1311,8 @@ body {
     width              : 100%;
     height             : 100%;
     position           : absolute;
+    top                : 0;
+    left               : 0;
     z-index            : 9999;
 }
 
@@ -1203,6 +1328,10 @@ body {
     left             : 50%;
     margin-left      : -165px;
     margin-top       : -71px;
+}
+
+a {
+    color: #000;
 }
 /* reset swiper */
 .swiper-container {
@@ -1246,7 +1375,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-16:36:19
+* @Last modified time: 2016-12-29-10:11:33
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1300,34 +1429,34 @@ body {
 }
 
 .scenes-1-title-2 {
-    float      : left;
-    font-size  : 60px;
+    float: left;
+    /*font-size  : 60px;
     line-height: 60px;
-    font-weight: bold;
+    font-weight: bold;*/
 }
 
 .scenes-1-title-3 {
-    float      : left;
-    margin-left: 20px;
+    float: left;
+    /*margin-left: 20px;
     font-size  : 16px;
-    line-height: 30px;
+    line-height: 30px;*/
 }
 
 .scenes-1-title-1 {
-    top        : 375px;
-    left       : 0;
-    line-height: 56px;
+    top : 375px;
+    left: 0;
+    /*line-height: 56px;
     font-size  : 40px;
-    font-weight: bold;
+    font-weight: bold;*/
 }
 
 .scenes-1-title-4 {
-    top        : 490px;
-    left       : 0;
-    text-align : right;
-    line-height: 68px;
+    top : 490px;
+    left: 0;
+    /*text-align: right;*/
+    /*line-height: 68px;
     font-size  : 30px;
-    color      : #666;
+    color      : #666;*/
 }
 
 .scenes-1-content {
@@ -1336,9 +1465,9 @@ body {
 }
 
 .scenes-1-absract {
-    line-height  : 30px;
-    font-size    : 16px;
-    color        : #666;
+    /*line-height  : 30px;*/
+    /*font-size    : 16px;*/
+    /*color        : #666;*/
     margin-bottom: 40px;
     padding-left : 24px;
     position     : relative;
@@ -1454,16 +1583,10 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-23:30:06
+* @Last modified time: 2016-12-29-15:57:51
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
-.test {
-    position        : absolute;
-    top             : 0;
-    left            : 0;
-    background-color: #FFF;
-}
 /* scenes-2 */
 .scenes-2 {
     width                  : 100%;
@@ -1477,23 +1600,28 @@ body {
 .scenes-2 .swiper-slide,
 .scenes-2-container {
     width : 1200px;
-    height: 683px;
+    /*width : 120vh;*/
+    height: 63.2vh;
 }
 
 .scenes-2-container {
     /*overflow: visible;*/
-    margin : 150px auto 0;
-    border : red 1px solid;
-    padding: 40px;
+    margin     : 16vh auto 0;
+    padding-top: 8vh;
+    overflow   : visible;
+    /*border     : red 1px solid;*/
 }
-/*.scenes-2 .swiper-slide {
-    overflow: hidden !important;
-}*/
+
 .scenes-2 .item,
 .scenes-2 .mask,
 .scenes-2 .scenes-pic {
-    width : 170px;
-    height: 170px;
+    width : 15.1vh;
+    height: 15.1vh;
+}
+
+.scenes-2 .item-0,
+.scenes-2 .item:nth-child(1) {
+    margin-left: 45.55vh;
 }
 
 .scenes-2 .scenes-pic {
@@ -1516,10 +1644,6 @@ body {
     z-index      : 1;
 }
 
-.scenes-2 .item-0 {
-    margin-left: 513px;
-}
-
 .scenes-2 .mask,
 .scenes-2 .scenes-pic {
     position: absolute;
@@ -1536,41 +1660,134 @@ body {
     z-index: 1;
 }
 
-.scenes-2 .scenes-logo {}
-
-.scenes-2 .parallax-bg {}
-
-.scenes-2 .title-1,
-.scenes-2 .title-2,
-.scenes-2 .title-3 {
-    display: none;
+.scenes2-top-box {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    z-index : 2;
 }
 
-.scenes-2 .scenes-title-1 {}
+.scenes-2 .scenes2-logo {
+    width              : 146px;
+    height             : 12.5vh;
+    background-color   : #1080f2;
+    background-image   : url("../index-assets/scenes-2-logo-text.png");
+    background-position: center;
+    background-repeat  : no-repeat;
+    position           : relative;
+}
 
-.scenes-2 .scenes-title-2 {}
+.scenes-2 .scenes2-logo:after {
+    content         : '';
+    display         : block;
+    position        : absolute;
+    bottom          : -4px;
+    left            : 0;
+    width           : 65px;
+    background-color: #ffcc00;
+    height          : 2px;
+    overflow        : hidden;
+}
 
-.scenes-2 .scenes-title-3 {}
-/*.scenes-2 .scenes-pic,
-.scenes-2 .scenes-pic img {
-    width : 100%;
-    height: 100%;
-}*/
-.scenes-2 .scenes-pic img {}
+.scenes2-top-text {
+    margin-top: 2vh;
+}
 
-.scenes-2 .swiper-pagination {}
+.scenes2-title-box {
+    position: absolute;
+    top     : 60vh;
+    right   : 0;
+    width   : 765px;
+    z-index : 3;
+}
 
-.scenes-2 .swiper-button-prev {}
+.scenes2-title-box .t1 {
+    clear     : both;
+    margin-top: 6px;
+}
 
-.scenes-2 .icon {}
+.scenes2-title-box .t2,
+.scenes2-title-box .t3 {
+    float: left;
+}
 
-.scenes-2 .b {}
+.scenes-2 .swiper-button-next,
+.scenes-2 .swiper-button-prev {
+    top       : 59.2vh;
+    width     : 39px;
+    height    : 39px;
+    border    : #1080f2 1px solid;
+    background: none;
+    overflow  : hidden;
+}
 
-.scenes-2 .swiper-button-next {}
+.scenes-2 .swiper-button-prev {
+    /*left: 95.5vh;*/
+    left : auto;
+    right: 6.5vh;
+}
 
-.scenes-2 .icon {}
+.scenes-2 .swiper-button-next {
+    /*left: 102.2vh;*/
+    left : auto;
+    right: .4vh;
+}
 
-.scenes-2 .b {}
+.scenes-2 .icon {
+    width              : 39px;
+    height             : 39px;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -19.5px;
+    left               : 50%;
+    margin-left        : -19.5px;
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : auto 60%;
+    z-index            : 2;
+}
+
+.scenes-2 .b,
+.scenes-2 .icon {
+    transition: transform 1.5s;
+}
+
+.scenes-2 .b {
+    width           : 39px;
+    height          : 39px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -19.5px;
+    left            : 50%;
+    margin-left     : -19.5px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 1;
+}
+
+.scenes-2 .swiper-button-prev .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-prev:hover .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-next .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-next:hover .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-next:hover .b,
+.scenes-2 .swiper-button-prev:hover .b {
+    transform: scale(4);
+}
+
+.scenes2-bg {}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-09:31:14

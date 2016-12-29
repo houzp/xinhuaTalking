@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-14:24:06
+* @Last modified time: 2016-12-29-16:53:48
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -16,6 +16,10 @@
 @import "../css/footer.css";
 @import "../css/nav.css";
 @import "../css/cover.css";
+
+a {
+    color: #000;
+}
 /* reset swiper */
 .swiper-container {
     width : 100%;

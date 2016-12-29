@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-23:46:34
+* @Last modified time: 2016-12-29-19:31:45
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -31,6 +31,7 @@ $(() => {
         resources: resources,
         onStart: function (total) {
             // console.log('start:' + total);
+            scenes1_set();
         },
         onProgress: function (current, total) {
             // console.log(current + '/' + total);
@@ -48,6 +49,51 @@ $(() => {
         }
     });
 
+    const $scenes1 = $('#scenes-1');
+    const $topNav = $('.top-nav');
+    const $slideLeft = $scenes1.find('.swiper-slide').eq(0).find('.scenes-ani-left');
+    const $slidePic = $scenes1.find('.swiper-slide').eq(0).find('.scenes-1-pic img');
+
+    // scenes1_page1Ani
+    const scenes1_set = function () {
+        TweenMax.to($topNav, 0, {
+            y: -100,
+        });
+        TweenMax.to($slideLeft, 0, {
+            x: 2200,
+        });
+        TweenMax.to($slidePic, 0, {
+            x: -2200,
+        });
+    };
+
+    const scenes1_page1Ani = function () {
+        TweenMax.to($slideLeft, 2.5, {
+            x: 0,
+            ease: Power0.ease,
+            onComplete: function () {
+
+            }
+        });
+        TweenMax.to($slidePic, 2.5, {
+            x: 0,
+            ease: Power0.ease,
+            onComplete: function () {
+                TweenMax.to($topNav, 2, {
+                    y: 0,
+                    onComplete: function () {
+
+                    }
+                });
+                const activeBtn = $scenes1.find('.swiper-button-next');
+                activeBtn
+                    .addClass('active')
+                    .on('mouseout', function () {
+                        $(this).removeClass('active');
+                    });
+            }
+        });
+    };
 
     // cover
     const cover = {
@@ -102,11 +148,17 @@ $(() => {
                     _this.$cover.remove();
                     $body.removeClass('overflow-hidden');
                     console.log('remove');
+
+
+                    scenes1_page1Ani();
+
                 }
             });
         }
     };
-
+    /* -------------------------------------------------------------------------
+     * $scenes2
+    ------------------------------------------------------------------------- */
     const $scenes2 = $('#scenes-2');
     const $scenes2_slide = $scenes2.find('.swiper-slide');
     const scenes2_slide_len = $scenes2_slide.length;
@@ -143,9 +195,66 @@ $(() => {
         });
     };
 
+    const scenes2_mouseover = function ($tag) {
+        TweenMax.to($tag, 0.2, {
+            scale: 1.25,
+            'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
+            onStart: function () {
+                $tag.css({
+                    'z-index': 2,
+                });
+                // $tag.find('img').css({
+                //     width: '-=1px',
+                //     height: '-=1px',
+                //     'border': '1px #FFF solid',
+                // });
+                TweenMax.to($tag.find('.mask'), 0.8, {
+                    opacity: 0,
+                });
+            },
+            onComplete: function () {
+                scenes2_set_titles($tag);
+            }
+        });
+    };
+
+    const $scenes2TitleBox = $('#scenes2-title-box');
+    const scenes2_set_titles = function ($tag) {
+        $scenes2TitleBox
+            .stop(false, true)
+            .fadeOut('2000', function () {
+                $(this)
+                    .html(`
+                <div class="t2 title-2">${$tag.find('.t2').html()}</div>
+                <div class="t3 title-3">${$tag.find('.t3').html()}</div>
+                <div class="t1 title-1">${$tag.find('.t1').html()}</div>`)
+                    .fadeIn('2000');
+            });
+
+    };
+
+    const scenes2_mouseout = function ($tag, time) {
+        TweenMax.to($tag, 1.2, {
+            scale: 1,
+            'box-shadow': 'none',
+            onStart: function () {
+                TweenMax.to($tag.find('.mask'), 1.2, {
+                    opacity: 1,
+                });
+                $tag.css({
+                    'z-index': 1,
+                });
+                // $tag.find('img').css({
+                //     width: '100%',
+                //     height: '100%',
+                //     'border': 'none',
+                // });
+            },
+        });
+    };
+
     const scenes2_init = function (num) {
         console.log(num, num === 1);
-
         if (num === 1) {
             if (scenesSwiper === null) {
                 scenesSwiper = new Swiper('#scenes-2', {
@@ -157,53 +266,28 @@ $(() => {
                     nextButton: '#scenes-2 .swiper-button-next',
                     paginationClickable: true,
                     speed: 1800,
-                    spaceBetween: 80,
+                    // spaceBetween: 80,
                     onInit: function (swiper) {
                         scenes2_hide($scenes2_items, 0, 0);
                         scenes2_ani(swiper.activeIndex, 'show', 1);
-                        // $scenes2_slide.eq(swiper.realIndex).css({
-                        //     overflow: 'visibliy'
-                        // });
+
+                        const firstNum = 0;
+                        const $firstItem = $scenes2_items.eq(firstNum);
+
+                        setTimeout(function () {
+                            scenes2_mouseover($firstItem);
+                        }, 2500);
+
                         $scenes2_items.on('mouseover', function () {
                             const $this = $(this);
-                            TweenMax.to($this, 0.2, {
-                                scale: 1.25,
-                                'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
-                                onStart: function () {
-                                    $this.css({
-                                        'z-index': 2,
-                                    });
-                                    // $this.find('img').css({
-                                    //     width: '-=1px',
-                                    //     height: '-=1px',
-                                    //     'border': '1px #FFF solid',
-                                    // });
-                                    TweenMax.to($this.find('.mask'), 0.8, {
-                                        opacity: 0,
-                                    });
-                                },
-                            });
+                            if ($this.index() !== firstNum) {
+                                scenes2_mouseout($firstItem);
+                            }
+                            scenes2_mouseover($this)
                         });
                         $scenes2_items.on('mouseout', function () {
                             const $this = $(this);
-                            const time = 1.2;
-                            TweenMax.to($this, time, {
-                                scale: 1,
-                                'box-shadow': 'none',
-                                onStart: function () {
-                                    TweenMax.to($this.find('.mask'), time, {
-                                        opacity: 1,
-                                    });
-                                    $this.css({
-                                        'z-index': 1,
-                                    });
-                                    // $this.find('img').css({
-                                    //     width: '100%',
-                                    //     height: '100%',
-                                    //     'border': 'none',
-                                    // });
-                                },
-                            });
+                            scenes2_mouseout($this);
                         });
                     },
                     onSlideChangeStart: function (swiper) {
@@ -221,19 +305,38 @@ $(() => {
                 // });
             } else {
                 scenesSwiper.unlockSwipes();
-                scenes2_ani(scenesSwiper.activeIndex, 'show', 1);
+                scenes2_ani(scenesSwiper.activeIndex, 'show');
             }
         } else {
-            scenesSwiper.lockSwipes();
-            scenes2_hide($scenes2_items, 0, 0);
+            if (scenesSwiper !== null) {
+                scenesSwiper.lockSwipes();
+                scenes2_hide($scenes2_items, 0, 0);
+            }
         }
     };
+    /* -------------------------------------------------------------------------
+     * navLine
+    ------------------------------------------------------------------------- */
+    const $nav = $('#nav');
+    const $navLine = $nav.find('.nav-line');
+    const $navA = $nav.find('.nav-btn-box a');
+    $navA.on('mouseover', function () {
+        navLine(($(this).index() - 1), 0.3);
+    });
+    const navLine = function (index, time) {
+        TweenMax.to($navLine, time, {
+            x: index * (100 + 20)
+        });
+    };
 
+    /* -------------------------------------------------------------------------
+     * xinhuaTalking
+    ------------------------------------------------------------------------- */
     const xinhuaTalking = {
-        $nav: $('#nav'),
+        $nav: $nav,
         navHeight: 67,
         scenesMain_realIndex: 0,
-        $scenes1: $('#scenes-1'),
+        $scenes1: $scenes1,
         scenes1: null,
         init: function () {
             const _this = this;
@@ -242,6 +345,7 @@ $(() => {
                 lazyLoading: true,
                 speed: 1000,
                 hashnav: true,
+                hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
@@ -253,6 +357,7 @@ $(() => {
                     _this.getSize();
                     // nav
                     _this.navHeight = _this.$nav.height();
+                    navLine(swiper.realIndex, 1);
 
                     $window.on('resize', () => {
                         if (_this.scenesMain_realIndex < 1) {
@@ -270,6 +375,8 @@ $(() => {
                     // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function (swiper) {
+                    navLine(swiper.realIndex, 1);
+
                     console.log(swiper.realIndex);
                     _this.scenesMain_realIndex = swiper.realIndex;
                     _this.navStatus(swiper.realIndex);
@@ -279,7 +386,6 @@ $(() => {
                 onSlideChangeEnd: function (swiper) {
                     // scenes_1_init
                     _this.scenes1_init();
-                    // scenes2_init
                 },
             });
         },
@@ -291,8 +397,8 @@ $(() => {
                     console.log('scenes_1_init start');
                     _this.scenes1 = new Swiper('#scenes-1', {
                         lazyLoading: true,
-                        autoplay: 8000,
-                        loop: true,
+                        // autoplay: 12000,
+                        // loop: true,
                         parallax: true,
                         pagination: '#scenes-1 .swiper-pagination',
                         prevButton: '#scenes-1 .swiper-button-prev',
@@ -301,12 +407,7 @@ $(() => {
                         speed: 3000,
                         onInit: function (swiper) {
                             _this.qrcode();
-                            const activeBtn = swiper.nextButton;
-                            activeBtn
-                                .addClass('active')
-                                .on('mouseout', function () {
-                                    activeBtn.removeClass('active');
-                                });
+
                         },
                         onSlideChangeStart: function (swiper) {
                             let num = [
