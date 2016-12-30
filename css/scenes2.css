@@ -2,9 +2,9 @@
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-23:20:04
 * @Email:  st_sister@iCloud.com
-* @Filename: scens-2.css
+* @Filename: scenes2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-18:47:46
+* @Last modified time: 2016-12-30-18:56:32
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -152,7 +152,7 @@
 .scenes2 .swiper-button-next {
     /*left: 102.2vh;*/
     left : auto;
-    right: .45vh;
+    right: .4vh;
 }
 
 .scenes2 .icon {
