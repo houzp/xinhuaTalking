@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-29-10:11:33
+* @Last modified time: 2016-12-30-13:42:42
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -134,18 +134,18 @@
 }
 
 .scenes-1-pic {
-    position  : absolute;
-    bottom    : 0;
-    left      : 50%;
-    height    : 100%;
-    width     : 620px;
-    cursor    : pointer;
-    transition: all 1s;
-    transform : translateX(0);
+    position: absolute;
+    bottom  : 0;
+    left    : 50%;
+    height  : 100%;
+    width   : 620px;
+    cursor  : pointer;
+    /*transition: all 1s;*/
+    /*transform : translateX(0);*/
 }
 
 .scenes-1-pic:hover {
-    transform: translateX(-30px);
+    /*transform: translateX(-30px);*/
 }
 /*.scenes-1-pic .ani-pic-btn {
     transition: all 1s;
@@ -198,11 +198,9 @@
     border       : #0099ff 1px solid;
     display      : none;
 }
-
-.scenes-1 .swiper-pagination-bullet-active {
+/*.scenes-1 .swiper-pagination-bullet-active {
     border-color: #1080f2 !important;
-}
-
+}*/
 .scenes-1 .swiper-pagination-bullet-active:after {
     display: block;
 }
