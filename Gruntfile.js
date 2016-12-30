@@ -7,7 +7,7 @@
  * @Date:   2016-07-13-01:46:45
  *
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-02-12:38:02
+* @Last modified time: 2016-12-30-19:08:44
  */
 
 module.exports = function (grunt) {
@@ -135,7 +135,7 @@ module.exports = function (grunt) {
                         'bundle/footer.min.js',
                     ],
                 }
-            }
+            },
         },
 
         cssmin: {
@@ -173,6 +173,12 @@ module.exports = function (grunt) {
                     'bundle/index.all.min.js': ['bundle/index.all.js']
                 }
             },
+            triangleBg: {
+                files: {
+                    'lib/triangleBg/cav.min.js': ['lib/triangleBg/cav.js'],
+                    'lib/triangleBg/triangleBg.min.js': ['lib/triangleBg/triangleBg.js'],
+                }
+            },
             // history_info1: {
             //     files: {
             //         'jade/history_info1.data.js': ['tool/history_info2/dist/history_info1.data.js']
@@ -199,6 +205,11 @@ module.exports = function (grunt) {
     grunt.registerTask('css', [
         'cssmin', // css: cssmin
         'concat:cssAddBanner', // cssAddBanner
+    ]);
+
+    // grunt css
+    grunt.registerTask('triangleBg', [
+        'uglify:triangleBg',
     ]);
 
     // default

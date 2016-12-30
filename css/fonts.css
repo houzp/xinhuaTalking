@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: fonts.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-29-17:40:15
+* @Last modified time: 2016-12-30-21:45:08
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -47,6 +47,16 @@ body {
     line-height: 30px;
     font-size  : 16px;
     color      : #666;
+    /*margin-bottom: 40px;*/
+    /*padding-left : 24px;*/
+    /*position     : relative;*/
+    /*overflow     : hidden;*/
+}
+
+.scenes3-absract.abs {
+    line-height: 34px;
+    font-size  : 16px;
+    color      : #888888;
     /*margin-bottom: 40px;*/
     /*padding-left : 24px;*/
     /*position     : relative;*/

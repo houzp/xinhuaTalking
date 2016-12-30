@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-18:22:03
+* @Last modified time: 2016-12-30-22:07:07
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -18,6 +18,14 @@ $(() => {
 
     let coverStatus = null;
 
+    // main
+    let mainSwiper = null
+    let mainSwiperRealIndex = 0;
+
+    // 1
+    let scenes1Swiper = null;
+    let scenes1SwiperRealIndex = 0;
+
     const $scenes1 = $('#scenes1');
     const $scenes1Pagination = $scenes1.find('.swiper-pagination');
     const $scenes1SwiperButtonNext = $scenes1.find('.swiper-button-next');
@@ -25,22 +33,19 @@ $(() => {
     const $scenes1SlideLeft = $scenes1.find('.swiper-slide').find('.scenes-ani-left');
     const $scenes1SlidePic = $scenes1.find('.swiper-slide').find('.scenes1-pic');
 
+    // 2
+    let scenes2Swiper = null;
+
     const $scenes2 = $('#scenes2');
     const $scenes2Slide = $scenes2.find('.swiper-slide');
     // const scenes2SlideLen = $scenes2Slide.length;
     const $scenes2Items = $scenes2.find('.item');
 
-    const $scenes3 = $('#scenes3');
 
 
 
-    let mainSwiper = null
-    let scenes1Swiper = null;
-    let scenes2Swiper = null;
 
-    let mainSwiperRealIndex = 0;
-    let scenes1SwiperRealIndex = 0;
-    let scenes3SwiperRealIndex = 0;
+
 
 
     /* -------------------------------------------------------------------------
@@ -144,6 +149,8 @@ $(() => {
                 this.coverClick();
             } else {
                 this.$cover.remove();
+                coverStatus = 'hide';
+                console.log('coverHide', coverStatus);
             }
         },
         coverClick: function () {
@@ -166,8 +173,10 @@ $(() => {
             }, 200);
         },
         coverHide: function () {
+
             coverStatus = 'hide';
-            console.log('coverHide');
+            console.log('coverHide', coverStatus);
+
             const _this = this;
             let time = 4;
             $body.addClass('overflow-hidden');
@@ -326,6 +335,8 @@ $(() => {
                         scenes2Ani(swiper.activeIndex, 'show');
                         scenes2Ani(swiper.previousIndex, 'hide');
                     },
+                    // onSlideChangeEnd: function (swiper) {
+                    // }
                 });
                 // scenes2Swiper.prevButton.on('click', function () {
                 //     scenes2Ani(scenes2Swiper.activeIndex, 'show');
@@ -350,18 +361,52 @@ $(() => {
     /* -------------------------------------------------------------------------
      * scenes3
     ------------------------------------------------------------------------- */
+    // 3
     let scenes3Bg = null;
-    const scenes3Init = function (swiperRealIndex) {
-
-        scenes3BgInit(swiperRealIndex);
-
-    };
+    let scenes3Swiper = null;
+    // let scenes3SwiperRealIndex = 0;
+    const $scenes3 = $('#scenes3');
 
     const scenes3BgInit = function (swiperRealIndex) {
         if (scenes3Bg === null && swiperRealIndex === 2) {
             scenes3Bg = $.getScript("/lib/triangleBg/triangleBg.js");
         }
     };
+
+    const scenes3Init = function (swiperRealIndex) {
+        if (mainSwiperRealIndex === 2) {
+            if (scenes3Swiper === null) {
+                console.log('scenes3Init start', $scenes3);
+                scenes3BgInit(swiperRealIndex);
+
+
+                scenes3Swiper = new Swiper($scenes3.selector, {
+                    lazyLoading: true,
+                    autoplay: 12000,
+                    parallax: true,
+                    pagination: $scenes3.selector + ' .swiper-pagination',
+                    prevButton: $scenes3.selector + ' .swiper-button-prev',
+                    nextButton: $scenes3.selector + ' .swiper-button-next',
+                    paginationClickable: true,
+                    speed: 3000,
+                    runCallbacksOnInit: true,
+                    onInit: function (swiper) {
+
+                    },
+                    onSlideChangeStart: function (swiper) {
+
+                    },
+                });
+            } else {
+                scenes3Swiper.unlockSwipes();
+            }
+        } else {
+            if (scenes3Swiper !== null) {
+                scenes3Swiper.lockSwipes();
+            }
+        }
+    };
+
 
     /* -------------------------------------------------------------------------
      * navLine
@@ -455,6 +500,7 @@ $(() => {
                 if (_this.scenes1 === null) {
                     console.log('scenes1Init start');
                     _this.scenes1 = new Swiper('#scenes1', {
+                        spaceBetween: 200,
                         lazyLoading: true,
                         // autoplay: 12000,
                         parallax: true,

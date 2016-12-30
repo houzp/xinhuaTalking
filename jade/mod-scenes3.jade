@@ -1,32 +1,31 @@
 .swiper-container.scenes3-container#scenes3
-    .scenes3-bg.triangleBg#triangleBg
-        .triangleBg-anitOut#triangleBg-anitOut
-    .scenes3-top-box
-        .scenes3-logo
-            .hide 会客厅 新华访谈人物录
-        .scenes3-top-text.top-text 做客新华访谈<br>注视一个人和他的时代投影
-    //- .scenes3-title-box.hide#scenes3-title-box
     .swiper-wrapper
-        .swiper-slide
-            .wrapper
-                //- - for (var i=0, j=15; i<j; i++) {
-                //-     .item(class="item-#{i}")
-                //-         .item-in
-                //-             .t1.hide
-                //-                 a(href="http://github.com") #{i} 军改，实现强军梦的正确打开方式正确打开方式
-                //-             .t2.hide
-                //-                 a(href="http://github.com") 尹卓尹卓
-                //-             .t3.hide
-                //-                 a(href="http://github.com") 北京佳合建科集团董事长<br>北京定荣家科技有限公司创始人
-                //-             .mask
-                //-             .scenes-pic
-                //-                 a(href="#")
-                //-                     img(src="index-assets/demo-a-s2-0.png")
-                //- - }
+        - for (var i=0, j=8; i<j; i++) {
+            .swiper-slide
+                .part_swiper-slide
+                    .scenes3-top-box
+                        .scenes3-title(data-swiper-parallax="-200")
+                            .t1.hide 供给侧结构性改革
+                            .t2.hide 一年间系列访谈
+                            img(src="index-assets/demo-scenes3-title.png")
+
+                        .scenes3-absract(data-swiper-parallax="200").abs #{i}2015年11月26日，中共中央总书记、国家主席、中央军委主席习近平在中央军委改革工作会议上强调要“全面实施改革强军战略,坚定不移走中国特色强军之路”。讲话一经公开，立即引起了国内外舆论的广泛关注。新华网邀请军事专家尹卓教授、网络大咖刘仰、资深军迷李小健，与我们一起来盘点一下军改一年间的那些事。
+                            .quot-left(data-swiper-parallax="-260")
+                            .quot-right(data-swiper-parallax="-320")
+        - }
+
+    .swiper-pagination
     .swiper-button-prev
+        .swiper-button-content
+            .p
+            .t
         .icon
         .b
     .swiper-button-next
+        .swiper-button-content
+            .p
+            .t
         .icon
         .b
-    .scenes3-bg
+    .scenes3-bg#triangleBg(data-swiper-parallax="-23%")
+        .scenes3-bg-ani#triangleBg-anitOut
