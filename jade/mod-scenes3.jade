@@ -1,0 +1,31 @@
+.swiper-container.scenes3-container#scenes3
+    .scenes3-top-box
+        .scenes3-logo
+            .hide 会客厅 新华访谈人物录
+        .scenes3-top-text.top-text 做客新华访谈<br>注视一个人和他的时代投影
+    .scenes3-title-box.hide#scenes3-title-box
+    .swiper-wrapper
+        .swiper-slide
+            .wrapper
+                - for (var i=0, j=15; i<j; i++) {
+                    .item(class="item-#{i}")
+                        .item-in
+                            .t1.hide
+                                a(href="http://github.com") #{i} 军改，实现强军梦的正确打开方式正确打开方式
+                            .t2.hide
+                                a(href="http://github.com") 尹卓尹卓
+                            .t3.hide
+                                a(href="http://github.com") 北京佳合建科集团董事长<br>北京定荣家科技有限公司创始人
+                            .mask
+                            .scenes-pic
+                                a(href="#")
+                                    img(src="index-assets/demo-a-s2-0.png")
+                - }
+
+    .swiper-button-prev
+        .icon
+        .b
+    .swiper-button-next
+        .icon
+        .b
+    .scenes3-bg

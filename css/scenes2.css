@@ -4,28 +4,28 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-10:06:45
+* @Last modified time: 2016-12-30-15:01:25
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
-/* scenes-2 */
-.scenes-2 {
+/* scenes2 */
+.scenes2 {
     width                  : 100%;
     height                 : 100%;
-    background-image       : url("../index-assets/bg-scenes-2.jpg");
+    background-image       : url("../index-assets/bg-scenes2.jpg");
     -webkit-background-size: cover;
     background-size        : cover;
     background-position    : center;
 }
 
-.scenes-2 .swiper-slide,
-.scenes-2-container {
+.scenes2 .swiper-slide,
+.scenes2-container {
     width : 1200px;
     /*width : 120vh;*/
     height: 63.2vh;
 }
 
-.scenes-2-container {
+.scenes2-container {
     /*overflow: visible;*/
     margin     : 16vh auto 0;
     padding-top: 8vh;
@@ -33,29 +33,29 @@
     /*border     : red 1px solid;*/
 }
 
-.scenes-2 .item,
-.scenes-2 .mask,
-.scenes-2 .scenes-pic {
+.scenes2 .item,
+.scenes2 .mask,
+.scenes2 .scenes-pic {
     width : 15.1vh;
     height: 15.1vh;
 }
 
-.scenes-2 .item-0,
-.scenes-2 .item:nth-child(1) {
+.scenes2 .item-0,
+.scenes2 .item:nth-child(1) {
     margin-left: 45.55vh;
 }
 
-.scenes-2 .scenes-pic {
+.scenes2 .scenes-pic {
     background-color: #FFF;
 }
 
-.scenes-2 .scenes-pic img {
+.scenes2 .scenes-pic img {
     width : auto;
     height: 100%;
     margin: 0 auto;
 }
 
-.scenes-2 .item {
+.scenes2 .item {
     float        : left;
     margin-right : 1px;
     margin-bottom: 1px;
@@ -65,19 +65,19 @@
     z-index      : 1;
 }
 
-.scenes-2 .mask,
-.scenes-2 .scenes-pic {
+.scenes2 .mask,
+.scenes2 .scenes-pic {
     position: absolute;
     top     : 0;
     left    : 0;
 }
 
-.scenes-2 .mask {
+.scenes2 .mask {
     z-index         : 2;
     background-color: rgba(0, 0, 0, 0.45);
 }
 
-.scenes-2 .scenes-pic {
+.scenes2 .scenes-pic {
     z-index: 1;
 }
 
@@ -88,17 +88,17 @@
     z-index : 2;
 }
 
-.scenes-2 .scenes2-logo {
+.scenes2 .scenes2-logo {
     width              : 146px;
     height             : 12.5vh;
     background-color   : #1080f2;
-    background-image   : url("../index-assets/scenes-2-logo-text.png");
+    background-image   : url("../index-assets/scenes2-logo-text.png");
     background-position: center;
     background-repeat  : no-repeat;
     position           : relative;
 }
 
-.scenes-2 .scenes2-logo:after {
+.scenes2 .scenes2-logo:after {
     content         : '';
     display         : block;
     position        : absolute;
@@ -132,8 +132,8 @@
     float: left;
 }
 
-.scenes-2 .swiper-button-next,
-.scenes-2 .swiper-button-prev {
+.scenes2 .swiper-button-next,
+.scenes2 .swiper-button-prev {
     top       : 59.2vh;
     width     : 39px;
     height    : 39px;
@@ -142,19 +142,19 @@
     overflow  : hidden;
 }
 
-.scenes-2 .swiper-button-prev {
+.scenes2 .swiper-button-prev {
     /*left: 95.5vh;*/
     left : auto;
     right: 6.5vh;
 }
 
-.scenes-2 .swiper-button-next {
+.scenes2 .swiper-button-next {
     /*left: 102.2vh;*/
     left : auto;
     right: .4vh;
 }
 
-.scenes-2 .icon {
+.scenes2 .icon {
     width              : 39px;
     height             : 39px;
     position           : absolute;
@@ -168,12 +168,12 @@
     z-index            : 2;
 }
 
-.scenes-2 .b,
-.scenes-2 .icon {
+.scenes2 .b,
+.scenes2 .icon {
     transition: transform 1.5s;
 }
 
-.scenes-2 .b {
+.scenes2 .b {
     width           : 39px;
     height          : 39px;
     position        : absolute;
@@ -187,24 +187,24 @@
     z-index         : 1;
 }
 
-.scenes-2 .swiper-button-prev .icon {
+.scenes2 .swiper-button-prev .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-prev:hover .icon {
+.scenes2 .swiper-button-prev:hover .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-next .icon {
+.scenes2 .swiper-button-next .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-next:hover .icon {
+.scenes2 .swiper-button-next:hover .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-next:hover .b,
-.scenes-2 .swiper-button-prev:hover .b {
+.scenes2 .swiper-button-next:hover .b,
+.scenes2 .swiper-button-prev:hover .b {
     transform: scale(4);
 }
 

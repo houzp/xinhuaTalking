@@ -4,20 +4,20 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-13:42:42
+* @Last modified time: 2016-12-30-15:01:34
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
-/* scenes-1 */
-.scenes-1,
-.scenes-1-parallax-bg {
+/* scenes1 */
+.scenes1,
+.scenes1-parallax-bg {
     background-image   : url("../index-assets/bg.jpg");
     background-size    : cover;
     background-repeat  : repeat;
     background-position: center;
 }
 
-.scenes-1-parallax-bg {
+.scenes1-parallax-bg {
     position: absolute;
     left    : 0;
     top     : 0;
@@ -25,53 +25,53 @@
     height  : 100%;
 }
 
-.scenes-1 .swiper-slide-next,
-.scenes-1 .swiper-slide-prev {
+.scenes1 .swiper-slide-next,
+.scenes1 .swiper-slide-prev {
     overflow: hidden;
 }
 
-.scenes-1-logo {
+.scenes1-logo {
     position           : absolute;
     top                : 160px;
     left               : -9px;
     width              : 169px;
     height             : 82px;
-    background-image   : url("../index-assets/scenes-1-logo.png");
+    background-image   : url("../index-assets/scenes1-logo.png");
     background-repeat  : no-repeat;
     background-position: center;
     transition         : all .5s;
 }
 
-.scenes-1-content,
-.scenes-1-title-1,
-.scenes-1-title-4,
-.scenes-1-title-top {
+.scenes1-content,
+.scenes1-title-1,
+.scenes1-title-4,
+.scenes1-title-top {
     position  : absolute;
     width     : 550px;
     transition: all .5s;
 }
 
-.scenes-1-title-top {
+.scenes1-title-top {
     top   : 293px;
     left  : 0;
     height: 70px;
 }
 
-.scenes-1-title-2 {
+.scenes1-title-2 {
     float: left;
     /*font-size  : 60px;
     line-height: 60px;
     font-weight: bold;*/
 }
 
-.scenes-1-title-3 {
+.scenes1-title-3 {
     float: left;
     /*margin-left: 20px;
     font-size  : 16px;
     line-height: 30px;*/
 }
 
-.scenes-1-title-1 {
+.scenes1-title-1 {
     top : 375px;
     left: 0;
     /*line-height: 56px;
@@ -79,7 +79,7 @@
     font-weight: bold;*/
 }
 
-.scenes-1-title-4 {
+.scenes1-title-4 {
     top : 490px;
     left: 0;
     /*text-align: right;*/
@@ -88,12 +88,12 @@
     color      : #666;*/
 }
 
-.scenes-1-content {
+.scenes1-content {
     top : 570px;
     left: 0;
 }
 
-.scenes-1-absract {
+.scenes1-absract {
     /*line-height  : 30px;*/
     /*font-size    : 16px;*/
     /*color        : #666;*/
@@ -103,7 +103,7 @@
     overflow     : hidden;
 }
 
-.scenes-1-absract:before {
+.scenes1-absract:before {
     content   : '';
     overflow  : hidden;
     background: #0099ff;
@@ -113,14 +113,14 @@
     left      : 0;
     bottom    : 6px;
 }
-/*.scenes-1-btn-1 {}
+/*.scenes1-btn-1 {}
 
-.scenes-1-btn-2 {}*/
-.scenes-1-tool {
+.scenes1-btn-2 {}*/
+.scenes1-tool {
     position: relative;
 }
 
-.scenes-1-qrcode {
+.scenes1-qrcode {
     position: absolute;
     right   : 0;
     top     : 0;
@@ -129,11 +129,11 @@
     float   : right;
 }
 
-.scenes-1-qrcode-url {
+.scenes1-qrcode-url {
     display: none;
 }
 
-.scenes-1-pic {
+.scenes1-pic {
     position: absolute;
     bottom  : 0;
     left    : 50%;
@@ -144,18 +144,18 @@
     /*transform : translateX(0);*/
 }
 
-.scenes-1-pic:hover {
+.scenes1-pic:hover {
     /*transform: translateX(-30px);*/
 }
-/*.scenes-1-pic .ani-pic-btn {
+/*.scenes1-pic .ani-pic-btn {
     transition: all 1s;
     opacity   : 0;
 }
 
-.scenes-1-pic:hover .ani-pic-btn {
+.scenes1-pic:hover .ani-pic-btn {
     opacity: 1;
 }*/
-.scenes-1-pic img {
+.scenes1-pic img {
     position: absolute;
     bottom  : 0;
     left    : 0;
@@ -163,7 +163,7 @@
     z-index : 1;
 }
 
-.scenes-1 .swiper-pagination {
+.scenes1 .swiper-pagination {
     /*position        : absolute;*/
     /*z-index         : 99;*/
     bottom     : 107px;
@@ -174,7 +174,7 @@
     margin-left: -597px;
 }
 
-.scenes-1 .swiper-pagination-bullet {
+.scenes1 .swiper-pagination-bullet {
     width           : 8px;
     height          : 8px;
     border-radius   : 0;
@@ -185,7 +185,7 @@
     opacity         : 1;
 }
 
-.scenes-1 .swiper-pagination-bullet:after {
+.scenes1 .swiper-pagination-bullet:after {
     content      : '';
     position     : absolute;
     top          : 50%;
@@ -198,9 +198,9 @@
     border       : #0099ff 1px solid;
     display      : none;
 }
-/*.scenes-1 .swiper-pagination-bullet-active {
+/*.scenes1 .swiper-pagination-bullet-active {
     border-color: #1080f2 !important;
 }*/
-.scenes-1 .swiper-pagination-bullet-active:after {
+.scenes1 .swiper-pagination-bullet-active:after {
     display: block;
 }

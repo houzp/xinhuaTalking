@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-15:27:23
+* @Last modified time: 2016-12-30-15:00:26
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -65,13 +65,13 @@
     z-index            : 3;
     transition         : all 1s;
     border-left        : #0099ff 1px solid;
-    background-image   : url("../index-assets/scenes-1-btn-1-bg.png");
+    background-image   : url("../index-assets/scenes1-btn-1-bg.png");
     background-color   : transparent;
 }
 
 .ani-btn.active:after,
 .ani-btn:hover:after {
-    background-image: url("../index-assets/scenes-1-btn-1-active-bg.png");
+    background-image: url("../index-assets/scenes1-btn-1-active-bg.png");
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
 }
@@ -142,13 +142,13 @@
     position           : absolute;
     z-index            : 3;
     border-left        : #0099ff 1px solid;
-    background-image   : url("../index-assets/scenes-1-btn-1-bg.png");
+    background-image   : url("../index-assets/scenes1-btn-1-bg.png");
     background-color   : transparent;
 }
 
 .ani-btn-2.active:after,
 .ani-btn-2:hover:after {
-    background-image: url("../index-assets/scenes-1-btn-1-active-bg.png");
+    background-image: url("../index-assets/scenes1-btn-1-active-bg.png");
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
 }
@@ -176,8 +176,8 @@
 .ani-pic-btn:hover {
     background-image: url("../index-assets/icon-play-active.png");
 }
-/* .scenes-1 .swiper-button-prev */
-.scenes-1 .swiper-button-prev {
+/* .scenes1 .swiper-button-prev */
+.scenes1 .swiper-button-prev {
     height          : 118px;
     margin-top      : -59px;
     left            : 0;
@@ -190,7 +190,7 @@
     transition      : width 2s;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content {
+.scenes1 .swiper-button-prev .swiper-button-content {
     position  : absolute;
     width     : 336px;
     height    : 102px;
@@ -203,13 +203,13 @@
     transition: transform 1s;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .p,
-.scenes-1 .swiper-button-prev .swiper-button-content .t {
+.scenes1 .swiper-button-prev .swiper-button-content .p,
+.scenes1 .swiper-button-prev .swiper-button-content .t {
     position: absolute;
     top     : 50%;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .p {
+.scenes1 .swiper-button-prev .swiper-button-content .p {
     width     : 102px;
     height    : 102px;
     overflow  : hidden;
@@ -218,12 +218,12 @@
     right     : 0;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .p img {
+.scenes1 .swiper-button-prev .swiper-button-content .p img {
     width : 102px;
     height: auto;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .t {
+.scenes1 .swiper-button-prev .swiper-button-content .t {
     width      : 224px;
     left       : 0;
     right      : auto;
@@ -234,8 +234,8 @@
     margin-top : -36px;
 }
 
-.scenes-1 .swiper-button-prev .icon,
-.scenes-1 .swiper-button-prev .icon:after {
+.scenes1 .swiper-button-prev .icon,
+.scenes1 .swiper-button-prev .icon:after {
     display            : block;
     width              : 118px;
     height             : 118px;
@@ -248,20 +248,20 @@
     right              : auto;
 }
 
-.scenes-1 .swiper-button-prev .icon {
+.scenes1 .swiper-button-prev .icon {
     transition      : all .5s;
     background-image: url("../index-assets/icon-prev.png");
     z-index         : 3;
     transform       : translateX(0);
 }
 
-.scenes-1 .swiper-button-prev .icon:after {
+.scenes1 .swiper-button-prev .icon:after {
     content         : '';
     margin-left     : 118px;
     background-image: url("../index-assets/icon-prev-active.png");
 }
 
-.scenes-1 .swiper-button-prev .b {
+.scenes1 .swiper-button-prev .b {
     transition      : transform 2s;
     width           : 118px;
     height          : 118px;
@@ -276,28 +276,28 @@
     z-index         : 2;
 }
 
-.scenes-1 .swiper-button-prev:hover {
+.scenes1 .swiper-button-prev:hover {
     width           : 435px;
     background-color: transparent;
 }
 
-.scenes-1 .swiper-button-prev:hover .swiper-button-content {
+.scenes1 .swiper-button-prev:hover .swiper-button-content {
     transform: translateX(0);
 }
 
-.scenes-1 .swiper-button-prev:hover .b {
+.scenes1 .swiper-button-prev:hover .b {
     transform: scale(10);
 }
 
-.scenes-1 .swiper-button-prev:hover .icon {
+.scenes1 .swiper-button-prev:hover .icon {
     transform: translateX(-128px);
 }
 
-.scenes-1 .swiper-button-prev:hover:active .icon {
+.scenes1 .swiper-button-prev:hover:active .icon {
     transform: translateX(-138px);
 }
-/*.scenes-1 .swiper-button-next */
-.scenes-1 .swiper-button-next {
+/*.scenes1 .swiper-button-next */
+.scenes1 .swiper-button-next {
     height          : 118px;
     margin-top      : -59px;
     left            : auto;
@@ -311,7 +311,7 @@
     transition      : width 2s;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content {
+.scenes1 .swiper-button-next .swiper-button-content {
     position  : absolute;
     width     : 336px;
     height    : 102px;
@@ -324,13 +324,13 @@
     transition: transform 1s;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .p,
-.scenes-1 .swiper-button-next .swiper-button-content .t {
+.scenes1 .swiper-button-next .swiper-button-content .p,
+.scenes1 .swiper-button-next .swiper-button-content .t {
     position: absolute;
     top     : 50%;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .p {
+.scenes1 .swiper-button-next .swiper-button-content .p {
     width     : 102px;
     height    : 102px;
     overflow  : hidden;
@@ -339,12 +339,12 @@
     right     : auto;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .p img {
+.scenes1 .swiper-button-next .swiper-button-content .p img {
     width : 102px;
     height: auto;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .t {
+.scenes1 .swiper-button-next .swiper-button-content .t {
     width      : 224px;
     left       : auto;
     right      : 0;
@@ -355,8 +355,8 @@
     margin-top : -36px;
 }
 
-.scenes-1 .swiper-button-next .icon,
-.scenes-1 .swiper-button-next .icon:after {
+.scenes1 .swiper-button-next .icon,
+.scenes1 .swiper-button-next .icon:after {
     display            : block;
     width              : 118px;
     height             : 118px;
@@ -369,21 +369,21 @@
     right              : 0;
 }
 
-.scenes-1 .swiper-button-next .icon {
+.scenes1 .swiper-button-next .icon {
     transition      : all .5s;
     background-image: url("../index-assets/icon-next.png");
     z-index         : 3;
     transform       : translateX(0);
 }
 
-.scenes-1 .swiper-button-next .icon:after {
+.scenes1 .swiper-button-next .icon:after {
     right           : 118px;
     content         : '';
     margin-left     : 118px;
     background-image: url("../index-assets/icon-next-active.png");
 }
 
-.scenes-1 .swiper-button-next .b {
+.scenes1 .swiper-button-next .b {
     transition      : transform 2s;
     width           : 118px;
     height          : 118px;
@@ -400,27 +400,27 @@
     z-index         : 2;
 }
 
-.scenes-1 .swiper-button-next.active,
-.scenes-1 .swiper-button-next:hover {
+.scenes1 .swiper-button-next.active,
+.scenes1 .swiper-button-next:hover {
     width           : 435px;
     background-color: transparent;
 }
 
-.scenes-1 .swiper-button-next.active .swiper-button-content,
-.scenes-1 .swiper-button-next:hover .swiper-button-content {
+.scenes1 .swiper-button-next.active .swiper-button-content,
+.scenes1 .swiper-button-next:hover .swiper-button-content {
     transform: translateX(0);
 }
 
-.scenes-1 .swiper-button-next.active .b,
-.scenes-1 .swiper-button-next:hover .b {
+.scenes1 .swiper-button-next.active .b,
+.scenes1 .swiper-button-next:hover .b {
     transform: scale(10);
 }
 
-.scenes-1 .swiper-button-next.active .icon,
-.scenes-1 .swiper-button-next:hover .icon {
+.scenes1 .swiper-button-next.active .icon,
+.scenes1 .swiper-button-next:hover .icon {
     transform: translateX(128px);
 }
 
-.scenes-1 .swiper-button-next:hover:active .icon {
+.scenes1 .swiper-button-next:hover:active .icon {
     transform: translateX(138px);
 }

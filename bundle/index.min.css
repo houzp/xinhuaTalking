@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-11:59:58
+* @Last modified time: 2016-12-30-15:01:32
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -15,7 +15,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: normalize.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-15:55:30
+* @Last modified time: 2016-12-30-15:00:57
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -45,7 +45,7 @@ a:hover {
 }
 
 .clearfix:after,
-.scenes-1-title-top:after {
+.scenes1-title-top:after {
     content : '';
     display : inline-block;
     width   : 100%;
@@ -764,7 +764,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-15:27:23
+* @Last modified time: 2016-12-30-15:00:26
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -825,13 +825,13 @@ body {
     z-index            : 3;
     transition         : all 1s;
     border-left        : #0099ff 1px solid;
-    background-image   : url("../index-assets/scenes-1-btn-1-bg.png");
+    background-image   : url("../index-assets/scenes1-btn-1-bg.png");
     background-color   : transparent;
 }
 
 .ani-btn.active:after,
 .ani-btn:hover:after {
-    background-image: url("../index-assets/scenes-1-btn-1-active-bg.png");
+    background-image: url("../index-assets/scenes1-btn-1-active-bg.png");
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
 }
@@ -902,13 +902,13 @@ body {
     position           : absolute;
     z-index            : 3;
     border-left        : #0099ff 1px solid;
-    background-image   : url("../index-assets/scenes-1-btn-1-bg.png");
+    background-image   : url("../index-assets/scenes1-btn-1-bg.png");
     background-color   : transparent;
 }
 
 .ani-btn-2.active:after,
 .ani-btn-2:hover:after {
-    background-image: url("../index-assets/scenes-1-btn-1-active-bg.png");
+    background-image: url("../index-assets/scenes1-btn-1-active-bg.png");
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
 }
@@ -936,8 +936,8 @@ body {
 .ani-pic-btn:hover {
     background-image: url("../index-assets/icon-play-active.png");
 }
-/* .scenes-1 .swiper-button-prev */
-.scenes-1 .swiper-button-prev {
+/* .scenes1 .swiper-button-prev */
+.scenes1 .swiper-button-prev {
     height          : 118px;
     margin-top      : -59px;
     left            : 0;
@@ -950,7 +950,7 @@ body {
     transition      : width 2s;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content {
+.scenes1 .swiper-button-prev .swiper-button-content {
     position  : absolute;
     width     : 336px;
     height    : 102px;
@@ -963,13 +963,13 @@ body {
     transition: transform 1s;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .p,
-.scenes-1 .swiper-button-prev .swiper-button-content .t {
+.scenes1 .swiper-button-prev .swiper-button-content .p,
+.scenes1 .swiper-button-prev .swiper-button-content .t {
     position: absolute;
     top     : 50%;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .p {
+.scenes1 .swiper-button-prev .swiper-button-content .p {
     width     : 102px;
     height    : 102px;
     overflow  : hidden;
@@ -978,12 +978,12 @@ body {
     right     : 0;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .p img {
+.scenes1 .swiper-button-prev .swiper-button-content .p img {
     width : 102px;
     height: auto;
 }
 
-.scenes-1 .swiper-button-prev .swiper-button-content .t {
+.scenes1 .swiper-button-prev .swiper-button-content .t {
     width      : 224px;
     left       : 0;
     right      : auto;
@@ -994,8 +994,8 @@ body {
     margin-top : -36px;
 }
 
-.scenes-1 .swiper-button-prev .icon,
-.scenes-1 .swiper-button-prev .icon:after {
+.scenes1 .swiper-button-prev .icon,
+.scenes1 .swiper-button-prev .icon:after {
     display            : block;
     width              : 118px;
     height             : 118px;
@@ -1008,20 +1008,20 @@ body {
     right              : auto;
 }
 
-.scenes-1 .swiper-button-prev .icon {
+.scenes1 .swiper-button-prev .icon {
     transition      : all .5s;
     background-image: url("../index-assets/icon-prev.png");
     z-index         : 3;
     transform       : translateX(0);
 }
 
-.scenes-1 .swiper-button-prev .icon:after {
+.scenes1 .swiper-button-prev .icon:after {
     content         : '';
     margin-left     : 118px;
     background-image: url("../index-assets/icon-prev-active.png");
 }
 
-.scenes-1 .swiper-button-prev .b {
+.scenes1 .swiper-button-prev .b {
     transition      : transform 2s;
     width           : 118px;
     height          : 118px;
@@ -1036,28 +1036,28 @@ body {
     z-index         : 2;
 }
 
-.scenes-1 .swiper-button-prev:hover {
+.scenes1 .swiper-button-prev:hover {
     width           : 435px;
     background-color: transparent;
 }
 
-.scenes-1 .swiper-button-prev:hover .swiper-button-content {
+.scenes1 .swiper-button-prev:hover .swiper-button-content {
     transform: translateX(0);
 }
 
-.scenes-1 .swiper-button-prev:hover .b {
+.scenes1 .swiper-button-prev:hover .b {
     transform: scale(10);
 }
 
-.scenes-1 .swiper-button-prev:hover .icon {
+.scenes1 .swiper-button-prev:hover .icon {
     transform: translateX(-128px);
 }
 
-.scenes-1 .swiper-button-prev:hover:active .icon {
+.scenes1 .swiper-button-prev:hover:active .icon {
     transform: translateX(-138px);
 }
-/*.scenes-1 .swiper-button-next */
-.scenes-1 .swiper-button-next {
+/*.scenes1 .swiper-button-next */
+.scenes1 .swiper-button-next {
     height          : 118px;
     margin-top      : -59px;
     left            : auto;
@@ -1071,7 +1071,7 @@ body {
     transition      : width 2s;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content {
+.scenes1 .swiper-button-next .swiper-button-content {
     position  : absolute;
     width     : 336px;
     height    : 102px;
@@ -1084,13 +1084,13 @@ body {
     transition: transform 1s;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .p,
-.scenes-1 .swiper-button-next .swiper-button-content .t {
+.scenes1 .swiper-button-next .swiper-button-content .p,
+.scenes1 .swiper-button-next .swiper-button-content .t {
     position: absolute;
     top     : 50%;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .p {
+.scenes1 .swiper-button-next .swiper-button-content .p {
     width     : 102px;
     height    : 102px;
     overflow  : hidden;
@@ -1099,12 +1099,12 @@ body {
     right     : auto;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .p img {
+.scenes1 .swiper-button-next .swiper-button-content .p img {
     width : 102px;
     height: auto;
 }
 
-.scenes-1 .swiper-button-next .swiper-button-content .t {
+.scenes1 .swiper-button-next .swiper-button-content .t {
     width      : 224px;
     left       : auto;
     right      : 0;
@@ -1115,8 +1115,8 @@ body {
     margin-top : -36px;
 }
 
-.scenes-1 .swiper-button-next .icon,
-.scenes-1 .swiper-button-next .icon:after {
+.scenes1 .swiper-button-next .icon,
+.scenes1 .swiper-button-next .icon:after {
     display            : block;
     width              : 118px;
     height             : 118px;
@@ -1129,21 +1129,21 @@ body {
     right              : 0;
 }
 
-.scenes-1 .swiper-button-next .icon {
+.scenes1 .swiper-button-next .icon {
     transition      : all .5s;
     background-image: url("../index-assets/icon-next.png");
     z-index         : 3;
     transform       : translateX(0);
 }
 
-.scenes-1 .swiper-button-next .icon:after {
+.scenes1 .swiper-button-next .icon:after {
     right           : 118px;
     content         : '';
     margin-left     : 118px;
     background-image: url("../index-assets/icon-next-active.png");
 }
 
-.scenes-1 .swiper-button-next .b {
+.scenes1 .swiper-button-next .b {
     transition      : transform 2s;
     width           : 118px;
     height          : 118px;
@@ -1160,28 +1160,28 @@ body {
     z-index         : 2;
 }
 
-.scenes-1 .swiper-button-next.active,
-.scenes-1 .swiper-button-next:hover {
+.scenes1 .swiper-button-next.active,
+.scenes1 .swiper-button-next:hover {
     width           : 435px;
     background-color: transparent;
 }
 
-.scenes-1 .swiper-button-next.active .swiper-button-content,
-.scenes-1 .swiper-button-next:hover .swiper-button-content {
+.scenes1 .swiper-button-next.active .swiper-button-content,
+.scenes1 .swiper-button-next:hover .swiper-button-content {
     transform: translateX(0);
 }
 
-.scenes-1 .swiper-button-next.active .b,
-.scenes-1 .swiper-button-next:hover .b {
+.scenes1 .swiper-button-next.active .b,
+.scenes1 .swiper-button-next:hover .b {
     transform: scale(10);
 }
 
-.scenes-1 .swiper-button-next.active .icon,
-.scenes-1 .swiper-button-next:hover .icon {
+.scenes1 .swiper-button-next.active .icon,
+.scenes1 .swiper-button-next:hover .icon {
     transform: translateX(128px);
 }
 
-.scenes-1 .swiper-button-next:hover:active .icon {
+.scenes1 .swiper-button-next:hover:active .icon {
     transform: translateX(138px);
 }
 /**
@@ -1432,20 +1432,20 @@ a {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-13:42:42
+* @Last modified time: 2016-12-30-15:01:34
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
-/* scenes-1 */
-.scenes-1,
-.scenes-1-parallax-bg {
+/* scenes1 */
+.scenes1,
+.scenes1-parallax-bg {
     background-image   : url("../index-assets/bg.jpg");
     background-size    : cover;
     background-repeat  : repeat;
     background-position: center;
 }
 
-.scenes-1-parallax-bg {
+.scenes1-parallax-bg {
     position: absolute;
     left    : 0;
     top     : 0;
@@ -1453,53 +1453,53 @@ a {
     height  : 100%;
 }
 
-.scenes-1 .swiper-slide-next,
-.scenes-1 .swiper-slide-prev {
+.scenes1 .swiper-slide-next,
+.scenes1 .swiper-slide-prev {
     overflow: hidden;
 }
 
-.scenes-1-logo {
+.scenes1-logo {
     position           : absolute;
     top                : 160px;
     left               : -9px;
     width              : 169px;
     height             : 82px;
-    background-image   : url("../index-assets/scenes-1-logo.png");
+    background-image   : url("../index-assets/scenes1-logo.png");
     background-repeat  : no-repeat;
     background-position: center;
     transition         : all .5s;
 }
 
-.scenes-1-content,
-.scenes-1-title-1,
-.scenes-1-title-4,
-.scenes-1-title-top {
+.scenes1-content,
+.scenes1-title-1,
+.scenes1-title-4,
+.scenes1-title-top {
     position  : absolute;
     width     : 550px;
     transition: all .5s;
 }
 
-.scenes-1-title-top {
+.scenes1-title-top {
     top   : 293px;
     left  : 0;
     height: 70px;
 }
 
-.scenes-1-title-2 {
+.scenes1-title-2 {
     float: left;
     /*font-size  : 60px;
     line-height: 60px;
     font-weight: bold;*/
 }
 
-.scenes-1-title-3 {
+.scenes1-title-3 {
     float: left;
     /*margin-left: 20px;
     font-size  : 16px;
     line-height: 30px;*/
 }
 
-.scenes-1-title-1 {
+.scenes1-title-1 {
     top : 375px;
     left: 0;
     /*line-height: 56px;
@@ -1507,7 +1507,7 @@ a {
     font-weight: bold;*/
 }
 
-.scenes-1-title-4 {
+.scenes1-title-4 {
     top : 490px;
     left: 0;
     /*text-align: right;*/
@@ -1516,12 +1516,12 @@ a {
     color      : #666;*/
 }
 
-.scenes-1-content {
+.scenes1-content {
     top : 570px;
     left: 0;
 }
 
-.scenes-1-absract {
+.scenes1-absract {
     /*line-height  : 30px;*/
     /*font-size    : 16px;*/
     /*color        : #666;*/
@@ -1531,7 +1531,7 @@ a {
     overflow     : hidden;
 }
 
-.scenes-1-absract:before {
+.scenes1-absract:before {
     content   : '';
     overflow  : hidden;
     background: #0099ff;
@@ -1541,14 +1541,14 @@ a {
     left      : 0;
     bottom    : 6px;
 }
-/*.scenes-1-btn-1 {}
+/*.scenes1-btn-1 {}
 
-.scenes-1-btn-2 {}*/
-.scenes-1-tool {
+.scenes1-btn-2 {}*/
+.scenes1-tool {
     position: relative;
 }
 
-.scenes-1-qrcode {
+.scenes1-qrcode {
     position: absolute;
     right   : 0;
     top     : 0;
@@ -1557,11 +1557,11 @@ a {
     float   : right;
 }
 
-.scenes-1-qrcode-url {
+.scenes1-qrcode-url {
     display: none;
 }
 
-.scenes-1-pic {
+.scenes1-pic {
     position: absolute;
     bottom  : 0;
     left    : 50%;
@@ -1572,18 +1572,18 @@ a {
     /*transform : translateX(0);*/
 }
 
-.scenes-1-pic:hover {
+.scenes1-pic:hover {
     /*transform: translateX(-30px);*/
 }
-/*.scenes-1-pic .ani-pic-btn {
+/*.scenes1-pic .ani-pic-btn {
     transition: all 1s;
     opacity   : 0;
 }
 
-.scenes-1-pic:hover .ani-pic-btn {
+.scenes1-pic:hover .ani-pic-btn {
     opacity: 1;
 }*/
-.scenes-1-pic img {
+.scenes1-pic img {
     position: absolute;
     bottom  : 0;
     left    : 0;
@@ -1591,7 +1591,7 @@ a {
     z-index : 1;
 }
 
-.scenes-1 .swiper-pagination {
+.scenes1 .swiper-pagination {
     /*position        : absolute;*/
     /*z-index         : 99;*/
     bottom     : 107px;
@@ -1602,7 +1602,7 @@ a {
     margin-left: -597px;
 }
 
-.scenes-1 .swiper-pagination-bullet {
+.scenes1 .swiper-pagination-bullet {
     width           : 8px;
     height          : 8px;
     border-radius   : 0;
@@ -1613,7 +1613,7 @@ a {
     opacity         : 1;
 }
 
-.scenes-1 .swiper-pagination-bullet:after {
+.scenes1 .swiper-pagination-bullet:after {
     content      : '';
     position     : absolute;
     top          : 50%;
@@ -1626,10 +1626,10 @@ a {
     border       : #0099ff 1px solid;
     display      : none;
 }
-/*.scenes-1 .swiper-pagination-bullet-active {
+/*.scenes1 .swiper-pagination-bullet-active {
     border-color: #1080f2 !important;
 }*/
-.scenes-1 .swiper-pagination-bullet-active:after {
+.scenes1 .swiper-pagination-bullet-active:after {
     display: block;
 }
 /**
@@ -1638,28 +1638,28 @@ a {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-10:06:45
+* @Last modified time: 2016-12-30-15:01:25
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
-/* scenes-2 */
-.scenes-2 {
+/* scenes2 */
+.scenes2 {
     width                  : 100%;
     height                 : 100%;
-    background-image       : url("../index-assets/bg-scenes-2.jpg");
+    background-image       : url("../index-assets/bg-scenes2.jpg");
     -webkit-background-size: cover;
     background-size        : cover;
     background-position    : center;
 }
 
-.scenes-2 .swiper-slide,
-.scenes-2-container {
+.scenes2 .swiper-slide,
+.scenes2-container {
     width : 1200px;
     /*width : 120vh;*/
     height: 63.2vh;
 }
 
-.scenes-2-container {
+.scenes2-container {
     /*overflow: visible;*/
     margin     : 16vh auto 0;
     padding-top: 8vh;
@@ -1667,29 +1667,29 @@ a {
     /*border     : red 1px solid;*/
 }
 
-.scenes-2 .item,
-.scenes-2 .mask,
-.scenes-2 .scenes-pic {
+.scenes2 .item,
+.scenes2 .mask,
+.scenes2 .scenes-pic {
     width : 15.1vh;
     height: 15.1vh;
 }
 
-.scenes-2 .item-0,
-.scenes-2 .item:nth-child(1) {
+.scenes2 .item-0,
+.scenes2 .item:nth-child(1) {
     margin-left: 45.55vh;
 }
 
-.scenes-2 .scenes-pic {
+.scenes2 .scenes-pic {
     background-color: #FFF;
 }
 
-.scenes-2 .scenes-pic img {
+.scenes2 .scenes-pic img {
     width : auto;
     height: 100%;
     margin: 0 auto;
 }
 
-.scenes-2 .item {
+.scenes2 .item {
     float        : left;
     margin-right : 1px;
     margin-bottom: 1px;
@@ -1699,19 +1699,19 @@ a {
     z-index      : 1;
 }
 
-.scenes-2 .mask,
-.scenes-2 .scenes-pic {
+.scenes2 .mask,
+.scenes2 .scenes-pic {
     position: absolute;
     top     : 0;
     left    : 0;
 }
 
-.scenes-2 .mask {
+.scenes2 .mask {
     z-index         : 2;
     background-color: rgba(0, 0, 0, 0.45);
 }
 
-.scenes-2 .scenes-pic {
+.scenes2 .scenes-pic {
     z-index: 1;
 }
 
@@ -1722,17 +1722,17 @@ a {
     z-index : 2;
 }
 
-.scenes-2 .scenes2-logo {
+.scenes2 .scenes2-logo {
     width              : 146px;
     height             : 12.5vh;
     background-color   : #1080f2;
-    background-image   : url("../index-assets/scenes-2-logo-text.png");
+    background-image   : url("../index-assets/scenes2-logo-text.png");
     background-position: center;
     background-repeat  : no-repeat;
     position           : relative;
 }
 
-.scenes-2 .scenes2-logo:after {
+.scenes2 .scenes2-logo:after {
     content         : '';
     display         : block;
     position        : absolute;
@@ -1766,8 +1766,8 @@ a {
     float: left;
 }
 
-.scenes-2 .swiper-button-next,
-.scenes-2 .swiper-button-prev {
+.scenes2 .swiper-button-next,
+.scenes2 .swiper-button-prev {
     top       : 59.2vh;
     width     : 39px;
     height    : 39px;
@@ -1776,19 +1776,19 @@ a {
     overflow  : hidden;
 }
 
-.scenes-2 .swiper-button-prev {
+.scenes2 .swiper-button-prev {
     /*left: 95.5vh;*/
     left : auto;
     right: 6.5vh;
 }
 
-.scenes-2 .swiper-button-next {
+.scenes2 .swiper-button-next {
     /*left: 102.2vh;*/
     left : auto;
     right: .4vh;
 }
 
-.scenes-2 .icon {
+.scenes2 .icon {
     width              : 39px;
     height             : 39px;
     position           : absolute;
@@ -1802,12 +1802,12 @@ a {
     z-index            : 2;
 }
 
-.scenes-2 .b,
-.scenes-2 .icon {
+.scenes2 .b,
+.scenes2 .icon {
     transition: transform 1.5s;
 }
 
-.scenes-2 .b {
+.scenes2 .b {
     width           : 39px;
     height          : 39px;
     position        : absolute;
@@ -1821,24 +1821,24 @@ a {
     z-index         : 1;
 }
 
-.scenes-2 .swiper-button-prev .icon {
+.scenes2 .swiper-button-prev .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-prev:hover .icon {
+.scenes2 .swiper-button-prev:hover .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-next .icon {
+.scenes2 .swiper-button-next .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-next:hover .icon {
+.scenes2 .swiper-button-next:hover .icon {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
 }
 
-.scenes-2 .swiper-button-next:hover .b,
-.scenes-2 .swiper-button-prev:hover .b {
+.scenes2 .swiper-button-next:hover .b,
+.scenes2 .swiper-button-prev:hover .b {
     transform: scale(4);
 }
 
