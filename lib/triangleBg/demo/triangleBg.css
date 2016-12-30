@@ -1,0 +1,35 @@
+/**
+* @Author: St. <SuperWoods>
+* @Date:   2016-12-30-15:31:11
+* @Email:  st_sister@iCloud.com
+* @Filename: triangleBg.css
+* @Last modified by:   SuperWoods
+* @Last modified time: 2016-12-30-16:12:51
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
+body,
+html {
+    padding: 0;
+    margin : 0;
+    width  : 100%;
+    height : 100%;
+}
+
+.triangleBg {
+    width     : 100%;
+    height    : 100%;
+    min-height: 800px;
+    overflow  : hidden;
+    margin    : 0 auto;
+    position  : relative;
+}
+
+.triangleBg-anitOut {
+    position: absolute;
+    left    : 0;
+    top     : 0;
+    width   : 100%;
+    height  : 100%;
+    z-index : 1;
+}

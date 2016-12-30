@@ -2,7 +2,7 @@
 # @Date:   2016-05-31-08:41:37
 # @Email:  st_sister@iCloud.com
 # @Last modified by:   SuperWoods
-# @Last modified time: 2016-12-22-16:04:11
+# @Last modified time: 2016-12-30-15:36:39
 # @License: MIT
 #
 # .PHONY: clean
@@ -39,7 +39,7 @@ js:
 .PHONY: server
 server:
 	gulp autowatch-jade &
-	browser-sync start --server --files='index.html, bundle, css, js, img, jade'
+	browser-sync start --server --files='index.html, bundle, css, js, img, jade, lib'
 
 # -------------------------------------------------------------------------- all
 

@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-11:59:58
+* @Last modified time: 2016-12-30-22:05:59
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -56,7 +56,7 @@ a {
     height: 100%;
 }
 /* scenes */
-@import "../css/scenes-1.css";
-@import "../css/scenes-2.css";
-@import "../css/scenes-3.css";
+@import "../css/scenes1.css";
+@import "../css/scenes2.css";
+@import "../css/scenes3.css";
 @import "../css/hacks.css";

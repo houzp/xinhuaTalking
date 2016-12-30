@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: normalize.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-22-15:55:30
+* @Last modified time: 2016-12-30-15:00:57
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -34,7 +34,7 @@ a:hover {
 }
 
 .clearfix:after,
-.scenes-1-title-top:after {
+.scenes1-title-top:after {
     content : '';
     display : inline-block;
     width   : 100%;

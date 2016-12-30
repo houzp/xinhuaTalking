@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-13:37:13
+* @Last modified time: 2016-12-30-22:07:07
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -18,25 +18,34 @@ $(() => {
 
     let coverStatus = null;
 
-    const $scenes1 = $('#scenes-1');
-    const $scenes1_pagination = $scenes1.find('.swiper-pagination');
-    const $scenes1_swiper_button_next = $scenes1.find('.swiper-button-next');
-    const $scenes1_swiper_button_prev = $scenes1.find('.swiper-button-prev');
-    const $scenes1_slideLeft = $scenes1.find('.swiper-slide').find('.scenes-ani-left');
-    const $scenes1_slidePic = $scenes1.find('.swiper-slide').find('.scenes-1-pic');
+    // main
+    let mainSwiper = null
+    let mainSwiperRealIndex = 0;
 
-    const $scenes2 = $('#scenes-2');
-    const $scenes2_slide = $scenes2.find('.swiper-slide');
-    const scenes2_slide_len = $scenes2_slide.length;
-    const $scenes2_items = $scenes2.find('.item');
+    // 1
+    let scenes1Swiper = null;
+    let scenes1SwiperRealIndex = 0;
 
-    let main_swiper = null
-    let scenes1_swiper = null;
-    let scenes2_swiper = null;
+    const $scenes1 = $('#scenes1');
+    const $scenes1Pagination = $scenes1.find('.swiper-pagination');
+    const $scenes1SwiperButtonNext = $scenes1.find('.swiper-button-next');
+    // const $scenes1SwiperButtonPrev = $scenes1.find('.swiper-button-prev');
+    const $scenes1SlideLeft = $scenes1.find('.swiper-slide').find('.scenes-ani-left');
+    const $scenes1SlidePic = $scenes1.find('.swiper-slide').find('.scenes1-pic');
 
-    let main_swiper_realIndex = 0;
-    let scenes1_swiper_realIndex = 0;
-    let scenes3_swiper_realIndex = 0;
+    // 2
+    let scenes2Swiper = null;
+
+    const $scenes2 = $('#scenes2');
+    const $scenes2Slide = $scenes2.find('.swiper-slide');
+    // const scenes2SlideLen = $scenes2Slide.length;
+    const $scenes2Items = $scenes2.find('.item');
+
+
+
+
+
+
 
 
     /* -------------------------------------------------------------------------
@@ -45,8 +54,8 @@ $(() => {
     const resources = [ // 需要预加载的资源
         '../xinhuaTalking/index-assets/bg.jpg',
         '../xinhuaTalking/index-assets/cover-logo.png',
-        '../xinhuaTalking/index-assets/scenes-1-btn-1-active-bg.png',
-        '../xinhuaTalking/index-assets/scenes-1-btn-1-bg.png',
+        '../xinhuaTalking/index-assets/scenes1-btn-1-active-bg.png',
+        '../xinhuaTalking/index-assets/scenes1-btn-1-bg.png',
         '../xinhuaTalking/index-assets/demo-pic-0.png',
         '../xinhuaTalking/index-assets/demo-pic-1.png',
         '../xinhuaTalking/index-assets/demo-pic-2.png',
@@ -58,7 +67,7 @@ $(() => {
         resources: resources,
         onStart: function (total) {
             // console.log('start:' + total);
-            scenes1_page1_hide();
+            scenes1Page1Hide();
         },
         onProgress: function (current, total) {
             // console.log(current + '/' + total);
@@ -78,49 +87,49 @@ $(() => {
     });
 
     /* -------------------------------------------------------------------------
-     * scenes1_page1
+     * scenes1Page1
     ------------------------------------------------------------------------- */
-    const scenes1_page1_hide = function () {
+    const scenes1Page1Hide = function () {
         TweenMax.to($topNav, 0, {
             y: 300,
             opacity: 0,
         });
-        TweenMax.to($scenes1_pagination, 0, {
+        TweenMax.to($scenes1Pagination, 0, {
             y: -300,
             opacity: 0,
         });
-        TweenMax.to($scenes1_slideLeft, 0, {
+        TweenMax.to($scenes1SlideLeft, 0, {
             x: 300,
             opacity: 0,
         });
-        TweenMax.to($scenes1_slidePic, 0, {
+        TweenMax.to($scenes1SlidePic, 0, {
             x: -300,
             opacity: 0,
         });
-        $scenes1_swiper_button_next.removeClass('active');
+        $scenes1SwiperButtonNext.removeClass('active');
     };
-    const scenes1_page1_show = function () {
+    const scenes1Page1Show = function () {
         TweenMax.to($topNav, 2, {
             y: 0,
             opacity: 1,
             ease: Power0.ease,
         });
-        TweenMax.to($scenes1_pagination, 2.5, {
+        TweenMax.to($scenes1Pagination, 2.5, {
             y: 0,
             opacity: 1,
             ease: Power0.ease,
         });
-        TweenMax.to($scenes1_slideLeft, 2.5, {
+        TweenMax.to($scenes1SlideLeft, 2.5, {
             x: 0,
             opacity: 1,
             ease: Power0.ease,
         });
-        TweenMax.to($scenes1_slidePic, 2, {
+        TweenMax.to($scenes1SlidePic, 2, {
             x: 0,
             opacity: 1,
             ease: Power0.ease,
             onStart: function () {
-                $scenes1_swiper_button_next.addClass('active');
+                $scenes1SwiperButtonNext.addClass('active');
             }
         });
     };
@@ -140,6 +149,8 @@ $(() => {
                 this.coverClick();
             } else {
                 this.$cover.remove();
+                coverStatus = 'hide';
+                console.log('coverHide', coverStatus);
             }
         },
         coverClick: function () {
@@ -164,10 +175,10 @@ $(() => {
         coverHide: function () {
 
             coverStatus = 'hide';
+            console.log('coverHide', coverStatus);
 
-            console.log('coverHide');
             const _this = this;
-            const time = 4;
+            let time = 4;
             $body.addClass('overflow-hidden');
             // anis
             TweenMax.to(_this.$cover, time, {
@@ -177,16 +188,15 @@ $(() => {
                 // ease: SlowMo.ease.config(0.7, 0.7, false),
                 onStart: function () {
                     _this.$cover.off('click');
+                    setTimeout(function () {
+                        if (mainSwiperRealIndex === 0) {
+                            scenes1Page1Show();
+                        }
+                    }, time * 0.5 * 1000);
                 },
                 onComplete: function () {
                     _this.$cover.remove();
                     $body.removeClass('overflow-hidden');
-
-                    console.log('remove', main_swiper_realIndex);
-
-                    if (main_swiper_realIndex === 0) {
-                        scenes1_page1_show();
-                    }
                 }
             });
         }
@@ -194,10 +204,10 @@ $(() => {
     /* -------------------------------------------------------------------------
      * scenes2
     ------------------------------------------------------------------------- */
-    const scenes2_ani = function (num, toggle) {
-        console.log('scenes2_ani:', num, toggle);
+    const scenes2Ani = function (num, toggle) {
+        console.log('scenes2Ani:', num, toggle);
         if (toggle === 'show') {
-            $scenes2_slide
+            $scenes2Slide
                 .eq(num)
                 .find('.item')
                 .each(function (i, e) {
@@ -208,16 +218,16 @@ $(() => {
                     });
                 });
         } else if (toggle === 'hide') {
-            $scenes2_slide
+            $scenes2Slide
                 .eq(num)
                 .find('.item')
                 .each(function (i, e) {
-                    scenes2_hide($(e), 0.4, i * 0.08);
+                    scenes2Hide($(e), 0.4, i * 0.08);
                 });
         }
     };
 
-    const scenes2_hide = function (tag, time, delay) {
+    const scenes2Hide = function (tag, time, delay) {
         TweenMax.to(tag, time, {
             x: 30,
             opacity: 0,
@@ -225,7 +235,7 @@ $(() => {
         });
     };
 
-    const scenes2_mouseover = function ($tag) {
+    const scenes2Mouseover = function ($tag) {
         TweenMax.to($tag, 0.2, {
             scale: 1.25,
             'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
@@ -243,13 +253,13 @@ $(() => {
                 });
             },
             onComplete: function () {
-                scenes2_set_titles($tag);
+                scenes2SetTitles($tag);
             }
         });
     };
 
     const $scenes2TitleBox = $('#scenes2-title-box');
-    const scenes2_set_titles = function ($tag) {
+    const scenes2SetTitles = function ($tag) {
         $scenes2TitleBox
             .stop(false, true)
             .fadeOut('2000', function () {
@@ -263,7 +273,7 @@ $(() => {
 
     };
 
-    const scenes2_mouseout = function ($tag, time) {
+    const scenes2Mouseout = function ($tag, time) {
         TweenMax.to($tag, 1.2, {
             scale: 1,
             'box-shadow': 'none',
@@ -283,68 +293,121 @@ $(() => {
         });
     };
 
-    const scenes2_init = function (num) {
+    const scenes2Init = function (num) {
         console.log(num, num === 1);
         if (num === 1) {
-            if (scenes2_swiper === null) {
-                scenes2_swiper = new Swiper('#scenes-2', {
+            if (scenes2Swiper === null) {
+                scenes2Swiper = new Swiper('#scenes2', {
                     lazyLoading: true,
                     effect: 'fade',
                     autoplay: 8000,
                     // loop: true, // 因为背景透明无法使用loop
-                    prevButton: '#scenes-2 .swiper-button-prev',
-                    nextButton: '#scenes-2 .swiper-button-next',
+                    prevButton: '#scenes2 .swiper-button-prev',
+                    nextButton: '#scenes2 .swiper-button-next',
                     paginationClickable: true,
                     speed: 1800,
                     // spaceBetween: 80,
                     onInit: function (swiper) {
-                        scenes2_hide($scenes2_items, 0, 0);
-                        scenes2_ani(swiper.activeIndex, 'show', 1);
+                        scenes2Hide($scenes2Items, 0, 0);
+                        scenes2Ani(swiper.activeIndex, 'show', 1);
 
                         const firstNum = 0;
-                        const $firstItem = $scenes2_items.eq(firstNum);
+                        const $firstItem = $scenes2Items.eq(firstNum);
 
                         setTimeout(function () {
-                            scenes2_mouseover($firstItem);
+                            scenes2Mouseover($firstItem);
                         }, 2500);
 
-                        $scenes2_items.on('mouseover', function () {
+                        $scenes2Items.on('mouseover', function () {
                             const $this = $(this);
                             if ($this.index() !== firstNum) {
-                                scenes2_mouseout($firstItem);
+                                scenes2Mouseout($firstItem);
                             }
-                            scenes2_mouseover($this)
+                            scenes2Mouseover($this)
                         });
 
-                        $scenes2_items.on('mouseout', function () {
+                        $scenes2Items.on('mouseout', function () {
                             const $this = $(this);
-                            scenes2_mouseout($this);
+                            scenes2Mouseout($this);
                         });
                     },
                     onSlideChangeStart: function (swiper) {
-                        scenes2_ani(swiper.activeIndex, 'show');
-                        scenes2_ani(swiper.previousIndex, 'hide');
+                        scenes2Ani(swiper.activeIndex, 'show');
+                        scenes2Ani(swiper.previousIndex, 'hide');
                     },
+                    // onSlideChangeEnd: function (swiper) {
+                    // }
                 });
-                // scenes2_swiper.prevButton.on('click', function () {
-                //     scenes2_ani(scenes2_swiper.activeIndex, 'show');
-                //     scenes2_ani(scenes2_swiper.previousIndex, 'hide');
+                // scenes2Swiper.prevButton.on('click', function () {
+                //     scenes2Ani(scenes2Swiper.activeIndex, 'show');
+                //     scenes2Ani(scenes2Swiper.previousIndex, 'hide');
                 // });
-                // scenes2_swiper.nextButton.on('click', function () {
-                //     scenes2_ani(scenes2_swiper.previousIndex, 'hide');
-                //     scenes2_ani(scenes2_swiper.activeIndex, 'show');
+                // scenes2Swiper.nextButton.on('click', function () {
+                //     scenes2Ani(scenes2Swiper.previousIndex, 'hide');
+                //     scenes2Ani(scenes2Swiper.activeIndex, 'show');
                 // });
             } else {
-                scenes2_swiper.unlockSwipes();
-                scenes2_ani(scenes2_swiper.activeIndex, 'show');
+                scenes2Swiper.unlockSwipes();
+                scenes2Ani(scenes2Swiper.activeIndex, 'show');
             }
         } else {
-            if (scenes2_swiper !== null) {
-                scenes2_swiper.lockSwipes();
-                scenes2_hide($scenes2_items, 0, 0);
+            if (scenes2Swiper !== null) {
+                scenes2Swiper.lockSwipes();
+                scenes2Hide($scenes2Items, 0, 0);
             }
         }
     };
+
+    /* -------------------------------------------------------------------------
+     * scenes3
+    ------------------------------------------------------------------------- */
+    // 3
+    let scenes3Bg = null;
+    let scenes3Swiper = null;
+    // let scenes3SwiperRealIndex = 0;
+    const $scenes3 = $('#scenes3');
+
+    const scenes3BgInit = function (swiperRealIndex) {
+        if (scenes3Bg === null && swiperRealIndex === 2) {
+            scenes3Bg = $.getScript("/lib/triangleBg/triangleBg.js");
+        }
+    };
+
+    const scenes3Init = function (swiperRealIndex) {
+        if (mainSwiperRealIndex === 2) {
+            if (scenes3Swiper === null) {
+                console.log('scenes3Init start', $scenes3);
+                scenes3BgInit(swiperRealIndex);
+
+
+                scenes3Swiper = new Swiper($scenes3.selector, {
+                    lazyLoading: true,
+                    autoplay: 12000,
+                    parallax: true,
+                    pagination: $scenes3.selector + ' .swiper-pagination',
+                    prevButton: $scenes3.selector + ' .swiper-button-prev',
+                    nextButton: $scenes3.selector + ' .swiper-button-next',
+                    paginationClickable: true,
+                    speed: 3000,
+                    runCallbacksOnInit: true,
+                    onInit: function (swiper) {
+
+                    },
+                    onSlideChangeStart: function (swiper) {
+
+                    },
+                });
+            } else {
+                scenes3Swiper.unlockSwipes();
+            }
+        } else {
+            if (scenes3Swiper !== null) {
+                scenes3Swiper.lockSwipes();
+            }
+        }
+    };
+
+
     /* -------------------------------------------------------------------------
      * navLine
     ------------------------------------------------------------------------- */
@@ -382,58 +445,68 @@ $(() => {
                 mousewheelControl: true,
                 // onSlideChangeStart
                 onInit: function (swiper) {
+                    // mainSwiperRealIndex = swiper.realIndex;
+
                     // getSwiperData
                     _this.getSwiperData();
                     // getSize
                     _this.getSize();
                     // nav
                     _this.navHeight = _this.$nav.height();
+
                     navLine(swiper.realIndex, 1);
 
                     $window.on('resize', () => {
-                        if (main_swiper_realIndex < 1) {
+                        if (mainSwiperRealIndex < 1) {
                             _this.getSize();
                         }
-                        _this.navStatus(main_swiper_realIndex);
+                        _this.navStatus(mainSwiperRealIndex);
                     });
-                    // scenes_1_init
-                    _this.scenes1_init();
+                    // scenes1Init
+                    _this.scenes1Init();
 
-                    // scenes2_init
-                    scenes2_init(swiper.realIndex);
+                    // scenes2Init
+                    scenes2Init(swiper.realIndex);
+
+                    scenes3Init(swiper.realIndex);
 
                     // only for test
                     // swiper.slideTo(1);
                     // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function (swiper) {
+                    console.log(swiper.realIndex);
+                    mainSwiperRealIndex = swiper.realIndex;
+
                     navLine(swiper.realIndex, 1);
 
-                    console.log(swiper.realIndex);
-                    main_swiper_realIndex = swiper.realIndex;
                     _this.navStatus(swiper.realIndex);
 
-                    scenes2_init(swiper.realIndex);
+                    scenes2Init(swiper.realIndex);
+
+                    scenes3Init(swiper.realIndex);
                 },
                 onSlideChangeEnd: function (swiper) {
-                    // scenes_1_init
-                    _this.scenes1_init();
+                    // scenes1Init
+                    _this.scenes1Init();
+
                 },
             });
         },
-        scenes1_init: function () {
+        scenes1Init: function () {
             const _this = this;
-            if (main_swiper_realIndex === 0) {
+            if (mainSwiperRealIndex === 0) {
                 _this.zoom();
                 if (_this.scenes1 === null) {
-                    console.log('scenes_1_init start');
-                    _this.scenes1 = new Swiper('#scenes-1', {
+                    console.log('scenes1Init start');
+                    _this.scenes1 = new Swiper('#scenes1', {
+                        spaceBetween: 200,
                         lazyLoading: true,
                         // autoplay: 12000,
                         parallax: true,
-                        pagination: '#scenes-1 .swiper-pagination',
-                        prevButton: '#scenes-1 .swiper-button-prev',
-                        nextButton: '#scenes-1 .swiper-button-next',
+                        pagination: '#scenes1 .swiper-pagination',
+                        prevButton: '#scenes1 .swiper-button-prev',
+                        nextButton: '#scenes1 .swiper-button-next',
                         paginationClickable: true,
                         speed: 3000,
                         runCallbacksOnInit: true,
@@ -450,7 +523,7 @@ $(() => {
                                 });
 
                             // 图片盒子 hover
-                            $scenes1_slidePic
+                            $scenes1SlidePic
                                 .on('mouseover', function () {
                                     TweenMax.to($(this), 0.8, {
                                         x: 30,
@@ -504,7 +577,7 @@ $(() => {
                 }
 
                 if (coverStatus === 'hide') {
-                    scenes1_page1_show();
+                    scenes1Page1Show();
                 }
             } else {
 
@@ -513,7 +586,7 @@ $(() => {
                 }
 
                 if (coverStatus === 'hide') {
-                    scenes1_page1_hide();
+                    scenes1Page1Hide();
                 }
             }
         },
@@ -525,8 +598,8 @@ $(() => {
                 .each(function (i, e) {
                     const $e = $(e);
                     _this.data.push({
-                        title: $.trim($e.find('.scenes-1-title-1').text()),
-                        img: $e.find('.scenes-1-pic img').attr('src')
+                        title: $.trim($e.find('.scenes1-title-1').text()),
+                        img: $e.find('.scenes1-pic img').attr('src')
                     });
                 });
         },
@@ -549,7 +622,7 @@ $(() => {
             };
         },
         qrcode: function () {
-            const qrcodes = this.$scenes1.find('.scenes-1-qrcode');
+            const qrcodes = this.$scenes1.find('.scenes1-qrcode');
             qrcodes.each(function (i, e) {
                 const $e = $(e);
                 $e.qrcode({
@@ -558,20 +631,20 @@ $(() => {
                     foreground: "#333", //"#0099ff"
                     width: 108,
                     height: 108,
-                    text: $.trim($e.find('.scenes-1-qrcode-url').text())
+                    text: $.trim($e.find('.scenes1-qrcode-url').text())
                 });
             });
         },
         zoomTags: [{
-            tag: '.scenes-1-logo',
+            tag: '.scenes1-logo',
         }, {
-            tag: '.scenes-1-title-top',
+            tag: '.scenes1-title-top',
         }, {
-            tag: '.scenes-1-title-1',
+            tag: '.scenes1-title-1',
         }, {
-            tag: '.scenes-1-title-4',
+            tag: '.scenes1-title-4',
         }, {
-            tag: '.scenes-1-content',
+            tag: '.scenes1-content',
         }],
         zoomResize: null,
         zoomRatio: function (num) {

@@ -16,17 +16,17 @@ html
         include mod-nav
         .swiper-container.main#main
             .swiper-wrapper
-                .swiper-slide.scenes-slide.scenes-1(data-hash="1")
+                .swiper-slide.scenes-slide.scenes1(data-hash="1")
                     include mod-top-nav
-                    include mod-scenes-1
-                .swiper-slide.scenes-slide.scenes-2(data-hash="2")
-                    include mod-scenes-2
-                .swiper-slide.scenes-slide.scenes-3(data-hash="3")
-                    include mod-scenes-3
-                .swiper-slide.scenes-slide.scenes-4(data-hash="4")
-                    include mod-scenes-4
-                .swiper-slide.scenes-slide.scenes-5(data-hash="5")
-                    include mod-scenes-5
+                    include mod-scenes1
+                .swiper-slide.scenes-slide.scenes2(data-hash="2")
+                    include mod-scenes2
+                .swiper-slide.scenes-slide.scenes3(data-hash="3/no-cover")
+                    include mod-scenes3
+                .swiper-slide.scenes-slide.scenes4(data-hash="4")
+                    include mod-scenes4
+                .swiper-slide.scenes-slide.scenes5(data-hash="5")
+                    include mod-scenes5
         #cover.cover
 
         script(src="lib/jq.js")
@@ -40,6 +40,7 @@ html
 
         //- script(src="bundle/jquery-ui.min.js")
         //- script(src="bundle/cover.min.js")
-        //- script(src="bundle/scenes-1.min.js")
+        //- script(src="lib/triangleBg/triangleBg.js")
+
         script(src="bundle/index.min.js")
         script(src="bundle/footer.min.js")
