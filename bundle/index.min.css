@@ -1638,7 +1638,7 @@ a {
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-15:01:25
+* @Last modified time: 2016-12-30-18:47:46
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1654,9 +1654,10 @@ a {
 
 .scenes2 .swiper-slide,
 .scenes2-container {
-    width : 1200px;
-    /*width : 120vh;*/
-    height: 63.2vh;
+    width : 1091px;
+    /*width     : 100vh;*/
+    height: 64vh;
+    /*background: red;*/
 }
 
 .scenes2-container {
@@ -1664,7 +1665,7 @@ a {
     margin     : 16vh auto 0;
     padding-top: 8vh;
     overflow   : visible;
-    /*border     : red 1px solid;*/
+    border     : red 1px solid;
 }
 
 .scenes2 .item,
@@ -1676,7 +1677,7 @@ a {
 
 .scenes2 .item-0,
 .scenes2 .item:nth-child(1) {
-    margin-left: 45.55vh;
+    margin-left: 45.56vh;
 }
 
 .scenes2 .scenes-pic {
@@ -1750,9 +1751,9 @@ a {
 
 .scenes2-title-box {
     position: absolute;
-    top     : 60vh;
+    top     : 59vh;
     right   : 0;
-    width   : 765px;
+    width   : 685px;
     z-index : 3;
 }
 
@@ -1768,7 +1769,7 @@ a {
 
 .scenes2 .swiper-button-next,
 .scenes2 .swiper-button-prev {
-    top       : 59.2vh;
+    top       : 58.5vh;
     width     : 39px;
     height    : 39px;
     border    : #1080f2 1px solid;
@@ -1785,7 +1786,7 @@ a {
 .scenes2 .swiper-button-next {
     /*left: 102.2vh;*/
     left : auto;
-    right: .4vh;
+    right: .45vh;
 }
 
 .scenes2 .icon {
@@ -1849,18 +1850,41 @@ a {
 * @Email:  st_sister@iCloud.com
 * @Filename: .css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-10:07:58
+* @Last modified time: 2016-12-30-18:42:29
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
-/* scenes-3 */
-.scenes-3 {
+/* scenes3 */
+.scenes3 {
     width                  : 100%;
     height                 : 100%;
-    background-image       : url("../index-assets/bg-scenes-3.jpg");
+    background-image       : url("../index-assets/bg-scenes3.jpg");
     -webkit-background-size: cover;
     background-size        : cover;
     background-position    : center;
+}
+
+.scenes3-bg {
+    position: absolute;
+    z-index : 1;
+}
+
+.triangleBg {
+    width     : 100%;
+    height    : 100%;
+    min-height: 800px;
+    overflow  : hidden;
+    margin    : 0 auto;
+    position  : relative;
+}
+
+.triangleBg-anitOut {
+    position: absolute;
+    left    : 0;
+    top     : 0;
+    width   : 100%;
+    height  : 100%;
+    z-index : 1;
 }
 /**
 * @Author: St. <SuperWoods>

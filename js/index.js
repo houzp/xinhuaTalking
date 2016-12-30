@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-15:13:54
+* @Last modified time: 2016-12-30-18:22:03
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -166,12 +166,10 @@ $(() => {
             }, 200);
         },
         coverHide: function () {
-
             coverStatus = 'hide';
-
             console.log('coverHide');
             const _this = this;
-            const time = 4;
+            let time = 4;
             $body.addClass('overflow-hidden');
             // anis
             TweenMax.to(_this.$cover, time, {
@@ -181,16 +179,15 @@ $(() => {
                 // ease: SlowMo.ease.config(0.7, 0.7, false),
                 onStart: function () {
                     _this.$cover.off('click');
+                    setTimeout(function () {
+                        if (mainSwiperRealIndex === 0) {
+                            scenes1Page1Show();
+                        }
+                    }, time * 0.5 * 1000);
                 },
                 onComplete: function () {
                     _this.$cover.remove();
                     $body.removeClass('overflow-hidden');
-
-                    console.log('remove', mainSwiperRealIndex);
-
-                    if (mainSwiperRealIndex === 0) {
-                        scenes1Page1Show();
-                    }
                 }
             });
         }
@@ -349,6 +346,23 @@ $(() => {
             }
         }
     };
+
+    /* -------------------------------------------------------------------------
+     * scenes3
+    ------------------------------------------------------------------------- */
+    let scenes3Bg = null;
+    const scenes3Init = function (swiperRealIndex) {
+
+        scenes3BgInit(swiperRealIndex);
+
+    };
+
+    const scenes3BgInit = function (swiperRealIndex) {
+        if (scenes3Bg === null && swiperRealIndex === 2) {
+            scenes3Bg = $.getScript("/lib/triangleBg/triangleBg.js");
+        }
+    };
+
     /* -------------------------------------------------------------------------
      * navLine
     ------------------------------------------------------------------------- */
@@ -386,12 +400,15 @@ $(() => {
                 mousewheelControl: true,
                 // onSlideChangeStart
                 onInit: function (swiper) {
+                    // mainSwiperRealIndex = swiper.realIndex;
+
                     // getSwiperData
                     _this.getSwiperData();
                     // getSize
                     _this.getSize();
                     // nav
                     _this.navHeight = _this.$nav.height();
+
                     navLine(swiper.realIndex, 1);
 
                     $window.on('resize', () => {
@@ -406,22 +423,28 @@ $(() => {
                     // scenes2Init
                     scenes2Init(swiper.realIndex);
 
+                    scenes3Init(swiper.realIndex);
+
                     // only for test
                     // swiper.slideTo(1);
                     // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function (swiper) {
-                    navLine(swiper.realIndex, 1);
-
                     console.log(swiper.realIndex);
                     mainSwiperRealIndex = swiper.realIndex;
+
+                    navLine(swiper.realIndex, 1);
+
                     _this.navStatus(swiper.realIndex);
 
                     scenes2Init(swiper.realIndex);
+
+                    scenes3Init(swiper.realIndex);
                 },
                 onSlideChangeEnd: function (swiper) {
                     // scenes1Init
                     _this.scenes1Init();
+
                 },
             });
         },
