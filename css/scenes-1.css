@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-26-16:36:19
+* @Last modified time: 2016-12-30-13:42:42
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -58,34 +58,34 @@
 }
 
 .scenes-1-title-2 {
-    float      : left;
-    font-size  : 60px;
+    float: left;
+    /*font-size  : 60px;
     line-height: 60px;
-    font-weight: bold;
+    font-weight: bold;*/
 }
 
 .scenes-1-title-3 {
-    float      : left;
-    margin-left: 20px;
+    float: left;
+    /*margin-left: 20px;
     font-size  : 16px;
-    line-height: 30px;
+    line-height: 30px;*/
 }
 
 .scenes-1-title-1 {
-    top        : 375px;
-    left       : 0;
-    line-height: 56px;
+    top : 375px;
+    left: 0;
+    /*line-height: 56px;
     font-size  : 40px;
-    font-weight: bold;
+    font-weight: bold;*/
 }
 
 .scenes-1-title-4 {
-    top        : 490px;
-    left       : 0;
-    text-align : right;
-    line-height: 68px;
+    top : 490px;
+    left: 0;
+    /*text-align: right;*/
+    /*line-height: 68px;
     font-size  : 30px;
-    color      : #666;
+    color      : #666;*/
 }
 
 .scenes-1-content {
@@ -94,9 +94,9 @@
 }
 
 .scenes-1-absract {
-    line-height  : 30px;
-    font-size    : 16px;
-    color        : #666;
+    /*line-height  : 30px;*/
+    /*font-size    : 16px;*/
+    /*color        : #666;*/
     margin-bottom: 40px;
     padding-left : 24px;
     position     : relative;
@@ -134,18 +134,18 @@
 }
 
 .scenes-1-pic {
-    position  : absolute;
-    bottom    : 0;
-    left      : 50%;
-    height    : 100%;
-    width     : 620px;
-    cursor    : pointer;
-    transition: all 1s;
-    transform : translateX(0);
+    position: absolute;
+    bottom  : 0;
+    left    : 50%;
+    height  : 100%;
+    width   : 620px;
+    cursor  : pointer;
+    /*transition: all 1s;*/
+    /*transform : translateX(0);*/
 }
 
 .scenes-1-pic:hover {
-    transform: translateX(-30px);
+    /*transform: translateX(-30px);*/
 }
 /*.scenes-1-pic .ani-pic-btn {
     transition: all 1s;
@@ -198,11 +198,9 @@
     border       : #0099ff 1px solid;
     display      : none;
 }
-
-.scenes-1 .swiper-pagination-bullet-active {
+/*.scenes-1 .swiper-pagination-bullet-active {
     border-color: #1080f2 !important;
-}
-
+}*/
 .scenes-1 .swiper-pagination-bullet-active:after {
     display: block;
 }

@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-23:46:34
+* @Last modified time: 2016-12-30-13:37:13
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -14,7 +14,34 @@ $(() => {
     const $window = $(window);
     const $body = $('body');
 
-    // loader
+    const $topNav = $('.top-nav');
+
+    let coverStatus = null;
+
+    const $scenes1 = $('#scenes-1');
+    const $scenes1_pagination = $scenes1.find('.swiper-pagination');
+    const $scenes1_swiper_button_next = $scenes1.find('.swiper-button-next');
+    const $scenes1_swiper_button_prev = $scenes1.find('.swiper-button-prev');
+    const $scenes1_slideLeft = $scenes1.find('.swiper-slide').find('.scenes-ani-left');
+    const $scenes1_slidePic = $scenes1.find('.swiper-slide').find('.scenes-1-pic');
+
+    const $scenes2 = $('#scenes-2');
+    const $scenes2_slide = $scenes2.find('.swiper-slide');
+    const scenes2_slide_len = $scenes2_slide.length;
+    const $scenes2_items = $scenes2.find('.item');
+
+    let main_swiper = null
+    let scenes1_swiper = null;
+    let scenes2_swiper = null;
+
+    let main_swiper_realIndex = 0;
+    let scenes1_swiper_realIndex = 0;
+    let scenes3_swiper_realIndex = 0;
+
+
+    /* -------------------------------------------------------------------------
+     * loader
+    ------------------------------------------------------------------------- */
     const resources = [ // 需要预加载的资源
         '../xinhuaTalking/index-assets/bg.jpg',
         '../xinhuaTalking/index-assets/cover-logo.png',
@@ -31,6 +58,7 @@ $(() => {
         resources: resources,
         onStart: function (total) {
             // console.log('start:' + total);
+            scenes1_page1_hide();
         },
         onProgress: function (current, total) {
             // console.log(current + '/' + total);
@@ -45,11 +73,60 @@ $(() => {
 
             // xinhuaTalking
             xinhuaTalking.init();
+
         }
     });
 
-
-    // cover
+    /* -------------------------------------------------------------------------
+     * scenes1_page1
+    ------------------------------------------------------------------------- */
+    const scenes1_page1_hide = function () {
+        TweenMax.to($topNav, 0, {
+            y: 300,
+            opacity: 0,
+        });
+        TweenMax.to($scenes1_pagination, 0, {
+            y: -300,
+            opacity: 0,
+        });
+        TweenMax.to($scenes1_slideLeft, 0, {
+            x: 300,
+            opacity: 0,
+        });
+        TweenMax.to($scenes1_slidePic, 0, {
+            x: -300,
+            opacity: 0,
+        });
+        $scenes1_swiper_button_next.removeClass('active');
+    };
+    const scenes1_page1_show = function () {
+        TweenMax.to($topNav, 2, {
+            y: 0,
+            opacity: 1,
+            ease: Power0.ease,
+        });
+        TweenMax.to($scenes1_pagination, 2.5, {
+            y: 0,
+            opacity: 1,
+            ease: Power0.ease,
+        });
+        TweenMax.to($scenes1_slideLeft, 2.5, {
+            x: 0,
+            opacity: 1,
+            ease: Power0.ease,
+        });
+        TweenMax.to($scenes1_slidePic, 2, {
+            x: 0,
+            opacity: 1,
+            ease: Power0.ease,
+            onStart: function () {
+                $scenes1_swiper_button_next.addClass('active');
+            }
+        });
+    };
+    /* -------------------------------------------------------------------------
+     * cover
+    ------------------------------------------------------------------------- */
     const cover = {
         $cover: $('#cover'),
         timeout: null,
@@ -85,6 +162,9 @@ $(() => {
             }, 200);
         },
         coverHide: function () {
+
+            coverStatus = 'hide';
+
             console.log('coverHide');
             const _this = this;
             const time = 4;
@@ -101,17 +181,19 @@ $(() => {
                 onComplete: function () {
                     _this.$cover.remove();
                     $body.removeClass('overflow-hidden');
-                    console.log('remove');
+
+                    console.log('remove', main_swiper_realIndex);
+
+                    if (main_swiper_realIndex === 0) {
+                        scenes1_page1_show();
+                    }
                 }
             });
         }
     };
-
-    const $scenes2 = $('#scenes-2');
-    const $scenes2_slide = $scenes2.find('.swiper-slide');
-    const scenes2_slide_len = $scenes2_slide.length;
-    const $scenes2_items = $scenes2.find('.item');
-    let scenesSwiper = null;
+    /* -------------------------------------------------------------------------
+     * scenes2
+    ------------------------------------------------------------------------- */
     const scenes2_ani = function (num, toggle) {
         console.log('scenes2_ani:', num, toggle);
         if (toggle === 'show') {
@@ -143,12 +225,69 @@ $(() => {
         });
     };
 
+    const scenes2_mouseover = function ($tag) {
+        TweenMax.to($tag, 0.2, {
+            scale: 1.25,
+            'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
+            onStart: function () {
+                $tag.css({
+                    'z-index': 2,
+                });
+                // $tag.find('img').css({
+                //     width: '-=1px',
+                //     height: '-=1px',
+                //     'border': '1px #FFF solid',
+                // });
+                TweenMax.to($tag.find('.mask'), 0.8, {
+                    opacity: 0,
+                });
+            },
+            onComplete: function () {
+                scenes2_set_titles($tag);
+            }
+        });
+    };
+
+    const $scenes2TitleBox = $('#scenes2-title-box');
+    const scenes2_set_titles = function ($tag) {
+        $scenes2TitleBox
+            .stop(false, true)
+            .fadeOut('2000', function () {
+                $(this)
+                    .html(`
+                <div class="t2 title-2">${$tag.find('.t2').html()}</div>
+                <div class="t3 title-3">${$tag.find('.t3').html()}</div>
+                <div class="t1 title-1">${$tag.find('.t1').html()}</div>`)
+                    .fadeIn('2000');
+            });
+
+    };
+
+    const scenes2_mouseout = function ($tag, time) {
+        TweenMax.to($tag, 1.2, {
+            scale: 1,
+            'box-shadow': 'none',
+            onStart: function () {
+                TweenMax.to($tag.find('.mask'), 1.2, {
+                    opacity: 1,
+                });
+                $tag.css({
+                    'z-index': 1,
+                });
+                // $tag.find('img').css({
+                //     width: '100%',
+                //     height: '100%',
+                //     'border': 'none',
+                // });
+            },
+        });
+    };
+
     const scenes2_init = function (num) {
         console.log(num, num === 1);
-
         if (num === 1) {
-            if (scenesSwiper === null) {
-                scenesSwiper = new Swiper('#scenes-2', {
+            if (scenes2_swiper === null) {
+                scenes2_swiper = new Swiper('#scenes-2', {
                     lazyLoading: true,
                     effect: 'fade',
                     autoplay: 8000,
@@ -157,53 +296,29 @@ $(() => {
                     nextButton: '#scenes-2 .swiper-button-next',
                     paginationClickable: true,
                     speed: 1800,
-                    spaceBetween: 80,
+                    // spaceBetween: 80,
                     onInit: function (swiper) {
                         scenes2_hide($scenes2_items, 0, 0);
                         scenes2_ani(swiper.activeIndex, 'show', 1);
-                        // $scenes2_slide.eq(swiper.realIndex).css({
-                        //     overflow: 'visibliy'
-                        // });
+
+                        const firstNum = 0;
+                        const $firstItem = $scenes2_items.eq(firstNum);
+
+                        setTimeout(function () {
+                            scenes2_mouseover($firstItem);
+                        }, 2500);
+
                         $scenes2_items.on('mouseover', function () {
                             const $this = $(this);
-                            TweenMax.to($this, 0.2, {
-                                scale: 1.25,
-                                'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
-                                onStart: function () {
-                                    $this.css({
-                                        'z-index': 2,
-                                    });
-                                    // $this.find('img').css({
-                                    //     width: '-=1px',
-                                    //     height: '-=1px',
-                                    //     'border': '1px #FFF solid',
-                                    // });
-                                    TweenMax.to($this.find('.mask'), 0.8, {
-                                        opacity: 0,
-                                    });
-                                },
-                            });
+                            if ($this.index() !== firstNum) {
+                                scenes2_mouseout($firstItem);
+                            }
+                            scenes2_mouseover($this)
                         });
+
                         $scenes2_items.on('mouseout', function () {
                             const $this = $(this);
-                            const time = 1.2;
-                            TweenMax.to($this, time, {
-                                scale: 1,
-                                'box-shadow': 'none',
-                                onStart: function () {
-                                    TweenMax.to($this.find('.mask'), time, {
-                                        opacity: 1,
-                                    });
-                                    $this.css({
-                                        'z-index': 1,
-                                    });
-                                    // $this.find('img').css({
-                                    //     width: '100%',
-                                    //     height: '100%',
-                                    //     'border': 'none',
-                                    // });
-                                },
-                            });
+                            scenes2_mouseout($this);
                         });
                     },
                     onSlideChangeStart: function (swiper) {
@@ -211,29 +326,48 @@ $(() => {
                         scenes2_ani(swiper.previousIndex, 'hide');
                     },
                 });
-                // scenesSwiper.prevButton.on('click', function () {
-                //     scenes2_ani(scenesSwiper.activeIndex, 'show');
-                //     scenes2_ani(scenesSwiper.previousIndex, 'hide');
+                // scenes2_swiper.prevButton.on('click', function () {
+                //     scenes2_ani(scenes2_swiper.activeIndex, 'show');
+                //     scenes2_ani(scenes2_swiper.previousIndex, 'hide');
                 // });
-                // scenesSwiper.nextButton.on('click', function () {
-                //     scenes2_ani(scenesSwiper.previousIndex, 'hide');
-                //     scenes2_ani(scenesSwiper.activeIndex, 'show');
+                // scenes2_swiper.nextButton.on('click', function () {
+                //     scenes2_ani(scenes2_swiper.previousIndex, 'hide');
+                //     scenes2_ani(scenes2_swiper.activeIndex, 'show');
                 // });
             } else {
-                scenesSwiper.unlockSwipes();
-                scenes2_ani(scenesSwiper.activeIndex, 'show', 1);
+                scenes2_swiper.unlockSwipes();
+                scenes2_ani(scenes2_swiper.activeIndex, 'show');
             }
         } else {
-            scenesSwiper.lockSwipes();
-            scenes2_hide($scenes2_items, 0, 0);
+            if (scenes2_swiper !== null) {
+                scenes2_swiper.lockSwipes();
+                scenes2_hide($scenes2_items, 0, 0);
+            }
         }
     };
+    /* -------------------------------------------------------------------------
+     * navLine
+    ------------------------------------------------------------------------- */
+    const $nav = $('#nav');
+    const $navLine = $nav.find('.nav-line');
+    const $navA = $nav.find('.nav-btn-box a');
+    $navA.on('mouseover', function () {
+        navLine(($(this).index() - 1), 0.3);
+    });
+    const navLine = function (index, time) {
+        TweenMax.to($navLine, time, {
+            x: index * (100 + 20)
+        });
+    };
 
+    /* -------------------------------------------------------------------------
+     * xinhuaTalking
+    ------------------------------------------------------------------------- */
     const xinhuaTalking = {
-        $nav: $('#nav'),
+        $nav: $nav,
         navHeight: 67,
-        scenesMain_realIndex: 0,
-        $scenes1: $('#scenes-1'),
+        // scenesMain_realIndex: 0,
+        $scenes1: $scenes1,
         scenes1: null,
         init: function () {
             const _this = this;
@@ -242,6 +376,7 @@ $(() => {
                 lazyLoading: true,
                 speed: 1000,
                 hashnav: true,
+                hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
@@ -253,15 +388,17 @@ $(() => {
                     _this.getSize();
                     // nav
                     _this.navHeight = _this.$nav.height();
+                    navLine(swiper.realIndex, 1);
 
                     $window.on('resize', () => {
-                        if (_this.scenesMain_realIndex < 1) {
+                        if (main_swiper_realIndex < 1) {
                             _this.getSize();
                         }
-                        _this.navStatus(_this.scenesMain_realIndex);
+                        _this.navStatus(main_swiper_realIndex);
                     });
                     // scenes_1_init
                     _this.scenes1_init();
+
                     // scenes2_init
                     scenes2_init(swiper.realIndex);
 
@@ -270,8 +407,10 @@ $(() => {
                     // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function (swiper) {
+                    navLine(swiper.realIndex, 1);
+
                     console.log(swiper.realIndex);
-                    _this.scenesMain_realIndex = swiper.realIndex;
+                    main_swiper_realIndex = swiper.realIndex;
                     _this.navStatus(swiper.realIndex);
 
                     scenes2_init(swiper.realIndex);
@@ -279,34 +418,66 @@ $(() => {
                 onSlideChangeEnd: function (swiper) {
                     // scenes_1_init
                     _this.scenes1_init();
-                    // scenes2_init
                 },
             });
         },
         scenes1_init: function () {
             const _this = this;
-            if (_this.scenesMain_realIndex === 0) {
+            if (main_swiper_realIndex === 0) {
                 _this.zoom();
                 if (_this.scenes1 === null) {
                     console.log('scenes_1_init start');
                     _this.scenes1 = new Swiper('#scenes-1', {
                         lazyLoading: true,
-                        autoplay: 8000,
-                        loop: true,
+                        // autoplay: 12000,
                         parallax: true,
                         pagination: '#scenes-1 .swiper-pagination',
                         prevButton: '#scenes-1 .swiper-button-prev',
                         nextButton: '#scenes-1 .swiper-button-next',
                         paginationClickable: true,
                         speed: 3000,
+                        runCallbacksOnInit: true,
                         onInit: function (swiper) {
                             _this.qrcode();
-                            const activeBtn = swiper.nextButton;
-                            activeBtn
-                                .addClass('active')
+                            // 按钮移除 active
+                            swiper.nextButton
                                 .on('mouseout', function () {
-                                    activeBtn.removeClass('active');
+                                    swiper.nextButton.removeClass('active');
                                 });
+                            swiper.prevButton
+                                .on('mouseover', function () {
+                                    swiper.nextButton.removeClass('active');
+                                });
+
+                            // 图片盒子 hover
+                            $scenes1_slidePic
+                                .on('mouseover', function () {
+                                    TweenMax.to($(this), 0.8, {
+                                        x: 30,
+                                    });
+                                })
+                                .on('mouseout', function () {
+                                    TweenMax.to($(this), 0.8, {
+                                        x: 0,
+                                    });
+                                });
+                            // swiper.nextButton
+                            //     .addClass('active')
+                            //     .on('mouseout', function () {
+                            //         $(this).removeClass('active');
+                            //     });
+                            let num = [
+                                swiper.realIndex - 1,
+                                swiper.realIndex + 1
+                            ];
+                            if (num[0] < 0) {
+                                num[0] = _this.data.length - 1;
+                            }
+                            if (num[1] >= _this.data.length) {
+                                num[1] = 0;
+                            }
+                            _this.setSwiperButton(swiper.prevButton, num[0]);
+                            _this.setSwiperButton(swiper.nextButton, num[1]);
                         },
                         onSlideChangeStart: function (swiper) {
                             let num = [
@@ -331,9 +502,18 @@ $(() => {
                 } else {
                     _this.scenes1.unlockSwipes();
                 }
+
+                if (coverStatus === 'hide') {
+                    scenes1_page1_show();
+                }
             } else {
+
                 if (_this.scenes1 !== null) {
                     _this.scenes1.lockSwipes();
+                }
+
+                if (coverStatus === 'hide') {
+                    scenes1_page1_hide();
                 }
             }
         },

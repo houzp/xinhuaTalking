@@ -4,16 +4,10 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scens-2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-28-23:30:06
+* @Last modified time: 2016-12-30-10:06:45
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
-.test {
-    position        : absolute;
-    top             : 0;
-    left            : 0;
-    background-color: #FFF;
-}
 /* scenes-2 */
 .scenes-2 {
     width                  : 100%;
@@ -27,23 +21,28 @@
 .scenes-2 .swiper-slide,
 .scenes-2-container {
     width : 1200px;
-    height: 683px;
+    /*width : 120vh;*/
+    height: 63.2vh;
 }
 
 .scenes-2-container {
     /*overflow: visible;*/
-    margin : 150px auto 0;
-    border : red 1px solid;
-    padding: 40px;
+    margin     : 16vh auto 0;
+    padding-top: 8vh;
+    overflow   : visible;
+    /*border     : red 1px solid;*/
 }
-/*.scenes-2 .swiper-slide {
-    overflow: hidden !important;
-}*/
+
 .scenes-2 .item,
 .scenes-2 .mask,
 .scenes-2 .scenes-pic {
-    width : 170px;
-    height: 170px;
+    width : 15.1vh;
+    height: 15.1vh;
+}
+
+.scenes-2 .item-0,
+.scenes-2 .item:nth-child(1) {
+    margin-left: 45.55vh;
 }
 
 .scenes-2 .scenes-pic {
@@ -66,10 +65,6 @@
     z-index      : 1;
 }
 
-.scenes-2 .item-0 {
-    margin-left: 513px;
-}
-
 .scenes-2 .mask,
 .scenes-2 .scenes-pic {
     position: absolute;
@@ -86,38 +81,131 @@
     z-index: 1;
 }
 
-.scenes-2 .scenes-logo {}
-
-.scenes-2 .parallax-bg {}
-
-.scenes-2 .title-1,
-.scenes-2 .title-2,
-.scenes-2 .title-3 {
-    display: none;
+.scenes2-top-box {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+    z-index : 2;
 }
 
-.scenes-2 .scenes-title-1 {}
+.scenes-2 .scenes2-logo {
+    width              : 146px;
+    height             : 12.5vh;
+    background-color   : #1080f2;
+    background-image   : url("../index-assets/scenes-2-logo-text.png");
+    background-position: center;
+    background-repeat  : no-repeat;
+    position           : relative;
+}
 
-.scenes-2 .scenes-title-2 {}
+.scenes-2 .scenes2-logo:after {
+    content         : '';
+    display         : block;
+    position        : absolute;
+    bottom          : -4px;
+    left            : 0;
+    width           : 65px;
+    background-color: #ffcc00;
+    height          : 2px;
+    overflow        : hidden;
+}
 
-.scenes-2 .scenes-title-3 {}
-/*.scenes-2 .scenes-pic,
-.scenes-2 .scenes-pic img {
-    width : 100%;
-    height: 100%;
-}*/
-.scenes-2 .scenes-pic img {}
+.scenes2-top-text {
+    margin-top: 2vh;
+}
 
-.scenes-2 .swiper-pagination {}
+.scenes2-title-box {
+    position: absolute;
+    top     : 60vh;
+    right   : 0;
+    width   : 765px;
+    z-index : 3;
+}
 
-.scenes-2 .swiper-button-prev {}
+.scenes2-title-box .t1 {
+    clear     : both;
+    margin-top: 6px;
+}
 
-.scenes-2 .icon {}
+.scenes2-title-box .t2,
+.scenes2-title-box .t3 {
+    float: left;
+}
 
-.scenes-2 .b {}
+.scenes-2 .swiper-button-next,
+.scenes-2 .swiper-button-prev {
+    top       : 59.2vh;
+    width     : 39px;
+    height    : 39px;
+    border    : #1080f2 1px solid;
+    background: none;
+    overflow  : hidden;
+}
 
-.scenes-2 .swiper-button-next {}
+.scenes-2 .swiper-button-prev {
+    /*left: 95.5vh;*/
+    left : auto;
+    right: 6.5vh;
+}
 
-.scenes-2 .icon {}
+.scenes-2 .swiper-button-next {
+    /*left: 102.2vh;*/
+    left : auto;
+    right: .4vh;
+}
 
-.scenes-2 .b {}
+.scenes-2 .icon {
+    width              : 39px;
+    height             : 39px;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -19.5px;
+    left               : 50%;
+    margin-left        : -19.5px;
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : auto 60%;
+    z-index            : 2;
+}
+
+.scenes-2 .b,
+.scenes-2 .icon {
+    transition: transform 1.5s;
+}
+
+.scenes-2 .b {
+    width           : 39px;
+    height          : 39px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -19.5px;
+    left            : 50%;
+    margin-left     : -19.5px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 1;
+}
+
+.scenes-2 .swiper-button-prev .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-prev:hover .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-next .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-next:hover .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-2 .swiper-button-next:hover .b,
+.scenes-2 .swiper-button-prev:hover .b {
+    transform: scale(4);
+}
+
+.scenes2-bg {}

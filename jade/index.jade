@@ -13,14 +13,13 @@ html
         link(rel="stylesheet" href="bundle/index.min.css")
 
     body
-        #cover.cover
         include mod-nav
         .swiper-container.main#main
             .swiper-wrapper
                 .swiper-slide.scenes-slide.scenes-1(data-hash="1")
                     include mod-top-nav
                     include mod-scenes-1
-                .swiper-slide.scenes-slide.scenes-2(data-hash="2/no-cover")
+                .swiper-slide.scenes-slide.scenes-2(data-hash="2")
                     include mod-scenes-2
                 .swiper-slide.scenes-slide.scenes-3(data-hash="3")
                     include mod-scenes-3
@@ -28,6 +27,7 @@ html
                     include mod-scenes-4
                 .swiper-slide.scenes-slide.scenes-5(data-hash="5")
                     include mod-scenes-5
+        #cover.cover
 
         script(src="lib/jq.js")
         script(src="lib/resLoader/resLoader.min.js")

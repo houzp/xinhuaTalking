@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: cover.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:27:37
+* @Last modified time: 2016-12-29-17:01:57
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -18,6 +18,8 @@
     width              : 100%;
     height             : 100%;
     position           : absolute;
+    top                : 0;
+    left               : 0;
     z-index            : 9999;
 }
 

@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: fonts.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:10:46
+* @Last modified time: 2016-12-29-17:40:15
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -12,4 +12,54 @@ body {
     /*font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif;*/
     font-family: Microsoft YaHei, Microsoft YaHei Lights, Arial;
     /*font-family: Helvetica Neue, Helvetica, Arial, sans-serif;*/
+}
+
+.title-1 {
+    line-height: 56px;
+    font-size  : 40px;
+    font-weight: bold;
+}
+
+.title-2 {
+    /*float      : left;*/
+    font-size  : 60px;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+.title-3 {
+    /*float      : left;*/
+    margin-left: 20px;
+    font-size  : 16px;
+    line-height: 30px;
+}
+
+.title-4 {
+    /*top        : 490px;*/
+    /*left       : 0;*/
+    text-align : right;
+    line-height: 68px;
+    font-size  : 30px;
+    color      : #666;
+}
+
+.abs {
+    line-height: 30px;
+    font-size  : 16px;
+    color      : #666;
+    /*margin-bottom: 40px;*/
+    /*padding-left : 24px;*/
+    /*position     : relative;*/
+    /*overflow     : hidden;*/
+}
+
+.top-text {
+    line-height: 3.3vh;
+    font-size  : 2.2vh;
+    color      : #333;
+}
+
+.nav-btn .t {
+    line-height: 67px;
+    color      : #FFF;
 }
