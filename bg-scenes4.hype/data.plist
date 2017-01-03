@@ -46,8 +46,8 @@
 	<key>displayedAttributes</key>
 	<array>
 		<string>kPropertiesMenuItemIdentifierOpacity</string>
-		<string>kPropertiesMenuItemIdentifierPosition</string>
 		<string>kPropertiesMenuItemIdentifierAnimated</string>
+		<string>kPropertiesMenuItemIdentifierPosition</string>
 	</array>
 	<key>documentVersion</key>
 	<string>530</string>
@@ -68,11 +68,11 @@
 	<key>hasManuallyChangedCSSPositioning</key>
 	<false/>
 	<key>lastCheckDate</key>
-	<date>2017-01-03T03:03:43Z</date>
+	<date>2017-01-03T03:11:02Z</date>
 	<key>layout</key>
 	<dict>
 		<key>currentInspectorPane</key>
-		<integer>1</integer>
+		<integer>2</integer>
 		<key>customizableLayout</key>
 		<dict>
 			<key>frame</key>
@@ -91,7 +91,7 @@
 					<key>frame</key>
 					<string>{{0, 0}, {1649, 1096}}</string>
 					<key>identifier</key>
-					<string>container 7</string>
+					<string>container 85</string>
 					<key>isCustomizableViewContainer</key>
 					<true/>
 					<key>isCustomizableViewWrapper</key>
@@ -102,13 +102,13 @@
 					<array>
 						<dict>
 							<key>frame</key>
-							<string>{{0, 0}, {135, 1096}}</string>
+							<string>{{0, 0}, {1378, 1096}}</string>
 							<key>identifier</key>
-							<string>container 2</string>
+							<string>container 7</string>
 							<key>isCustomizableViewContainer</key>
 							<true/>
 							<key>isCustomizableViewWrapper</key>
-							<true/>
+							<false/>
 							<key>isVertical</key>
 							<true/>
 							<key>subviews</key>
@@ -117,70 +117,108 @@
 									<key>frame</key>
 									<string>{{0, 0}, {135, 1096}}</string>
 									<key>identifier</key>
-									<string>sceneSelectorCustomizableContainer</string>
+									<string>container 2</string>
 									<key>isCustomizableViewContainer</key>
+									<true/>
+									<key>isCustomizableViewWrapper</key>
+									<true/>
+									<key>isVertical</key>
+									<true/>
+									<key>subviews</key>
+									<array>
+										<dict>
+											<key>frame</key>
+											<string>{{0, 0}, {135, 1096}}</string>
+											<key>identifier</key>
+											<string>sceneSelectorCustomizableContainer</string>
+											<key>isCustomizableViewContainer</key>
+											<false/>
+										</dict>
+									</array>
+								</dict>
+								<dict>
+									<key>frame</key>
+									<string>{{136, 0}, {1242, 1096}}</string>
+									<key>identifier</key>
+									<string>container 5</string>
+									<key>isCustomizableViewContainer</key>
+									<true/>
+									<key>isCustomizableViewWrapper</key>
 									<false/>
+									<key>isVertical</key>
+									<false/>
+									<key>subviews</key>
+									<array>
+										<dict>
+											<key>frame</key>
+											<string>{{136, 0}, {1242, 430.8984375}}</string>
+											<key>identifier</key>
+											<string>container 4</string>
+											<key>isCustomizableViewContainer</key>
+											<true/>
+											<key>isCustomizableViewWrapper</key>
+											<true/>
+											<key>isVertical</key>
+											<true/>
+											<key>subviews</key>
+											<array>
+												<dict>
+													<key>frame</key>
+													<string>{{136, 0}, {1242, 430.8984375}}</string>
+													<key>identifier</key>
+													<string>timelineCustomizableContainer</string>
+													<key>isCustomizableViewContainer</key>
+													<false/>
+												</dict>
+											</array>
+										</dict>
+										<dict>
+											<key>frame</key>
+											<string>{{136, 431.8984375}, {1242, 664.1015625}}</string>
+											<key>identifier</key>
+											<string>container 3</string>
+											<key>isCustomizableViewContainer</key>
+											<true/>
+											<key>isCustomizableViewWrapper</key>
+											<true/>
+											<key>isVertical</key>
+											<true/>
+											<key>subviews</key>
+											<array>
+												<dict>
+													<key>frame</key>
+													<string>{{136, 431.8984375}, {1242, 664.1015625}}</string>
+													<key>identifier</key>
+													<string>sceneEditorCustomizableContainer</string>
+													<key>isCustomizableViewContainer</key>
+													<false/>
+												</dict>
+											</array>
+										</dict>
+									</array>
 								</dict>
 							</array>
 						</dict>
 						<dict>
 							<key>frame</key>
-							<string>{{136, 0}, {1513, 1096}}</string>
+							<string>{{1379, 0}, {270, 1096}}</string>
 							<key>identifier</key>
-							<string>container 5</string>
+							<string>container 6</string>
 							<key>isCustomizableViewContainer</key>
 							<true/>
 							<key>isCustomizableViewWrapper</key>
-							<false/>
+							<true/>
 							<key>isVertical</key>
-							<false/>
+							<true/>
 							<key>subviews</key>
 							<array>
 								<dict>
 									<key>frame</key>
-									<string>{{136, 0}, {1513, 441.83984375}}</string>
+									<string>{{1379, 0}, {270, 1096}}</string>
 									<key>identifier</key>
-									<string>container 4</string>
+									<string>inspectorCustomizableContainer</string>
 									<key>isCustomizableViewContainer</key>
-									<true/>
-									<key>isCustomizableViewWrapper</key>
-									<true/>
-									<key>isVertical</key>
-									<true/>
-									<key>subviews</key>
-									<array>
-										<dict>
-											<key>frame</key>
-											<string>{{136, 0}, {1513, 441.83984375}}</string>
-											<key>identifier</key>
-											<string>timelineCustomizableContainer</string>
-											<key>isCustomizableViewContainer</key>
-											<false/>
-										</dict>
-									</array>
-								</dict>
-								<dict>
-									<key>frame</key>
-									<string>{{136, 442.83984375}, {1513, 653.16015625}}</string>
-									<key>identifier</key>
-									<string>container 3</string>
-									<key>isCustomizableViewContainer</key>
-									<true/>
-									<key>isCustomizableViewWrapper</key>
-									<true/>
-									<key>isVertical</key>
-									<true/>
-									<key>subviews</key>
-									<array>
-										<dict>
-											<key>frame</key>
-											<string>{{136, 442.83984375}, {1513, 653.16015625}}</string>
-											<key>identifier</key>
-											<string>sceneEditorCustomizableContainer</string>
-											<key>isCustomizableViewContainer</key>
-											<false/>
-										</dict>
-									</array>
+									<false/>
 								</dict>
 							</array>
 						</dict>
@@ -190,7 +228,7 @@
 					<key>frame</key>
 					<string>{{1650, 0}, {270, 1096}}</string>
 					<key>identifier</key>
-					<string>container 6</string>
+					<string>container 84</string>
 					<key>isCustomizableViewContainer</key>
 					<true/>
 					<key>isCustomizableViewWrapper</key>
@@ -203,7 +241,7 @@
 							<key>frame</key>
 							<string>{{1650, 0}, {270, 1096}}</string>
 							<key>identifier</key>
-							<string>inspectorCustomizableContainer</string>
+							<string>resourcesCustomizableContainer</string>
 							<key>isCustomizableViewContainer</key>
 							<false/>
 						</dict>
@@ -212,9 +250,9 @@
 			</array>
 		</dict>
 		<key>keyframeTimelineHeight</key>
-		<real>127</real>
+		<real>50</real>
 		<key>mainWindowFrame</key>
-		<string>0 59 1920 1118 0 0 1920 1177 </string>
+		<string>-55 59 1920 1118 0 0 1920 1177 </string>
 		<key>openTabs</key>
 		<array/>
 		<key>selectedTabIndex</key>
@@ -222,7 +260,7 @@
 		<key>showInspectorView</key>
 		<true/>
 		<key>showResourcesView</key>
-		<false/>
+		<true/>
 		<key>showSceneSelectorView</key>
 		<true/>
 		<key>showSceneVariantSelectorView</key>
@@ -258,13 +296,81 @@
 	<key>monotypeProjectID</key>
 	<string>19D6FDD5-BA5C-4894-B073-8E333B9FE972-1565-00000112F1DC8496</string>
 	<key>oidCounter</key>
-	<integer>549</integer>
+	<integer>551</integer>
 	<key>resourcesInfo</key>
 	<dict>
 		<key>groups</key>
-		<array/>
+		<array>
+			<dict>
+				<key>expanded</key>
+				<true/>
+				<key>name</key>
+				<string>bg-scenes4</string>
+				<key>oid</key>
+				<string>550</string>
+				<key>resources</key>
+				<array>
+					<string>bg-scenes4.jpg</string>
+				</array>
+			</dict>
+		</array>
 		<key>resources</key>
-		<array/>
+		<array>
+			<dict>
+				<key>fileModificationDate</key>
+				<date>2017-01-03T01:42:29Z</date>
+				<key>fileSize</key>
+				<integer>144980</integer>
+				<key>md5</key>
+				<string>5CB643E4AEFAE44785C33B7371CE2BF9</string>
+				<key>notifyOnBookmarkChange</key>
+				<true/>
+				<key>originalPath</key>
+				<string>/Users/SuperWoods/works/2016-11-02-10.50 访谈：芳桃 talking 联系人：张伟 工程/PSD/index-1-assets/bg-scenes4.jpg</string>
+				<key>resourceName</key>
+				<string>bg-scenes4.jpg</string>
+				<key>securityScopedBookmark</key>
+				<data>
+				Ym9va3gDAAAAAAQQMAAAADAi8KtdmYcYQ/x3vz2kXuEj
+				/ODpE91aQZhB3BtXucvddAIAAAQAAAADAwAAAAkAKAUA
+				AAABAQAAVXNlcnMAAAAKAAAAAQEAAFN1cGVyV29vZHMA
+				AAUAAAABAQAAd29ya3MAAABCAAAAAQEAADIwMTYtMTEt
+				MDItMTAuNTAg6K6/6LCI77ya6Iqz5qGDIHRhbGtpbmcg
+				6IGU57O75Lq677ya5byg5LyfIOW3peeoiwAAAwAAAAEB
+				AABQU0QADgAAAAEBAABpbmRleC0xLWFzc2V0cwAADgAA
+				AAEBAABiZy1zY2VuZXM0LmpwZwAAHAAAAAEGAAAQAAAA
+				IAAAADQAAABEAAAAkAAAAJwAAAC0AAAACAAAAAQDAAAj
+				lAIAAAAAAAgAAAAEAwAAL0MJAAAAAAAIAAAABAMAAIun
+				FgAAAAAACAAAAAQDAABLougEAAAAAAgAAAAEAwAAHg5U
+				BQAAAAAIAAAABAMAAKyDcAUAAAAACAAAAAQDAABV/3IF
+				AAAAABwAAAABBgAA8AAAAAABAAAQAQAAIAEAADABAABA
+				AQAAUAEAAAgAAAAABAAAQb4bOQIAAAAYAAAAAQIAAAEA
+				AAAAAAAADwAAAAAAAAAAAAAAAAAAAAgAAAAEAwAABQAA
+				AAAAAAAEAAAAAwMAAPUBAAAIAAAAAQkAAGZpbGU6Ly8v
+				DAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMAAAAAEK7o
+				AAAACAAAAAAEAABBunmrGQAAACQAAAABAQAANDg0NjEz
+				RjctNkFEQi0zMTlBLTg5QUQtMzJGMEI1RTJBQzE3GAAA
+				AAECAACBAAAAAQAAAO8TAAABAAAAAAAAAAAAAAABAAAA
+				AQEAAC8AAAAAAAAAAQUAAMwAAAD+////AQAAAAAAAAAQ
+				AAAABBAAAMwAAAAAAAAABRAAAGABAAAAAAAAEBAAAJQB
+				AAAAAAAAQBAAAIQBAAAAAAAAAiAAAGACAAAAAAAABSAA
+				ANABAAAAAAAAECAAAOABAAAAAAAAESAAABQCAAAAAAAA
+				EiAAAPQBAAAAAAAAEyAAAAQCAAAAAAAAICAAAEACAAAA
+				AAAAMCAAAGwCAAAAAAAAAcAAALQBAAAAAAAAEcAAACAA
+				AAAAAAAAEsAAAMQBAAAAAAAAENAAAAQAAAAAAAAA
+				</data>
+				<key>shouldAutoResize</key>
+				<true/>
+				<key>shouldIncludeInDocumentHeadHTML</key>
+				<false/>
+				<key>shouldPreload</key>
+				<true/>
+				<key>shouldRemoveWhenNoLongerReferenced</key>
+				<true/>
+				<key>type</key>
+				<string>FileResource</string>
+			</dict>
+		</array>
 	</dict>
 	<key>sceneContainers</key>
 	<array>
@@ -309,7 +415,7 @@
 						<integer>20</integer>
 					</dict>
 					<key>canvasSize</key>
-					<string>{6052, 2612}</string>
+					<string>{4968, 2660}</string>
 					<key>hypeScene</key>
 					<dict>
 						<key>backgroundColor</key>
@@ -334,7 +440,7 @@
 					<key>rootSymbolControllerOid</key>
 					<string>2</string>
 					<key>scrollViewOffset</key>
-					<string>{0, 0.16015625}</string>
+					<string>{0, 0.1015625}</string>
 					<key>userGuides</key>
 					<array/>
 				</dict>
@@ -363,9 +469,11 @@
 	<array>
 		<dict>
 			<key>documentIdentifier</key>
-			<string>C7B67379-DA89-4B99-9732-EE6A42B636CA-81080-00004A5841C9663F</string>
+			<string>55F4A7DF-8E95-4AE8-834E-AD842587F60B-81080-000051949C3DC9CE</string>
 			<key>selectedObjects</key>
-			<array/>
+			<array>
+				<string>551</string>
+			</array>
 			<key>symbol</key>
 			<dict>
 				<key>addToNewSceneControllers</key>
@@ -496,7 +604,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>6</string>
+							<string>7</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -653,15 +761,15 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
-							<key>objectValue</key>
-							<string>div</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
 							<string>Display</string>
 							<key>objectValue</key>
 							<string>inline</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>TagName</string>
+							<key>objectValue</key>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -769,7 +877,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>7</string>
+							<string>8</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -815,15 +923,15 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>PaddingLeft</string>
-							<key>objectValue</key>
-							<string>0px</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
 							<string>Locked</string>
 							<key>objectValue</key>
 							<string>0</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>PaddingLeft</string>
+							<key>objectValue</key>
+							<string>0px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1152,7 +1260,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>8</string>
+							<string>9</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1192,15 +1300,15 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>PaddingLeft</string>
-							<key>objectValue</key>
-							<string>0px</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
 							<string>Locked</string>
 							<key>objectValue</key>
 							<string>0</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>PaddingLeft</string>
+							<key>objectValue</key>
+							<string>0px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1509,7 +1617,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>9</string>
+							<string>10</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1549,15 +1657,15 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>PaddingLeft</string>
-							<key>objectValue</key>
-							<string>0px</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
 							<string>Locked</string>
 							<key>objectValue</key>
 							<string>0</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>PaddingLeft</string>
+							<key>objectValue</key>
+							<string>0px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1890,7 +1998,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>5</string>
+							<string>6</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -2157,7 +2265,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>10</string>
+							<string>11</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -2428,7 +2536,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>11</string>
+							<string>12</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -2701,7 +2809,7 @@
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>4</string>
+							<string>5</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -2840,6 +2948,129 @@
 							<string>PhysicsBodyType</string>
 							<key>objectValue</key>
 							<string>0</string>
+						</dict>
+					</array>
+					<key>551</key>
+					<array>
+						<dict>
+							<key>identifier</key>
+							<string>TagName</string>
+							<key>objectValue</key>
+							<string>div</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ConstrainProportions</string>
+							<key>objectValue</key>
+							<string>YES</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Display</string>
+							<key>objectValue</key>
+							<string>inline</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ClassType</string>
+							<key>objectValue</key>
+							<string>Image</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Top</string>
+							<key>objectValue</key>
+							<string>0px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ConstrainScaleRatio</string>
+							<key>objectValue</key>
+							<string>1</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>BackgroundRepeat</string>
+							<key>objectValue</key>
+							<string>no-repeat</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Position</string>
+							<key>objectValue</key>
+							<string>absolute</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Height</string>
+							<key>objectValue</key>
+							<string>1080px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>AutoresizingMask</string>
+							<key>objectValue</key>
+							<string>447</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Left</string>
+							<key>objectValue</key>
+							<string>0px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>SizeRatio</string>
+							<key>objectValue</key>
+							<string>1.77778</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>BackgroundImageResourceGroupOid</string>
+							<key>objectValue</key>
+							<string>550</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ZIndex</string>
+							<key>objectValue</key>
+							<string>4</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Width</string>
+							<key>objectValue</key>
+							<string>1920px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>BackgroundSize</string>
+							<key>objectValue</key>
+							<string>100% 100%</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Overflow</string>
+							<key>objectValue</key>
+							<string>visible</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>DisplayName</string>
+							<key>objectValue</key>
+							<string>bg-scenes4</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>OriginalHeight</string>
+							<key>objectValue</key>
+							<string>1080px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>OriginalWidth</string>
+							<key>objectValue</key>
+							<string>1920px</string>
 						</dict>
 					</array>
 				</dict>
@@ -3103,7 +3334,7 @@
 								<key>uuid</key>
 								<string>34ED9D79-37DC-44E6-97AA-FB8F9F5BF387-1565-00000CB937604BE1</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>2</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3139,7 +3370,7 @@
 								<key>uuid</key>
 								<string>12D2464B-7325-4ADA-8CB5-2A3A36D13A75-1565-00000CB937A51887</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>3</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3175,7 +3406,7 @@
 								<key>uuid</key>
 								<string>0F47E3B5-D9C8-4401-8876-B77424B05597-1565-00000CB937E55CE4</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>4</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3211,7 +3442,7 @@
 								<key>uuid</key>
 								<string>35EAF37A-035A-4FA1-8C6B-EAC245C465EF-1565-00000CB93826A10E</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>5</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3247,7 +3478,7 @@
 								<key>uuid</key>
 								<string>5F563CCF-20C4-498F-A877-96425AC30EAC-1565-00000CB938696B42</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>6</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3283,7 +3514,7 @@
 								<key>uuid</key>
 								<string>A1148414-708D-4C43-9921-8C07FEAB3668-1565-00000CB938ACD674</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>7</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3319,7 +3550,7 @@
 								<key>uuid</key>
 								<string>6BB852B3-1B57-4DA8-B74A-09C435E6EC19-1565-00000CB938F25A0B</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>8</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3355,7 +3586,7 @@
 								<key>uuid</key>
 								<string>341CCC13-55F4-466E-8307-A35129B5D59B-1565-00000CB93776E905</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>9</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3391,7 +3622,7 @@
 								<key>uuid</key>
 								<string>44E22D5B-3351-47A6-8488-BDD2A10671A9-1565-00000CB937BA1ECD</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>10</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3427,7 +3658,7 @@
 								<key>uuid</key>
 								<string>08476E0A-2848-49DB-8F0A-89F3D1B16A93-1565-00000CEFB76546B5</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>11</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3463,7 +3694,7 @@
 								<key>uuid</key>
 								<string>E72B16E3-00C2-469D-A8CC-2D6CD6D89AAB-1565-00000CF791465974</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>12</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3542,7 +3773,7 @@
 								<key>uuid</key>
 								<string>8402899A-6458-4FBC-BD63-8ABA61015876-1565-00000CB9372F80F0</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>13</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3578,7 +3809,7 @@
 								<key>uuid</key>
 								<string>1DFA14F1-F531-4BDE-AB98-855C98C01F17-1565-00000CB9383CCB3B</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>14</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3614,7 +3845,7 @@
 								<key>uuid</key>
 								<string>24AF75B5-3C83-48C3-9323-FDE387BA5AC3-1565-00000CF1F02A6D56</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>15</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3650,7 +3881,7 @@
 								<key>uuid</key>
 								<string>7B64D164-83F7-4477-A765-558467543F8F-1565-00000CE56BC34E16</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>16</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3686,7 +3917,7 @@
 								<key>uuid</key>
 								<string>8C40EBF5-CC45-4CA0-B85B-9575990EE26A-1565-00000CEFB76608E6</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>17</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3722,7 +3953,7 @@
 								<key>uuid</key>
 								<string>83521CD3-33A3-4DFD-8F5E-81BD2FABB5F9-1565-00000CF791471928</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>18</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3758,7 +3989,7 @@
 								<key>uuid</key>
 								<string>F694ADC4-9D93-4617-A9CB-3CF5AC6075E6-1565-00000CEFE7944A84</string>
 								<key>zIndex</key>
-								<integer>5</integer>
+								<integer>19</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3794,7 +4025,7 @@
 								<key>uuid</key>
 								<string>C84D9F6E-AE0A-426E-96F4-17E309E582FC-1565-00000CF7B0CB458B</string>
 								<key>zIndex</key>
-								<integer>5</integer>
+								<integer>20</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3823,7 +4054,7 @@
 								<key>uuid</key>
 								<string>ED87FE0A-7A8F-46DB-9CEC-A5570BE80184-1565-00000CB937FA6D77</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>21</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3852,7 +4083,7 @@
 								<key>uuid</key>
 								<string>54592F09-88CE-4F08-ABC5-B285A5D81388-1565-00000CB9387FCBB8</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>22</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3881,7 +4112,7 @@
 								<key>uuid</key>
 								<string>7EB305C0-65F6-4611-9EF7-5566B6E8A041-1565-00000CB938C38531</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>23</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3910,7 +4141,7 @@
 								<key>uuid</key>
 								<string>1E73A463-0968-4A57-AB87-510A393223D9-1565-00000CB9390938A6</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>24</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3939,7 +4170,7 @@
 								<key>uuid</key>
 								<string>D8C9BE2D-158C-43A9-93F5-109614B4B2FE-1565-00000CF1F02B3304</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>25</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3968,7 +4199,7 @@
 								<key>uuid</key>
 								<string>581BF628-6D3B-4B67-B800-57102F9D9C2D-1565-00000CE56BC4150F</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>26</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -3997,7 +4228,7 @@
 								<key>uuid</key>
 								<string>3DF30F09-DC18-4BAE-ABEC-CEA079FE91C3-1565-00000CEFE79515E4</string>
 								<key>zIndex</key>
-								<integer>6</integer>
+								<integer>27</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -4026,7 +4257,7 @@
 								<key>uuid</key>
 								<string>18F1E761-7659-4270-BE4B-B766A6B90B87-1565-00000CF7B0CC0CB2</string>
 								<key>zIndex</key>
-								<integer>6</integer>
+								<integer>28</integer>
 							</dict>
 						</array>
 						<key>firstKeyframeIsRelative</key>
