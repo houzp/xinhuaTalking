@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-21:06:59
+* @Last modified time: 2017-01-03-15:37:28
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -20,7 +20,7 @@
 
 .scenes2 .swiper-slide,
 .scenes2-container {
-    width : 1091px;
+    width : 1200px;
     /*width     : 100vh;*/
     height: 64vh;
     /*background: red;*/
@@ -37,13 +37,13 @@
 .scenes2 .item,
 .scenes2 .mask,
 .scenes2 .scenes-pic {
-    width : 15.1vh;
-    height: 15.1vh;
+    width : 170px;
+    height: 170px;
 }
 
 .scenes2 .item-0,
 .scenes2 .item:nth-child(1) {
-    margin-left: 45.56vh;
+    margin-left: 513px;
 }
 
 .scenes2 .scenes-pic {
@@ -117,9 +117,9 @@
 
 .scenes2-title-box {
     position: absolute;
-    top     : 59vh;
+    top     : 62vh;
     right   : 0;
-    width   : 685px;
+    width   : 730px;
     z-index : 3;
 }
 
@@ -135,7 +135,7 @@
 
 .scenes2 .swiper-button-next,
 .scenes2 .swiper-button-prev {
-    top       : 58.5vh;
+    top       : 60vh;
     width     : 39px;
     height    : 39px;
     border    : #1080f2 1px solid;

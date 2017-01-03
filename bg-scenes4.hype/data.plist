@@ -52,7 +52,7 @@
 	<key>documentVersion</key>
 	<string>530</string>
 	<key>documentationVerticalSplitViewPosition</key>
-	<real>280</real>
+	<real>325</real>
 	<key>drawSceneBackgrounds</key>
 	<false/>
 	<key>exportSliceOidsToExport</key>
@@ -68,17 +68,17 @@
 	<key>hasManuallyChangedCSSPositioning</key>
 	<false/>
 	<key>lastCheckDate</key>
-	<date>2017-01-03T03:11:02Z</date>
+	<date>2017-01-03T03:37:17Z</date>
 	<key>layout</key>
 	<dict>
 		<key>currentInspectorPane</key>
-		<integer>2</integer>
+		<integer>1</integer>
 		<key>customizableLayout</key>
 		<dict>
 			<key>frame</key>
 			<string>{{0, 0}, {1920, 1096}}</string>
 			<key>identifier</key>
-			<string>container 50</string>
+			<string>container 5</string>
 			<key>isCustomizableViewContainer</key>
 			<true/>
 			<key>isCustomizableViewWrapper</key>
@@ -91,7 +91,7 @@
 					<key>frame</key>
 					<string>{{0, 0}, {1649, 1096}}</string>
 					<key>identifier</key>
-					<string>container 85</string>
+					<string>container 164</string>
 					<key>isCustomizableViewContainer</key>
 					<true/>
 					<key>isCustomizableViewWrapper</key>
@@ -104,7 +104,7 @@
 							<key>frame</key>
 							<string>{{0, 0}, {1378, 1096}}</string>
 							<key>identifier</key>
-							<string>container 7</string>
+							<string>container 153</string>
 							<key>isCustomizableViewContainer</key>
 							<true/>
 							<key>isCustomizableViewWrapper</key>
@@ -117,7 +117,7 @@
 									<key>frame</key>
 									<string>{{0, 0}, {135, 1096}}</string>
 									<key>identifier</key>
-									<string>container 2</string>
+									<string>container 143</string>
 									<key>isCustomizableViewContainer</key>
 									<true/>
 									<key>isCustomizableViewWrapper</key>
@@ -140,7 +140,7 @@
 									<key>frame</key>
 									<string>{{136, 0}, {1242, 1096}}</string>
 									<key>identifier</key>
-									<string>container 5</string>
+									<string>container 144</string>
 									<key>isCustomizableViewContainer</key>
 									<true/>
 									<key>isCustomizableViewWrapper</key>
@@ -151,7 +151,7 @@
 									<array>
 										<dict>
 											<key>frame</key>
-											<string>{{136, 0}, {1242, 430.8984375}}</string>
+											<string>{{136, 0}, {1242, 240}}</string>
 											<key>identifier</key>
 											<string>container 4</string>
 											<key>isCustomizableViewContainer</key>
@@ -164,7 +164,7 @@
 											<array>
 												<dict>
 													<key>frame</key>
-													<string>{{136, 0}, {1242, 430.8984375}}</string>
+													<string>{{136, 0}, {1242, 240}}</string>
 													<key>identifier</key>
 													<string>timelineCustomizableContainer</string>
 													<key>isCustomizableViewContainer</key>
@@ -174,7 +174,7 @@
 										</dict>
 										<dict>
 											<key>frame</key>
-											<string>{{136, 431.8984375}, {1242, 664.1015625}}</string>
+											<string>{{136, 241}, {1242, 855}}</string>
 											<key>identifier</key>
 											<string>container 3</string>
 											<key>isCustomizableViewContainer</key>
@@ -187,7 +187,7 @@
 											<array>
 												<dict>
 													<key>frame</key>
-													<string>{{136, 431.8984375}, {1242, 664.1015625}}</string>
+													<string>{{136, 241}, {1242, 855}}</string>
 													<key>identifier</key>
 													<string>sceneEditorCustomizableContainer</string>
 													<key>isCustomizableViewContainer</key>
@@ -203,7 +203,7 @@
 							<key>frame</key>
 							<string>{{1379, 0}, {270, 1096}}</string>
 							<key>identifier</key>
-							<string>container 6</string>
+							<string>container 152</string>
 							<key>isCustomizableViewContainer</key>
 							<true/>
 							<key>isCustomizableViewWrapper</key>
@@ -228,7 +228,7 @@
 					<key>frame</key>
 					<string>{{1650, 0}, {270, 1096}}</string>
 					<key>identifier</key>
-					<string>container 84</string>
+					<string>container 163</string>
 					<key>isCustomizableViewContainer</key>
 					<true/>
 					<key>isCustomizableViewWrapper</key>
@@ -252,7 +252,7 @@
 		<key>keyframeTimelineHeight</key>
 		<real>50</real>
 		<key>mainWindowFrame</key>
-		<string>-55 59 1920 1118 0 0 1920 1177 </string>
+		<string>0 56 1920 1118 0 0 1920 1177 </string>
 		<key>openTabs</key>
 		<array/>
 		<key>selectedTabIndex</key>
@@ -296,7 +296,7 @@
 	<key>monotypeProjectID</key>
 	<string>19D6FDD5-BA5C-4894-B073-8E333B9FE972-1565-00000112F1DC8496</string>
 	<key>oidCounter</key>
-	<integer>551</integer>
+	<integer>552</integer>
 	<key>resourcesInfo</key>
 	<dict>
 		<key>groups</key>
@@ -415,7 +415,7 @@
 						<integer>20</integer>
 					</dict>
 					<key>canvasSize</key>
-					<string>{4968, 2660}</string>
+					<string>{4968, 3420}</string>
 					<key>hypeScene</key>
 					<dict>
 						<key>backgroundColor</key>
@@ -440,7 +440,7 @@
 					<key>rootSymbolControllerOid</key>
 					<string>2</string>
 					<key>scrollViewOffset</key>
-					<string>{0, 0.1015625}</string>
+					<string>{0, 0}</string>
 					<key>userGuides</key>
 					<array/>
 				</dict>
@@ -462,14 +462,14 @@
 	<key>showRulers</key>
 	<true/>
 	<key>sourceEditorDocumentationHeight</key>
-	<real>230</real>
+	<real>503</real>
 	<key>symbolDisplayMode</key>
 	<integer>0</integer>
 	<key>symbols</key>
 	<array>
 		<dict>
 			<key>documentIdentifier</key>
-			<string>55F4A7DF-8E95-4AE8-834E-AD842587F60B-81080-000051949C3DC9CE</string>
+			<string>66B1D48F-ED61-4DB3-B1BD-44926F1D01EA-81080-0000532AD698264C</string>
 			<key>selectedObjects</key>
 			<array>
 				<string>551</string>
