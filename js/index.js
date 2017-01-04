@@ -1,13 +1,13 @@
 /**
- * @Author: St. <SuperMoo>
- * @Date:   2016-11-29-11:15:57
- * @Email:  st_sister@iCloud.com
- * @Filename: index.js
+* @Author: St. <SuperWoods>
+* @Date:   2017-01-04-21:39:00
+* @Email:  st_sister@iCloud.com
+* @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-04-20:58:17
- * @License: MIT
- * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
- */
+* @Last modified time: 2017-01-04-21:40:20
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
 $(() => {
     // 必要的全局对象
     const $window = $(window);
