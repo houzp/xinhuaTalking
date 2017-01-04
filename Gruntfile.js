@@ -7,7 +7,7 @@
  * @Date:   2016-07-13-01:46:45
  *
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-19:08:44
+* @Last modified time: 2017-01-04-13:30:50
  */
 
 module.exports = function (grunt) {
@@ -145,6 +145,13 @@ module.exports = function (grunt) {
                     // 'bundle/homepage.min.css': ['bundle/homepage.min.css'],
                     // 'bundle/idangerous.swiper.css': ['bundle/idangerous.swiper.css'],
                 }
+            },
+            btn: {
+                files: {
+                    'css/btn.min.css': ['css/btn.css'],
+                    // 'bundle/homepage.min.css': ['bundle/homepage.min.css'],
+                    // 'bundle/idangerous.swiper.css': ['bundle/idangerous.swiper.css'],
+                }
             }
         },
 
@@ -205,6 +212,11 @@ module.exports = function (grunt) {
     grunt.registerTask('css', [
         'cssmin', // css: cssmin
         'concat:cssAddBanner', // cssAddBanner
+    ]);
+
+    // grunt css
+    grunt.registerTask('cssBtn', [
+        'cssmin:btn',
     ]);
 
     // grunt css

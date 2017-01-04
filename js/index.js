@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-03-16:46:25
+* @Last modified time: 2017-01-04-19:56:14
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -265,6 +265,7 @@ $(() => {
             }
         });
     };
+
     const scenes2Init = function(num) {
         console.log(num, num === 1);
         if (num === 1) {
@@ -280,6 +281,9 @@ $(() => {
                     speed: 1800,
                     // spaceBetween: 80,
                     onInit: function(swiper) {
+
+                        $.getScript("bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js");
+
                         scenes2Hide($scenes2Items, 0, 0);
                         scenes2Ani(swiper.activeIndex, 'show', 1);
                         const firstNum = 0;
@@ -303,17 +307,7 @@ $(() => {
                         scenes2Ani(swiper.activeIndex, 'show');
                         scenes2Ani(swiper.previousIndex, 'hide');
                     },
-                    // onSlideChangeEnd: function (swiper) {
-                    // }
                 });
-                // scenes2Swiper.prevButton.on('click', function () {
-                //     scenes2Ani(scenes2Swiper.activeIndex, 'show');
-                //     scenes2Ani(scenes2Swiper.previousIndex, 'hide');
-                // });
-                // scenes2Swiper.nextButton.on('click', function () {
-                //     scenes2Ani(scenes2Swiper.previousIndex, 'hide');
-                //     scenes2Ani(scenes2Swiper.activeIndex, 'show');
-                // });
             } else {
                 scenes2Swiper.unlockSwipes();
                 scenes2Ani(scenes2Swiper.activeIndex, 'show');
@@ -332,21 +326,16 @@ $(() => {
     let scenes3Bg = null;
     let scenes3Swiper = null;
     let scenes3SwiperIn = null;
-    let scenes3Data = null;
+    let scenes3Data = new Array();
+
     // let scenes3SwiperRealIndex = 0;
     const $scenes3 = $('#scenes3');
     const $scenes3InSlide = $scenes3.find('.scenes3-container-in .swiper-slide');
 
-    const scenes3BgInit = function(swiperRealIndex) {
-        if (scenes3Bg === null && swiperRealIndex === 2) {
-            scenes3Bg = $.getScript("/lib/triangleBg/triangleBg.js");
-        }
-    };
     const scenes3Init = function(swiperRealIndex) {
         if (mainSwiperRealIndex === 2) {
             if (scenes3Swiper === null) {
                 // console.log('scenes3Init start', $scenes3);
-                scenes3BgInit(swiperRealIndex);
                 scenes3Btn();
                 scenes3Swiper = new Swiper($scenes3.selector, {
                     lazyLoading: true,
@@ -360,25 +349,26 @@ $(() => {
                     runCallbacksOnInit: true,
                     onInit: function(swiper) {
 
-                        scenes3BtnShow($scenes3.find('.scenes3-container-in .swiper-slide:eq(0)'));
+                        $.getScript("lib/triangleBg/triangleBg.js");
 
                         scenes3GetSwiperData();
-                        console.log(scenes3Data);
+                        // console.log(scenes3Data);
 
-                        // 按钮移除 active
-                        swiper.nextButton
-                            .addClass('active')
-                            .on('mouseout', function() {
-                                swiper
-                                    .nextButton
-                                    .removeClass('active');
-                            });
-                        swiper.prevButton
-                            .on('mouseover', function() {
-                                swiper
-                                    .nextButton
-                                    .removeClass('active');
-                            });
+                        // // 按钮移除 active
+                        // swiper.nextButton
+                        //     .addClass('active')
+                        //     .on('mouseout', function() {
+                        //         swiper
+                        //             .nextButton
+                        //             .removeClass('active');
+                        //     });
+                        // swiper.prevButton
+                        //     .on('mouseover', function() {
+                        //         swiper
+                        //             .nextButton
+                        //             .removeClass('active');
+                        //     });
+
                         scenes3BtnUpdate(swiper);
 
                         // in
@@ -417,78 +407,30 @@ $(() => {
         scenes3SetSwiperButton(swiper.nextButton, num[1]);
     };
 
-    const scenes3Btn = function(num) {
+    const scenes3Btn = function() {
         $scenes3InSlide
             .on('mouseover mouseout', function(e) {
                 const $this = $(this);
                 if (e.type === 'mouseover') {
-                    $scenes3InSlide.removeClass('active');
+                    // $this.addClass('active').siblings().removeClass('active');
+                    scenes3BtnHide($this.siblings());
                     scenes3BtnShow($this);
                 } else if (e.type === 'mouseout') {
-                    $this.removeClass('active');
-                    TweenMax.to($this.find('.ani-line3'), 0.2, {
-                        width: 0,
-                        // ease: Power4.easeInOut,
-                    });
-                    TweenMax.to($this.find('.ani-line4'), 0.2, {
-                        width: 0,
-                        // ease: Power4.easeInOut,
-                        onStart: function() {
-                            $this
-                                .find('.btn')
-                                .hide();
-                        },
-                        onComplete: function() {
-                            TweenMax.to($this.find('.ani-line2'), 0.4, {
-                                height: 0,
-                                // ease: Power4.easeInOut,
-                                onComplete: function() {
-                                    TweenMax.to($this.find('.ani-line1'), 0.2, {
-                                        width: 0,
-                                        'margin-left': 0,
-                                        // ease: Power4.easeInOut,
-                                        // onComplete: function() {
-                                        // }
-                                    });
-                                }
-                            });
-                        }
-                    });
+                    scenes3BtnHide($this);
+                    // $this.removeClass('active');
                 }
             });
     };
+
+    const scenes3BtnHide = function($this){
+        $this.removeClass('active');
+    };
+
     const scenes3BtnShow = function($this) {
         $this.addClass('active');
-        TweenMax.to($this.find('.ani-line1'), 0.2, {
-            width: 214,
-            'margin-left': '-107px',
-            // ease: Power4.easeInOut,
-            onComplete: function() {
-                TweenMax.to($this.find('.ani-line2'), 0.4, {
-                    height: 265,
-                    // ease: Power4.easeInOut,
-                    onComplete: function() {
-                        TweenMax.to($this.find('.ani-line3'), 0.2, {
-                            width: 70,
-                            // ease: Power4.easeInOut,
-                        });
-                        TweenMax.to($this.find('.ani-line4'), 0.2, {
-                            width: 70,
-                            // ease: Power4.easeInOut,
-                            onComplete: function() {
-                                $this
-                                    .find('.btn')
-                                    .show();
-                            }
-                        });
-                    }
-                });
-            }
-        });
     };
 
     const scenes3GetSwiperData = function() {
-        scenes3Data = new Array();
         $scenes3
             .find('.scenes3-container-in')
             .each(function(i, e) {
@@ -496,13 +438,11 @@ $(() => {
                 scenes3Data
                     .push({
                         title: `
-                        ${$.trim($e.find('.swiper-slide:eq(0) .t').text())}
+                        ${$.trim($e.find('.t1').text())}
                         <div class="a">
-                            ${$.trim($e.find('.swiper-slide:eq(0) .a').text())}
+                            ${$.trim($e.find('.t2').text())}
                         </div>`,
-                        img: $e
-                            .find('.swiper-slide:eq(0) .p img')
-                            .attr('src')
+                        img: $.trim($e.find('.t3').attr('src'))
                     });
             });
     };
@@ -532,8 +472,11 @@ $(() => {
             slidesPerView: 5,
             slidesPerGroup: 5,
             spaceBetween: 30,
-            // onInit: function(swiper) {
-            // },
+            onInit: function(swiper) {
+                // console.log(swiper.slides[0]);
+                // 初始化scenes3内部swiper之前激活第一个swiper-slide
+                scenes3BtnShow($('#scenes3-in' + num).find('.swiper-slide:eq(0)'));
+            },
             // onSlideChangeStart: function(swiper) {}
         });
     };
@@ -544,8 +487,8 @@ $(() => {
     // 4
     let scenes4Bg = null;
     const scenes4BgInit = function(swiperRealIndex) {
-        if (scenes4Bg === null && swiperRealIndex === 3) {
-            scenes4Bg = $.getScript("/bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js?59874");
+        if (scenes4Bg === null) {
+            scenes4Bg = $.getScript("bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js");
         }
     };
     const scenes4Init = function(swiperRealIndex) {
@@ -553,8 +496,24 @@ $(() => {
             scenes4BgInit(swiperRealIndex);
         }
     };
+
+    // /* -------------------------------------------------------------------------
+    //  * getScript
+    // ------------------------------------------------------------------------- */
+    // getScript({
+    //     index: 2,
+    //     swiperRealIndex: swiperRealIndex,
+    //     url: "lib/triangleBg/triangleBg.js",
+    // });
+    // const getScript = function(opt) {
+    //     if (scenes3Bg === null && opt.swiperRealIndex === opt.index) {
+    //         scenes3Bg = $.getScript("lib/triangleBg/triangleBg.js");
+    //     }
+    //     return scenes3Bg
+    // };
+
     /* -------------------------------------------------------------------------
-     * navLine
+     * nav
     ------------------------------------------------------------------------- */
     const $nav = $('#nav');
     const $navLine = $nav.find('.nav-line');
@@ -567,6 +526,13 @@ $(() => {
             x: index * (100 + 20)
         });
     };
+    // nav按钮点击事件
+    $navA.on('click', function(e) {
+        e.preventDefault();
+        // console.log($(this).index()-1);
+        mainSwiper.slideTo($(this).index()-1);
+        return false;
+    });
     /* -------------------------------------------------------------------------
      * xinhuaTalking
     ------------------------------------------------------------------------- */
@@ -579,7 +545,7 @@ $(() => {
         init: function() {
             const _this = this;
             // swiper
-            _this.scenesMain = new Swiper('#main', {
+            mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
                 speed: 1000,
                 hashnav: true,
