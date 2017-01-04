@@ -774,7 +774,7 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-03-16:50:56
+* @Last modified time: 2017-01-04-13:38:08
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1205,11 +1205,11 @@ body {
 .scenes1 .swiper-button-next:hover:active .icon {
     transform: translateX(138px);
 }
-/* --------------------------------------------- .scenes3-prev */
+/* -------------------------------------------- .scenes3-prev & .scenes3-next */
+.scenes3-next,
 .scenes3-prev {
     height          : 118px;
     margin-top      : -59px;
-    left            : 0;
     background-size : auto;
     width           : 118px;
     background-color: rgba(0, 0, 0, 0.1);
@@ -1219,35 +1219,71 @@ body {
     transition      : width 2s;
 }
 
+.scenes3-next .swiper-button-content,
 .scenes3-prev .swiper-button-content {
     position  : absolute;
     width     : 336px;
     height    : 102px;
     top       : 50%;
-    right     : 8px;
-    left      : auto;
     margin-top: -51px;
     z-index   : 4;
-    transform : translateX(-200px);
     transition: transform 1s;
 }
 
+.scenes3-next .swiper-button-content .p,
+.scenes3-next .swiper-button-content .t,
 .scenes3-prev .swiper-button-content .p,
 .scenes3-prev .swiper-button-content .t {
     position: absolute;
     top     : 50%;
 }
 
+.scenes3-next .swiper-button-content .p,
 .scenes3-prev .swiper-button-content .p {
     width     : 102px;
     height    : 102px;
     overflow  : hidden;
     margin-top: -51px;
-    left      : auto;
-    right     : 0;
+}
+/* --------------------------------------------- .scenes3-prev */
+.scenes3-prev {
+    left: 0;
+}
+
+.scenes3-next {
+    left : auto;
+    right: 0;
+}
+
+.scenes3-prev .swiper-button-content {
+    right    : 8px;
+    left     : auto;
+    transform: translateX(-200px);
+}
+
+.scenes3-next .swiper-button-content {
+    right    : auto;
+    left     : 8px;
+    transform: translateX(360px);
+}
+
+.scenes3-prev .swiper-button-content .p {
+    left : auto;
+    right: 0;
+}
+
+.scenes3-next .swiper-button-content .p {
+    left : 0;
+    right: auto;
 }
 
 .scenes3-prev .swiper-button-content .p img {
+    display: inline;
+    width  : 102px;
+    height : auto;
+}
+
+.scenes3-next .swiper-button-content .p img {
     width : 102px;
     height: auto;
 }
@@ -1263,10 +1299,23 @@ body {
     margin-top : -46px;
 }
 
+.scenes3-next .swiper-button-content .t {
+    width      : 214px;
+    left       : auto;
+    right      : 0;
+    color      : #FFF;
+    font-size  : 22px;
+    line-height: 40px;
+    font-weight: normal;
+    margin-top : -38px;
+}
+
+.scenes3-next .swiper-button-content .t .a,
 .scenes3-prev .swiper-button-content .t .a {
-    font-size  : 16px;
+    font-size  : 18px;
     line-height: 28px;
     margin-top : 3px;
+    /*text-align : right;*/
 }
 
 .scenes3-prev .icon,
@@ -1283,9 +1332,30 @@ body {
     right              : auto;
 }
 
+.scenes3-next .icon,
+.scenes3-next .icon:after {
+    display            : block;
+    width              : 118px;
+    height             : 118px;
+    background-position: 45px center;
+    background-repeat  : no-repeat;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -59px;
+    left               : auto;
+    right              : 0;
+}
+
 .scenes3-prev .icon {
     transition      : all .5s;
     background-image: url("../index-assets/icon-prev.png");
+    z-index         : 3;
+    transform       : translateX(0);
+}
+
+.scenes3-next .icon {
+    transition      : all .5s;
+    background-image: url("../index-assets/icon-next.png");
     z-index         : 3;
     transform       : translateX(0);
 }
@@ -1297,6 +1367,14 @@ body {
     background-image: url("../index-assets/icon-prev-active.png");
 }
 
+.scenes3-next .icon:after {
+    display         : none;
+    right           : 118px;
+    content         : '';
+    margin-left     : 118px;
+    background-image: url("../index-assets/icon-next-active.png");
+}
+
 .scenes3-prev .b {
     transition      : transform 2s;
     width           : 118px;
@@ -1306,6 +1384,23 @@ body {
     margin-top      : -59px;
     left            : 0;
     margin-left     : -118px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 2;
+}
+
+.scenes3-next .b {
+    transition      : transform 2s;
+    width           : 118px;
+    height          : 118px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -59px;
+    left            : auto;
+    right           : 0;
+    margin-left     : auto;
+    margin-right    : -118px;
     background-color: #1080f2;
     border-radius   : 100%;
     transform       : scale(0);
@@ -1337,116 +1432,6 @@ body {
     transform: translateX(-138px);
 }
 /*.scenes3-next */
-.scenes3-next {
-    height          : 118px;
-    margin-top      : -59px;
-    left            : auto;
-    right           : 0;
-    background-size : auto;
-    width           : 118px;
-    background-color: rgba(0, 0, 0, 0.1);
-    background-image: none;
-    cursor          : pointer;
-    overflow        : hidden;
-    transition      : width 2s;
-}
-
-.scenes3-next .swiper-button-content {
-    position  : absolute;
-    width     : 336px;
-    height    : 102px;
-    top       : 50%;
-    right     : auto;
-    left      : 8px;
-    margin-top: -51px;
-    z-index   : 4;
-    transform : translateX(360px);
-    transition: transform 1s;
-}
-
-.scenes3-next .swiper-button-content .p,
-.scenes3-next .swiper-button-content .t {
-    position: absolute;
-    top     : 50%;
-}
-
-.scenes3-next .swiper-button-content .p {
-    width     : 102px;
-    height    : 102px;
-    overflow  : hidden;
-    margin-top: -51px;
-    left      : 0;
-    right     : auto;
-}
-
-.scenes3-next .swiper-button-content .p img {
-    width : 102px;
-    height: auto;
-}
-
-.scenes3-next .swiper-button-content .t {
-    width      : 215px;
-    left       : auto;
-    right      : 0;
-    color      : #FFF;
-    font-size  : 20px;
-    line-height: 34px;
-    font-weight: normal;
-    margin-top : -46px;
-}
-
-.scenes3-next .swiper-button-content .t .a {
-    font-size  : 16px;
-    line-height: 28px;
-    margin-top : 3px;
-}
-
-.scenes3-next .icon,
-.scenes3-next .icon:after {
-    display            : block;
-    width              : 118px;
-    height             : 118px;
-    background-position: 45px center;
-    background-repeat  : no-repeat;
-    position           : absolute;
-    top                : 50%;
-    margin-top         : -59px;
-    left               : auto;
-    right              : 0;
-}
-
-.scenes3-next .icon {
-    transition      : all .5s;
-    background-image: url("../index-assets/icon-next.png");
-    z-index         : 3;
-    transform       : translateX(0);
-}
-
-.scenes3-next .icon:after {
-    display         : none;
-    right           : 118px;
-    content         : '';
-    margin-left     : 118px;
-    background-image: url("../index-assets/icon-next-active.png");
-}
-
-.scenes3-next .b {
-    transition      : transform 2s;
-    width           : 118px;
-    height          : 118px;
-    position        : absolute;
-    top             : 50%;
-    margin-top      : -59px;
-    left            : auto;
-    right           : 0;
-    margin-left     : auto;
-    margin-right    : -118px;
-    background-color: #1080f2;
-    border-radius   : 100%;
-    transform       : scale(0);
-    z-index         : 2;
-}
-
 .scenes3-next.active,
 .scenes3-next:hover {
     width           : 435px;
@@ -1930,7 +1915,7 @@ a {
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-03-15:37:28
+* @Last modified time: 2017-01-04-19:43:32
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1938,17 +1923,31 @@ a {
 .scenes2 {
     width                  : 100%;
     height                 : 100%;
-    background-image       : url("../index-assets/bg-scenes2.jpg");
+    /*background-image       : url("../index-assets/bg-scenes2.jpg");*/
     -webkit-background-size: cover;
     background-size        : cover;
     background-position    : center;
 }
 
+.scenes2-bg {
+    margin        : auto;
+    position      : absolute;
+    top           : 0;
+    left          : 0;
+    /*z-index : 1;*/
+    width         : 100%;
+    height        : 100%;
+    overflow      : hidden;
+    pointer-events: none;
+}
+
 .scenes2 .swiper-slide,
 .scenes2-container {
-    width : 1200px;
+    position: relative;
+    z-index : 2;
+    width   : 1200px;
     /*width     : 100vh;*/
-    height: 64vh;
+    height  : 64vh;
     /*background: red;*/
 }
 
@@ -2134,15 +2133,13 @@ a {
 .scenes2 .swiper-button-prev:hover .b {
     transform: scale(4);
 }
-
-.scenes2-bg {}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-30-10:06:59
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes3.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-03-15:22:19
+* @Last modified time: 2017-01-04-11:47:57
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -2150,7 +2147,8 @@ a {
 .scenes3 {
     width                  : 100%;
     height                 : 100%;
-    background-image       : url("../index-assets/bg-scenes3.jpg");
+    /*background-color: #FFF;*/
+    /*background-image       : url("../index-assets/bg-scenes3.jpg");*/
     -webkit-background-size: cover;
     background-size        : cover;
     background-position    : center;
@@ -2268,7 +2266,7 @@ a {
     top           : 0;
     left          : -10%;
     overflow      : hidden;
-    opacity       : .4;
+    opacity       : .2;
 }
 
 .scenes3-bg-ani {
@@ -2339,26 +2337,6 @@ a {
     pointer-events: none;
 }
 
-.scenes3-container-in .swiper-slide .btn {
-    width              : 82px;
-    color              : #0081ff;
-    position           : absolute;
-    left               : 50%;
-    margin-left        : -41px;
-    font-size          : 12px;
-    text-align         : left;
-    text-indent        : 9px;
-    overflow           : hidden;
-    background-image   : url("../index-assets/btn-add.png");
-    background-repeat  : no-repeat;
-    background-position: 62px center;
-    line-height        : 18px;
-    bottom             : 0;
-    z-index            : 2;
-    display            : none;
-    pointer-events     : none;
-}
-
 .scenes3-container-in .swiper-slide.active .t {
     color: #0081ff;
 }
@@ -2381,16 +2359,40 @@ a {
     background-color: #0081ff;
     top             : 66px;
     left            : 50%;
+    transition      : all .2s;
+    transition-delay: .7s;
+}
+
+.scenes3-container-in .swiper-slide.active .ani-line1,
+.scenes3-container-in .swiper-slide:hover .ani-line1 {
+    width           : 214px;
+    margin-left     : -107px;
+    transition      : all .2s;
+    transition-delay: 0;
 }
 
 .ani-line2 {
-    height      : 0;
-    top         : 66px;
-    width       : 212px;
-    border-left : #0081ff 2px solid;
-    border-right: #0081ff 2px solid;
-    left        : 0;
+    height          : 0;
+    top             : 66px;
+    width           : 212px;
+    border-left     : #0081ff 2px solid;
+    border-right    : #0081ff 2px solid;
+    left            : 0;
     /*margin-left : -109px;*/
+    transition      : all .4s;
+    transition-delay: .3s;
+}
+
+.scenes3-container-in .swiper-slide.active .ani-line2,
+.scenes3-container-in .swiper-slide:hover .ani-line2 {
+    height          : 265px;
+    transition-delay: .2s;
+}
+
+.ani-line3,
+.ani-line4 {
+    transition      : all .1s;
+    transition-delay: .2s;
 }
 
 .ani-line3 {
@@ -2407,6 +2409,42 @@ a {
     background-color: #0081ff;
     bottom          : 6px;
     right           : 0;
+}
+
+.scenes3-container-in .swiper-slide.active .ani-line3,
+.scenes3-container-in .swiper-slide.active .ani-line4,
+.scenes3-container-in .swiper-slide:hover .ani-line3,
+.scenes3-container-in .swiper-slide:hover .ani-line4 {
+    width           : 70px;
+    transition-delay: .6s;
+}
+
+.scenes3-container-in .swiper-slide .btn {
+    width              : 82px;
+    color              : #0081ff;
+    position           : absolute;
+    left               : 50%;
+    margin-left        : -41px;
+    font-size          : 12px;
+    text-align         : left;
+    text-indent        : 9px;
+    overflow           : hidden;
+    background-image   : url("../index-assets/btn-add.png");
+    background-repeat  : no-repeat;
+    background-position: 62px center;
+    line-height        : 18px;
+    bottom             : 0;
+    z-index            : 2;
+    pointer-events     : none;
+    opacity            : 0;
+    transition         : all .2s;
+    transition-delay   : 0;
+}
+
+.scenes3-container-in .swiper-slide.active .btn,
+.scenes3-container-in .swiper-slide:hover .btn {
+    opacity         : 1;
+    transition-delay: .7s;
 }
 
 .scenes3-in-next,

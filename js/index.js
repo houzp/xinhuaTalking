@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-03-16:46:25
+* @Last modified time: 2017-01-04-20:58:17
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -54,7 +54,8 @@ $(() => {
         resources: resources,
         onStart: function(total) {
             // console.log('start:' + total);
-            scenes1Page1Hide();
+            scenes1Slide1Hide();
+            scenes3Slide1Hide();
         },
         onProgress: function(current, total) {
             // console.log(current + '/' + total);
@@ -71,9 +72,16 @@ $(() => {
         }
     });
     /* -------------------------------------------------------------------------
-     * scenes1Page1
+     * scenes1Slide1
     ------------------------------------------------------------------------- */
-    const scenes1Page1Hide = function() {
+    const scenes1Slide1Ani = function(swiperRealIndex) {
+        if (coverStatus === 'hide' && swiperRealIndex === 0) {
+            scenes1Slide1Show();
+        } else {
+            scenes1Slide1Hide();
+        }
+    };
+    const scenes1Slide1Hide = function() {
         TweenMax.to($topNav, 0, {
             y: 300,
             opacity: 0
@@ -92,7 +100,7 @@ $(() => {
         });
         $scenes1SwiperButtonNext.removeClass('active');
     };
-    const scenes1Page1Show = function() {
+    const scenes1Slide1Show = function() {
         TweenMax.to($topNav, 2, {
             y: 0,
             opacity: 1,
@@ -176,7 +184,10 @@ $(() => {
                         .off('click');
                     setTimeout(function() {
                         if (mainSwiperRealIndex === 0) {
-                            scenes1Page1Show();
+                            scenes1Slide1Show();
+                        }
+                        if (mainSwiperRealIndex === 2) {
+                            scenes3Slide1Show();
                         }
                     }, time * 0.5 * 1000);
                 },
@@ -280,6 +291,7 @@ $(() => {
                     speed: 1800,
                     // spaceBetween: 80,
                     onInit: function(swiper) {
+                        $.getScript("bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js");
                         scenes2Hide($scenes2Items, 0, 0);
                         scenes2Ani(swiper.activeIndex, 'show', 1);
                         const firstNum = 0;
@@ -302,18 +314,8 @@ $(() => {
                     onSlideChangeStart: function(swiper) {
                         scenes2Ani(swiper.activeIndex, 'show');
                         scenes2Ani(swiper.previousIndex, 'hide');
-                    },
-                    // onSlideChangeEnd: function (swiper) {
-                    // }
+                    }
                 });
-                // scenes2Swiper.prevButton.on('click', function () {
-                //     scenes2Ani(scenes2Swiper.activeIndex, 'show');
-                //     scenes2Ani(scenes2Swiper.previousIndex, 'hide');
-                // });
-                // scenes2Swiper.nextButton.on('click', function () {
-                //     scenes2Ani(scenes2Swiper.previousIndex, 'hide');
-                //     scenes2Ani(scenes2Swiper.activeIndex, 'show');
-                // });
             } else {
                 scenes2Swiper.unlockSwipes();
                 scenes2Ani(scenes2Swiper.activeIndex, 'show');
@@ -332,21 +334,15 @@ $(() => {
     let scenes3Bg = null;
     let scenes3Swiper = null;
     let scenes3SwiperIn = null;
-    let scenes3Data = null;
+    let scenes3Data = new Array();
     // let scenes3SwiperRealIndex = 0;
     const $scenes3 = $('#scenes3');
     const $scenes3InSlide = $scenes3.find('.scenes3-container-in .swiper-slide');
-
-    const scenes3BgInit = function(swiperRealIndex) {
-        if (scenes3Bg === null && swiperRealIndex === 2) {
-            scenes3Bg = $.getScript("/lib/triangleBg/triangleBg.js");
-        }
-    };
     const scenes3Init = function(swiperRealIndex) {
+        scenes3Slide1Ani(mainSwiperRealIndex);
         if (mainSwiperRealIndex === 2) {
             if (scenes3Swiper === null) {
                 // console.log('scenes3Init start', $scenes3);
-                scenes3BgInit(swiperRealIndex);
                 scenes3Btn();
                 scenes3Swiper = new Swiper($scenes3.selector, {
                     lazyLoading: true,
@@ -359,28 +355,24 @@ $(() => {
                     speed: 3000,
                     runCallbacksOnInit: true,
                     onInit: function(swiper) {
-
-                        scenes3BtnShow($scenes3.find('.scenes3-container-in .swiper-slide:eq(0)'));
-
+                        $.getScript("lib/triangleBg/triangleBg.js");
                         scenes3GetSwiperData();
-                        console.log(scenes3Data);
-
-                        // 按钮移除 active
-                        swiper.nextButton
-                            .addClass('active')
-                            .on('mouseout', function() {
-                                swiper
-                                    .nextButton
-                                    .removeClass('active');
-                            });
-                        swiper.prevButton
-                            .on('mouseover', function() {
-                                swiper
-                                    .nextButton
-                                    .removeClass('active');
-                            });
+                        // console.log(scenes3Data);
+                        // // 按钮移除 active
+                        // swiper.nextButton
+                        //     .addClass('active')
+                        //     .on('mouseout', function() {
+                        //         swiper
+                        //             .nextButton
+                        //             .removeClass('active');
+                        //     });
+                        // swiper.prevButton
+                        //     .on('mouseover', function() {
+                        //         swiper
+                        //             .nextButton
+                        //             .removeClass('active');
+                        //     });
                         scenes3BtnUpdate(swiper);
-
                         // in
                         scenes3SwiperInInit(0);
                         scenes3SwiperInInit(1);
@@ -390,19 +382,24 @@ $(() => {
                     },
                     onSlideChangeStart: function(swiper) {
                         scenes3BtnUpdate(swiper);
-                    }
+                    },
+                    // onSlideChangeEnd: function(swiper) {
+                    //
+                    // }
                 });
             } else {
                 scenes3Swiper.unlockSwipes();
             }
+            // if (coverStatus === 'hide') {
+            //     scenes3Slide1Show();
+            // }
         } else {
             if (scenes3Swiper !== null) {
                 scenes3Swiper.lockSwipes();
             }
         }
     };
-
-    const scenes3BtnUpdate = function(swiper){
+    const scenes3BtnUpdate = function(swiper) {
         let num = [
             swiper.realIndex - 1,
             swiper.realIndex + 1
@@ -416,97 +413,41 @@ $(() => {
         scenes3SetSwiperButton(swiper.prevButton, num[0]);
         scenes3SetSwiperButton(swiper.nextButton, num[1]);
     };
-
-    const scenes3Btn = function(num) {
+    const scenes3Btn = function() {
         $scenes3InSlide
             .on('mouseover mouseout', function(e) {
                 const $this = $(this);
                 if (e.type === 'mouseover') {
-                    $scenes3InSlide.removeClass('active');
+                    // $this.addClass('active').siblings().removeClass('active');
+                    scenes3BtnHide($this.siblings());
                     scenes3BtnShow($this);
                 } else if (e.type === 'mouseout') {
-                    $this.removeClass('active');
-                    TweenMax.to($this.find('.ani-line3'), 0.2, {
-                        width: 0,
-                        // ease: Power4.easeInOut,
-                    });
-                    TweenMax.to($this.find('.ani-line4'), 0.2, {
-                        width: 0,
-                        // ease: Power4.easeInOut,
-                        onStart: function() {
-                            $this
-                                .find('.btn')
-                                .hide();
-                        },
-                        onComplete: function() {
-                            TweenMax.to($this.find('.ani-line2'), 0.4, {
-                                height: 0,
-                                // ease: Power4.easeInOut,
-                                onComplete: function() {
-                                    TweenMax.to($this.find('.ani-line1'), 0.2, {
-                                        width: 0,
-                                        'margin-left': 0,
-                                        // ease: Power4.easeInOut,
-                                        // onComplete: function() {
-                                        // }
-                                    });
-                                }
-                            });
-                        }
-                    });
+                    scenes3BtnHide($this);
+                    // $this.removeClass('active');
                 }
             });
     };
+    const scenes3BtnHide = function($this) {
+        $this.removeClass('active');
+    };
     const scenes3BtnShow = function($this) {
         $this.addClass('active');
-        TweenMax.to($this.find('.ani-line1'), 0.2, {
-            width: 214,
-            'margin-left': '-107px',
-            // ease: Power4.easeInOut,
-            onComplete: function() {
-                TweenMax.to($this.find('.ani-line2'), 0.4, {
-                    height: 265,
-                    // ease: Power4.easeInOut,
-                    onComplete: function() {
-                        TweenMax.to($this.find('.ani-line3'), 0.2, {
-                            width: 70,
-                            // ease: Power4.easeInOut,
-                        });
-                        TweenMax.to($this.find('.ani-line4'), 0.2, {
-                            width: 70,
-                            // ease: Power4.easeInOut,
-                            onComplete: function() {
-                                $this
-                                    .find('.btn')
-                                    .show();
-                            }
-                        });
-                    }
-                });
-            }
-        });
     };
-
     const scenes3GetSwiperData = function() {
-        scenes3Data = new Array();
         $scenes3
             .find('.scenes3-container-in')
             .each(function(i, e) {
                 const $e = $(e);
-                scenes3Data
-                    .push({
-                        title: `
-                        ${$.trim($e.find('.swiper-slide:eq(0) .t').text())}
+                scenes3Data.push({
+                    title: `
+                        ${$.trim($e.find('.t1').text())}
                         <div class="a">
-                            ${$.trim($e.find('.swiper-slide:eq(0) .a').text())}
+                            ${$.trim($e.find('.t2').text())}
                         </div>`,
-                        img: $e
-                            .find('.swiper-slide:eq(0) .p img')
-                            .attr('src')
-                    });
+                    img: $.trim($e.find('.t3').attr('src'))
+                });
             });
     };
-
     const scenes3SetSwiperButton = function($tag, num) {
         $tag.html(`
                 <div class="swiper-button-content">
@@ -518,7 +459,6 @@ $(() => {
                 <div class="icon"></div>
                 <div class="b"></div>`);
     };
-
     const scenes3SwiperInInit = function(num) {
         scenes3SwiperIn = new Swiper('#scenes3-in' + num, {
             lazyLoading: true,
@@ -532,20 +472,67 @@ $(() => {
             slidesPerView: 5,
             slidesPerGroup: 5,
             spaceBetween: 30,
-            // onInit: function(swiper) {
-            // },
+            onInit: function(swiper) {
+                // console.log(swiper.slides[0]);
+                // 初始化scenes3内部swiper之前激活第一个swiper-slide
+                scenes3BtnShow($('#scenes3-in' + num).find('.swiper-slide:eq(0)'));
+            },
             // onSlideChangeStart: function(swiper) {}
         });
     };
-
+    /* -------------------------------------------------------------------------
+     * scenes3Page1
+    ------------------------------------------------------------------------- */
+    const $scenes3Slide1 = $scenes3.find('.swiper-slide:eq(0)');
+    const $scenes3Slide1Title = $scenes3Slide1.find('.scenes3-title');
+    const $scenes3Slide1Abs = $scenes3Slide1.find('.scenes3-absract');
+    const $scenes3Slide1Cont = $scenes3Slide1.find('.swiper-container');
+    const scenes3Slide1Ani = function(swiperRealIndex) {
+        if (coverStatus === 'hide' && swiperRealIndex === 2) {
+            scenes3Slide1Show();
+        } else {
+            scenes3Slide1Hide();
+        }
+    };
+    const scenes3Slide1Hide = function() {
+        TweenMax.to($scenes3Slide1Title, 0, {
+            y: 200,
+            opacity: 0
+        });
+        TweenMax.to($scenes3Slide1Abs, 0, {
+            y: 200,
+            opacity: 0
+        });
+        TweenMax.to($scenes3Slide1Cont, 0, {
+            y: -300,
+            opacity: 0
+        });
+    };
+    const scenes3Slide1Show = function() {
+        TweenMax.to($scenes3Slide1Title, 2.2, {
+            y: 0,
+            opacity: 1,
+            ease: Power0.ease
+        });
+        TweenMax.to($scenes3Slide1Abs, 1.4, {
+            y: 0,
+            opacity: 1,
+            ease: Power0.ease
+        });
+        TweenMax.to($scenes3Slide1Cont, 2, {
+            y: 0,
+            opacity: 1,
+            ease: Power0.ease
+        });
+    };
     /* -------------------------------------------------------------------------
      * scenes4
     ------------------------------------------------------------------------- */
     // 4
     let scenes4Bg = null;
     const scenes4BgInit = function(swiperRealIndex) {
-        if (scenes4Bg === null && swiperRealIndex === 3) {
-            scenes4Bg = $.getScript("/bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js?59874");
+        if (scenes4Bg === null) {
+            scenes4Bg = $.getScript("bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js");
         }
     };
     const scenes4Init = function(swiperRealIndex) {
@@ -553,8 +540,22 @@ $(() => {
             scenes4BgInit(swiperRealIndex);
         }
     };
+    // /* -------------------------------------------------------------------------
+    //  * getScript
+    // ------------------------------------------------------------------------- */
+    // getScript({
+    //     index: 2,
+    //     swiperRealIndex: swiperRealIndex,
+    //     url: "lib/triangleBg/triangleBg.js",
+    // });
+    // const getScript = function(opt) {
+    //     if (scenes3Bg === null && opt.swiperRealIndex === opt.index) {
+    //         scenes3Bg = $.getScript("lib/triangleBg/triangleBg.js");
+    //     }
+    //     return scenes3Bg
+    // };
     /* -------------------------------------------------------------------------
-     * navLine
+     * nav
     ------------------------------------------------------------------------- */
     const $nav = $('#nav');
     const $navLine = $nav.find('.nav-line');
@@ -567,6 +568,13 @@ $(() => {
             x: index * (100 + 20)
         });
     };
+    // nav按钮点击事件
+    $navA.on('click', function(e) {
+        e.preventDefault();
+        // console.log($(this).index()-1);
+        mainSwiper.slideTo($(this).index() - 1);
+        return false;
+    });
     /* -------------------------------------------------------------------------
      * xinhuaTalking
     ------------------------------------------------------------------------- */
@@ -579,7 +587,7 @@ $(() => {
         init: function() {
             const _this = this;
             // swiper
-            _this.scenesMain = new Swiper('#main', {
+            mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
                 speed: 1000,
                 hashnav: true,
@@ -593,8 +601,9 @@ $(() => {
                     // getSize
                     _this.getSize();
                     // nav
-                    _this.navHeight = _this.$nav.height();
-
+                    _this.navHeight = _this
+                        .$nav
+                        .height();
                     navLine(swiper.realIndex, 1);
                     $window.on('resize', () => {
                         if (mainSwiperRealIndex < 1) {
@@ -603,8 +612,7 @@ $(() => {
                         _this.navStatus(mainSwiperRealIndex);
                     });
                     // scenes1Init
-                    _this.scenes1Init();
-                    // scenes2Init
+                    _this.scenes1Init(swiper.realIndex);
                     scenes2Init(swiper.realIndex);
                     scenes3Init(swiper.realIndex);
                     scenes4Init(swiper.realIndex);
@@ -613,8 +621,8 @@ $(() => {
                     // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function(swiper) {
-                    console.log(swiper.realIndex);
                     mainSwiperRealIndex = swiper.realIndex;
+                    // console.log(swiper.realIndex);
                     navLine(swiper.realIndex, 1);
                     _this.navStatus(swiper.realIndex);
                     scenes2Init(swiper.realIndex);
@@ -623,17 +631,18 @@ $(() => {
                 },
                 onSlideChangeEnd: function(swiper) {
                     // scenes1Init
-                    _this.scenes1Init();
+                    _this.scenes1Init(swiper.realIndex);
                 }
             });
         },
-        scenes1Init: function() {
+        scenes1Init: function(num) {
             const _this = this;
-            if (mainSwiperRealIndex === 0) {
+            scenes1Slide1Ani(num);
+            if (num === 0) {
                 _this.zoom();
-                if (_this.scenes1 === null) {
+                if (scenes1Swiper === null) {
                     console.log('scenes1Init start');
-                    _this.scenes1 = new Swiper('#scenes1', {
+                    scenes1Swiper = new Swiper('#scenes1', {
                         spaceBetween: 200,
                         lazyLoading: true,
                         // autoplay: 12000,
@@ -647,13 +656,11 @@ $(() => {
                         onInit: function(swiper) {
                             // getSwiperData
                             _this.getSwiperData();
-
                             _this.qrcode();
-
                             // 图片盒子 hover
                             $scenes1SlidePic.on('mouseover', function() {
-                                    TweenMax.to($(this), 0.8, {x: 30});
-                                })
+                                TweenMax.to($(this), 0.8, {x: 30});
+                            })
                                 .on('mouseout', function() {
                                     TweenMax.to($(this), 0.8, {x: 0});
                                 });
@@ -662,7 +669,6 @@ $(() => {
                             //     .on('mouseout', function () {
                             //         $(this).removeClass('active');
                             //     });
-
                             // 按钮移除 active
                             swiper
                                 .nextButton
@@ -678,7 +684,6 @@ $(() => {
                                         .nextButton
                                         .removeClass('active');
                                 });
-
                             let num = [
                                 swiper.realIndex - 1,
                                 swiper.realIndex + 1
@@ -713,29 +718,24 @@ $(() => {
                         // },
                     });
                 } else {
-                    _this
-                        .scenes1
-                        .unlockSwipes();
+                    scenes1Swiper.unlockSwipes();
                 }
-                if (coverStatus === 'hide') {
-                    scenes1Page1Show();
-                }
+                // if (coverStatus === 'hide') {
+                //     scenes1Slide1Show();
+                // }
             } else {
-                if (_this.scenes1 !== null) {
-                    _this
-                        .scenes1
-                        .lockSwipes();
+                if (scenes1Swiper !== null) {
+                    scenes1Swiper.lockSwipes();
                 }
-                if (coverStatus === 'hide') {
-                    scenes1Page1Hide();
-                }
+                // if (coverStatus === 'hide') {
+                //     scenes1Slide1Hide();
+                // }
             }
         },
         getSwiperData: function() {
             const _this = this;
             _this.data = new Array();
-            _this
-                .$scenes1
+            $scenes1
                 .find('.swiper-slide')
                 .each(function(i, e) {
                     const $e = $(e);
@@ -768,9 +768,7 @@ $(() => {
             };
         },
         qrcode: function() {
-            const qrcodes = this
-                .$scenes1
-                .find('.scenes1-qrcode');
+            const qrcodes = $scenes1.find('.scenes1-qrcode');
             qrcodes.each(function(i, e) {
                 const $e = $(e);
                 $e.qrcode({
