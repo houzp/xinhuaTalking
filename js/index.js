@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-05-10:34:35
+* @Last modified time: 2017-01-05-20:06:22
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -40,22 +40,23 @@ $(() => {
      * loader
     ------------------------------------------------------------------------- */
     const resources = [ // 需要预加载的资源
-        '../xinhuaTalking/index-assets/bg.jpg',
-        '../xinhuaTalking/index-assets/cover-logo.png',
-        '../xinhuaTalking/index-assets/scenes1-btn-1-active-bg.png',
-        '../xinhuaTalking/index-assets/scenes1-btn-1-bg.png',
-        '../xinhuaTalking/index-assets/demo-pic-0.png',
-        '../xinhuaTalking/index-assets/demo-pic-1.png',
-        '../xinhuaTalking/index-assets/demo-pic-2.png',
-        '../xinhuaTalking/index-assets/demo-pic-3.png',
-        '../xinhuaTalking/index-assets/demo-pic-4.png'
+        'index-assets/bg.jpg',
+        'index-assets/cover-logo.svg',
+        'index-assets/scenes1-btn-1-active-bg.png',
+        'index-assets/scenes1-btn-1-bg.png',
+        'index-assets/demo-pic-0.png',
+        'index-assets/demo-pic-1.png',
+        'index-assets/demo-pic-2.png',
+        'index-assets/demo-pic-3.png',
+        'index-assets/demo-pic-4.png'
     ];
     const loader = new resLoader({
         resources: resources,
         onStart: function(total) {
             // console.log('start:' + total);
-            scenes1Slide1Hide();
-            scenes3Slide1Hide();
+            // scenes1Slide1Hide();
+            // scenes3Slide1Hide();
+            $scenes1.hide();
         },
         onProgress: function(current, total) {
             // console.log(current + '/' + total);
@@ -71,60 +72,6 @@ $(() => {
             xinhuaTalking.init();
         }
     });
-    /* -------------------------------------------------------------------------
-     * scenes1Slide1
-    ------------------------------------------------------------------------- */
-    const scenes1Slide1Ani = function(swiperRealIndex) {
-        if (coverStatus === 'hide' && swiperRealIndex === 0) {
-            scenes1Slide1Show();
-        } else {
-            scenes1Slide1Hide();
-        }
-    };
-    const scenes1Slide1Hide = function() {
-        TweenMax.to($topNav, 0, {
-            y: 300,
-            opacity: 0
-        });
-        TweenMax.to($scenes1Pagination, 0, {
-            y: -300,
-            opacity: 0
-        });
-        TweenMax.to($scenes1SlideLeft, 0, {
-            x: 300,
-            opacity: 0
-        });
-        TweenMax.to($scenes1SlidePic, 0, {
-            x: -300,
-            opacity: 0
-        });
-        $scenes1SwiperButtonNext.removeClass('active');
-    };
-    const scenes1Slide1Show = function() {
-        TweenMax.to($topNav, 2, {
-            y: 0,
-            opacity: 1,
-            ease: Power0.ease
-        });
-        TweenMax.to($scenes1Pagination, 2.5, {
-            y: 0,
-            opacity: 1,
-            ease: Power0.ease
-        });
-        TweenMax.to($scenes1SlideLeft, 2.5, {
-            x: 0,
-            opacity: 1,
-            ease: Power0.ease
-        });
-        TweenMax.to($scenes1SlidePic, 2, {
-            x: 0,
-            opacity: 1,
-            ease: Power0.ease,
-            onStart: function() {
-                $scenes1SwiperButtonNext.addClass('active');
-            }
-        });
-    };
     /* -------------------------------------------------------------------------
      * cover
     ------------------------------------------------------------------------- */
@@ -170,35 +117,100 @@ $(() => {
             coverStatus = 'hide';
             console.log('coverHide', coverStatus);
             const _this = this;
-            let time = 4;
+            const time = 2.5;
             $body.addClass('overflow-hidden');
             // anis
-            TweenMax.to(_this.$cover, time, {
-                scale: 12,
-                opacity: 0,
+            TweenMax.to(_this.$cover.find('.cover-logo'), time, {
+                scale: 8,
+                // opacity: 0,
                 ease: Power4.easeInOut,
-                // ease: SlowMo.ease.config(0.7, 0.7, false),
                 onStart: function() {
-                    _this
-                        .$cover
-                        .off('click');
-                    setTimeout(function() {
-                        if (mainSwiperRealIndex === 0) {
-                            scenes1Slide1Show();
+                    TweenMax.to(_this.$cover, time * 1.2, {
+                        // scale: 3,
+                        opacity: 0,
+                        ease: Power4.easeInOut,
+                        // delay: 1,
+                        // ease: SlowMo.ease.config(0.7, 0.7, false),
+                        onStart: function() {
+                            _this
+                                .$cover
+                                .off('click');
+                            setTimeout(function() {
+                                if (mainSwiperRealIndex === 0) {
+                                    scenes1Slide1Show();
+                                }
+                                if (mainSwiperRealIndex === 2) {
+                                    scenes3Slide1Show();
+                                }
+                            }, time * 0.5 * 1000);
+                        },
+                        onComplete: function() {
+                            _this
+                                .$cover
+                                .remove();
+                            $body.removeClass('overflow-hidden');
+                            // if (mainSwiperRealIndex === 0) {
+                            //     scenes1Slide1Show();
+                            // }
                         }
-                        if (mainSwiperRealIndex === 2) {
-                            scenes3Slide1Show();
-                        }
-                    }, time * 0.5 * 1000);
-                },
-                onComplete: function() {
-                    _this
-                        .$cover
-                        .remove();
-                    $body.removeClass('overflow-hidden');
+                    });
                 }
             });
         }
+    };
+    /* -------------------------------------------------------------------------
+     * scenes1Slide1
+    ------------------------------------------------------------------------- */
+    const scenes1Slide1Ani = function(swiperRealIndex) {
+        if (coverStatus === 'hide' && swiperRealIndex === 0) {
+            scenes1Slide1Show();
+        } else {
+            scenes1Slide1Hide();
+        }
+    };
+    const scenes1Slide1Hide = function() {
+        TweenMax.to($topNav, 0, {
+            y: 200,
+            opacity: 0
+        });
+        TweenMax.to($scenes1Pagination, 0, {
+            y: -200,
+            opacity: 0
+        });
+        TweenMax.to($scenes1SlideLeft, 0, {
+            x: 200,
+            opacity: 0
+        });
+        TweenMax.to($scenes1SlidePic, 0, {
+            x: -200,
+            opacity: 0
+        });
+        $scenes1SwiperButtonNext.removeClass('active');
+    };
+    const scenes1Slide1Show = function() {
+        TweenMax.to($topNav, 2, {
+            y: 0,
+            opacity: 1,
+            ease: Power0.ease
+        });
+        TweenMax.to($scenes1Pagination, 2.5, {
+            y: 0,
+            opacity: 1,
+            ease: Power0.ease
+        });
+        TweenMax.to($scenes1SlideLeft, 2.5, {
+            x: 0,
+            opacity: 1,
+            ease: Power0.ease
+        });
+        TweenMax.to($scenes1SlidePic, 2, {
+            x: 0,
+            opacity: 1,
+            ease: Power0.ease,
+            onStart: function() {
+                $scenes1SwiperButtonNext.addClass('active');
+            }
+        });
     };
     /* -------------------------------------------------------------------------
      * scenes2
@@ -289,7 +301,7 @@ $(() => {
                     nextButton: '#scenes2 .swiper-button-next',
                     paginationClickable: true,
                     speed: 1800,
-                    // spaceBetween: 80,
+                    // spaceBetween: 200,
                     onInit: function(swiper) {
                         $.getScript("bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js");
                         scenes2Hide($scenes2Items, 0, 0);
@@ -333,9 +345,8 @@ $(() => {
     // 3
     let scenes3Bg = null;
     let scenes3Swiper = null;
-    let scenes3SwiperIn = null;
+    let scenes3SwiperIns = new Array();
     let scenes3Data = new Array();
-    // let scenes3SwiperRealIndex = 0;
     const $scenes3 = $('#scenes3');
     const $scenes3InSlide = $scenes3.find('.scenes3-container-in .swiper-slide');
     const scenes3Init = function(swiperRealIndex) {
@@ -344,52 +355,41 @@ $(() => {
             if (scenes3Swiper === null) {
                 // console.log('scenes3Init start', $scenes3);
                 scenes3Btn();
+                triangleBgInit(mainSwiperRealIndex, 2);
                 scenes3Swiper = new Swiper($scenes3.selector, {
                     lazyLoading: true,
                     // autoplay: 12000,
-                    parallax: true,
+                    // parallax: true,
                     pagination: '#scenes3-pagination',
                     prevButton: '#scenes3-prev',
                     nextButton: '#scenes3-next',
-                    paginationClickable: true,
+                    // paginationClickable: true,
                     speed: 3000,
-                    runCallbacksOnInit: true,
+                    // runCallbacksOnInit: true,
                     onInit: function(swiper) {
-                        $.getScript("lib/triangleBg/triangleBg.js");
                         scenes3GetSwiperData();
-                        // console.log(scenes3Data);
-                        // // 按钮移除 active
-                        // swiper.nextButton
-                        //     .addClass('active')
-                        //     .on('mouseout', function() {
-                        //         swiper
-                        //             .nextButton
-                        //             .removeClass('active');
-                        //     });
-                        // swiper.prevButton
-                        //     .on('mouseover', function() {
-                        //         swiper
-                        //             .nextButton
-                        //             .removeClass('active');
-                        //     });
                         scenes3BtnUpdate(swiper);
-                        // in
-                        scenes3SwiperInInit(0);
-                        scenes3SwiperInInit(1);
-                        scenes3SwiperInInit(2);
-                        scenes3SwiperInInit(3);
-                        scenes3SwiperInInit(4);
+                        swiper
+                            .nextButton
+                            .on('click', function() {
+                                console.log('scenes3SwiperInInit', scenes3SwiperIns, swiper.realIndex);
+                                if (scenes3SwiperIns[swiper.realIndex] === undefined) {
+                                    scenes3SwiperIns[swiper.realIndex] = scenes3SwiperInInit(swiper.realIndex);
+                                }
+                            });
                     },
                     onSlideChangeStart: function(swiper) {
                         scenes3BtnUpdate(swiper);
+                        // scenes3BtnHide(swiper.slides.eq(swiper.realIndex).find('.swiper-slide:eq(0)'));
                     },
-                    // onSlideChangeEnd: function(swiper) {
-                    //
-                    // }
+                    onSlideChangeEnd: function(swiper) {
+                        scenes3BtnShow(swiper.slides.eq(swiper.realIndex).find('.swiper-slide:eq(0)'));
+                    }
                 });
             } else {
                 scenes3Swiper.unlockSwipes();
             }
+            // bgToggle('show');
             // if (coverStatus === 'hide') {
             //     scenes3Slide1Show();
             // }
@@ -397,6 +397,7 @@ $(() => {
             if (scenes3Swiper !== null) {
                 scenes3Swiper.lockSwipes();
             }
+            // bgToggle('hide');
         }
     };
     const scenes3BtnUpdate = function(swiper) {
@@ -460,7 +461,7 @@ $(() => {
                 <div class="b"></div>`);
     };
     const scenes3SwiperInInit = function(num) {
-        scenes3SwiperIn = new Swiper('#scenes3-in' + num, {
+        new Swiper('#scenes3-in' + num, {
             lazyLoading: true,
             // autoplay: 12000,
             // parallax: true,
@@ -472,12 +473,10 @@ $(() => {
             slidesPerView: 5,
             slidesPerGroup: 5,
             spaceBetween: 30,
-            onInit: function(swiper) {
-                // console.log(swiper.slides[0]);
-                // 初始化scenes3内部swiper之前激活第一个swiper-slide
-                scenes3BtnShow($('#scenes3-in' + num).find('.swiper-slide:eq(0)'));
-            },
-            // onSlideChangeStart: function(swiper) {}
+            // runCallbacksOnInit: true,
+            onInit: (num === 0) ? function(swiper) {
+                scenes3BtnShow(swiper.slides.eq(0));
+            } : null,
         });
     };
     /* -------------------------------------------------------------------------
@@ -504,15 +503,23 @@ $(() => {
             opacity: 0
         });
         TweenMax.to($scenes3Slide1Cont, 0, {
-            y: -300,
+            y: -100,
             opacity: 0
         });
+        // if (triangleBg !== null) {
+        triangleBgHide();
+        // }
     };
     const scenes3Slide1Show = function() {
         TweenMax.to($scenes3Slide1Title, 2.2, {
             y: 0,
             opacity: 1,
-            ease: Power0.ease
+            ease: Power0.ease,
+            onComplete: function() {
+                if (scenes3SwiperIns[0] === undefined) {
+                    scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+                }
+            }
         });
         TweenMax.to($scenes3Slide1Abs, 1.4, {
             y: 0,
@@ -524,6 +531,7 @@ $(() => {
             opacity: 1,
             ease: Power0.ease
         });
+        triangleBgShow();
     };
     /* -------------------------------------------------------------------------
      * scenes4
@@ -540,20 +548,6 @@ $(() => {
             scenes4BgInit(swiperRealIndex);
         }
     };
-    // /* -------------------------------------------------------------------------
-    //  * getScript
-    // ------------------------------------------------------------------------- */
-    // getScript({
-    //     index: 2,
-    //     swiperRealIndex: swiperRealIndex,
-    //     url: "lib/triangleBg/triangleBg.js",
-    // });
-    // const getScript = function(opt) {
-    //     if (scenes3Bg === null && opt.swiperRealIndex === opt.index) {
-    //         scenes3Bg = $.getScript("lib/triangleBg/triangleBg.js");
-    //     }
-    //     return scenes3Bg
-    // };
     /* -------------------------------------------------------------------------
      * nav
     ------------------------------------------------------------------------- */
@@ -576,6 +570,32 @@ $(() => {
         return false;
     });
     /* -------------------------------------------------------------------------
+     * triangleBg
+    ------------------------------------------------------------------------- */
+    let triangleBg = null;
+    let $triangleBg = null;
+    const triangleBgHide = function() {
+        if (triangleBg !== null) {
+            console.log('triangleBgHide');
+            TweenMax.to($triangleBg, 0, {opacity: 0});
+        }
+    };
+    const triangleBgShow = function() {
+        if (triangleBg !== null) {
+            console.log('triangleBgShow');
+            TweenMax.to($triangleBg, 3, {opacity: 0.2});
+        }
+    };;
+    const triangleBgInit = function(swiperRealIndex, num) {
+        if (swiperRealIndex === num && triangleBg === null) {
+            $triangleBg = $('#triangleBg');
+            triangleBg = $.getScript("lib/triangleBg/triangleBg.js", function() {
+                triangleBgShow();
+            });
+            triangleBgHide();
+        }
+    };
+    /* -------------------------------------------------------------------------
      * xinhuaTalking
     ------------------------------------------------------------------------- */
     const xinhuaTalking = {
@@ -590,52 +610,44 @@ $(() => {
             mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
                 speed: 1000,
-                hashnav: true,
+                hashnav: true, // for dev
                 hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 mousewheelControl: true,
-                // onSlideChangeStart
+                runCallbacksOnInit: true, // 必须开启，onInit触发回调
                 onInit: function(swiper) {
-                    // mainSwiperRealIndex = swiper.realIndex;
                     // getSize
                     _this.getSize();
                     // nav
                     _this.navHeight = _this
                         .$nav
                         .height();
-                    navLine(swiper.realIndex, 1);
+                    // navLine(swiper.realIndex, 1);
                     $window.on('resize', () => {
                         if (mainSwiperRealIndex < 1) {
                             _this.getSize();
                         }
-                        _this.navStatus(mainSwiperRealIndex);
+                        _this.navSetPosition(mainSwiperRealIndex);
                     });
-                    // scenes1Init
                     _this.scenes1Init(swiper.realIndex);
-                    scenes2Init(swiper.realIndex);
-                    scenes3Init(swiper.realIndex);
-                    scenes4Init(swiper.realIndex);
-                    // only for test
-                    // swiper.slideTo(1);
-                    // swiper.lockSwipes();
                 },
                 onSlideChangeStart: function(swiper) {
                     mainSwiperRealIndex = swiper.realIndex;
-                    // console.log(swiper.realIndex);
-                    navLine(swiper.realIndex, 1);
-                    _this.navStatus(swiper.realIndex);
+                    _this.navSetPosition(swiper.realIndex);
                     scenes2Init(swiper.realIndex);
-                    scenes3Init(swiper.realIndex);
-                    scenes4Init(swiper.realIndex);
                 },
                 onSlideChangeEnd: function(swiper) {
+                    navLine(swiper.realIndex, 1);
                     // scenes1Init
                     _this.scenes1Init(swiper.realIndex);
+                    scenes3Init(swiper.realIndex);
+                    scenes4Init(swiper.realIndex);
                 }
             });
         },
         scenes1Init: function(num) {
+            $scenes1.show();
             const _this = this;
             scenes1Slide1Ani(num);
             if (num === 0) {
@@ -748,6 +760,7 @@ $(() => {
                                 .attr('src')
                         });
                 });
+            console.log(_this.data);
         },
         setSwiperButton: function($tag, num) {
             const _this = this;
@@ -846,25 +859,25 @@ $(() => {
             }
             _this.zoomSets();
         },
-        navPos: function(num, time, callback) {
+        navSetPositionAnis: function(num, time, callback) {
             TweenMax.to(this.$nav, time, {
                 top: num,
                 bottom: 'auto',
                 onComplete: callback || null
             });
         },
-        navStatus: function(scenesMain_realIndex) {
+        navSetPosition: function(scenesMain_realIndex) {
             const _this = this;
             if (scenesMain_realIndex < 1) {
                 _this
-                    .navPos((_this.size.height - _this.navHeight), 0.6, function() {
+                    .navSetPositionAnis((_this.size.height - _this.navHeight), 0.6, function() {
                         _this
                             .$nav
                             .removeClass('nav-isTop');
                     });
             } else {
                 _this
-                    .navPos(0, 0.6, function() {
+                    .navSetPositionAnis(0, 0.6, function() {
                         _this
                             .$nav
                             .addClass('nav-isTop');
