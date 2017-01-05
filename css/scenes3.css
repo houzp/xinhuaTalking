@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes3.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-04-11:47:57
+* @Last modified time: 2017-01-05-10:58:18
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -311,84 +311,18 @@
     opacity         : 1;
     transition-delay: .7s;
 }
-
-.scenes3-in-next,
-.scenes3-in-prev {
+/* scenes-swiper-btn-tiny */
+.scenes3-container-in .scenes-swiper-btn-tiny {
     top       : 0;
     margin-top: 0;
-    width     : 39px;
-    height    : 39px;
-    border    : #1080f2 1px solid;
-    background: none;
-    overflow  : hidden;
 }
 
-.scenes3-in-prev {
-    /*left: 95.5vh;*/
+.scenes3-container-in .prev-tiny {
     left : auto;
     right: 73px;
 }
 
-.scenes3-in-next {
-    /*left: 102.2vh;*/
+.scenes3-container-in .next-tiny {
     left : auto;
     right: 11px;
-}
-
-.scenes3-in-next .icon,
-.scenes3-in-prev .icon {
-    width              : 39px;
-    height             : 39px;
-    position           : absolute;
-    top                : 50%;
-    margin-top         : -19.5px;
-    left               : 50%;
-    margin-left        : -19.5px;
-    background-repeat  : no-repeat;
-    background-position: center;
-    background-size    : auto 60%;
-    z-index            : 2;
-}
-
-.scenes3-in-next .b,
-.scenes3-in-next .icon,
-.scenes3-in-prev .b,
-.scenes3-in-prev .icon {
-    transition: transform 1.5s;
-}
-
-.scenes3-in-next .b,
-.scenes3-in-prev .b {
-    width           : 39px;
-    height          : 39px;
-    position        : absolute;
-    top             : 50%;
-    margin-top      : -19.5px;
-    left            : 50%;
-    margin-left     : -19.5px;
-    background-color: #1080f2;
-    border-radius   : 100%;
-    transform       : scale(0);
-    z-index         : 1;
-}
-
-.scenes3-in-prev .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-prev:hover .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-next .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-next:hover .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-next:hover .b,
-.scenes3-in-prev:hover .b {
-    transform: scale(4);
 }

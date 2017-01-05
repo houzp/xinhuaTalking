@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-22:05:51
+* @Last modified time: 2017-01-05-11:00:34
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -203,4 +203,13 @@
 }*/
 .scenes1 .swiper-pagination-bullet-active:after {
     display: block;
+}
+/* .scenes1 .swiper-button-prev */
+.scenes1 .swiper-button-content .t {
+    width      : 224px;
+    color      : #FFF;
+    font-size  : 20px;
+    line-height: 36px;
+    font-weight: normal;
+    margin-top : -36px;
 }

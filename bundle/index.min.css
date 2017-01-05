@@ -774,12 +774,12 @@ body {
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-05-10:26:35
+* @Last modified time: 2017-01-05-11:01:35
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
 /* ani-btn */
-.ani-btn {
+/*.ani-btn {
     display    : inline-block;
     border     : #0099ff 1px solid;
     padding    : 0 60px 0 20px;
@@ -844,9 +844,9 @@ body {
     background-image: url("../index-assets/scenes1-btn-1-active-bg.png");
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
-}
-/* ani-btn-2 */
-.ani-btn-2 {
+}*/
+/* ani-btn */
+.ani-btn {
     display      : inline-block;
     border       : #0099ff 1px solid;
     padding      : 0 60px 0 20px;
@@ -861,22 +861,22 @@ body {
     margin-bottom: 9px;
 }
 
-.ani-btn-2,
-.ani-btn-2:after {
+.ani-btn,
+.ani-btn:after {
     transition: all 2s;
 }
 
-.ani-btn-2.active,
-.ani-btn-2:hover {
+.ani-btn.active,
+.ani-btn:hover {
     color: #FFF;
 }
 
-.ani-btn-2 .t {
+.ani-btn .t {
     position: relative;
     z-index : 2;
 }
 
-.ani-btn-2 .b {
+.ani-btn .b {
     height          : 40px;
     margin-top      : -20px;
     width           : 40px;
@@ -891,14 +891,14 @@ body {
     transition      : transform 2s;
 }
 
-.ani-btn-2.active .b,
-.ani-btn-2:hover .b {
+.ani-btn.active .b,
+.ani-btn:hover .b {
     /*opacity   : 1;*/
     transform: scale(16);
 }
 
-.ani-btn-2.active:after,
-.ani-btn-2:after {
+.ani-btn.active:after,
+.ani-btn:after {
     content            : '';
     display            : block;
     width              : 40px;
@@ -916,8 +916,8 @@ body {
     background-color   : transparent;
 }
 
-.ani-btn-2.active:after,
-.ani-btn-2:hover:after {
+.ani-btn.active:after,
+.ani-btn:hover:after {
     background-image: url("../index-assets/scenes1-btn-1-active-bg.png");
     background-color: #439ffd;
     border-left     : #439ffd 1px solid;
@@ -1175,14 +1175,79 @@ body {
 .next:hover:active .icon {
     transform: translateX(138px);
 }
-/* .scenes1 .swiper-button-prev */
-.scenes1 .swiper-button-content .t {
-    width      : 224px;
-    color      : #FFF;
-    font-size  : 20px;
-    line-height: 36px;
-    font-weight: normal;
-    margin-top : -36px;
+/* ---------------------------------------- scenes-swiper-btn */
+.scenes-swiper-btn-tiny {
+    top       : 50%;
+    width     : 39px;
+    height    : 39px;
+    border    : #1080f2 1px solid;
+    background: none;
+    overflow  : hidden;
+}
+
+.scenes-swiper-btn-tiny .icon {
+    width              : 39px;
+    height             : 39px;
+    position           : absolute;
+    top                : 50%;
+    margin-top         : -19.5px;
+    left               : 50%;
+    margin-left        : -19.5px;
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : auto 60%;
+    z-index            : 2;
+}
+
+.scenes-swiper-btn-tiny .b,
+.scenes-swiper-btn-tiny .icon {
+    transition: transform 1.5s;
+}
+
+.scenes-swiper-btn-tiny .b {
+    width           : 39px;
+    height          : 39px;
+    position        : absolute;
+    top             : 50%;
+    margin-top      : -19.5px;
+    left            : 50%;
+    margin-left     : -19.5px;
+    background-color: #1080f2;
+    border-radius   : 100%;
+    transform       : scale(0);
+    z-index         : 1;
+}
+
+.prev-tiny {
+    /*left: 95.5vh;*/
+    left : auto;
+    right: 6.5vh;
+}
+
+.next-tiny {
+    /*left: 102.2vh;*/
+    left : auto;
+    right: .4vh;
+}
+
+.prev-tiny .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.prev-tiny:hover .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.next-tiny .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.next-tiny:hover .icon {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
+}
+
+.scenes-swiper-btn-tiny:hover .b {
+    transform: scale(4);
 }
 /**
 * @Author: St. <SuperWoods>
@@ -1432,7 +1497,7 @@ a {
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-30-22:05:51
+* @Last modified time: 2017-01-05-11:00:34
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1632,13 +1697,22 @@ a {
 .scenes1 .swiper-pagination-bullet-active:after {
     display: block;
 }
+/* .scenes1 .swiper-button-prev */
+.scenes1 .swiper-button-content .t {
+    width      : 224px;
+    color      : #FFF;
+    font-size  : 20px;
+    line-height: 36px;
+    font-weight: normal;
+    margin-top : -36px;
+}
 /**
 * @Author: St. <SuperWoods>
 * @Date:   2016-12-21-23:20:04
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-05-02:33:58
+* @Last modified time: 2017-01-05-11:00:49
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -1780,81 +1854,9 @@ a {
 .scenes2-title-box .t3 {
     float: left;
 }
-
-.scenes2 .swiper-button-next,
-.scenes2 .swiper-button-prev {
-    top       : 60vh;
-    width     : 39px;
-    height    : 39px;
-    border    : #1080f2 1px solid;
-    background: none;
-    overflow  : hidden;
-}
-
-.scenes2 .swiper-button-prev {
-    /*left: 95.5vh;*/
-    left : auto;
-    right: 6.5vh;
-}
-
-.scenes2 .swiper-button-next {
-    /*left: 102.2vh;*/
-    left : auto;
-    right: .4vh;
-}
-
-.scenes2 .icon {
-    width              : 39px;
-    height             : 39px;
-    position           : absolute;
-    top                : 50%;
-    margin-top         : -19.5px;
-    left               : 50%;
-    margin-left        : -19.5px;
-    background-repeat  : no-repeat;
-    background-position: center;
-    background-size    : auto 60%;
-    z-index            : 2;
-}
-
-.scenes2 .b,
-.scenes2 .icon {
-    transition: transform 1.5s;
-}
-
-.scenes2 .b {
-    width           : 39px;
-    height          : 39px;
-    position        : absolute;
-    top             : 50%;
-    margin-top      : -19.5px;
-    left            : 50%;
-    margin-left     : -19.5px;
-    background-color: #1080f2;
-    border-radius   : 100%;
-    transform       : scale(0);
-    z-index         : 1;
-}
-
-.scenes2 .swiper-button-prev .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes2 .swiper-button-prev:hover .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes2 .swiper-button-next .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes2 .swiper-button-next:hover .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes2 .swiper-button-next:hover .b,
-.scenes2 .swiper-button-prev:hover .b {
-    transform: scale(4);
+/* scenes-swiper-btn-tiny */
+.scenes2 .scenes-swiper-btn-tiny {
+    top: 60vh;
 }
 /**
 * @Author: St. <SuperWoods>
@@ -1862,7 +1864,7 @@ a {
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes3.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-04-11:47:57
+* @Last modified time: 2017-01-05-10:58:18
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -2169,86 +2171,20 @@ a {
     opacity         : 1;
     transition-delay: .7s;
 }
-
-.scenes3-in-next,
-.scenes3-in-prev {
+/* scenes-swiper-btn-tiny */
+.scenes3-container-in .scenes-swiper-btn-tiny {
     top       : 0;
     margin-top: 0;
-    width     : 39px;
-    height    : 39px;
-    border    : #1080f2 1px solid;
-    background: none;
-    overflow  : hidden;
 }
 
-.scenes3-in-prev {
-    /*left: 95.5vh;*/
+.scenes3-container-in .prev-tiny {
     left : auto;
     right: 73px;
 }
 
-.scenes3-in-next {
-    /*left: 102.2vh;*/
+.scenes3-container-in .next-tiny {
     left : auto;
     right: 11px;
-}
-
-.scenes3-in-next .icon,
-.scenes3-in-prev .icon {
-    width              : 39px;
-    height             : 39px;
-    position           : absolute;
-    top                : 50%;
-    margin-top         : -19.5px;
-    left               : 50%;
-    margin-left        : -19.5px;
-    background-repeat  : no-repeat;
-    background-position: center;
-    background-size    : auto 60%;
-    z-index            : 2;
-}
-
-.scenes3-in-next .b,
-.scenes3-in-next .icon,
-.scenes3-in-prev .b,
-.scenes3-in-prev .icon {
-    transition: transform 1.5s;
-}
-
-.scenes3-in-next .b,
-.scenes3-in-prev .b {
-    width           : 39px;
-    height          : 39px;
-    position        : absolute;
-    top             : 50%;
-    margin-top      : -19.5px;
-    left            : 50%;
-    margin-left     : -19.5px;
-    background-color: #1080f2;
-    border-radius   : 100%;
-    transform       : scale(0);
-    z-index         : 1;
-}
-
-.scenes3-in-prev .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-prev:hover .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-next .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%231080f2'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-next:hover .icon {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E") !important;
-}
-
-.scenes3-in-next:hover .b,
-.scenes3-in-prev:hover .b {
-    transform: scale(4);
 }
 /**
 * @Author: St. <SuperWoods>
