@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: cover.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-29-17:01:57
+* @Last modified time: 2017-01-05-18:46:54
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -23,11 +23,12 @@
     z-index            : 9999;
 }
 
-.cover:before {
-    content          : '';
-    display          : block;
-    background-image : url("../index-assets/cover-logo.png");
+.cover-logo {
+    /*content          : '';*/
+    /*display          : block;*/
+    background-image : url("../index-assets/cover-logo.svg");
     background-repeat: no-repeat;
+    /*background-size  : cover;*/
     width            : 330px;
     height           : 142px;
     position         : absolute;
@@ -35,4 +36,10 @@
     left             : 50%;
     margin-left      : -165px;
     margin-top       : -71px;
+}
+
+.ie10 .cover-logo,
+.ie9 .cover-logo,
+.oldie .cover-logo {
+    background-image: url("../index-assets/cover-logo.png");
 }

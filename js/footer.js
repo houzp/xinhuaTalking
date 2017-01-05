@@ -1,11 +1,14 @@
 /**
- * @Author: SuperWoods
- * @Date:   2016-11-13-11:46:14
- * @Email:  st_sister@iCloud.com
+* @Author: St. <SuperWoods>
+* @Date:   2017-01-04-21:40:37
+* @Email:  st_sister@iCloud.com
+* @Filename: footer.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-16-16:43:13
- * @License: MIT
- */
+* @Last modified time: 2017-01-04-21:40:37
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
+
 // footer
 $(() => {
     const d = new Date();
