@@ -7,12 +7,12 @@
  * @Date:   2016-07-13-01:46:45
  *
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-04-13:30:50
+* @Last modified time: 2017-01-10-09:50:30
  */
 
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
-    // 显示解析时间å
+    // 显示解析时间
     require('time-grunt')(grunt);
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
