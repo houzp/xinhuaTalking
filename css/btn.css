@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: btn.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-05-11:01:35
+* @Last modified time: 2017-01-13-22:39:46
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -89,6 +89,15 @@
     float        : left;
     clear        : both;
     margin-bottom: 9px;
+}
+
+.ani-btn a {
+    color: #1080f2;
+}
+
+.ani-btn a:hover,
+.ani-btn.active a {
+    color: #FFF !important;
 }
 
 .ani-btn,
