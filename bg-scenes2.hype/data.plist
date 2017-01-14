@@ -55,7 +55,7 @@
 	<key>documentationVerticalSplitViewPosition</key>
 	<real>325</real>
 	<key>drawSceneBackgrounds</key>
-	<false/>
+	<true/>
 	<key>exportSliceOidsToExport</key>
 	<array>
 		<string>4</string>
@@ -69,11 +69,11 @@
 	<key>hasManuallyChangedCSSPositioning</key>
 	<false/>
 	<key>lastCheckDate</key>
-	<date>2017-01-04T12:02:10Z</date>
+	<date>2017-01-13T10:47:51Z</date>
 	<key>layout</key>
 	<dict>
 		<key>currentInspectorPane</key>
-		<integer>1</integer>
+		<integer>0</integer>
 		<key>customizableLayout</key>
 		<dict>
 			<key>frame</key>
@@ -152,7 +152,7 @@
 									<array>
 										<dict>
 											<key>frame</key>
-											<string>{{136, 0}, {1242, 354}}</string>
+											<string>{{136, 0}, {1242, 240}}</string>
 											<key>identifier</key>
 											<string>container 4</string>
 											<key>isCustomizableViewContainer</key>
@@ -165,7 +165,7 @@
 											<array>
 												<dict>
 													<key>frame</key>
-													<string>{{136, 0}, {1242, 354}}</string>
+													<string>{{136, 0}, {1242, 240}}</string>
 													<key>identifier</key>
 													<string>timelineCustomizableContainer</string>
 													<key>isCustomizableViewContainer</key>
@@ -175,7 +175,7 @@
 										</dict>
 										<dict>
 											<key>frame</key>
-											<string>{{136, 355}, {1242, 741}}</string>
+											<string>{{136, 241}, {1242, 855}}</string>
 											<key>identifier</key>
 											<string>container 3</string>
 											<key>isCustomizableViewContainer</key>
@@ -188,7 +188,7 @@
 											<array>
 												<dict>
 													<key>frame</key>
-													<string>{{136, 355}, {1242, 741}}</string>
+													<string>{{136, 241}, {1242, 855}}</string>
 													<key>identifier</key>
 													<string>sceneEditorCustomizableContainer</string>
 													<key>isCustomizableViewContainer</key>
@@ -253,7 +253,7 @@
 		<key>keyframeTimelineHeight</key>
 		<real>50</real>
 		<key>mainWindowFrame</key>
-		<string>15 59 1920 1118 0 0 1920 1177 </string>
+		<string>1935 59 1920 1118 1920 0 1920 1177 </string>
 		<key>openTabs</key>
 		<array/>
 		<key>selectedTabIndex</key>
@@ -863,7 +863,7 @@
 							<key>809</key>
 							<real>54.099998474121094</real>
 							<key>813</key>
-							<real>38.266666412353516</real>
+							<real>50</real>
 							<key>817</key>
 							<real>50</real>
 							<key>821</key>
@@ -914,7 +914,7 @@
 					<key>rootSymbolControllerOid</key>
 					<string>2</string>
 					<key>scrollViewOffset</key>
-					<string>{36, 286}</string>
+					<string>{36, 229}</string>
 					<key>userGuides</key>
 					<array>
 						<dict>
@@ -956,7 +956,7 @@
 	<array>
 		<dict>
 			<key>documentIdentifier</key>
-			<string>DFBBFFFD-15C5-40AF-84B4-6C7B39EB9E3D-33836-000022B1BC940369</string>
+			<string>8DFB8402-EBC6-4A84-B723-D202D9BEF50A-26343-0000155735389C28</string>
 			<key>selectedObjects</key>
 			<array>
 				<string>807</string>
@@ -975,9 +975,9 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>121px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1101,18 +1101,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>121px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>773</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>411px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1236,18 +1236,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>411px</string>
 						</dict>
 					</array>
 					<key>775</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>366px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1371,18 +1371,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>366px</string>
 						</dict>
 					</array>
 					<key>777</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>93px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1500,18 +1500,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>93px</string>
 						</dict>
 					</array>
 					<key>779</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>1095px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1635,18 +1635,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>1095px</string>
 						</dict>
 					</array>
 					<key>781</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>31px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1764,18 +1764,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>31px</string>
 						</dict>
 					</array>
 					<key>783</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>36px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1893,18 +1893,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>36px</string>
 						</dict>
 					</array>
 					<key>785</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>77px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -2028,9 +2028,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>77px</string>
 						</dict>
 					</array>
 					<key>802</key>
@@ -5688,7 +5688,7 @@
 	<key>useCSSPositioning</key>
 	<false/>
 	<key>useCSSReset</key>
-	<true/>
+	<false/>
 	<key>useGraphicsAcceleration</key>
 	<true/>
 	<key>useInitialScale</key>

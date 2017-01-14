@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: hacks.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2016-12-21-14:11:11
+* @Last modified time: 2017-01-13-17:07:59
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -27,4 +27,33 @@
 
 .oldie body {
     font-family: \5B8B\4F53, Arial;
+}
+
+.hackTips {
+    position   : absolute;
+    width      : 480px;
+    text-align : center;
+    margin-left: -240px;
+    z-index    : 9999;
+    font-size  : 12px;
+    line-height: 22px;
+    color      : #333;
+    top        : auto;
+    bottom     : 40px;
+    left       : 50%;
+}
+
+.hackTips p {
+    font-size: 16px;
+}
+
+.hackTips span {
+    color: red;
+}
+
+.hackTips .t2 {
+    border       : 1px #CCC solid;
+    margin       : 20px;
+    padding      : 10px;
+    border-radius: 12px;
 }

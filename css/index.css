@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: index.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-03-11:14:20
+* @Last modified time: 2017-01-14-11:05:54
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -55,9 +55,15 @@ a {
 .part_swiper-slide {
     height: 100%;
 }
+
+.scenes5-cont-pic-list-unit-box,
+.scenes5-img-tit {
+    cursor: pointer;
+}
 /* scenes */
 @import "../css/scenes1.css";
 @import "../css/scenes2.css";
 @import "../css/scenes3.css";
 @import "../css/scenes4.css";
+@import "../hzpIsMostHandsome/index2.css";
 @import "../css/hacks.css";
