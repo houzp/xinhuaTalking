@@ -4,11 +4,13 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-11:21:22
+* @Last modified time: 2017-01-14-16:22:36
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 $(() => {
+    const SCENES2_SRC = "./bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js";
+    const SCENES4_SRC = "./bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js";
 
     // 判断是否为高性能设备
     console.log('window.BROWSER', window.BROWSER);
@@ -89,9 +91,9 @@ $(() => {
     ------------------------------------------------------------------------- */
     const resources = [ // 需要预加载的资源
         'index-assets/bg.jpg',
-        'index-assets/cover-logo.svg',
-        'index-assets/scenes1-btn-1-active-bg.png',
-        'index-assets/scenes1-btn-1-bg.png',
+        // 'index-assets/cover-logo.svg',
+        // 'index-assets/scenes1-btn-1-active-bg.png',
+        // 'index-assets/scenes1-btn-1-bg.png',
         // 'index-assets/demo-pic-0.png',
         // 'index-assets/demo-pic-1.png',
         // 'index-assets/demo-pic-2.png',
@@ -186,14 +188,18 @@ $(() => {
                                 _this
                                     .$cover
                                     .off('click');
+
                                 setTimeout(function() {
                                     if (mainSwiperRealIndex === 0) {
                                         scenes1Slide1Show();
                                     }
+                                }, time * 0.5 * 1000);
+
+                                setTimeout(function() {
                                     if (mainSwiperRealIndex === 2) {
                                         scenes3Slide1Show();
                                     }
-                                }, time * 0.5 * 1000);
+                                }, time * 0.1 * 1000);
                             },
                             onComplete: function() {
                                 _this
@@ -214,10 +220,13 @@ $(() => {
                     if (mainSwiperRealIndex === 0) {
                         scenes1Slide1Show();
                     }
-                    if (mainSwiperRealIndex === 2) {
-                        scenes3Slide1Show();
-                    }
                 }, time * 0.5 * 1000);
+
+                // setTimeout(function() {
+                //     if (mainSwiperRealIndex === 2) {
+                //         scenes3Slide1Show(0);
+                //     }
+                // }, time * 0.1 * 1000);
 
                 _this.$cover.fadeOut('3000');
                 $body.removeClass('overflow-hidden');
@@ -434,7 +443,7 @@ $(() => {
                     speed: 1800,
                     // spaceBetween: 200,
                     onInit: function(swiper) {
-                        IS_HIGH_PERFORMANCE && $.getScript("bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js");
+                        IS_HIGH_PERFORMANCE && $.getScript(SCENES2_SRC);
 
                         scenes2Hide($scenes2Items, 0, 0);
                         scenes2Ani(swiper.activeIndex, 'show', 1);
@@ -505,6 +514,14 @@ $(() => {
                     onInit: function(swiper) {
                         scenes3GetSwiperData();
                         scenes3BtnUpdate(swiper);
+
+                        // if (mainSwiperRealIndex === 2) {
+                        // scenes3Slide1Show(0);
+                        if (!IS_HIGH_PERFORMANCE && scenes3SwiperIns[0] === undefined) {
+                            scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+                        }
+                        // }
+
                         swiper.nextButton
                             .on('click', function() {
                                 console.log('scenes3SwiperInInit', scenes3SwiperIns, swiper.realIndex);
@@ -707,18 +724,18 @@ $(() => {
         triangleBgHide();
         // }
     };
-    const scenes3Slide1Show = function() {
-        if (scenes3SwiperIns[0] === undefined) {
-            scenes3SwiperIns[0] = scenes3SwiperInInit(0);
-        }
-        TweenMax.to($scenes3Slide1Title, 2.2, {
+    const scenes3Slide1Show = function(time) {
+        // if (scenes3SwiperIns[0] === undefined) {
+        //     scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+        // }
+        TweenMax.to($scenes3Slide1Title, time || 2.2, {
             y: 0,
             opacity: 1,
             ease: Power0.ease,
             onComplete: function() {
-                // if (scenes3SwiperIns[0] === undefined) {
-                //     scenes3SwiperIns[0] = scenes3SwiperInInit(0);
-                // }
+                if (scenes3SwiperIns[0] === undefined) {
+                    scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+                }
             }
         });
         TweenMax.to($scenes3Slide1Abs, 1.4, {
@@ -743,7 +760,7 @@ $(() => {
     let scenes4Bg = null;
     const scenes4BgInit = function(swiperRealIndex) {
         if (scenes4Bg === null) {
-            scenes4Bg = $.getScript("bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js");
+            scenes4Bg = $.getScript(SCENES4_SRC);
         }
     };
     const scenes4Init = function(swiperRealIndex) {
@@ -1028,6 +1045,21 @@ $(() => {
         if (scense5Fn === null && num === 4) {
             scense5Fn = scense_five();
             // scense_five();
+            function setFooter() {
+                if ($window.height() < 900) {
+                    $('.footer').css({
+                        'bottom': -80
+                    });
+                } else {
+                    $('.footer').css({
+                        'bottom': 0
+                    });
+                }
+            }
+            $window.on('resize', function() {
+                setFooter();
+            });
+            setFooter();
         }
     }
 
