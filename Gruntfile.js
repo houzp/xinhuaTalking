@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: Gruntfile.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-11:34:31
+* @Last modified time: 2017-01-14-11:35:36
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -122,10 +122,10 @@ module.exports = function (grunt) {
 
     // default
     grunt.registerTask('default', [
-        'concat:buildIndexAllJS', //    js: concat
-        'uglify:indexAll', //        uglify
-        'cssmin', //   css: cssmin
-        'concat:cssAddBanner', //        cssAddBanner
+        'concat:buildIndexAllJS', // js: concat
+        'uglify:indexAll', // uglify
+        'cssmin', // css: cssmin
+        'concat:cssAddBanner', // cssAddBanner
     ]);
 
 };
