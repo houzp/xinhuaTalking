@@ -1,18 +1,17 @@
 /**
- * Copyright (c) Xinhuanet Inc. All rights reserved.
- *
- * @License: MIT
- * @Author: SuperWoods
- * @Email:  st_sister@iCloud.com
- * @Date:   2016-07-13-01:46:45
- *
+* @Author: St. <SuperWoods>
+* @Date:   2017-01-14-11:34:26
+* @Email:  st_sister@iCloud.com
+* @Filename: Gruntfile.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-11:32:43
- */
+* @Last modified time: 2017-01-14-11:34:31
+* @License: MIT
+* @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
+*/
 
 module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
-    // 显示解析时间å
+    // 显示解析时间
     require('time-grunt')(grunt);
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
