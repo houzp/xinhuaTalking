@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-11:21:22
+* @Last modified time: 2017-01-14-14:24:32
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -186,14 +186,18 @@ $(() => {
                                 _this
                                     .$cover
                                     .off('click');
+
                                 setTimeout(function() {
                                     if (mainSwiperRealIndex === 0) {
                                         scenes1Slide1Show();
                                     }
+                                }, time * 0.5 * 1000);
+
+                                setTimeout(function() {
                                     if (mainSwiperRealIndex === 2) {
                                         scenes3Slide1Show();
                                     }
-                                }, time * 0.5 * 1000);
+                                }, time * 0.1 * 1000);
                             },
                             onComplete: function() {
                                 _this
@@ -214,10 +218,13 @@ $(() => {
                     if (mainSwiperRealIndex === 0) {
                         scenes1Slide1Show();
                     }
-                    if (mainSwiperRealIndex === 2) {
-                        scenes3Slide1Show();
-                    }
                 }, time * 0.5 * 1000);
+
+                // setTimeout(function() {
+                //     if (mainSwiperRealIndex === 2) {
+                //         scenes3Slide1Show(0);
+                //     }
+                // }, time * 0.1 * 1000);
 
                 _this.$cover.fadeOut('3000');
                 $body.removeClass('overflow-hidden');
@@ -505,6 +512,14 @@ $(() => {
                     onInit: function(swiper) {
                         scenes3GetSwiperData();
                         scenes3BtnUpdate(swiper);
+
+                        // if (mainSwiperRealIndex === 2) {
+                        // scenes3Slide1Show(0);
+                        if (!IS_HIGH_PERFORMANCE && scenes3SwiperIns[0] === undefined) {
+                            scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+                        }
+                        // }
+
                         swiper.nextButton
                             .on('click', function() {
                                 console.log('scenes3SwiperInInit', scenes3SwiperIns, swiper.realIndex);
@@ -707,18 +722,18 @@ $(() => {
         triangleBgHide();
         // }
     };
-    const scenes3Slide1Show = function() {
-        if (scenes3SwiperIns[0] === undefined) {
-            scenes3SwiperIns[0] = scenes3SwiperInInit(0);
-        }
-        TweenMax.to($scenes3Slide1Title, 2.2, {
+    const scenes3Slide1Show = function(time) {
+        // if (scenes3SwiperIns[0] === undefined) {
+        //     scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+        // }
+        TweenMax.to($scenes3Slide1Title, time || 2.2, {
             y: 0,
             opacity: 1,
             ease: Power0.ease,
             onComplete: function() {
-                // if (scenes3SwiperIns[0] === undefined) {
-                //     scenes3SwiperIns[0] = scenes3SwiperInInit(0);
-                // }
+                if (scenes3SwiperIns[0] === undefined) {
+                    scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+                }
             }
         });
         TweenMax.to($scenes3Slide1Abs, 1.4, {
@@ -1028,6 +1043,21 @@ $(() => {
         if (scense5Fn === null && num === 4) {
             scense5Fn = scense_five();
             // scense_five();
+            function setFooter() {
+                if ($window.height() < 900) {
+                    $('.footer').css({
+                        'bottom': -80
+                    });
+                } else {
+                    $('.footer').css({
+                        'bottom': 0
+                    });
+                }
+            }
+            $window.on('resize', function() {
+                setFooter();
+            });
+            setFooter();
         }
     }
 
