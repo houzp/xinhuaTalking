@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-10:51:32
+* @Last modified time: 2017-01-14-11:21:22
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -489,9 +489,6 @@ $(() => {
         }
         if (mainSwiperRealIndex === 2) {
             if (scenes3Swiper === null) {
-
-
-
                 scenes3Btn();
                 IS_HIGH_PERFORMANCE && triangleBgInit(mainSwiperRealIndex, 2);
 
@@ -711,14 +708,17 @@ $(() => {
         // }
     };
     const scenes3Slide1Show = function() {
+        if (scenes3SwiperIns[0] === undefined) {
+            scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+        }
         TweenMax.to($scenes3Slide1Title, 2.2, {
             y: 0,
             opacity: 1,
             ease: Power0.ease,
             onComplete: function() {
-                if (scenes3SwiperIns[0] === undefined) {
-                    scenes3SwiperIns[0] = scenes3SwiperInInit(0);
-                }
+                // if (scenes3SwiperIns[0] === undefined) {
+                //     scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+                // }
             }
         });
         TweenMax.to($scenes3Slide1Abs, 1.4, {
@@ -1046,7 +1046,7 @@ $(() => {
             mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
                 speed: IS_HIGH_PERFORMANCE && 1000 || 500,
-                hashnav: true, // for dev
+                // hashnav: true, // for dev
                 hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,

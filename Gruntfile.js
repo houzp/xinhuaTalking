@@ -7,7 +7,7 @@
  * @Date:   2016-07-13-01:46:45
  *
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-04-13:30:50
+* @Last modified time: 2017-01-14-11:30:32
  */
 
 module.exports = function (grunt) {
@@ -125,14 +125,27 @@ module.exports = function (grunt) {
                     dest: 'bundle/',
                 }]
             },
+            // buildIndexAllJS: {
+            //     files: {
+            //         'bundle/index.all.js': [ // bundle js
+            //             'bundle/isAboveIE9.swiper.min.js',
+            //             'bundle/isAboveIE9.jquery.parallax.min.js',
+            //             'bundle/jquery-ui.min.js',
+            //             'bundle/index.min.js',
+            //             'bundle/footer.min.js',
+            //         ],
+            //     }
+            // },
             buildIndexAllJS: {
                 files: {
                     'bundle/index.all.js': [ // bundle js
-                        'bundle/isAboveIE9.swiper.min.js',
-                        'bundle/isAboveIE9.jquery.parallax.min.js',
-                        'bundle/jquery-ui.min.js',
+                        'lib/Swiper-3.4.1/dist/js/swiper.jquery.min.js',
+                        'lib/jquery.qrcode/jquery.qrcode.min.js',
+                        'lib/gsap/TweenMax.min.js',
+                        'lib/triangleBg/cav.min.js',
+                        'lib/resLoader/resLoader.min.js',
                         'bundle/index.min.js',
-                        'bundle/footer.min.js',
+                        'hzpIsMostHandsome/index2.js',
                     ],
                 }
             },
@@ -226,24 +239,10 @@ module.exports = function (grunt) {
 
     // default
     grunt.registerTask('default', [
-        // 'clean:dist',          //  dist: clean
         'concat:buildIndexAllJS', //    js: concat
         'uglify:indexAll', //        uglify
         'cssmin', //   css: cssmin
         'concat:cssAddBanner', //        cssAddBanner
-        // 'concat:buildIndexAllJS', //        buildIndexAllJS
-        // 'copy:html',           //  html: copy
-        // 'useminPrepare',       //        useminPrepare
-        // 'usemin',              //        usemin
-        // 'copy:img',            //   img: copy
-        // 'copy:maps',           //  maps: copy
-        // 'copy:cases',          // cases: copy
     ]);
-
-    // // grunt buildIndexAllJS
-    // grunt.registerTask('buildIndexAllJS', [
-    //     'concat:buildIndexAllJS', //        buildIndexAllJS
-    // ]);
-
 
 };
