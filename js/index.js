@@ -4,11 +4,13 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-14:24:32
+* @Last modified time: 2017-01-14-14:39:05
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 $(() => {
+    const SCENES2_SRC = "../bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js";
+    const SCENES4_SRC = "../bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js";
 
     // 判断是否为高性能设备
     console.log('window.BROWSER', window.BROWSER);
@@ -441,7 +443,7 @@ $(() => {
                     speed: 1800,
                     // spaceBetween: 200,
                     onInit: function(swiper) {
-                        IS_HIGH_PERFORMANCE && $.getScript("bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js");
+                        IS_HIGH_PERFORMANCE && $.getScript(SCENES2_SRC);
 
                         scenes2Hide($scenes2Items, 0, 0);
                         scenes2Ani(swiper.activeIndex, 'show', 1);
@@ -758,7 +760,7 @@ $(() => {
     let scenes4Bg = null;
     const scenes4BgInit = function(swiperRealIndex) {
         if (scenes4Bg === null) {
-            scenes4Bg = $.getScript("bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js");
+            scenes4Bg = $.getScript(SCENES4_SRC);
         }
     };
     const scenes4Init = function(swiperRealIndex) {
