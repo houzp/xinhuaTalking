@@ -4,13 +4,13 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-14:39:05
+* @Last modified time: 2017-01-14-16:22:36
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
 $(() => {
-    const SCENES2_SRC = "../bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js";
-    const SCENES4_SRC = "../bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js";
+    const SCENES2_SRC = "./bg-scenes2.hyperesources/bgscenes2_hype_generated_script.js";
+    const SCENES4_SRC = "./bg-scenes4.hyperesources/bgscenes4_hype_generated_script.js";
 
     // 判断是否为高性能设备
     console.log('window.BROWSER', window.BROWSER);
@@ -91,9 +91,9 @@ $(() => {
     ------------------------------------------------------------------------- */
     const resources = [ // 需要预加载的资源
         'index-assets/bg.jpg',
-        'index-assets/cover-logo.svg',
-        'index-assets/scenes1-btn-1-active-bg.png',
-        'index-assets/scenes1-btn-1-bg.png',
+        // 'index-assets/cover-logo.svg',
+        // 'index-assets/scenes1-btn-1-active-bg.png',
+        // 'index-assets/scenes1-btn-1-bg.png',
         // 'index-assets/demo-pic-0.png',
         // 'index-assets/demo-pic-1.png',
         // 'index-assets/demo-pic-2.png',

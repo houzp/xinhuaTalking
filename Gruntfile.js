@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: Gruntfile.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-11:35:36
+* @Last modified time: 2017-01-14-16:38:16
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
                         'lib/Swiper-3.4.1/dist/js/swiper.jquery.min.js',
                         'lib/jquery.qrcode/jquery.qrcode.min.js',
                         'lib/gsap/TweenMax.min.js',
-                        'lib/triangleBg/cav.min.js',
+                        'lib/triangleBg/cav.js',
                         'lib/resLoader/resLoader.min.js',
                         'bundle/index.min.js',
                         'hzpIsMostHandsome/index2.js',
