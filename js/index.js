@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-15-19:23:53
+* @Last modified time: 2017-01-15-23:02:06
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -241,15 +241,9 @@ $(() => {
     const zoomHandler = {
         zoomSets: function() {
             if ($window.height() < 1080) {
-                const _this = this;
                 $('#scenes2').addClass('ctlHeight');
             } else {
                 $('#scenes2').removeClass('ctlHeight');
-                // $('.scenes2-top-text').css({
-                //     'margin-top': 20,
-                //     'font-size': '20px',
-                //     'line-height': '28px'
-                // });
             }
         },
         init: function() {
@@ -524,13 +518,16 @@ $(() => {
     const $scenes3 = $('#scenes3');
     const $scenes3InSlide = $scenes3.find('.scenes3-container-in .swiper-slide');
     const scenes3Init = function(swiperRealIndex) {
-        // if (IS_HIGH_PERFORMANCE) {
-        //     scenes3Slide1Ani(mainSwiperRealIndex);
-        // }
+
+        if (IS_HIGH_PERFORMANCE) {
+            window.location.hash === ('#no-scroll') && cenes3Slide1Ani(mainSwiperRealIndex);
+        }
+
         if (mainSwiperRealIndex === 2) {
             if (scenes3Swiper === null) {
                 scenes3Btn();
-                // IS_HIGH_PERFORMANCE && triangleBgInit(mainSwiperRealIndex, 2);
+
+                window.location.hash === ('#no-scroll') && IS_HIGH_PERFORMANCE && triangleBgInit(mainSwiperRealIndex, 2);
 
                 scenes3Swiper = new Swiper($scenes3.selector, {
                     lazyLoading: true,
@@ -809,6 +806,18 @@ $(() => {
     const scenes4Init = function(swiperRealIndex) {
         if (mainSwiperRealIndex === 3 && IS_HIGH_PERFORMANCE) {
             scenes4BgInit(swiperRealIndex);
+            if ($window.height() < 910) {
+                $('#scenes4').addClass('ctlHeight4');
+            } else {
+                $('#scenes4').removeClass('ctlHeight4');
+            }
+            $window.on('resize', function(){
+                if ($window.height() < 910) {
+                    $('#scenes4').addClass('ctlHeight4');
+                } else {
+                    $('#scenes4').removeClass('ctlHeight4');
+                }
+            });
         }
     };
     /* -------------------------------------------------------------------------
