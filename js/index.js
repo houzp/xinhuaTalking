@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-16:22:36
+* @Last modified time: 2017-01-15-17:41:09
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -285,7 +285,7 @@ $(() => {
             x: -200,
             opacity: 0
         });
-        $scenes1SwiperButtonNext.removeClass('active');
+        // $scenes1SwiperButtonNext.removeClass('active');
     };
     const scenes1Slide1Show = function() {
         TweenMax.to($topNav, 2, {
@@ -307,9 +307,9 @@ $(() => {
             x: 0,
             opacity: 1,
             ease: Power0.ease,
-            onStart: function() {
-                $scenes1SwiperButtonNext.addClass('active');
-            }
+            // onStart: function() {
+            //     $scenes1SwiperButtonNext.addClass('active');
+            // }
         });
     };
     /* -------------------------------------------------------------------------
@@ -357,6 +357,9 @@ $(() => {
         }
     };
     const scenes2Mouseover = function($tag) {
+
+        console.log('scenes2Mouseover', $tag);
+
         TweenMax.to($tag, 0.2, {
             scale: 1.25,
             'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
@@ -435,7 +438,7 @@ $(() => {
                 scenes2Swiper = new Swiper('#scenes2', {
                     lazyLoading: true,
                     effect: 'fade',
-                    autoplay: 8000,
+                    // autoplay: 8000,
                     // loop: true, // 因为背景透明无法使用loop
                     prevButton: '#scenes2 .swiper-button-prev',
                     nextButton: '#scenes2 .swiper-button-next',
@@ -447,6 +450,7 @@ $(() => {
 
                         scenes2Hide($scenes2Items, 0, 0);
                         scenes2Ani(swiper.activeIndex, 'show', 1);
+
                         const firstNum = 0;
                         const $firstItem = $scenes2Items.eq(firstNum);
                         setTimeout(function() {
@@ -464,11 +468,26 @@ $(() => {
                             scenes2Mouseout($this);
                         });
 
+                        $('#scenes2').find('.swiper-slide').css({
+                            'z-index': 8888
+                        });
+                        $('#scenes2').find('.swiper-slide').eq(swiper.activeIndex).css({
+                            'z-index': 9999
+                        });
+
                         zoomHandler.init();
                     },
                     onSlideChangeStart: function(swiper) {
                         scenes2Ani(swiper.activeIndex, 'show');
                         scenes2Ani(swiper.previousIndex, 'hide');
+
+                        $('#scenes2').find('.swiper-slide').css({
+                            'z-index': 8888
+                        });
+                        $('#scenes2').find('.swiper-slide').eq(swiper.activeIndex).css({
+                            'z-index': 9999
+                        });
+
                     }
                 });
             } else {
@@ -493,13 +512,13 @@ $(() => {
     const $scenes3 = $('#scenes3');
     const $scenes3InSlide = $scenes3.find('.scenes3-container-in .swiper-slide');
     const scenes3Init = function(swiperRealIndex) {
-        if (IS_HIGH_PERFORMANCE) {
-            scenes3Slide1Ani(mainSwiperRealIndex);
-        }
+        // if (IS_HIGH_PERFORMANCE) {
+        //     scenes3Slide1Ani(mainSwiperRealIndex);
+        // }
         if (mainSwiperRealIndex === 2) {
             if (scenes3Swiper === null) {
                 scenes3Btn();
-                IS_HIGH_PERFORMANCE && triangleBgInit(mainSwiperRealIndex, 2);
+                // IS_HIGH_PERFORMANCE && triangleBgInit(mainSwiperRealIndex, 2);
 
                 scenes3Swiper = new Swiper($scenes3.selector, {
                     lazyLoading: true,
@@ -541,6 +560,11 @@ $(() => {
             } else {
                 scenes3Swiper.unlockSwipes();
             }
+
+            if (scenes3SwiperIns[0] === undefined) {
+                scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+            }
+
             // bgToggle('show');
             // if (coverStatus === 'hide') {
             //     scenes3Slide1Show();
@@ -612,6 +636,8 @@ $(() => {
                 <div class="icon"></div>
                 <div class="b"></div>`);
     };
+
+
     const scenes3SwiperInInit = function(num) {
         new Swiper('#scenes3-in' + num, {
             lazyLoading: true,
@@ -645,7 +671,7 @@ $(() => {
                 $nextBtn.on('click', function() {
                     swiper.slideNext();
                     if (swiper.isEnd) {
-                        $(this).off('click');
+                        $(this).off('click').attr('data-click', 'scenes3Swiper_Next');
                         $(this).click(function() {
                             if (scenes3SwiperIns[num + 1] === undefined) {
                                 scenes3SwiperIns[num + 1] = scenes3SwiperInInit(num + 1);
@@ -679,6 +705,24 @@ $(() => {
                 $nextPrev.off('click');
                 $nextPrev.on('click', function() {
                     swiper.slidePrev();
+
+                    if ($nextBtn.attr('data-click') === 'scenes3Swiper_Next') {
+                        $nextBtn.off('click');
+                        $nextBtn.on('click', function() {
+                            swiper.slideNext();
+                            if (swiper.isEnd) {
+                                $(this).off('click').attr('data-click', 'scenes3Swiper_Next');
+                                $(this).click(function() {
+                                    if (scenes3SwiperIns[num + 1] === undefined) {
+                                        scenes3SwiperIns[num + 1] = scenes3SwiperInInit(num + 1);
+                                    }
+                                    scenes3Swiper.slideNext();
+                                });
+                            }
+                        });
+                    }
+
+
                     if (swiper.isBeginning) {
                         $(this).off('click');
                         $(this).click(function() {
@@ -1078,7 +1122,7 @@ $(() => {
             mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
                 speed: IS_HIGH_PERFORMANCE && 1000 || 500,
-                // hashnav: true, // for dev
+                hashnav: true, // for dev
                 hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,
@@ -1145,6 +1189,9 @@ $(() => {
                         // },
                         runCallbacksOnInit: true,
                         onInit: function(swiper) {
+
+                            scense_one_video_mask();
+
                             // getSwiperData
                             _this.getSwiperData();
                             _this.qrcode();

@@ -4,10 +4,49 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes1.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-13-19:07:00
+* @Last modified time: 2017-01-15-15:30:38
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
+/* scenes1-mask */
+.scenes1-mask {
+    width           : 100%;
+    height          : 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position        : absolute;
+    top             : 0;
+    left            : 0;
+    z-index         : 999;
+}
+
+.scenes1-mask iframe {
+    border     : none;
+    outline    : none;
+    position   : absolute;
+    width      : 680px;
+    height     : 535px;
+    top        : 50%;
+    left       : 50%;
+    margin-left: -340px;
+    margin-top : -268px;
+    box-shadow : 0 0 68px rgba(0, 0, 0, 0.3);
+}
+
+.scenes1-mask-close {
+    position        : absolute;
+    width           : 40px;
+    height          : 40px;
+    color           : #000;
+    background-color: #FFF;
+    overflow        : hidden;
+    z-index         : 2;
+    top             : 50%;
+    left            : 50%;
+    margin-left     : 340px;
+    margin-top      : -268px;
+    cursor          : pointer;
+    background      : #FFF url("../index-assets/x.png") center center no-repeat;
+}
 /* scenes1 */
 .scenes1,
 .scenes1-parallax-bg {
@@ -212,4 +251,20 @@
     line-height: 36px;
     font-weight: normal;
     margin-top : -36px;
+}
+
+.scenes1-btn-1 .scenes1-pic {
+    display    : block;
+    width      : 40px;
+    height     : 40px;
+    overflow   : hidden;
+    left       : auto;
+    right      : 0;
+    top        : 50%;
+    margin-top : -20px;
+    margin-left: 0;
+    position   : absolute;
+    z-index    : 4;
+    cursor     : pointer;
+    /*background : red;*/
 }

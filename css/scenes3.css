@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes3.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-02:18:47
+* @Last modified time: 2017-01-15-13:46:25
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -170,6 +170,8 @@
 .scenes3-container-in .swiper-slide .p img {
     margin        : 0 auto;
     pointer-events: none;
+    width         : 192px;
+    height        : 221px;
 }
 
 .scenes3-container-in .swiper-slide .t {
