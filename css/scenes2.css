@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes2.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-01:57:07
+* @Last modified time: 2017-01-15-18:29:42
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -56,6 +56,12 @@
 
 .ctlHeight .scenes2-title-box .title-1 {
     font-size: 30px;
+}
+
+.ctlHeight .scenes2-top-text {
+    margin-top : 10px;
+    font-size  : 18px;
+    line-height: 26px;
 }
 
 .scenes2 .swiper-slide,

@@ -3,7 +3,7 @@ function scense_one_video_mask() {
 
     /* scense 01 视频弹出层 */
     $(".scenes1-pic").on("click", function() {
-        var curUrl = $.trim($('.scenes1-pic').find(".scenes1-pic-btn").find("span").html());
+        var curUrl = $.trim($(this).find(".scenes1-pic-btn").find("span").html());
         $(".scenes1-mask").removeClass("hide");
         $(".scenes1-mask").find("iframe").attr("src", curUrl);
     });

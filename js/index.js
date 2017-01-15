@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-15-17:41:09
+* @Last modified time: 2017-01-15-19:23:53
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -245,6 +245,11 @@ $(() => {
                 $('#scenes2').addClass('ctlHeight');
             } else {
                 $('#scenes2').removeClass('ctlHeight');
+                // $('.scenes2-top-text').css({
+                //     'margin-top': 20,
+                //     'font-size': '20px',
+                //     'line-height': '28px'
+                // });
             }
         },
         init: function() {
@@ -384,9 +389,16 @@ $(() => {
     const $scenes2TitleBox = $('#scenes2-title-box');
     const scenes2SetTitles = function($tag) {
 
+        console.log('scenes2SetTitles', $tag);
+
         let t1 = $tag.find('.t1').html();
         let t2 = $tag.find('.t2').html();
         let t3 = $tag.find('.t3').html();
+        let t3Href = $tag.find('.t3').find('a').attr('href');
+
+        $tag.on('click', function(){
+            window.open(t3Href, '_blank');
+        });
 
         if (t1 === 'undefined') {
             t1 = '';
@@ -651,13 +663,14 @@ $(() => {
             slidesPerView: 5,
             slidesPerGroup: 5,
             spaceBetween: 30,
+            // centeredSlides : true,
             // runCallbacksOnInit: true,
             nested: true, // 不能使用loop: true
             // resistanceRatio: 0,
             onInit: function(swiper) {
                 (num === 0) && scenes3BtnShow(swiper.slides.eq(0));
                 const $nextBtn = $('#scenes3-in-next' + num);
-                const $nextPrev = $('#scenes3-in-prev' + num);
+                const $prevBtn = $('#scenes3-in-prev' + num);
 
                 // $nextBtn.css({
                 //     'opacity': 1,
@@ -670,6 +683,18 @@ $(() => {
                 $nextBtn.off('click');
                 $nextBtn.on('click', function() {
                     swiper.slideNext();
+                    if ($prevBtn.attr('data-click') === 'scenes3Swiper_Prev') {
+                        $prevBtn.off('click');
+                        $prevBtn.on('click', function() {
+                            swiper.slidePrev();
+                            if (swiper.isBeginning) {
+                                $(this).off('click').attr('data-click', 'scenes3Swiper_Prev');
+                                $(this).click(function() {
+                                    scenes3Swiper.slidePrev();
+                                });
+                            }
+                        });
+                    }
                     if (swiper.isEnd) {
                         $(this).off('click').attr('data-click', 'scenes3Swiper_Next');
                         $(this).click(function() {
@@ -679,33 +704,13 @@ $(() => {
                             scenes3Swiper.slideNext();
                             // $(this).off('click');
                         });
-
-                        /*
-                            2017-01-14-10.34 优化备忘 @St.
-                            缺少判断什么时候让按钮变为不能点击状态，
-                            因为嵌套原因逻辑存在一些问题需要梳理
-                        */
-                        // if (scenes3Swiper.isEnd) {
-                        //     $(this).css({
-                        //         'opacity': 0.5,
-                        //         'pointer-events': 'none',
-                        //         // 'cursor': 'pointer',
-                        //     })
-                        // } else {
-                        //     $(this).css({
-                        //         'opacity': 1,
-                        //         'pointer-events': 'visible',
-                        //         'cursor': 'pointer',
-                        //     })
-                        // }
                     }
                 });
 
                 // prevBtn
-                $nextPrev.off('click');
-                $nextPrev.on('click', function() {
+                $prevBtn.off('click');
+                $prevBtn.on('click', function() {
                     swiper.slidePrev();
-
                     if ($nextBtn.attr('data-click') === 'scenes3Swiper_Next') {
                         $nextBtn.off('click');
                         $nextBtn.on('click', function() {
@@ -721,16 +726,10 @@ $(() => {
                             }
                         });
                     }
-
-
                     if (swiper.isBeginning) {
-                        $(this).off('click');
+                        $(this).off('click').attr('data-click', 'scenes3Swiper_Prev');
                         $(this).click(function() {
-                            // if (scenes3SwiperIns[num + 1] === undefined) {
-                            //     scenes3SwiperIns[num + 1] = scenes3SwiperInInit(num + 1);
-                            // }
                             scenes3Swiper.slidePrev();
-                            // $(this).off('click');
                         });
                     }
                 });
@@ -1110,6 +1109,17 @@ $(() => {
     /* -------------------------------------------------------------------------
      * xinhuaTalking
     ------------------------------------------------------------------------- */
+    const isScroll = function(){
+        const condition = window.location.hash === '#no-scroll';
+        let temp;
+        if (condition) {
+            temp = false;
+        } else {
+            temp = true;
+        }
+        return temp;
+    };
+
     const xinhuaTalking = {
         $nav: $nav,
         navHeight: 67,
@@ -1121,13 +1131,14 @@ $(() => {
             // swiper
             mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
-                speed: IS_HIGH_PERFORMANCE && 1000 || 500,
-                hashnav: true, // for dev
+                speed: IS_HIGH_PERFORMANCE && 2000 || 500,
+                // hashnav: true, // for dev
                 hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,
-                mousewheelControl: true,
                 runCallbacksOnInit: true, // 必须开启，onInit触发回调
+                mousewheelControl: isScroll(),
+                // mousewheelSensitivity : 1,
                 onInit: function(swiper) {
                     // getSize
                     _this.getSize();
