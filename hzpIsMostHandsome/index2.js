@@ -1,4 +1,6 @@
 function scense_one_video_mask() {
+    $('.scenes1-btn-1').append('<div class="scenes1-pic"></div>');
+
     /* scense 01 视频弹出层 */
     $(".scenes1-pic").on("click", function() {
         var curUrl = $.trim($(this).find(".scenes1-pic-btn").find("span").html());

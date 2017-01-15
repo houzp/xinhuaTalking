@@ -4,7 +4,7 @@
 * @Email:  st_sister@iCloud.com
 * @Filename: scenes4.css
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-14:57:19
+* @Last modified time: 2017-01-15-21:13:56
 * @License: MIT
 * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
 */
@@ -425,4 +425,18 @@
 
 .scenes4 .slimScrollDiv {
     padding-right: 12px;
+}
+
+.ctlHeight4 .scenes4-head {
+    position      : absolute;
+    top           : 40px;
+    left          : 0;
+    width         : 500px;
+    z-index       : 1;
+    pointer-events: none;
+    /*background-color: red;*/
+}
+
+.ctlHeight4 .scenes4-body {
+    padding-top: 50px;
 }

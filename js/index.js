@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-14-16:22:36
+* @Last modified time: 2017-01-15-23:02:06
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -241,7 +241,6 @@ $(() => {
     const zoomHandler = {
         zoomSets: function() {
             if ($window.height() < 1080) {
-                const _this = this;
                 $('#scenes2').addClass('ctlHeight');
             } else {
                 $('#scenes2').removeClass('ctlHeight');
@@ -285,7 +284,7 @@ $(() => {
             x: -200,
             opacity: 0
         });
-        $scenes1SwiperButtonNext.removeClass('active');
+        // $scenes1SwiperButtonNext.removeClass('active');
     };
     const scenes1Slide1Show = function() {
         TweenMax.to($topNav, 2, {
@@ -307,9 +306,9 @@ $(() => {
             x: 0,
             opacity: 1,
             ease: Power0.ease,
-            onStart: function() {
-                $scenes1SwiperButtonNext.addClass('active');
-            }
+            // onStart: function() {
+            //     $scenes1SwiperButtonNext.addClass('active');
+            // }
         });
     };
     /* -------------------------------------------------------------------------
@@ -357,6 +356,9 @@ $(() => {
         }
     };
     const scenes2Mouseover = function($tag) {
+
+        console.log('scenes2Mouseover', $tag);
+
         TweenMax.to($tag, 0.2, {
             scale: 1.25,
             'box-shadow': '6px 6px 32px rgba(0, 0, 0, 0.35)',
@@ -381,9 +383,16 @@ $(() => {
     const $scenes2TitleBox = $('#scenes2-title-box');
     const scenes2SetTitles = function($tag) {
 
+        console.log('scenes2SetTitles', $tag);
+
         let t1 = $tag.find('.t1').html();
         let t2 = $tag.find('.t2').html();
         let t3 = $tag.find('.t3').html();
+        let t3Href = $tag.find('.t3').find('a').attr('href');
+
+        $tag.on('click', function(){
+            window.open(t3Href, '_blank');
+        });
 
         if (t1 === 'undefined') {
             t1 = '';
@@ -435,7 +444,7 @@ $(() => {
                 scenes2Swiper = new Swiper('#scenes2', {
                     lazyLoading: true,
                     effect: 'fade',
-                    autoplay: 8000,
+                    // autoplay: 8000,
                     // loop: true, // 因为背景透明无法使用loop
                     prevButton: '#scenes2 .swiper-button-prev',
                     nextButton: '#scenes2 .swiper-button-next',
@@ -447,6 +456,7 @@ $(() => {
 
                         scenes2Hide($scenes2Items, 0, 0);
                         scenes2Ani(swiper.activeIndex, 'show', 1);
+
                         const firstNum = 0;
                         const $firstItem = $scenes2Items.eq(firstNum);
                         setTimeout(function() {
@@ -464,11 +474,26 @@ $(() => {
                             scenes2Mouseout($this);
                         });
 
+                        $('#scenes2').find('.swiper-slide').css({
+                            'z-index': 8888
+                        });
+                        $('#scenes2').find('.swiper-slide').eq(swiper.activeIndex).css({
+                            'z-index': 9999
+                        });
+
                         zoomHandler.init();
                     },
                     onSlideChangeStart: function(swiper) {
                         scenes2Ani(swiper.activeIndex, 'show');
                         scenes2Ani(swiper.previousIndex, 'hide');
+
+                        $('#scenes2').find('.swiper-slide').css({
+                            'z-index': 8888
+                        });
+                        $('#scenes2').find('.swiper-slide').eq(swiper.activeIndex).css({
+                            'z-index': 9999
+                        });
+
                     }
                 });
             } else {
@@ -493,13 +518,16 @@ $(() => {
     const $scenes3 = $('#scenes3');
     const $scenes3InSlide = $scenes3.find('.scenes3-container-in .swiper-slide');
     const scenes3Init = function(swiperRealIndex) {
+
         if (IS_HIGH_PERFORMANCE) {
-            scenes3Slide1Ani(mainSwiperRealIndex);
+            window.location.hash === ('#no-scroll') && cenes3Slide1Ani(mainSwiperRealIndex);
         }
+
         if (mainSwiperRealIndex === 2) {
             if (scenes3Swiper === null) {
                 scenes3Btn();
-                IS_HIGH_PERFORMANCE && triangleBgInit(mainSwiperRealIndex, 2);
+
+                window.location.hash === ('#no-scroll') && IS_HIGH_PERFORMANCE && triangleBgInit(mainSwiperRealIndex, 2);
 
                 scenes3Swiper = new Swiper($scenes3.selector, {
                     lazyLoading: true,
@@ -541,6 +569,11 @@ $(() => {
             } else {
                 scenes3Swiper.unlockSwipes();
             }
+
+            if (scenes3SwiperIns[0] === undefined) {
+                scenes3SwiperIns[0] = scenes3SwiperInInit(0);
+            }
+
             // bgToggle('show');
             // if (coverStatus === 'hide') {
             //     scenes3Slide1Show();
@@ -612,6 +645,8 @@ $(() => {
                 <div class="icon"></div>
                 <div class="b"></div>`);
     };
+
+
     const scenes3SwiperInInit = function(num) {
         new Swiper('#scenes3-in' + num, {
             lazyLoading: true,
@@ -625,13 +660,14 @@ $(() => {
             slidesPerView: 5,
             slidesPerGroup: 5,
             spaceBetween: 30,
+            // centeredSlides : true,
             // runCallbacksOnInit: true,
             nested: true, // 不能使用loop: true
             // resistanceRatio: 0,
             onInit: function(swiper) {
                 (num === 0) && scenes3BtnShow(swiper.slides.eq(0));
                 const $nextBtn = $('#scenes3-in-next' + num);
-                const $nextPrev = $('#scenes3-in-prev' + num);
+                const $prevBtn = $('#scenes3-in-prev' + num);
 
                 // $nextBtn.css({
                 //     'opacity': 1,
@@ -644,8 +680,20 @@ $(() => {
                 $nextBtn.off('click');
                 $nextBtn.on('click', function() {
                     swiper.slideNext();
+                    if ($prevBtn.attr('data-click') === 'scenes3Swiper_Prev') {
+                        $prevBtn.off('click');
+                        $prevBtn.on('click', function() {
+                            swiper.slidePrev();
+                            if (swiper.isBeginning) {
+                                $(this).off('click').attr('data-click', 'scenes3Swiper_Prev');
+                                $(this).click(function() {
+                                    scenes3Swiper.slidePrev();
+                                });
+                            }
+                        });
+                    }
                     if (swiper.isEnd) {
-                        $(this).off('click');
+                        $(this).off('click').attr('data-click', 'scenes3Swiper_Next');
                         $(this).click(function() {
                             if (scenes3SwiperIns[num + 1] === undefined) {
                                 scenes3SwiperIns[num + 1] = scenes3SwiperInInit(num + 1);
@@ -653,40 +701,32 @@ $(() => {
                             scenes3Swiper.slideNext();
                             // $(this).off('click');
                         });
-
-                        /*
-                            2017-01-14-10.34 优化备忘 @St.
-                            缺少判断什么时候让按钮变为不能点击状态，
-                            因为嵌套原因逻辑存在一些问题需要梳理
-                        */
-                        // if (scenes3Swiper.isEnd) {
-                        //     $(this).css({
-                        //         'opacity': 0.5,
-                        //         'pointer-events': 'none',
-                        //         // 'cursor': 'pointer',
-                        //     })
-                        // } else {
-                        //     $(this).css({
-                        //         'opacity': 1,
-                        //         'pointer-events': 'visible',
-                        //         'cursor': 'pointer',
-                        //     })
-                        // }
                     }
                 });
 
                 // prevBtn
-                $nextPrev.off('click');
-                $nextPrev.on('click', function() {
+                $prevBtn.off('click');
+                $prevBtn.on('click', function() {
                     swiper.slidePrev();
+                    if ($nextBtn.attr('data-click') === 'scenes3Swiper_Next') {
+                        $nextBtn.off('click');
+                        $nextBtn.on('click', function() {
+                            swiper.slideNext();
+                            if (swiper.isEnd) {
+                                $(this).off('click').attr('data-click', 'scenes3Swiper_Next');
+                                $(this).click(function() {
+                                    if (scenes3SwiperIns[num + 1] === undefined) {
+                                        scenes3SwiperIns[num + 1] = scenes3SwiperInInit(num + 1);
+                                    }
+                                    scenes3Swiper.slideNext();
+                                });
+                            }
+                        });
+                    }
                     if (swiper.isBeginning) {
-                        $(this).off('click');
+                        $(this).off('click').attr('data-click', 'scenes3Swiper_Prev');
                         $(this).click(function() {
-                            // if (scenes3SwiperIns[num + 1] === undefined) {
-                            //     scenes3SwiperIns[num + 1] = scenes3SwiperInInit(num + 1);
-                            // }
                             scenes3Swiper.slidePrev();
-                            // $(this).off('click');
                         });
                     }
                 });
@@ -766,6 +806,18 @@ $(() => {
     const scenes4Init = function(swiperRealIndex) {
         if (mainSwiperRealIndex === 3 && IS_HIGH_PERFORMANCE) {
             scenes4BgInit(swiperRealIndex);
+            if ($window.height() < 910) {
+                $('#scenes4').addClass('ctlHeight4');
+            } else {
+                $('#scenes4').removeClass('ctlHeight4');
+            }
+            $window.on('resize', function(){
+                if ($window.height() < 910) {
+                    $('#scenes4').addClass('ctlHeight4');
+                } else {
+                    $('#scenes4').removeClass('ctlHeight4');
+                }
+            });
         }
     };
     /* -------------------------------------------------------------------------
@@ -1066,6 +1118,17 @@ $(() => {
     /* -------------------------------------------------------------------------
      * xinhuaTalking
     ------------------------------------------------------------------------- */
+    const isScroll = function(){
+        const condition = window.location.hash === '#no-scroll';
+        let temp;
+        if (condition) {
+            temp = false;
+        } else {
+            temp = true;
+        }
+        return temp;
+    };
+
     const xinhuaTalking = {
         $nav: $nav,
         navHeight: 67,
@@ -1077,13 +1140,14 @@ $(() => {
             // swiper
             mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
-                speed: IS_HIGH_PERFORMANCE && 1000 || 500,
+                speed: IS_HIGH_PERFORMANCE && 2000 || 500,
                 // hashnav: true, // for dev
                 hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,
-                mousewheelControl: true,
                 runCallbacksOnInit: true, // 必须开启，onInit触发回调
+                mousewheelControl: isScroll(),
+                // mousewheelSensitivity : 1,
                 onInit: function(swiper) {
                     // getSize
                     _this.getSize();
@@ -1145,6 +1209,9 @@ $(() => {
                         // },
                         runCallbacksOnInit: true,
                         onInit: function(swiper) {
+
+                            scense_one_video_mask();
+
                             // getSwiperData
                             _this.getSwiperData();
                             _this.qrcode();
