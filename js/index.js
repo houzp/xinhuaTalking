@@ -4,7 +4,7 @@
  * @Email:  st_sister@iCloud.com
  * @Filename: index.js
 * @Last modified by:   SuperWoods
-* @Last modified time: 2017-01-15-23:02:06
+* @Last modified time: 2017-01-16-15:17:23
  * @License: MIT
  * @Copyright: Copyright (c) Xinhuanet Inc. All rights reserved.
  */
@@ -26,22 +26,6 @@ $(() => {
         IS_HIGH_PERFORMANCE = true;
     }
 
-    // const IS_WIN7 = window.BROWSER.UA.indexOf('windows nt 6') ;
-    // const IS_NOT_WIN = "windows" !== window.BROWSER.device;
-
-    console.log('IS_HIGH_PERFORMANCE', IS_HIGH_PERFORMANCE);
-
-    // // .no-csstransforms .box { color: red; }
-    // // .csstransforms .box { color: green; }
-    // // JS
-    // if (Modernizr.csstransforms) {
-    //     console.log(Modernizr);
-    //   // supported
-    // } else {
-    //   // not-supported
-    //   console.log('no', Modernizr.csstransforms);
-    // }
-
     // cover
     if (!IS_NOT_OLDIE) {
         $('.cover-logo').after(`
@@ -58,6 +42,18 @@ $(() => {
                 </span>
             </div>`);
     }
+
+    // // dataHash
+    // const dataHashCtl = function(){
+    //     if (window.location.hash === '#max') {
+    //         $('[data-hash]').each(function(i, e){
+    //             const $e = $(e);
+    //             const h = $e.attr('data-hash');
+    //             $e.attr('data-hash', h +'/max');
+    //         });
+    //     }
+    // };
+    // dataHashCtl();
 
     // 必要的全局对象
     const $window = $(window);
@@ -390,7 +386,7 @@ $(() => {
         let t3 = $tag.find('.t3').html();
         let t3Href = $tag.find('.t3').find('a').attr('href');
 
-        $tag.on('click', function(){
+        $tag.on('click', function() {
             window.open(t3Href, '_blank');
         });
 
@@ -664,6 +660,7 @@ $(() => {
             // runCallbacksOnInit: true,
             nested: true, // 不能使用loop: true
             // resistanceRatio: 0,
+            // paginationClickable: true,
             onInit: function(swiper) {
                 (num === 0) && scenes3BtnShow(swiper.slides.eq(0));
                 const $nextBtn = $('#scenes3-in-next' + num);
@@ -811,7 +808,7 @@ $(() => {
             } else {
                 $('#scenes4').removeClass('ctlHeight4');
             }
-            $window.on('resize', function(){
+            $window.on('resize', function() {
                 if ($window.height() < 910) {
                     $('#scenes4').addClass('ctlHeight4');
                 } else {
@@ -821,7 +818,7 @@ $(() => {
         }
     };
     /* -------------------------------------------------------------------------
-     * nav
+     * navLine
     ------------------------------------------------------------------------- */
     const $nav = $('#nav');
     const $navLine = $nav.find('.nav-line');
@@ -829,17 +826,18 @@ $(() => {
     $navA.on('mouseover', function() {
         navLine(($(this).index() - 1), 0.3);
     });
+    $nav.on('mouseout', function() {
+        navLine(mainSwiperRealIndex, 1);
+    });
+    // navLine定位控制
     const navLine = function(index, time) {
-        // if (IS_HIGH_PERFORMANCE) {
         TweenMax.to($navLine, time, {
             x: index * (100 + 20)
         });
-        // }
     };
     // nav按钮点击事件
     $navA.on('click', function(e) {
         e.preventDefault();
-        // console.log($(this).index()-1);
         mainSwiper.slideTo($(this).index() - 1);
         return false;
     });
@@ -1083,12 +1081,8 @@ $(() => {
     const triangleBgInit = function(swiperRealIndex, num) {
         if (swiperRealIndex === num && triangleBg === null) {
             $triangleBg = $('#triangleBg');
-            // triangleBg = $.getScript("lib/triangleBg/triangleBg.js", function() {
-            //     triangleBgShow();
-            // });
             triangleBg = triangleBgHandler();
             triangleBgShow();
-            // triangleBgHide();
         }
     };
 
@@ -1118,7 +1112,7 @@ $(() => {
     /* -------------------------------------------------------------------------
      * xinhuaTalking
     ------------------------------------------------------------------------- */
-    const isScroll = function(){
+    const isScroll = function() {
         const condition = window.location.hash === '#no-scroll';
         let temp;
         if (condition) {
@@ -1141,20 +1135,19 @@ $(() => {
             mainSwiper = new Swiper('#main', {
                 lazyLoading: true,
                 speed: IS_HIGH_PERFORMANCE && 2000 || 500,
-                // hashnav: true, // for dev
+                hashnav: (window.location.hash.length > 0) ? true : false, // for dev
                 hashnavWatchState: true,
                 direction: 'vertical',
                 keyboardControl: true,
                 runCallbacksOnInit: true, // 必须开启，onInit触发回调
                 mousewheelControl: isScroll(),
-                // mousewheelSensitivity : 1,
+                mousewheelForceToAxis: true,
+                mousewheelSensitivity: 1,
                 onInit: function(swiper) {
                     // getSize
                     _this.getSize();
                     // nav
-                    _this.navHeight = _this
-                        .$nav
-                        .height();
+                    _this.navHeight = _this.$nav.height();
                     // navLine(swiper.realIndex, 1);
                     $window.on('resize', () => {
                         if (mainSwiperRealIndex < 1) {
@@ -1168,18 +1161,19 @@ $(() => {
                     mainSwiperRealIndex = swiper.realIndex;
                     _this.navSetPosition(swiper.realIndex);
                     scenes2Init(swiper.realIndex);
-
                     scenes5Init(swiper.realIndex);
                 },
                 onSlideChangeEnd: function(swiper) {
                     navLine(swiper.realIndex, 1);
-                    // scenes1Init
                     _this.scenes1Init(swiper.realIndex);
                     scenes3Init(swiper.realIndex);
                     scenes4Init(swiper.realIndex);
+                },
+                // onScroll: function(swiper) {
+                //     //发生些什么吧
+                //     console.log(swiper);
+                // }
 
-
-                }
             });
         },
         scenes1Init: function(num) {
@@ -1209,9 +1203,7 @@ $(() => {
                         // },
                         runCallbacksOnInit: true,
                         onInit: function(swiper) {
-
                             scense_one_video_mask();
-
                             // getSwiperData
                             _this.getSwiperData();
                             _this.qrcode();
@@ -1246,6 +1238,7 @@ $(() => {
                                         .nextButton
                                         .removeClass('active');
                                 });
+
                             let num = [
                                 swiper.realIndex - 1,
                                 swiper.realIndex + 1
@@ -1426,18 +1419,12 @@ $(() => {
         navSetPosition: function(scenesMain_realIndex) {
             const _this = this;
             if (scenesMain_realIndex < 1) {
-                _this
-                    .navSetPositionAnis((_this.size.height - _this.navHeight), 0.6, function() {
-                        _this
-                            .$nav
-                            .removeClass('nav-isTop');
+                _this.navSetPositionAnis((_this.size.height - _this.navHeight), 0.6, function() {
+                        _this.$nav.removeClass('nav-isTop');
                     });
             } else {
-                _this
-                    .navSetPositionAnis(0, 0.6, function() {
-                        _this
-                            .$nav
-                            .addClass('nav-isTop');
+                _this.navSetPositionAnis(0, 0.6, function() {
+                        _this.$nav.addClass('nav-isTop');
                     });
             }
         }
