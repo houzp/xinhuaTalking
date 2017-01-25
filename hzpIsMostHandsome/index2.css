@@ -727,3 +727,20 @@
 /* .scenes5-middle-upper{
     display: none;
 } */
+.scenes5-img-tit,.scenes5-cont-big-pic-cont-item-tit-main-wrapper{
+    // add
+    writing-mode: vertical-lr;
+    letter-spacing: 3px;
+}
+.scenes5-txt-list-items a{
+    // add
+    padding:4px 0;
+}
+.scenes4-hot-detail:hover,.scenes4-items-tit:hover,.scenes5-cont-big-pic-cont-item-tit-small:hover{
+    // change
+    color:#fff !important;
+}
+.scenes5-cont-big-pic-cont-item{
+    // del transition
+    transition:none;
+}
